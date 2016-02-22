@@ -1,0 +1,157 @@
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+%\modulolinenumbers[5]
+\usepackage{ifpdf}
+\usepackage[cmex10]{amsmath}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{mdwmath}
+\usepackage{mdwtab}
+\usepackage{algorithmic}
+\usepackage{times}
+%\usepackage{url}
+\usepackage{booktabs}
+%\usepackage[tight,footnotesize]{subfigure}
+\usepackage{fancybox}
+\usepackage{color}
+%\usepackage{array}
+%\usepackage{balance}
+%\usepackage{epstopdf}
+\usepackage{array}
+\usepackage{fixltx2e}
+\usepackage{stfloats}
+%\usepackage{epstopdf}
+\usepackage{pdfpages}
+\usepackage{amssymb}
+%\usepackage{wrapfig}
+%\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{algorithm}
+%\usepackage{times}
+\usepackage{url}
+\usepackage{varwidth}
+%\usepackage{booktabs}
+%\usepackage{fancybox}
+%\usepackage{color}
+%\usepackage{array}
+\usepackage{subfigure}
+\usepackage{balance}
+\usepackage{epstopdf}
+%\usepackage{array}
+\usepackage{xspace}
+\usepackage{makecell}
+\usepackage{caption}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{capt-of}
+\usepackage{graphicx}
+\usepackage{graphics}
+
+
+%\usepackage{siunitx}
+
+\journal{TBD}
+
+
+%% Harvard
+\bibliographystyle{model2-names.bst}%\biboptions{authoryear}
+
+\newcommand{\conclusionbox}[1]{%
+	\vspace{2mm}
+	\framebox[0.45\textwidth][c]{%
+		\parbox[b]{0.42\textwidth}{%
+			{\it #1}
+		}
+	}
+	\vspace{2mm}
+}
+
+%\newcommand{\rqi}{\textbf{}}
+%\newcommand{\rqii}{\textbf{}}
+%\newcommand{\rqiii}{\textbf{}}
+
+
+\begin{document}
+	
+	\begin{frontmatter}
+		
+		\title{A Study on the Reliability of The Performance Tests Done in Virtual Environment}
+		%\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on %\href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+		
+		%% Group authors per affiliation:
+		%\author{Elsevier\fnref{myfootnote}}
+		%\address{Radarweg 29, Amsterdam}
+		%\fntext[myfootnote]{Since 1880.}
+		\author{Muhammad Moiz Arif, Weiyi Shang, Emad Shihab}%\fnref{myfootnote}
+		\address{Concordia University, Montreal, Quebec}
+		%\fntext[myfootnote]{Since 1880.}
+		
+		%% or include affiliations in footnotes:
+		%\author[mymainaddress,mysecondaryaddress]
+		%{Elsevier Inc}
+		%\ead[url]{www.elsevier.com}
+		
+		%\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+		%\cortext[mycorrespondingauthor]{Corresponding author}
+		%\ead{support@elsevier.com}
+		
+		%\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+		%\address[mysecondaryaddress]{360 Park Avenue South, New York}
+		
+		\begin{abstract}
+			Performance testing plays an indispensable role for large software systems. Performance issues cause failures of these systems in the field more often than feature bugs. Such performance tests typically require large amounts of resources, such as long running time on performance testing environments. Making it worse, the ever evolving field environment requires frequently updating the performance testing environment. To address such challenges, virtual machines (VMs) are widely exploited to provide a flexible and less costly environments for performance tests. However, the use of VMs may introduce extra overheads (e.g., a higher than expected memory utilization) to the environment, leading to un-realistic performance testing results. Yet, there exists no study that qualifies such overhead in the context of performance testing activities, or investigates the impact of performance testing results. 
+			
+			In this paper, we perform a case study on two open source system, i.e.,Dell DVD and Cloud Store, to measure the impact of leveraging VMs for performance testing activities. In particular, we conduct two performance testing activities, including performance modeling and performance regression detection. The two activities are conducted in both environments that consists of physical machines or VMs. \textcolor{red}{We find that the performance testing results from the VMs may not be the same as the physical machines.}
+			
+			(insert implications here once we have the results)
+			
+		\end{abstract}
+		
+		\begin{keyword}
+			Performance engineering, 
+			Performance testing
+			Performance modeling
+			Performance analysis            
+		\end{keyword}
+		
+	\end{frontmatter}
+	
+	
+	%\linenumbers
+	
+	 \section{Introduction}
+	 \label{sec:introduction}
+	 \input{introduction}
+	
+	 \section{Background and Related Work}
+	 \label{sec:related_work}
+	 \input{related_work}
+	
+	 \section{A Motivating Example}
+	 \label{sec:a_motivating_example}
+	 \input{a_motivating_example}
+	
+	 \section{Approach}
+	 \label{sec:approach}
+	 \input{approach}
+	
+	 \section{Case Study Results}
+	 \label{sec:results}
+	 \input{results}
+	
+	 \section{Discussion}
+     \label{sec:discussion}
+     \input{discussion}
+     
+     	
+  	\section{Threats to validity}
+   	\label{sec:threats_to_validity}
+   	\input{threats_to_validity}
+	
+	 \section{Conclusion and Future work}
+	 \label{sec:conclusion}
+	 \input{conclusion}
+	
+	\bibliography{mybibfile}
+\end{document}

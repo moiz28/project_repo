@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: elsarticle-template.aux
+The style file: model2-names.bst.bst
+Database file #1: mybibfile.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty pages in bodik2008hilighter
+Warning--can't use both author and editor fields in 10foldcross
+You've used 49 entries,
+            2990 wiz_defined-function locations,
+            1023 strings with 15194 characters,
+and the built_in function-call counts, 30658 in all, are:
+= -- 2506
+> -- 1018
+< -- 51
++ -- 404
+- -- 345
+* -- 2982
+:= -- 4423
+add.period$ -- 157
+call.type$ -- 49
+change.case$ -- 375
+chr.to.int$ -- 47
+cite$ -- 51
+duplicate$ -- 2415
+empty$ -- 2288
+format.name$ -- 447
+if$ -- 5941
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 419
+newline$ -- 270
+num.names$ -- 196
+pop$ -- 914
+preamble$ -- 1
+purify$ -- 309
+quote$ -- 0
+skip$ -- 823
+stack$ -- 0
+substring$ -- 1220
+swap$ -- 1607
+text.length$ -- 19
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 435
+warning$ -- 2
+while$ -- 208
+width$ -- 0
+write$ -- 732
+(There were 2 warnings)

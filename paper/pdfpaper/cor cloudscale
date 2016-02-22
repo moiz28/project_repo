@@ -1,0 +1,16 @@
+> cor(mydatap_tomcat_old$java_..User.Time,mydatav_tomcat_modforoldp$java_..User.Time, method='spearman')
+[1] 0.007320239
+>   cor(mydatap_tomcat_old$mysql_..User.Time,mydatav_tomcat_modforoldp$mysql_..User.Time,method='spearman')
+[1] 0.1978455
+>   
+>   
+>   cor(mydatap_tomcat_old$java_IO.Data.Operations.sec,mydatav_tomcat_modforoldp$java_IO.Data.Operations.sec,method='spearman')
+[1] 0.1663387
+>   cor(mydatap_tomcat_old$mysql_IO.Data.Operations.sec,mydatav_tomcat_modforoldp$mysql_IO.Data.Operations.sec,method='spearman')
+[1] 0.1795932
+>   
+>   
+>   cor(mydatap_tomcat_old$java_Working.Set,mydatav_tomcat_modforoldp$java_Working.Set,method='spearman')
+[1] 0.6896184
+>   cor(mydatap_tomcat_old$mysql_Working.Set,mydatav_tomcat_modforoldp$mysql_Working.Set,method='spearman')
+[1] -0.1293503

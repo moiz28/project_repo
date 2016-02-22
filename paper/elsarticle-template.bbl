@@ -1,0 +1,399 @@
+\begin{thebibliography}{49}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Misc
+\bibitem[{{Apache}()}]{apachejmeter}
+\bibinfo{author}{{Apache}}, .
+\newblock \bibinfo{title}{{{Jm}eter}}.
+\newblock \bibinfo{howpublished}{\url{http://jmeter.apache.org/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{Apache()}]{tomcat}
+\bibinfo{author}{Apache}, .
+\newblock \bibinfo{title}{Tomcat}.
+\newblock \bibinfo{howpublished}{\url{http://tomcat.apache.org/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Article
+\bibitem[{Barber(July 2006)}]{stpmag}
+\bibinfo{author}{Barber, S.}, \bibinfo{year}{July 2006}.
+\newblock \bibinfo{title}{An evolution in performance testing}.
+\newblock \bibinfo{journal}{Software Test and Performance Magazine} .
+%Type = Inproceedings
+\bibitem[{Bertolino(2007)}]{bertolino2007software}
+\bibinfo{author}{Bertolino, A.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Software testing research: Achievements, challenges,
+  dreams}, in: \bibinfo{booktitle}{2007 Future of Software Engineering},
+  \bibinfo{organization}{IEEE Computer Society}. pp. \bibinfo{pages}{85--103}.
+%Type = Inproceedings
+\bibitem[{Bod{\'\i}k et~al.(2008)Bod{\'\i}k, Goldszmidt and
+  Fox}]{bodik2008hilighter}
+\bibinfo{author}{Bod{\'\i}k, P.}, \bibinfo{author}{Goldszmidt, M.},
+  \bibinfo{author}{Fox, A.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Hilighter: Automatically building robust signatures
+  of performance behavior for small-and large-scale systems.}, in:
+  \bibinfo{booktitle}{SysML}.
+%Type = Misc
+\bibitem[{Bourdon()}]{wamp}
+\bibinfo{author}{Bourdon, R.}, .
+\newblock \bibinfo{title}{{Wamp Server}}.
+\newblock \bibinfo{howpublished}{\url{http://www.wampserver.com/en//}}.
+\newblock \bibinfo{note}{{Accessed: 2015-11-18}}.
+%Type = Misc
+\bibitem[{{C}loud{S}cale()}]{cloudscaleproject}
+\bibinfo{author}{{C}loud{S}cale}, .
+\newblock \bibinfo{title}{{{C}loudScale-{P}roject}}.
+\newblock \bibinfo{howpublished}{\url{www.cloudscale-project.eu}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{{{C}loudScale-{P}roject}()}]{cloudstore}
+\bibinfo{author}{{{C}loudScale-{P}roject}}, .
+\newblock \bibinfo{title}{Cloudstore}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/CloudScale-Project/CloudStore}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Inproceedings
+\bibitem[{Cohen et~al.(2004)Cohen, Chase, Goldszmidt, Kelly and
+  Symons}]{cohen2004correlating}
+\bibinfo{author}{Cohen, I.}, \bibinfo{author}{Chase, J.S.},
+  \bibinfo{author}{Goldszmidt, M.}, \bibinfo{author}{Kelly, T.},
+  \bibinfo{author}{Symons, J.}, \bibinfo{year}{2004}.
+\newblock \bibinfo{title}{Correlating instrumentation data to system states: A
+  building block for automated diagnosis and control.}, in:
+  \bibinfo{booktitle}{OSDI}, pp. \bibinfo{pages}{16--16}.
+%Type = Inproceedings
+\bibitem[{Cohen et~al.(2005)Cohen, Zhang, Goldszmidt, Symons, Kelly and
+  Fox}]{Cohen:2005:CIC:1095810.1095821}
+\bibinfo{author}{Cohen, I.}, \bibinfo{author}{Zhang, S.},
+  \bibinfo{author}{Goldszmidt, M.}, \bibinfo{author}{Symons, J.},
+  \bibinfo{author}{Kelly, T.}, \bibinfo{author}{Fox, A.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{Capturing, indexing, clustering, and retrieving
+  system history}, in: \bibinfo{booktitle}{Proceedings of the Twentieth ACM
+  Symposium on Operating Systems Principles}, \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York, NY, USA}. pp. \bibinfo{pages}{105--118}.
+\newblock \URLprefix \url{http://doi.acm.org/10.1145/1095810.1095821},
+  \DOIprefix\doi{10.1145/1095810.1095821}.
+%Type = Misc
+\bibitem[{{C}onnor()}]{SanFranciscoStateUniversity}
+\bibinfo{author}{{C}onnor, E.F.}, .
+\newblock \bibinfo{title}{{Generalized Linear Models}}.
+\newblock
+  \bibinfo{howpublished}{\url{http://userwww.sfsu.edu/efc/classes/biol710/Glz/Generalized\%20Linear\%20Models.htm}}.
+\newblock \bibinfo{note}{Accessed: 2015-09-29}.
+%Type = Misc
+\bibitem[{Dave~Jaffe()}]{delldvd}
+\bibinfo{author}{Dave~Jaffe, T.M.}, .
+\newblock \bibinfo{title}{Dell dvd store}.
+\newblock \bibinfo{howpublished}{\url{http://linux.dell.com/dvdstore/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{{Explorable}()}]{manutest}
+\bibinfo{author}{{Explorable}}, .
+\newblock \bibinfo{title}{{Mann-Whitney \textit{U} Test}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://explorable.com/mann-whitney-u-test}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Inproceedings
+\bibitem[{Foo et~al.(2010)Foo, Jiang, Adams, Hassan, Zou and
+  Flora}]{foo2010mining}
+\bibinfo{author}{Foo, K.C.}, \bibinfo{author}{Jiang, Z.M.},
+  \bibinfo{author}{Adams, B.}, \bibinfo{author}{Hassan, A.E.},
+  \bibinfo{author}{Zou, Y.}, \bibinfo{author}{Flora, P.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Mining performance regression testing repositories
+  for automated performance analysis}, in: \bibinfo{booktitle}{Quality Software
+  (QSIC), 2010 10th International Conference on}, \bibinfo{organization}{IEEE}.
+  pp. \bibinfo{pages}{32--41}.
+%Type = Inproceedings
+\bibitem[{Heger et~al.(2013)Heger, Happe and Farahbod}]{heger2013automated}
+\bibinfo{author}{Heger, C.}, \bibinfo{author}{Happe, J.},
+  \bibinfo{author}{Farahbod, R.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Automated root cause isolation of performance
+  regressions during software development}, in: \bibinfo{booktitle}{Proceedings
+  of the 4th ACM/SPEC International Conference on Performance Engineering},
+  \bibinfo{organization}{ACM}. pp. \bibinfo{pages}{27--38}.
+%Type = Inproceedings
+\bibitem[{Jackson et~al.(2010)Jackson, Ramakrishnan, Muriki, Canon, Cholia,
+  Shalf, Wasserman and Wright}]{jackson2010performance}
+\bibinfo{author}{Jackson, K.R.}, \bibinfo{author}{Ramakrishnan, L.},
+  \bibinfo{author}{Muriki, K.}, \bibinfo{author}{Canon, S.},
+  \bibinfo{author}{Cholia, S.}, \bibinfo{author}{Shalf, J.},
+  \bibinfo{author}{Wasserman, H.J.}, \bibinfo{author}{Wright, N.J.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Performance analysis of high performance computing
+  applications on the amazon web services cloud}, in: \bibinfo{booktitle}{Cloud
+  Computing Technology and Science (CloudCom), 2010 IEEE Second International
+  Conference on}, \bibinfo{organization}{IEEE}. pp. \bibinfo{pages}{159--168}.
+%Type = Article
+\bibitem[{Jiang et~al.(2011)Jiang, Munawar, Reidemeister, Ward
+  et~al.}]{jiang2011system}
+\bibinfo{author}{Jiang, M.}, \bibinfo{author}{Munawar, M.},
+  \bibinfo{author}{Reidemeister, T.}, \bibinfo{author}{Ward, P.A.}, et~al.,
+  \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{System monitoring with metric-correlation models}.
+\newblock \bibinfo{journal}{Network and Service Management, IEEE Transactions
+  on} \bibinfo{volume}{8}, \bibinfo{pages}{348--360}.
+%Type = Inproceedings
+\bibitem[{Jiang et~al.(2009)Jiang, Hassan, Hamann and Flora}]{5306331}
+\bibinfo{author}{Jiang, Z.M.}, \bibinfo{author}{Hassan, A.},
+  \bibinfo{author}{Hamann, G.}, \bibinfo{author}{Flora, P.},
+  \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Automated performance analysis of load tests}, in:
+  \bibinfo{booktitle}{Software Maintenance, 2009. ICSM 2009. IEEE International
+  Conference on}, pp. \bibinfo{pages}{125--134}.
+\newblock \DOIprefix\doi{10.1109/ICSM.2009.5306331}.
+%Type = Incollection
+\bibitem[{Kabacoff(2011)}]{RInAction}
+\bibinfo{author}{Kabacoff, R.I.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{R In Action}}, in: \bibinfo{booktitle}{{R In
+  Action}}. \bibinfo{publisher}{Manning Publications Co.},
+  \bibinfo{address}{Staten Island, NY}, pp. \bibinfo{pages}{207--213}.
+%Type = Inproceedings
+\bibitem[{Kohavi et~al.(1995)}]{kohavi1995study}
+\bibinfo{author}{Kohavi, R.}, et~al., \bibinfo{year}{1995}.
+\newblock \bibinfo{title}{A study of cross-validation and bootstrap for
+  accuracy estimation and model selection}, in: \bibinfo{booktitle}{Ijcai}, pp.
+  \bibinfo{pages}{1137--1145}.
+%Type = Inproceedings
+\bibitem[{Kraft et~al.(2011)Kraft, Casale, Krishnamurthy, Greer and
+  Kilpatrick}]{kraft2011io}
+\bibinfo{author}{Kraft, S.}, \bibinfo{author}{Casale, G.},
+  \bibinfo{author}{Krishnamurthy, D.}, \bibinfo{author}{Greer, D.},
+  \bibinfo{author}{Kilpatrick, P.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{Io performance prediction in consolidated virtualized
+  environments}, in: \bibinfo{booktitle}{ACM SIGSOFT Software Engineering
+  Notes}, \bibinfo{organization}{ACM}. pp. \bibinfo{pages}{295--306}.
+%Type = Inproceedings
+\bibitem[{Lim et~al.(2006)Lim, Kim and Shim}]{BumHyunLim}
+\bibinfo{author}{Lim, B.H.}, \bibinfo{author}{Kim, J.R.},
+  \bibinfo{author}{Shim, K.H.}, \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{A load testing architecture for networked virtual
+  environment}, in: \bibinfo{booktitle}{Advanced Communication Technology,
+  2006. ICACT 2006. The 8th International Conference}, pp. \bibinfo{pages}{5
+  pp.--848}.
+\newblock \DOIprefix\doi{10.1109/ICACT.2006.206095}.
+%Type = Article
+\bibitem[{Mansfield and Helms(1982)}]{mansfield1982detecting}
+\bibinfo{author}{Mansfield, E.R.}, \bibinfo{author}{Helms, B.P.},
+  \bibinfo{year}{1982}.
+\newblock \bibinfo{title}{Detecting multicollinearity}.
+\newblock \bibinfo{journal}{The American Statistician} \bibinfo{volume}{36},
+  \bibinfo{pages}{158--160}.
+%Type = Inproceedings
+\bibitem[{Menon et~al.(2005)Menon, Santos, Turner, Janakiraman and
+  Zwaenepoel}]{menon2005diagnosing}
+\bibinfo{author}{Menon, A.}, \bibinfo{author}{Santos, J.R.},
+  \bibinfo{author}{Turner, Y.}, \bibinfo{author}{Janakiraman, G.J.},
+  \bibinfo{author}{Zwaenepoel, W.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{Diagnosing performance overheads in the xen virtual
+  machine environment}, in: \bibinfo{booktitle}{Proceedings of the 1st
+  ACM/USENIX international conference on Virtual execution environments},
+  \bibinfo{organization}{ACM}. pp. \bibinfo{pages}{13--23}.
+%Type = Misc
+\bibitem[{{Microsoft {T}echnet}(a)}]{windowsperfmon}
+\bibinfo{author}{{Microsoft {T}echnet}}, a.
+\newblock \bibinfo{title}{{Perfmon}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://technet.microsoft.com/en-us/library/dd744567(v=ws.10).aspx}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{{Microsoft {T}echnet}(b)}]{perfmon}
+\bibinfo{author}{{Microsoft {T}echnet}}, b.
+\newblock \bibinfo{title}{Windows performance counters}.
+\newblock
+  \bibinfo{howpublished}{\url{https://technet.microsoft.com/en-us/library/cc780836(v=ws.10).aspx}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Article
+\bibitem[{Nachar(2008)}]{mannwhitney}
+\bibinfo{author}{Nachar, N.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{The mann-whitney u: A test for assessing whether two
+  independent samples come from the same distribution}.
+\newblock \bibinfo{journal}{Tutorials in Quantitative Methods for Psychology}
+  \bibinfo{volume}{4}, \bibinfo{pages}{13--20}.
+%Type = Inproceedings
+\bibitem[{Nguyen et~al.(2012)Nguyen, Adams, Jiang, Hassan, Nasser and
+  Flora}]{Nguyen:2012:ADP:2188286.2188344}
+\bibinfo{author}{Nguyen, T.H.}, \bibinfo{author}{Adams, B.},
+  \bibinfo{author}{Jiang, Z.M.}, \bibinfo{author}{Hassan, A.E.},
+  \bibinfo{author}{Nasser, M.}, \bibinfo{author}{Flora, P.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Automated detection of performance regressions using
+  statistical process control techniques}, in: \bibinfo{booktitle}{Proceedings
+  of the 3rd ACM/SPEC International Conference on Performance Engineering},
+  \bibinfo{publisher}{ACM}, \bibinfo{address}{New York, NY, USA}. pp.
+  \bibinfo{pages}{299--310}.
+\newblock \URLprefix \url{http://doi.acm.org/10.1145/2188286.2188344},
+  \DOIprefix\doi{10.1145/2188286.2188344}.
+%Type = Misc
+\bibitem[{{NIST/SEMATECH}()}]{qqplots}
+\bibinfo{author}{{NIST/SEMATECH}}, .
+\newblock \bibinfo{title}{{e-Handbook of Statistical Methods}}.
+\newblock
+  \bibinfo{howpublished}{\url{http://www.itl.nist.gov/div898/handbook/eda/section3/qqplot.htm}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{Oracle()}]{mysql}
+\bibinfo{author}{Oracle}, .
+\newblock \bibinfo{title}{{MYSQL} server 5.6}.
+\newblock \bibinfo{howpublished}{\url{https://www.mysql.com/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Article
+\bibitem[{Rahm and Do(2000)}]{rahm2000data}
+\bibinfo{author}{Rahm, E.}, \bibinfo{author}{Do, H.H.}, \bibinfo{year}{2000}.
+\newblock \bibinfo{title}{Data cleaning: Problems and current approaches}.
+\newblock \bibinfo{journal}{IEEE Data Eng. Bull.} \bibinfo{volume}{23},
+  \bibinfo{pages}{3--13}.
+%Type = Inbook
+\bibitem[{Refaeilzadeh et~al.(2009)Refaeilzadeh, Tang and Liu}]{10foldcross}
+\bibinfo{author}{Refaeilzadeh, P.}, \bibinfo{author}{Tang, L.},
+  \bibinfo{author}{Liu, H.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Encyclopedia of Database Systems}.
+  \bibinfo{publisher}{Springer US}, \bibinfo{address}{Boston, MA}. chapter
+  \bibinfo{chapter}{Cross-Validation}.
+\newblock pp. \bibinfo{pages}{532--538}.
+\newblock \URLprefix \url{http://dx.doi.org/10.1007/978-0-387-39940-9_565},
+  \DOIprefix\doi{10.1007/978-0-387-39940-9_565}.
+%Type = Misc
+\bibitem[{Renouf()}]{VMWarePowerCLIBlog}
+\bibinfo{author}{Renouf, A.}, .
+\newblock \bibinfo{title}{Be efficient-virtualize automate your test
+  environment}.
+\newblock
+  \bibinfo{howpublished}{\url{https://blogs.vmware.com/PowerCLI/2012/06/be-efficient-virtualize-automate-your-test-environment.html}}.
+%Type = Misc
+\bibitem[{{Ross Ihaka and Robert Gentleman}()}]{R}
+\bibinfo{author}{{Ross Ihaka and Robert Gentleman}}, .
+\newblock \bibinfo{title}{{R}}.
+\newblock \bibinfo{howpublished}{\url{https://www.r-project.org/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Article
+\bibitem[{Seetharaman and Murthy(2006)}]{seetharaman2006test}
+\bibinfo{author}{Seetharaman, S.}, \bibinfo{author}{Murthy, K.},
+  \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{Test optimization using software virtualization}.
+\newblock \bibinfo{journal}{Software, IEEE} \bibinfo{volume}{23},
+  \bibinfo{pages}{66--69}.
+%Type = Inproceedings
+\bibitem[{Shang et~al.(2015)Shang, Hassan, Nasser and
+  Flora}]{Shang:2015:ADP:2668930.2688052}
+\bibinfo{author}{Shang, W.}, \bibinfo{author}{Hassan, A.E.},
+  \bibinfo{author}{Nasser, M.}, \bibinfo{author}{Flora, P.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Automated detection of performance regressions using
+  regression models on clustered performance counters}, in:
+  \bibinfo{booktitle}{Proceedings of the 6th ACM/SPEC International Conference
+  on Performance Engineering}, \bibinfo{publisher}{ACM}, \bibinfo{address}{New
+  York, NY, USA}. pp. \bibinfo{pages}{15--26}.
+\newblock \URLprefix \url{http://doi.acm.org/10.1145/2668930.2688052},
+  \DOIprefix\doi{10.1145/2668930.2688052}.
+%Type = Inproceedings
+\bibitem[{Shihab et~al.(2010)Shihab, Jiang, Ibrahim, Adams and
+  Hassan}]{Shihab:2010:UIC:1852786.1852792}
+\bibinfo{author}{Shihab, E.}, \bibinfo{author}{Jiang, Z.M.},
+  \bibinfo{author}{Ibrahim, W.M.}, \bibinfo{author}{Adams, B.},
+  \bibinfo{author}{Hassan, A.E.}, \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Understanding the impact of code and process metrics
+  on post-release defects: A case study on the eclipse project}, in:
+  \bibinfo{booktitle}{Proceedings of the 2010 ACM-IEEE International Symposium
+  on Empirical Software Engineering and Measurement}, \bibinfo{publisher}{ACM},
+  \bibinfo{address}{New York, NY, USA}. pp. \bibinfo{pages}{4:1--4:10}.
+\newblock \URLprefix \url{http://doi.acm.org/10.1145/1852786.1852792},
+  \DOIprefix\doi{10.1145/1852786.1852792}.
+%Type = Misc
+\bibitem[{{Stack Exchange}(2014)}]{Cross_Validation}
+\bibinfo{author}{{Stack Exchange}}, \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{{Cross Validation}}.
+\newblock
+  \bibinfo{howpublished}{\url{http://stats.stackexchange.com/questions/92141/pp-plots-vs-qq-plots/}}.
+\newblock \bibinfo{note}{{Accessed: 2015-09-29}}.
+%Type = Misc
+\bibitem[{{Statistics {S}olutions}()}]{spearman}
+\bibinfo{author}{{Statistics {S}olutions}}, .
+\newblock \bibinfo{title}{{Correlation (Pearson, Kendall, Spearman) }}.
+\newblock
+  \bibinfo{howpublished}{\url{http://www.statisticssolutions.com/correlation-pearson-kendall-spearman/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{Stellwagen()}]{mape}
+\bibinfo{author}{Stellwagen, E.}, .
+\newblock \bibinfo{title}{Mean absolute percentage error}.
+\newblock
+  \bibinfo{howpublished}{\url{http://www.forecastpro.com/Trends/forecasting101August2011.html}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Book
+\bibitem[{Stephen A.~Sweet()}]{linearregression}
+\bibinfo{author}{Stephen A.~Sweet, K.A.G.M.}, .
+\newblock \bibinfo{title}{{Data Analysis with SPSS: A First Course in Applied
+  Statistics, 4th Edition}}.
+\newblock \bibinfo{publisher}{Pearson}.
+%Type = Inproceedings
+\bibitem[{Sugerman et~al.(2001)Sugerman, Venkitachalam and
+  Lim}]{sugerman2001virtualizing}
+\bibinfo{author}{Sugerman, J.}, \bibinfo{author}{Venkitachalam, G.},
+  \bibinfo{author}{Lim, B.H.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{Virtualizing i/o devices on vmware workstation's
+  hosted virtual machine monitor.}, in: \bibinfo{booktitle}{USENIX Annual
+  Technical Conference, General Track}, pp. \bibinfo{pages}{1--14}.
+%Type = Misc
+\bibitem[{{TPC}()}]{tpcw}
+\bibinfo{author}{{TPC}}, .
+\newblock \bibinfo{title}{{TPC-W}}.
+\newblock \bibinfo{howpublished}{\url{www.tpc.org/tpcw}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{{VMware}()}]{vmwarehighcost}
+\bibinfo{author}{{VMware}}, .
+\newblock \bibinfo{title}{{Accelerate Software Development and Testing with the
+  VMware Virtualization Platform}}.
+\newblock
+  \bibinfo{howpublished}{\url{http://www.vmware.com/pdf/development_testing.pdf}}.
+%Type = Misc
+\bibitem[{{VMW}are()}]{vmwareCPU}
+\bibinfo{author}{{VMW}are}, .
+\newblock \bibinfo{title}{{VMw}are knowledge base}.
+\newblock
+  \bibinfo{howpublished}{\url{http://kb.vmware.com/selfservice/microsites/search.do?language=en_US\&cmd=displayKC\&externalID=2032}}.
+\newblock \bibinfo{note}{Accessed: 2015-12-01}.
+%Type = Misc
+\bibitem[{Weinberg and Alperin(2003)}]{weinberg2003use}
+\bibinfo{author}{Weinberg, A.}, \bibinfo{author}{Alperin, E.},
+  \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{Use of server access logs to generate scripts and
+  scenarios for exercising and evaluating performance of web sites}.
+\newblock \URLprefix \url{https://www.google.com/patents/US6549944}.
+  \bibinfo{note}{uS Patent 6,549,944}.
+%Type = Misc
+\bibitem[{{Wikipedia}(a)}]{heatmaps}
+\bibinfo{author}{{Wikipedia}}, a.
+\newblock \bibinfo{title}{{Heat map}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://en.wikipedia.org/wiki/Heat_map/}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Misc
+\bibitem[{{Wikipedia}(b)}]{stresstesting}
+\bibinfo{author}{{Wikipedia}}, b.
+\newblock \bibinfo{title}{{Stress Testing}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://en.wikipedia.org/wiki/Stress_testing_(software)}}.
+\newblock \bibinfo{note}{Accessed: 2015-06-01}.
+%Type = Inproceedings
+\bibitem[{Xiong et~al.(2013)Xiong, Pu, Zhu and Griffith}]{xiong2013vperfguard}
+\bibinfo{author}{Xiong, P.}, \bibinfo{author}{Pu, C.}, \bibinfo{author}{Zhu,
+  X.}, \bibinfo{author}{Griffith, R.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{vperfguard: An automated model-driven framework for
+  application performance diagnosis in consolidated cloud environments}, in:
+  \bibinfo{booktitle}{Proceedings of the 4th ACM/SPEC International Conference
+  on Performance Engineering}, \bibinfo{publisher}{ACM}, \bibinfo{address}{New
+  York, NY, USA}. pp. \bibinfo{pages}{271--282}.
+\newblock \URLprefix \url{http://doi.acm.org/10.1145/2479871.2479909},
+  \DOIprefix\doi{10.1145/2479871.2479909}.
+
+\end{thebibliography}
