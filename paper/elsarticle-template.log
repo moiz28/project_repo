@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 FEB 2016 03:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 FEB 2016 03:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -555,16 +555,16 @@ LaTeX Warning: Label `fig:Results Table' multiply defined.
 LaTeX Warning: Label `resultRQ3' multiply defined.
 
 
-LaTeX Warning: Label `fig:Results Table' multiply defined.
-
-
-LaTeX Warning: Label `fig:Results Table' multiply defined.
-
-
 LaTeX Warning: Label `resultRQ3' multiply defined.
 
 
 LaTeX Warning: Label `resultRQ3' multiply defined.
+
+
+LaTeX Warning: Label `fig:Results Table' multiply defined.
+
+
+LaTeX Warning: Label `fig:Results Table' multiply defined.
 
 
 LaTeX Warning: Label `resultRQ3' multiply defined.
@@ -841,10 +841,10 @@ xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on elsarticle-template.pdf (33 pages, 1597521 bytes).
+Output written on elsarticle-template.pdf (33 pages, 1597670 bytes).
 PDF statistics:
- 538 PDF objects out of 1000 (max. 8388607)
- 478 compressed objects within 5 object streams
+ 530 PDF objects out of 1000 (max. 8388607)
+ 470 compressed objects within 5 object streams
  120 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
