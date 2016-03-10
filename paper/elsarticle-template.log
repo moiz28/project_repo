@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  10 MAR 2016 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  10 MAR 2016 12:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -853,7 +853,7 @@ xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/f
 onts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on elsarticle-template.pdf (33 pages, 1599422 bytes).
+Output written on elsarticle-template.pdf (33 pages, 1599440 bytes).
 PDF statistics:
  535 PDF objects out of 1000 (max. 8388607)
  475 compressed objects within 5 object streams
