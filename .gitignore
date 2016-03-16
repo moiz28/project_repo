@@ -1,0 +1,8 @@
+*.bst
+*.sty
+*.log
+*.bbl
+*.blg
+*.out
+*.spl
+*.gz
