@@ -1,4 +1,3 @@
-*.bst
 *.sty
 *.log
 *.bbl
@@ -6,3 +5,4 @@
 *.out
 *.spl
 *.gz
+.DS_Store
