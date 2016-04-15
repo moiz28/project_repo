@@ -8,23 +8,23 @@ The objective of our case study is a comparative analysis of the two environment
 
 The numerical values for requests per minute were extracted out of the web server's access logs. These requests were recorded per second and reached up to thousands in a minute, depending on the workload. We then, with the aid of a script, grouped and extracted the requests per minute for as long as the test systems were exercised. The metrics, on the contrary, were recorded every 10 seconds. A set of six records was averaged out as a minute according to the timestamps. This was called a single \textit{run}. The metrics generated for the web and database server were concatenated. Ultimately, we had a dataset consisting of 500 runs where every record represented a \textit{run}; the metrics and requests generated for a given minute. This process was carried out for both of our environments. The two datasets, to analyze any discrepancies, were then analyzed using R's q-q plots and \textit{cor} function.
 
-\begin{figure*}[thb]
+\begin{figure}[thb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/ds2_qq.pdf}
+	\includegraphics[width=0.9\columnwidth]{figures/ds2_qq.pdf}
 	\caption{Q-Q plots: DS2}
 %	\captionsetup{justification=centering}
 	\label{fig:Results Table}
-\end{figure*}
+\end{figure}
 
 
 
-\begin{figure*}[thb]
+\begin{figure}[thb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/cloudstore_qq.pdf}
+	\includegraphics[width=0.9\columnwidth]{figures/cloudstore_qq.pdf}
 	\caption{Q-Q plots: CloudStore}
 %	\captionsetup{justification=centering}
 	\label{fig:Results Table}
-\end{figure*}
+\end{figure}
 
 
 
@@ -33,19 +33,14 @@ The numerical values for requests per minute were extracted out of the web serve
 			\caption{DS2: Correlation Values}
 			\label{resultRQ3}
 	\begin{tabular}{c|cc}
-				\toprule
 				\textbf{Performance Metrics}   & \textbf{Cor} & \textbf{p-value}\\  
-				\midrule 
-				\midrule 
-				\textbf{Web Servers' User Times} & \ 0.08 & 0.07\\
+			 
+				\textbf{Web Servers' User Times} &  0.08 & 0.07\\
 				\textbf{DB Servers' User Times} & -0.05 & 0.30\\
-				\midrule 
-				\textbf{Web Servers' IO Data Ops/Sec}   &\ 0.25 & 0.000 \\
+				\textbf{Web Servers' IO Data Ops/Sec}   & 0.25 & 0.000 \\
 				\textbf{DB Servers' IO Data Ops/Sec} & -0.14 & 0.00\\
-				\midrule 
-				\textbf{Web Servers' Memory Working Set} &\ 0.22 & 0.00\\
-				\textbf{DB Servers' Memory Working Set} &\ 0.46 & 0.00\\
-				\bottomrule             
+				\textbf{Web Servers' Memory Working Set} & 0.22 & 0.00\\
+				\textbf{DB Servers' Memory Working Set} & 0.46 & 0.00\\
 		\end{tabular}
 \end{table}
 	
