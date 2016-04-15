@@ -10,24 +10,24 @@ The numerical values for requests per minute were extracted out of the web serve
 
 
 
-\begin{figure}[!t]
+\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/ds2_qq.pdf}
+	\includegraphics[width=1\textwidth]{figures/ds2_qq.pdf}
 	\caption{Q-Q plots: DS2}
-	%\captionsetup{justification=centering}
+	\captionsetup{justification=centering}
 	\label{fig:Results Table}
 \end{figure}
 
-\begin{figure}[!t]
+\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/cloudstore_qq.pdf}
+	\includegraphics[width=1\textwidth]{figures/cloudstore_qq.pdf}
 	\caption{Q-Q plots: CloudStore}
-	%\captionsetup{justification=centering}
+	\captionsetup{justification=centering}
 	\label{fig:Results Table}
 \end{figure}
 
 
-\begin{table}[thb!]
+\begin{table}[!p]
 	\begin{center}
 			\caption{DS2: Correlation Values}
 			\label{resultRQ3}
@@ -49,7 +49,7 @@ The numerical values for requests per minute were extracted out of the web serve
 	\end{center}
 \end{table}
 	
-\begin{table}[thb!]
+\begin{table}[!htbp]
 	\begin{center}
 		\caption{CloudStore: Correlation Values}
 		\label{resultRQ3}
@@ -117,19 +117,20 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 
 
 
-\begin{figure*}[!h]
+\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=1.5\textwidth]{figures/ds2_heatmap.pdf}
+	\centerline{
+		\includegraphics[width=1.5\textwidth]{figures/ds2_heatmap.pdf}}
 	\caption{Heatmap: DS2}
-	%\captionsetup{justification=centering}
+	\captionsetup{justification=centering}
 	\label{fig:Results Table}
-\end{figure*}
+\end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!htbp]
 	\centering
 	\centerline{\includegraphics[width=1.5\textwidth]{figures/cloudscale_heatmap.pdf}}
 	\caption{Heatmap: CloudStore}
-	%\captionsetup{justification=centering}
+	\captionsetup{justification=centering}
 	\label{fig:Results Table}
 \end{figure}
 
@@ -366,7 +367,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 	\end{table}
 	
 	
-	\begin{table}[thb!]
+	\begin{table}[thb!
+		]
 		\begin{center}
 			\caption{CloudStore: Ranking of Performance Counters and Prediction errors}
 			\label{tab:resultRQ1}
@@ -396,7 +398,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 					\midrule
 					\textbf{MAPE} & 15.75\% & 4.70\% \\
 					\bottomrule             
-				\end{tabular}
+				\end{tabular}%
+			}
 		\end{center}
 	\end{table}
 	%\end{landscape}
