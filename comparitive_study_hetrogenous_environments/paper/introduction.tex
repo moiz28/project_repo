@@ -26,7 +26,10 @@ The goal of our study is evaluating the discrepancy between the performance test
 %Additionally, if they do not belong to the same population, then how impactful and effective are the prevalent discrepancies for a model-based regression testing approach.    
 We conduct two cast studies on two open-source systems, DS2\cite{delldvd} and CloudStore \cite{cloudstore} by running performance tests in both physical and virtual environment. We compare the performance test results that are generated from both the environments.
 
-In particular, we first compare the performance metrics values, distributions, and then compare correlation. Finally, we build statistical models to help us reach conclusions. We concluded that due to the discrepancies present in the virtual environment, we can not rely on performance evaluated in the virtual environment as is. We then apply scaling techniques to mitigate 
+In particular, we first compare the performance metrics values and distributions. We also investigate the correlation of performance counters to the generated load. Finally, we build statistical models to help us reach conclusions. 
+We observed that majority of the performance counters do not belong to the same family of distribution. We also observed that the metric that are highly correlated with the load are not the same across both our subject systems.
+We concluded that due to the discrepancies present in the virtual environment, we can not rely on performance evaluated in the virtual environment as is. We then apply scaling techniques to the metrics generated in the virtual environment to build linear regression models. We concluded that the performance metrics in the virtual environment are not identical copies of the metrics in the physical environment. 
+
 
 % to determine and compare the distributions. This is achieved by comparing plots and finding correlation between the metrics cross-environments. We use generalized linear regression models, as used in the performance assurance activities \cite{Shang:2015:ADP:2668930.2688052}, to determine the extent of the comparison between metrics. If the metrics are transferable between the environments, we should expect to see a low percentage error. We chose to build our regression models based on multiple performance metrics to see the effect of the clustered performance metrics. 
 
