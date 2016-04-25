@@ -41,10 +41,12 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 	\caption{Results of Mann-Whitney \textit{U} test and Cliff Delta on Performance Metrics}
 	\label{my-label}
 	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c|c|c|c|c|c|}
-			\hline
+		\begin{tabular}{|c||c|c|c|c|c|}
+			\hline 
 			\multirow{2}{*}{\textbf{System}} & \multirow{2}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
-			&  & \textbf{Neglible} & \textbf{Small} & \textbf{Medium} & \textbf{Large} \\ \hline
+			&  & \textbf{Neglible} & \textbf{Small} & \textbf{Medium} & \textbf{Large} \\ %\hline
+			\midrule 
+			\midrule 
 			DS2 & 2 & 1 & 2 & 5 & 34 \\ \hline
 			CloudStore & 0 & 0 & 3 & 1 & 40 \\ \hline
 		\end{tabular}%
@@ -59,10 +61,12 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 	\caption{Correlation and p-values of highlighted Performance Metrics}
 	\label{my-label}
 	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c|c|c|c|c|}
+		\begin{tabular}{|c||c|c|c|c|}
 			\hline
 			\multirow{2}{*}{\textbf{Performance Metrics}} & \multicolumn{2}{c|}{\textbf{DS2}} & \multicolumn{2}{c|}{\textbf{CloudStore}} \\ \cline{2-5} 
-			& \textbf{Cor} & \textbf{p-value} & \textbf{Cor} & \textbf{p-value} \\ \hline
+			& \textbf{Cor} & \textbf{p-value} & \textbf{Cor} & \textbf{p-value} \\ %\hline
+			\midrule 
+			\midrule 
 			Web Servers' User Times & 0.08 & 0.07 & 0.01 & 0.87 \\ \hline
 			DB Servers User Times & -0.05 & 0.30 & 0.20 & 0.00 \\ \hline
 			Web Servers' IO Data Ops/sec & 0.25 & 0.00 & 0.17 & 0.00 \\ \hline
@@ -78,11 +82,13 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 	\caption{Correlation of All the Performance Metrics}
 	\label{my-label}
 	\resizebox{\columnwidth}{!}{%
-		\begin{tabular}{|c|c|c|c|c|c|}
+		\begin{tabular}{|c||c|c|c|c|c|}
 			\hline
-			\multirow{3}{*}{\textbf{Subject System}} & \multirow{3}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
+			\multirow{3}{*}{\textbf{System}} & \multirow{3}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
 			&  & \multicolumn{4}{c|}{\textbf{Cor}} \\ \cline{3-6} 
-			&  & \textbf{0.0$\sim$0.3} & \textbf{0.3$\sim$0.5} & \textbf{0.5$\sim$0.7} & \textbf{0.7$\sim$1} \\ \hline
+			&  & \textbf{0.0$\sim$0.3} & \textbf{0.3$\sim$0.5} & \textbf{0.5$\sim$0.7} & \textbf{0.7$\sim$1} \\ %\hline
+			\midrule 
+			\midrule 
 			\textbf{DS2} & 8 & 28 & 4 & 0 & 1 \\ \hline
 			\textbf{CloudStore} & 6 & 25 & 3 & 4 & 3 \\ \hline
 		\end{tabular}%
@@ -194,67 +200,173 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 \end{figure}
 
 
-\begin{table}[tbh]
-		\centering
-		\caption{DS2: Top 5 highly correlated metrics with load (Physical Server)}
-		\label{resultRQ3}
-		\begin{tabular}{c}
-			\toprule
-			1. Web Server IO Other Operations/sec \\
-			2. Web Server IO Other Bytes/sec \\
-			3. Web Server IO Write Operations/sec \\
-			4. Web Server IO Data Operations/sec \\
-			5. Web Server IO Data Bytes/sec \\
-			
-			\bottomrule             
-		\end{tabular}
-\end{table}
+%\begin{table}[tbh]
+%		\centering
+%		\caption{DS2: Top 5 highly correlated metrics with load (Physical Server)}
+%		\label{resultRQ3}
+%		\begin{tabular}{c}
+%			\toprule
+%			1. Web Server IO Other Operations/sec \\
+%			2. Web Server IO Other Bytes/sec \\
+%			3. Web Server IO Write Operations/sec \\
+%			4. Web Server IO Data Operations/sec \\
+%			5. Web Server IO Data Bytes/sec \\
+%			
+%			\bottomrule             
+%		\end{tabular}
+%\end{table}
 
-\begin{table}[tbh]
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table*}[tbh]
 	\centering
-		\caption{DS2: Top 5 highly correlated metrics with load (Virtual Server)}
-		\label{resultRQ3}
-		\begin{tabular}{c}
-			\toprule
-			1. Database Server Handle Count \\
-			2. Database Server Working Set-Peak \\
-			3. Database Server Pool Paged Bytes \\
-			4. Database Server IO Other Operations/sec \\
-			5. Database Server Page File Bytes Peak \\
-			\bottomrule             
-		\end{tabular}
-\end{table}
+	\caption{DS2: Top 10 highly correlated metrics with load (Physical Server)}
+	\label{my-label}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c||c|c|c|c|}
+			\hline
+			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Physical Environment} & \textbf{Cor in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
+			\midrule
+			\midrule
+			1 & Web Server IO Other Ops/sec & 0.91 & 0.62 & 10 \\ \hline
+			2 & Web Server IO Other Bytes/sec & 0.91 & 0.62 & 12 \\ \hline
+			3 & Web Server IO Write Ops/sec & 0.91 & 0.63 & 9 \\ \hline
+			4 & Web Server IO Data Ops/sec & 0.91 & 0.63 & 8 \\ \hline
+			5 & Web Server IO Write Bytes/sec & 0.90 & 0.62 & 11 \\ \hline
+			6 & Web Server IO Data Bytes/sec & 0.90 & 0.61 & 13 \\ \hline
+			7 & DB Server IO Other Ops/sec & 0.84 & 0.75 & 3 \\ \hline
+			8 & DB Server IO Data Ops/sec & 0.83 & 0.07 & 41 \\ \hline
+			9 & DB Server IO Other Bytes/sec & 0.83 & 0.15 & 40 \\ \hline
+			10 & DB Server IO Read Ops/sec & 0.82 & 0.05 & 15 \\ \hline
+		\end{tabular}%
+	}
+\end{table*}
 
-\begin{table}[tbh]
+
+%\begin{table}[tbh]
+%	\centering
+%		\caption{DS2: Top 5 highly correlated metrics with load (Virtual Server)}
+%		\label{resultRQ3}
+%		\begin{tabular}{c}
+%			\toprule
+%			1. Database Server Handle Count \\
+%			2. Database Server Working Set-Peak \\
+%			3. Database Server Pool Paged Bytes \\
+%			4. Database Server IO Other Operations/sec \\
+%			5. Database Server Page File Bytes Peak \\
+%			\bottomrule             
+%		\end{tabular}
+%\end{table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table*}[tbh]
 	\centering
-		\caption{CloudStore: Top 5 highly correlated metrics with load (Physical Server)}
-		\label{resultRQ3}
-		\begin{tabular}{c}
-			\toprule
-			1. Database Server IO Other Bytes/sec  \\
-			2. Database Server IO Read Operations/sec   \\
-			3. Database Server IO Read Bytes/sec \\
-			4. Database Server IO Data Operations/sec    \\
-			5. Database Server IO Write Operations/sec \\
-			\bottomrule             
-		\end{tabular}
-\end{table}
+	\caption{DS2: Top 10 highly correlated metrics with load (Virtual Server)}
+	\label{my-label}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c||c|c|c|c|}
+			\hline
+			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Virtual Environment} & \textbf{Cor in Physical Environment} & \textbf{Rank in Physical Environment} \\ %\hline
+			\midrule
+			\midrule
+			1 & DB Server Working Set Peak & 0.76 & NA & NA \\ \hline
+			2 & DB Server Pool Paged Bytes & 0.75 & 0.30 & 20 \\ \hline
+			3 & DB Server IO Other Ops/sec & 0.75 & 0.84 & 7 \\ \hline
+			4 & DB Server Virtual Bytes Peak & 0.71 & NA & NA \\ \hline
+			5 & DB Server Page File Bytes Peak & 0.71 & NA & NA \\ \hline
+			6 & DB Server Working Set & 0.63 & 0.21 & 23 \\ \hline
+			7 & DB Server Working Set Private & 0.63 & 0.21 & 24 \\ \hline
+			8 & Web Server IO Data Ops/sec & 0.63 & 0.91 & 4 \\ \hline
+			9 & Web Server IO Write Ops/sec & 0.63 & 0.91 & 3 \\ \hline
+			10 & Web Server IO Other Ops/sec & 0.63 & 1 & 0.91 \\ \hline
+		\end{tabular}%
+	}
+\end{table*}
 
 
-\begin{table}[tbh]
+%\begin{table}[tbh]
+%	\centering
+%		\caption{CloudStore: Top 5 highly correlated metrics with load (Physical Server)}
+%		\label{resultRQ3}
+%		\begin{tabular}{c}
+%			\toprule
+%			1. Database Server IO Other Bytes/sec  \\
+%			2. Database Server IO Read Operations/sec   \\
+%			3. Database Server IO Read Bytes/sec \\
+%			4. Database Server IO Data Operations/sec    \\
+%			5. Database Server IO Write Operations/sec \\
+%			\bottomrule             
+%		\end{tabular}
+%\end{table}
+%
+
+\begin{table*}[tbh]
 	\centering
-		\caption{CloudStore: Top 5 highly correlated metrics with load (Virtual Server)}
-		\label{resultRQ3}
-		\begin{tabular}{c}
-			\toprule
-			1. Database Server IO Other Operations/sec  \\
-			2. Database Server IO Write Operations/sec   \\
-			3. Database Server IO Write Bytes/sec \\
-			4. Database Server IO Data Bytes/sec    \\
-			5. Database Server IO Read Bytes/sec \\
-			\bottomrule             
-		\end{tabular}
-\end{table}
+	\caption{CloudStore: Top 10 highly correlated metrics with load (Physical Server)}
+	\label{my-label}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c||c|c|c|c|}
+			\hline
+			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Physical Environment} & \textbf{Cor in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
+			\midrule
+			\midrule
+			1 & DB Server IO Other Bytes/sec & 0.98 & 0.73 & 10 \\ \hline
+			2 & DB Server IO Read Ops/sec & 0.98 & 0.84 & 7 \\ \hline
+			3 & DB Server IO Read Bytes/sec & 0.98 & 0.93 & 5 \\ \hline
+			4 & DB Server IO Data Ops/sec & 0.98 & 0.92 & 6 \\ \hline
+			5 & DB Server IO Write Ops/sec & 0.98 & 0.97 & 2 \\ \hline
+			6 & DB Server IO Data Bytes/sec & 0.98 & 0.96 & 4 \\ \hline
+			7 & DB Server IO Write Bytes/sec & 0.98 & 0.96 & 3 \\ \hline
+			8 & Web Server IO Other Bytes/sec & 0.98 & 0.68 & 13 \\ \hline
+			9 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 1 \\ \hline
+			10 & Web Server IO Other Ops/sec & 0.98 & 0.70 & 14 \\ \hline
+		\end{tabular}%
+	}
+\end{table*}
+
+
+%\begin{table}[tbh]
+%	\centering
+%		\caption{CloudStore: Top 5 highly correlated metrics with load (Virtual Server)}
+%		\label{resultRQ3}
+%		\begin{tabular}{c}
+%			\toprule
+%			1. Database Server IO Other Operations/sec  \\
+%			2. Database Server IO Write Operations/sec   \\
+%			3. Database Server IO Write Bytes/sec \\
+%			4. Database Server IO Data Bytes/sec    \\
+%			5. Database Server IO Read Bytes/sec \\
+%			\bottomrule             
+%		\end{tabular}
+%\end{table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table*}[tbh]
+	\centering
+	\caption{CloudStore: Top 10 highly correlated metrics with load (Virtual Server)}
+	\label{my-label}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|c||c|c|c|c|}
+			\hline
+			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Virtual Environment} & \textbf{Cor in Physical Environment} & \textbf{Rank in Physical Environment} \\ %\hline
+			\midrule
+	     	\midrule
+			1 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 9 \\ \hline
+			2 & DB Server IO Write Ops/sec & 0.97 & 0.98 & 5 \\ \hline
+			3 & DB Server IO Write Bytes/Sec & 0.96 & 0.98 & 7 \\ \hline
+			4 & DB Server IO Data Bytes/sec & 0.96 & 0.98 & 6 \\ \hline
+			5 & DB Server IO Read Bytes/sec & 0.93 & 0.98 & 3 \\ \hline
+			6 & DB Server IO Data Ops/sec & 0.93 & 0.98 & 4 \\ \hline
+			7 & DB Server IO Read Ops/sec & 0.84 & 0.98 & 2 \\ \hline
+			8 & DB Server User Time & 0.79 & 0.90 & 21 \\ \hline
+			9 & DB Server Processor Time & 0.77 & 0.92 & 20 \\ \hline
+			10 & DB Server IO Other Bytes/sec & 0.73 & 0.98 & 1 \\ \hline
+		\end{tabular}%
+	}
+\end{table*}
 
 
 \subsection{\textbf{Do performance metrics from different environments impact performance modeling?}}
