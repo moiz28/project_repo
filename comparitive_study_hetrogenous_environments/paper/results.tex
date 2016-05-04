@@ -48,7 +48,7 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 			\midrule 
 			\midrule 
 			DS2 & 2 & 1 & 2 & 5 & 34 \\ \hline
-			CloudStore & 0 & 0 & 3 & 1 & 40 \\ \hline
+			CloudStore & 0 & 1 & 2 & 1 & 40 \\ \hline
 		\end{tabular}%
 	}
 \end{table}
@@ -67,12 +67,12 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 			& \textbf{Cor} & \textbf{p-value} & \textbf{Cor} & \textbf{p-value} \\ %\hline
 			\midrule 
 			\midrule 
-			Web Servers' User Times & 0.08 & 0.07 & 0.01 & 0.87 \\ \hline
-			DB Servers User Times & -0.05 & 0.30 & 0.20 & 0.00 \\ \hline
-			Web Servers' IO Data Ops/sec & 0.25 & 0.00 & 0.17 & 0.00 \\ \hline
-			DB Servers' IO Data Ops/sec & -0.14 & 0.00 & 0.18 & 0.00 \\ \hline
+			Web Servers' User Times & 0.08 & 0.07 & -0.04 & 0.33 \\ \hline
+			DB Servers User Times & -0.05 & 0.30 & 0.10 & 0.02 \\ \hline
+			Web Servers' IO Data Ops/sec & 0.25 & 0.00 & 0.13 & 0.00 \\ \hline
+			DB Servers' IO Data Ops/sec & -0.14 & 0.00 & 0.13 & 0.00 \\ \hline
 			Web Servers' Memory Working Set & 0.22 & 0.00 & 0.69 & 0.00 \\ \hline
-			DB Servers' Memory Working Set & 0.46 & 0.00 & -0.13 & 0.00 \\ \hline
+			DB Servers' Memory Working Set & 0.46 & 0.00 & -0.16 & 0.00 \\ \hline
 		\end{tabular}%
 	}
 \end{table}
@@ -85,12 +85,12 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 		\begin{tabular}{|c||c|c|c|c|c|}
 			\hline
 			\multirow{3}{*}{\textbf{System}} & \multirow{3}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
-			&  & \multicolumn{4}{c|}{\textbf{Cor}} \\ \cline{3-6} 
+			&  & \multicolumn{4}{c|}{\textbf{abs(Cor})} \\ \cline{3-6} 
 			&  & \textbf{0.0$\sim$0.3} & \textbf{0.3$\sim$0.5} & \textbf{0.5$\sim$0.7} & \textbf{0.7$\sim$1} \\ %\hline
 			\midrule 
 			\midrule 
 			\textbf{DS2} & 8 & 28 & 4 & 0 & 1 \\ \hline
-			\textbf{CloudStore} & 6 & 25 & 3 & 4 & 3 \\ \hline
+			\textbf{CloudStore} & 5 & 29 & 4 & 4 & 2 \\ \hline
 		\end{tabular}%
 	}
 \end{table}
@@ -315,11 +315,11 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 			1 & DB Server IO Other Bytes/sec & 0.98 & 0.73 & 10 \\ \hline
 			2 & DB Server IO Read Ops/sec & 0.98 & 0.84 & 7 \\ \hline
 			3 & DB Server IO Read Bytes/sec & 0.98 & 0.93 & 5 \\ \hline
-			4 & DB Server IO Data Ops/sec & 0.98 & 0.92 & 6 \\ \hline
-			5 & DB Server IO Write Ops/sec & 0.98 & 0.97 & 2 \\ \hline
+			4 & DB Server IO Write Ops/sec & 0.98 & 0.97 & 2 \\ \hline
+			5 & DB Server IO Data Ops/sec & 0.98 & 0.92 & 6 \\ \hline
 			6 & DB Server IO Data Bytes/sec & 0.98 & 0.96 & 4 \\ \hline
 			7 & DB Server IO Write Bytes/sec & 0.98 & 0.96 & 3 \\ \hline
-			8 & Web Server IO Other Bytes/sec & 0.98 & 0.68 & 13 \\ \hline
+			8 & Web Server IO Other Bytes/sec & 0.98 & 0.68 & 16 \\ \hline
 			9 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 1 \\ \hline
 			10 & Web Server IO Other Ops/sec & 0.98 & 0.70 & 14 \\ \hline
 		\end{tabular}%
@@ -355,15 +355,15 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 			\midrule
 	     	\midrule
 			1 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 9 \\ \hline
-			2 & DB Server IO Write Ops/sec & 0.97 & 0.98 & 5 \\ \hline
+			2 & DB Server IO Write Ops/sec & 0.97 & 0.98 & 4 \\ \hline
 			3 & DB Server IO Write Bytes/Sec & 0.96 & 0.98 & 7 \\ \hline
 			4 & DB Server IO Data Bytes/sec & 0.96 & 0.98 & 6 \\ \hline
 			5 & DB Server IO Read Bytes/sec & 0.93 & 0.98 & 3 \\ \hline
-			6 & DB Server IO Data Ops/sec & 0.93 & 0.98 & 4 \\ \hline
-			7 & DB Server IO Read Ops/sec & 0.84 & 0.98 & 2 \\ \hline
-			8 & DB Server User Time & 0.79 & 0.90 & 21 \\ \hline
-			9 & DB Server Processor Time & 0.77 & 0.92 & 20 \\ \hline
-			10 & DB Server IO Other Bytes/sec & 0.73 & 0.98 & 1 \\ \hline
+			6 & DB Server IO Data Ops/sec & 0.92 & 0.98 & 5 \\ \hline
+			7 & DB Server IO Read Ops/sec & 0.83 & 0.98 & 2 \\ \hline
+			8 & DB Server User Time & 0.78 & 0.89 & 22 \\ \hline
+			9 & DB Server Processor Time & 0.76 & 0.91 & 21 \\ \hline
+			10 & DB Server IO Other Bytes/sec & 0.72 & 0.97 & 1 \\ \hline
 		\end{tabular}%
 	}
 \end{table*}
@@ -479,112 +479,249 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 	
 %\end{description}
 	
-%\begin{landscape}
-	\begin{table}[tbh]
-		\centering
-			\caption{DS2: Ranking of Performance Counters and Prediction errors}
-			\label{tab:resultRQ1}
-			\resizebox{\columnwidth}{!}{%
-			\begin{tabular}{c||cc}
-				\toprule
-				\textbf{Training-Testing} & \textbf{Physical - Physical} & \textbf{Virtual - Virtual} \\  
-				\midrule 
-				\textbf{Ranking}     & 1. Web Server Privileged Time & 1. Web Server IO Other Bytes/sec \\
-				\\
-				& 2. Database Server User Time & 2. Web Server Page Faults/sec \\
-				\\
-				& 3. Database Server IO Read Bytes/sec & 3.Database Server Working Set-Peak\\
-				\\
-				& 4. Web Server Page Faults/sec & 4. Web Server Handle Count \\
-				\\
-				& 5. Database Server Privileged Time & 5. Database Server IO Data Operations Bytes/sec \\
-				\\
-				& 6. Database Server IO Write Operations Bytes/sec &\\
-				\\
-				& 7. Database Server Pool Paged Bytes &\\
-				\\
-				& 7. Web Server Working Set-Private &\\
-				\\
-				\midrule
-				\textbf{Fit} &  85.80\% &  67.10\% \\
-				\midrule
-				\textbf{MAPE} & 7.02\% & 10.49\% \\
-				\bottomrule             
+%%\begin{landscape}
+%	\begin{table}[tbh]
+%		\centering
+%			\caption{DS2: Ranking of Performance Counters and Prediction errors}
+%			\label{tab:resultRQ1}
+%			\resizebox{\columnwidth}{!}{%
+%			\begin{tabular}{c||cc}
+%				\toprule
+%				\textbf{Training-Testing} & \textbf{Physical - Physical} & \textbf{Virtual - Virtual} \\  
+%				\midrule 
+%				\textbf{Ranking}     & 1. Web Server Privileged Time & 1. Web Server IO Other Bytes/sec \\
+%				\\
+%				& 2. Database Server User Time & 2. Web Server Page Faults/sec \\
+%				\\
+%				& 3. Database Server IO Read Bytes/sec & 3.Database Server Working Set-Peak\\
+%				\\
+%				& 4. Web Server Page Faults/sec & 4. Web Server Handle Count \\
+%				\\
+%				& 5. Database Server Privileged Time & 5. Database Server IO Data Operations Bytes/sec \\
+%				\\
+%				& 6. Database Server IO Write Operations Bytes/sec &\\
+%				\\
+%				& 7. Database Server Pool Paged Bytes &\\
+%				\\
+%				& 7. Web Server Working Set-Private &\\
+%				\\
+%				\midrule
+%				\textbf{Fit} &  85.80\% &  67.10\% \\
+%				\midrule
+%				\textbf{MAPE} & 7.02\% & 10.49\% \\
+%				\bottomrule             
+%		\end{tabular}%
+%	}
+%	\end{table}
+%%\end{landscape}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[tbh]
+	\centering
+	\caption{DS2: Ranking of Performance Counters and Prediction errors}
+	\label{my-label}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|c||c|c|}
+			\hline
+			\textbf{Environment} & \textbf{Physical} & \textbf{Virtual} \\ %\hline
+			\midrule
+			\midrule
+			\textbf{Ranking} & 1. Web Server IO Other Bytes/sec & 1. Web Server IO Other Bytes/sec \\ \hline
+			\textbf{} & 2. Web Server Page Faults/sec & 2. DB server Working Set - Peak \\ \hline
+			\textbf{} & 3. DB Server Page Faults/sec & 3. Web Server Virtual Bytes \\ \hline
+			\textbf{} & 4. DB Server IO Write Bytes/sec & 4. Web Server Page Faults/sec \\ \hline
+			\textbf{} & 5. Web Server IO Read Bytes/sec & 5. DB Server Page Faults/sec \\ \hline
+			\textbf{} & 6. DB Server User Time & 6. DB Server IO Data Ops/sec \\ \hline
+			\textbf{} & 7. DB Server Pool Paged Bytes &  \\ \hline
+			\textbf{} & 8. DB Server Privileged Time &  \\ %\hline
+			\midrule
+			\textbf{Fit} & 94.6\% & 66.90\% \\ \hline
+			\textbf{MAPE} & 4.00\% & 10.52\% \\ \hline
 		\end{tabular}%
 	}
-	\end{table}
-%\end{landscape}
+\end{table}
+%
+%	\begin{table}[tbh]
+%		\centering
+%			\caption{DS2: Prediction errors cross-environments}
+%			\label{resultRQ3}
+%			\begin{tabular}{c|c}
+%				\toprule
+%				\textbf{Training - Testing}   & \textbf{MAPE}\\  
+%				\midrule 
+%				Physical-Virtual       & 49.97\% \\
+%				Virtual - Physical        & 6033.16\% \\
+%				Virtual - Physical \textbf{(after scaling)}      & 16.04\% \\
+%				\bottomrule             
+%			\end{tabular}
+%	\end{table}
 
 
-	\begin{table}[tbh]
-		\centering
-			\caption{DS2: Prediction errors cross-environments}
-			\label{resultRQ3}
-			\begin{tabular}{c|c}
-				\toprule
-				\textbf{Training - Testing}   & \textbf{MAPE}\\  
-				\midrule 
-				Physical-Virtual       & 49.97\% \\
-				Virtual - Physical        & 6033.16\% \\
-				Virtual - Physical \textbf{(after scaling)}      & 16.04\% \\
-				\bottomrule             
-			\end{tabular}
-	\end{table}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+%\begin{table}[tbh]
+		%	\centering
+		%	\caption{DS2: Prediction errors cross-environments}
+		%	\label{my-label}
+		%	%\resizebox{\columnwidth}{!}{%
+		%		\begin{tabular}{|c|c||c|}
+		%			\hline
+		%			\textbf{Training} & \textbf{Testing} & \textbf{MAPE} \\ %\hline
+		%			\midrule
+		%			\midrule
+		%			Virtual & Physical & 16.04\% \\ \hline
+		%			Phyiscal & Virtual & 25.33\% \\ \hline
+		%		\end{tabular}%
+		%	%}
+		%\end{table}
+%	
+%	
+%	\begin{table}[tbh]
+%		\centering
+%			\caption{CloudStore: Ranking of Performance Counters and Prediction errors}
+%			\label{tab:resultRQ1}
+%			\resizebox{\columnwidth}{!}{%
+%				\begin{tabular}{c||cc}
+%					\toprule
+%					\textbf{Training-Testing} & \textbf{Physical - Physical} & \textbf{Virtual - Virtual} \\  
+%					\midrule 
+%					\textbf{Ranking}     & 1. Web Server Privileged Time & 1. Web Server IO Data Bytes/sec \\
+%					\\
+%					& 2. Database Server Privileged Time & 2. Database Server User Time \\
+%					\\
+%					& 3. Web Server Page Faults/sec & 3.Database Server IO Other Bytes/sec\\
+%					\\
+%					& 4. Web Server Virtual Bytes & 4.Database Server Page Faults/sec\\
+%					\\
+%					& 5. Database Server Pool Nonpaged Bytes & \\
+%					\\
+%					& 6. Database Server Page Faults/sec & \\
+%					\\
+%					& 7. Database Server Page File Bytes &\\
+%					\\
+%					& 8. Database Server Working Set &\\
+%					\\
+%					\midrule
+%					\textbf{Fit} &  85.20\% &  89.10\% \\
+%					\midrule
+%					\textbf{MAPE} & 15.75\% & 4.70\% \\
+%					\bottomrule             
+%				\end{tabular}%
+%			}
+%	\end{table}
+%	%\end{landscape}
+%	
+
+
+
+\begin{table}[tbh]
+	\centering
+	\caption{CloudStore: Ranking of Performance Counters and Prediction errors}
+	\label{my-label}
+	\resizebox{\columnwidth}{!}{%
+	\begin{tabular}{|c||c|c|}
+		\hline
+		\textbf{Environment} & \textbf{Physical} & \textbf{Virtual} \\ %\hline
+		\midrule
+		\midrule
+		\textbf{Ranking} & 1. Web Server Privileged Time & 1. Web Server IO Write Ops/sec \\ \hline
+		\textbf{} & 2. DB Server Privileged Time & 2. DB Server IO Read Ops/sec \\ \hline
+		\textbf{} & 3. Web Server Page Faults/sec & 3. Web Server Privileged Time \\ \hline
+		\textbf{} & 4. Web Server Virtual Bytes & 4. DB Server Privileged Time \\ \hline
+		\textbf{} & 5. Web Server Page File Bytes Peak & 5. DB Server IO Other Bytes/sec \\ \hline
+		\textbf{} & 6. DB Server Pool Nonpaged Bytes & 6. DB Server Pool Nonpaged Bytes \\ \hline
+		\textbf{} & 7. DB Server Page Faults/sec &  \\ \hline
+		\textbf{} & 8. DB Server Working Set &  \\ %\hline
+		\midrule
+		\textbf{Fit} & 85.30\% & 90.20\% \\ \hline
+		\textbf{MAPE} & 15.63\% & 3.65\% \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+%
+%
+%	\begin{table}[tbh]
+%		\centering
+%			\caption{CloudStore: Prediction errors cross-environments}
+%			\label{resultRQ3}
+%			\begin{tabular}{c|c}
+%				\toprule
+%				\textbf{Training - Testing}  & \textbf{MAPE}\\  
+%				\midrule 
+%				Physical-Virtual       & 293.62\% \\
+%				Virtual - Physical      & 28.95\% \\
+%				Virtual - Physical \textbf{(after scaling)} & 276.04\% \\
+%				\bottomrule             
+%			\end{tabular}
+%	\end{table}
+%	
 	
-	
-	\begin{table}[tbh]
-		\centering
-			\caption{CloudStore: Ranking of Performance Counters and Prediction errors}
-			\label{tab:resultRQ1}
-			\resizebox{\columnwidth}{!}{%
-				\begin{tabular}{c||cc}
-					\toprule
-					\textbf{Training-Testing} & \textbf{Physical - Physical} & \textbf{Virtual - Virtual} \\  
-					\midrule 
-					\textbf{Ranking}     & 1. Web Server Privileged Time & 1. Web Server IO Data Bytes/sec \\
-					\\
-					& 2. Database Server Privileged Time & 2. Database Server User Time \\
-					\\
-					& 3. Web Server Page Faults/sec & 3.Database Server IO Other Bytes/sec\\
-					\\
-					& 4. Web Server Virtual Bytes & 4.Database Server Page Faults/sec\\
-					\\
-					& 5. Database Server Pool Nonpaged Bytes & \\
-					\\
-					& 6. Database Server Page Faults/sec & \\
-					\\
-					& 7. Database Server Page File Bytes &\\
-					\\
-					& 8. Database Server Working Set &\\
-					\\
-					\midrule
-					\textbf{Fit} &  85.20\% &  89.10\% \\
-					\midrule
-					\textbf{MAPE} & 15.75\% & 4.70\% \\
-					\bottomrule             
-				\end{tabular}%
-			}
-	\end{table}
-	%\end{landscape}
-	
-	
-	\begin{table}[tbh]
-		\centering
-			\caption{CloudStore: Prediction errors cross-environments}
-			\label{resultRQ3}
-			\begin{tabular}{c|c}
-				\toprule
-				\textbf{Training - Testing}  & \textbf{MAPE}\\  
-				\midrule 
-				Physical-Virtual       & 293.62\% \\
-				Virtual - Physical      & 28.95\% \\
-				Virtual - Physical \textbf{(after scaling)} & 276.04\% \\
-				\bottomrule             
-			\end{tabular}
-	\end{table}
-	
-	
-	
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+%\begin{table}[tbh]
+%	\centering
+%	\caption{Prediction errors cross-environments after scaling}
+%	\label{my-label}
+%	\resizebox{0.6\columnwidth}{!}{%
+%		\begin{tabular}{|c||c|c|}
+%			\hline
+%			\textbf{System} & \textbf{Scaled} & \textbf{MAPE} \\ %\hline
+%			\midrule
+%			\midrule
+%			\multirow{2}{*}{DS2} & Virtual & 16.04\% \\ \cline{2-3} 
+%			& Phyiscal & 25.33\% \\ \hline
+%			\multirow{2}{*}{CloudStore} & Virtual & 283.06\% \\ \cline{2-3} 
+%			& Physical & 69.16\% \\ \hline
+%		\end{tabular}%
+%	}
+%\end{table}	
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[tbh]
+	\centering
+	\caption{DS2: Summary of results after scaling}
+	\label{my-label}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|c||c|c|c|c|c|c|c|}
+			\hline
+			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
+			\midrule
+			\midrule
+			\textbf{P-P} & 1.977e-05 & 1.142e-02 & 2.543e-02 & 3.985e-02 & 5.212e-02 & 3.160e-01 & 4.00 \\ \hline
+			\textbf{V-V} & 0.0003329 & 0.0370600 & .0859800 & 0.1050000 & 0.1530000 & 0.5428000 & 10.51885 \\ \hline
+			\textbf{P-V'} & 0.0002277 & 0.0630600 & 0.1257000 & 0.1669000 & 0.2285000 & 0.9199000 & 16.68668 \\ \hline
+			\textbf{V-P'} & 0.001459 & 0.345300 & 0.440300 & 0.457900 & 0.555600 & 1.562000 & 45.79069 \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[tbh]
+	\centering
+	\caption{CloudStore: Summary of results after scaling}
+	\label{my-label}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|c||c|c|c|c|c|c|c|}
+			\hline
+			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
+			\midrule
+			\midrule
+			\textbf{P-P} & 0.00 & 0.05 & 0.10 & 0.16 & 0.18 & 2.68 & 15.63 \\ \hline
+			\textbf{V-V} & 0.00 & 0.01 & 0.03 & 0.04 & 0.05 & 0.50 & 3.65 \\ \hline
+			\textbf{P-V'} & 4.07 & 4.64 & 4.83 & 5.13 & 5.10 & 33.36 & 513.00 \\ \hline
+			\textbf{V-P'} & 2.90 & 5.14 & 6.32 & 7.75 & 8.08 & 51.33 & 774.75 \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+
+%	
 	%
 	%\begin{table*}[thb!]
 	%    \begin{center}
