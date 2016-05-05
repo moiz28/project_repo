@@ -24,7 +24,7 @@
 \newcommand{\rqiii}{\textbf{}}
 
 \begin{document}
-\title{A study on the Reliability of the Performance Tests Done in Virtual Environments}
+\title{Studying the Discrepancy between Performance Testing Results from Virtual and Physical Environments}
 
 \author{\IEEEauthorblockN{Muhammad Moiz Arif, Weiyi Shang, Emad Shihab}
 
@@ -34,12 +34,19 @@ Montreal, Canada\\
 
 \maketitle
 
-	\begin{abstract}
-		Performance testing plays an indispensable role for large software systems. Performance issues cause failures of these systems in the field more often than feature bugs. Such performance tests typically require large amounts of resources, such as long running time on performance testing environments. Making it worse, the ever evolving field environment requires frequently updating the performance testing environment. To address such challenges, virtual machines (VMs) are widely exploited to provide a flexible and less costly environments for performance tests. However, the use of VMs may introduce extra overheads (e.g., a higher than expected memory utilization) to the environment, leading to un-realistic performance testing results. Yet, there exists no study that qualifies such overhead in the context of performance testing activities, or investigates the impact of performance testing results. 
+\begin{abstract}
+Performance plays an indispensable role for software reliability. 
+%The unreliability of software systems in the field is often caused by performance issues than functional bugs. 
+Performance tests are typically conducted in order to ensure the performance of software systems. Such performance tests often consume large amounts of computing resources, such as long running time in the performance testing environments. Making it worse, the ever evolving field environment requires frequently updating the performance testing environment. In practice, virtual machines (VMs) are widely exploited to provide a flexible and less costly environments for performance tests. However, the use of VMs may introduce extra overheads (e.g., a higher than expected memory utilization) to the testing environment, leading to un-realistic performance testing results. Yet, to the best of our knowledge, little research has study that qualifies such overhead in the context of performance testing activities, or investigates the impact of performance testing results. 
 		
-		In this paper, we perform a case study on two open source system, i.e.,Dell DVD and Cloud Store, to measure the impact of leveraging VMs for performance testing activities. In particular, we conduct two performance testing activities, including performance modeling and performance regression detection. The two activities are conducted in both environments that consists of physical machines or VMs. We observed that the comparison between the virtual and physical environments is not straight forward. We also observed that the performance of our subject systems between two environments is not identical.
+In this paper, we perform a case study on two open source system, i.e., Dell DVD Store and CloudStore, to evaluate the discrepancy between the performance testing results from virtual and physical environments. We conduct the same performance tests in both virtual and physical environments. In order to evaluate the discrepancy, we compare the performance testing results in three dimensions: 1) performance metric values, 2) relationships between performance metrics and 3) performance models that are build from the performance metrics. We find that performance metrics values from virtual and physical environments do not share the same distribution. The correlations among performance metrics in virtual environment are different from the correlations in physical environment. Finally, the statistical models that are built based on the performance counters from virtual environment are different from the models that are build from the physical environment. Our results illustrate the discrepancy between performance testing results from virtual and physical environments. Practitioners should be aware such discrepancy when conducting performance tests in virtual environments.
+
+
 		
-		\textcolor{red}{(insert implications)}
+		
+	%	activities, including performance modeling and performance regression detection. The two activities are conducted in both environments that consists of physical machines or VMs. We observed that the comparison between the virtual and physical environments is not straight forward. We also observed that the performance of our subject systems between two environments is not identical.
+		
+	%	\textcolor{red}{(insert implications)}
 	
 %	\textit{Keywords--Performance engineering; Performance testing; Performance modeling; Performance analysis}	
 	\end{abstract}
@@ -61,13 +68,13 @@ Montreal, Canada\\
 \label{sec:results}
 \input{results}
 
-\section{Threats to validity}
-\label{sec:threats_to_validity}
-\input{threats_to_validity}
-
 \section{Discussion}
 \label{sec:discussion}
 \input{discussion}
+
+\section{Threats to validity}
+\label{sec:threats_to_validity}
+\input{threats_to_validity}
 
 \section{Conclusion}
 \label{sec:conclusion}
