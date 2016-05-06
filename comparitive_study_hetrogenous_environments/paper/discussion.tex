@@ -1,9 +1,13 @@
-In our research questions we concluded that comparing the physical and virtual environment and using the performance metrics may not be as straight forward. One of the reasons that this might stand true is because of the instability of the virtual environment itself. We now try to explore the if there are any discrepancy present in the nature of our virtual environment.
+In last section, we find discrepancy between performance testing results from virtual and physical environments. However, such discrepancy can also be due to other factors such 1) the instability of virtual environments 2) the different hardware resources on the virtual environment and 3) the virtual machine that we used. Therefore, in this section, we examine the impact of such factors to better understand our results. 
+\ian{need some table here.}
 
-\subsection{Repeatability}
-In order to check whether the performance test done in virtual environment are repeatable or whether the environment itself is instable, we carried out two more tests for each of our subject system. We trained our models on the new repeated tests and tested it on the baseline test used in our research question. The experiment was a replica of our previous experiments.
-\\
-\\
+%comparing the physical and virtual environment and using the performance metrics may not be as straight forward. One of the reasons that this might stand true is because of the instability of the virtual environment itself. We now try to explore the if there are any discrepancy present in the nature of our virtual environment.
+
+\subsection{Instability of virtual environment}
+
+In order to study whether the instability of virtual environment has an impact on the observed discrepancy, we repeat the same performance testing twice on virtual environments for both subject system. We perform the data analysis in Section~\ref{sec:model} by build statistical models using performance metrics. Table~\ref{tab:stabilityvm} shows the mean relative absolute prediction error from building a model using one virtual environment and testing on another environment. We find that the errors are low. Such low error shows that the performance testing results from the virtual environments are rather stable. 
+
+
 %\framebox{\begin{varwidth}{\textwidth}\textit{Yes, the performance tests carried out in the virtual environment are repeatable.}\end{varwidth}}
 
 
@@ -12,17 +16,21 @@ In order to check whether the performance test done in virtual environment are r
 %Yes, the performance tests carried out in the virtual environment are repeatable.
 
 \subsection{Resource Allocation}
-Next, we altered the resources allocated to the guest OS. This helped us deduce whether resource allocation makes a difference in a model driven approach. We increased our resources from 2 cores and 3GB memory to 3 cores and 5GB memory. Similar to our previous approaches, we trained our model on the new set of performance metrics and tested it on the baseline test.
-\\
-\\
+We study the impact of changing resource application on the results of our analysis. We change the computing resources allocated to the VM by increasing the CPU to be 3 cores and increasing the memory to be 5GB. Similarly, we train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. Table~\ref{tab:stabilityvm} shows the corresponding the mean relative absolute prediction error. We still observe large relative absolute prediction error, which illustrates the discrepancy between the performance testing results in both environment. 
+
+We also change the computing resource on the physical machine and repeat the performance test. We build a model using the performance testing data from the original physical environment before changing the resource and test on the performance testing data from the physical environment after changing the resource. We find that the relative absolute prediction error are much lower than that between virtual and physical environments. Such results show that the observed discrepancy are indeed introduced by the virtual environment rather than the difference in computing resources.
+
+
 %\framebox{\begin{varwidth}{\textwidth}\textit{Yes, a change in resource effects the performance of the subject system in the virtual environment.}\end{varwidth}}
 
 %\fbox{\textit{Yes, a change in resource effects the performance of the subject system in the virtual environment.}}
 
 \subsection{Type of Virtual Environment}
 
-We also investigated if the our subject systems behave similarly in different virtual environments. For this, we set up another type of virtual environment with the same specifications for the sake of identicality.  
-\\
-\\
+We also investigated the impact of choosing different virtual machine software on our experimental results. We set up another virtual environment using VMWare (\ian{version?}) with the same allocated computing resources as when we set up Virtual box. We repeat the performance tests for both subject systems. Similarly, we train statistical models on the performance testing results from the virtual environments with VMWare and tested it on the performance testing results from the physical environment. The mean relative absolute prediction error is \ian{results}. Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
+
 %\framebox{\begin{varwidth}{\textwidth}\textit{Yes, a change in virtual environment increased the error percentages for both of our subject systems.}\end{varwidth}}
 %\fbox{\textit{}}
+
+
+\hypobox{The discrepancy between performance testing results in virtual and physical environment exist when we repeat the same performance tests, changing resource allocations on the virtual machines or setting up a virtual environment with another virtual machine software. However, the discrepancy are much lower when comparing two physical environments with different computing resources. The descrepency that we observed during our experiments are likely to be indeed introduced by the virtual environments.}

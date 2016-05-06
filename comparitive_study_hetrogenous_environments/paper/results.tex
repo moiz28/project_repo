@@ -397,7 +397,7 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 
 
 \subsection{Building statistical models using performance metrics}
-
+\label{sec:model}
 \textbf{Motivation}: As discussed in earlier work \cite{Shang:2015:ADP:2668930.2688052} \cite{Nguyen:2012:ADP:2188286.2188344}, performance tests require a large dedication of resources as it is carried out just before the system is on the brink of deployment. This gives insufficient time to the performance engineers, leaving them with minimal resources. As a result they leverage on the performance assurance activities carried out in the virtual environment. The motivation behind this research question is to investigate whether the performance models generated from one environment can be applied and held representatives of the other. In essence, this will help the practitioners conclude the reliability of the performance activities carried out in the virtual environment. 
 % In practice, this may or may not be appropriate to assume. This also spawns the concept of including the entire set of performance metrics for analysis, which is slipshod and ineffectual. 
 
@@ -446,17 +446,17 @@ Since the performance testing data are generated from different environments, di
 To normalize our metrics, we first build a linear regression model with the one metric as independent variable and the throughput of the system as dependent variable. With the linear regression model in one environment, the metric values can be represented by the system throughput. Then we normalize the metric value by the linear regression from the other environment. The details of the metric transformation is shown as follows:
 
 \begin{equation*}
-throughput_{physical}= \alpha_{physical} \times M_{physical} + \beta_{physical}
+throughput_{p}= \alpha_{p} \times M_{p} + \beta_{p}
 \end{equation*}
 
 \begin{equation*}
-throughput_{virtual}= \alpha_{virtual} \times M_{virtual} + \beta_{virtual}
+throughput_{v}= \alpha_{v} \times M_{v} + \beta_{v}
 \end{equation*}
 
-\begin{equation}
-M_{normalized} = (\frac{throughput_{virtual}-\beta_{virtual}}{\alpha_{virtual}})\times\alpha_{physical}+\beta_{physical}
-\end{equation}
-where $throughput_{physical}$ and $throughput_{virtual}$ are the system throughput in both environments. $ M_{physical}$ and $M_{virtual}$ are the performance metrics from both environments, while $M_{scaled}$ is the metric after normalization. \alpha and \beta are the coefficient and intercept values for the linear regression models.
+\begin{equation*}
+M_{normalized} = (\frac{throughput_{v}-\beta_{v}}{\alpha_{v}})\times\alpha_{p}+\beta_{p}
+\end{equation*}
+where $throughput_{p}$ and $throughput_{v}$ are the system throughput in both environments. $M_{p}$ and $M_{v}$ are the performance metrics from both environments, while $M_{normalized}$ is the metric after normalization. $\alpha$ and $\beta$ are the coefficient and intercept values for the linear regression models.
 
 After normalization, we calculate the relative absolute prediction error for every data record in the testing data, ending up by having another relative absolute prediction error.
 
@@ -467,7 +467,7 @@ After normalization, we calculate the relative absolute prediction error for eve
 
 
 
-\subsection{Identifying model discrepancy}
+\subsubsection{Identifying model discrepancy}
 In order to identify the discrepancy between the models build using data from virtual and physical environment. We compare the two distribution of relative absolute prediction error from internal and external validation. If the two distribution are significantly different (e.g., the relative absolute prediction error from internal validation is much lower than that from external validation), the two models are considered to have discrepancy. To be more concrete, in total for each subject system, we ended up four distribution of relative absolute prediction error: 1) modelling from virtual environment and testing internally (on data from virtual environment), 2) modelling fro virtual environment and testing externally (on data from physical environment), 3) modelling from physical environment and testing internally (on data from physical environment), 2) modelling fro physical environment and testing externally (on data from virtual environment). We compare the distributions 1) and 2) and compare the distributions 3) and 4).
 
 
