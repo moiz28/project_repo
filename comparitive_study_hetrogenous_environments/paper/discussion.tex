@@ -32,5 +32,28 @@ We also investigated the impact of choosing different virtual machine software o
 %\framebox{\begin{varwidth}{\textwidth}\textit{Yes, a change in virtual environment increased the error percentages for both of our subject systems.}\end{varwidth}}
 %\fbox{\textit{}}
 
-
-\hypobox{The discrepancy between performance testing results in virtual and physical environment exist when we repeat the same performance tests, changing resource allocations on the virtual machines or setting up a virtual environment with another virtual machine software. However, the discrepancy are much lower when comparing two physical environments with different computing resources. The descrepency that we observed during our experiments are likely to be indeed introduced by the virtual environments.}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[tbh]
+	\centering
+	\caption{Discrepancy vs. Change in Virtual Environment}
+	\label{my-label}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|c||c|c|}
+			\hline
+			\multirow{2}{*}{\textbf{Type}} & \multicolumn{2}{c|}{\textbf{MAPE}} \\ \cline{2-3} 
+			& \textbf{CloudStore} & \textbf{DS2} \\ %\hline
+			\midrule
+			\midrule
+			Virtual (Baseline) & 4.70\% & 10.52\% \\ \hline
+			Virtual Repeated Test \# 1 & 6.04\% & 11.69\% \\ \hline
+			Virtual Repeated Test \# 2 & 5.43\% & 15.48\% \\ \hline
+			VMWare & 10.18\% & 12.89\% \\ \hline
+			Change in resources & 25.81\% & 84.36\% \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+\hypobox{The discrepancy between performance testing results in virtual and physical environment exist when we repeat the same performance tests, changing resource allocations on the virtual machines or setting up a virtual environment with another virtual machine software. However, the discrepancy are much lower when comparing two physical environments with different computing resources. The descrepancy that we observed during our experiments are likely to be indeed introduced by the virtual environments.}
