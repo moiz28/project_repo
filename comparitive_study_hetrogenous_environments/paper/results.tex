@@ -477,8 +477,10 @@ throughput_{v}= \alpha_{v} \times M_{v} + \beta_{v}
 \end{equation*}
 
 \begin{equation*}
-M_{normalized} = (\frac{throughput_{v}-\beta_{v}}{\alpha_{v}})\times\alpha_{p}+\beta_{p}
-\end{equation*}
+M_{normalized} = \frac{(\alpha_{v} \times M_{v})+\beta_{v}-\beta_{p}}{\alpha_{p}}
+	\end{equation*}
+
+
 where $throughput_{p}$ and $throughput_{v}$ are the system throughput in both environments. $M_{p}$ and $M_{v}$ are the performance metrics from both environments, while $M_{normalized}$ is the metric after normalization. $\alpha$ and $\beta$ are the coefficient and intercept values for the linear regression models.
 
 After normalization, we calculate the absolute percentage error for every data record in the testing data, ending up by having another absolute percentage error.
