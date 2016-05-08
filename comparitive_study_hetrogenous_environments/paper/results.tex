@@ -1,7 +1,9 @@
-The objective of our case study is a comparative analysis of the two environments and to find out if there exists software performance regression between a dedicated server and the virtual environment. To analyze this, we divided our project into three research questions. Following the set up of the subject systems and data preprocessing, we used requests per minute as our independent variable and performance metrics as our dependent variables to answer our research questions. %Firstly, we observe if our models are transferable across the three chosen environments. Secondly, if the models can accurately predict counter values cross-servers. Lastly, if defect injection will generate similar performance metrics values compared   
+
+\begin{comment}
+	The objective of our case study is a comparative analysis of the two environments and to find out if there exists software performance regression between a dedicated server and the virtual environment. To analyze this, we divided our project into three research questions. Following the set up of the subject systems and data preprocessing, we used requests per minute as our independent variable and performance metrics as our dependent variables to answer our research questions. %Firstly, we observe if our models are transferable across the three chosen environments. Secondly, if the models can accurately predict counter values cross-servers. Lastly, if defect injection will generate similar performance metrics values compared   
 
 \subsection{\textbf{Data Analysis}}
-Following the data transformation, we used R \cite{R} to derive conclusions for our research questions with the help of Spearman correlation, q-q plots \cite{qqplots}; a graphical technique to detect if two sets of data belong to the same population, Mann-Whitney \textit{U} test \cite{mannwhitney}, and generalized linear regression models (GLM) \cite{SanFranciscoStateUniversity}. Spearman correlation is used to identify the level of association between two variables while Mann-Whitney \textit{U} test is used to verify the hypothesis that if the data sets belong to the same population.
+Following the data transformation, we used R \cite{R} to derive conclusions for our research questions with the help of Spearman correlation, Q-Q plots \cite{qqplots}; a graphical technique to detect if two sets of data belong to the same population, Mann-Whitney \textit{U} test \cite{mannwhitney}, and generalized linear regression models (GLM) \cite{SanFranciscoStateUniversity}. Spearman correlation is used to identify the level of association between two variables while Mann-Whitney \textit{U} test is used to verify the hypothesis that if the data sets belong to the same population.
 %calculate the absolute deviation in a dataset from the median \cite{brownftest} \textcolor{red}{or instead brown forsythe test. enough already for rq1, discuss}. 
 Both the aforementioned methods do not strictly assume that the ordinal data is normally distributed \cite{spearman} \cite{manutest}. Due to the size of our data, heat maps \cite{heatmaps} were used to visualize the correlations. We chose model-based analysis as they can support the automatic selection and detection of performance abnormalities between heterogeneous environments. \cite{Shang:2015:ADP:2668930.2688052}\cite{Nguyen:2012:ADP:2188286.2188344}. Contrary to the usual practice of ad-hoc selection of certain target performance metrics \cite{heger2013automated} to detect performance regression, we included the compete set of all 56 metrics to build our models. For our linear regression models, we processed our data in two steps. First, we remove any metrics that showed no variance by a R script, for example a metric which has less than 20 unique values \cite{rahm2000data}. Next, we also remove the metrics which have high correlation amongst themselves to remove any \textit{multicollinearity} present \cite{mansfield1982detecting} so that the models do not over fit based on similar predictors(performance metrics) for the load. This approach will also magnify the metric which actually contribute the most to the model. The rationale behind aforementioned steps was to clean up data that may not contribute significantly to the model \cite{Shihab:2010:UIC:1852786.1852792}. 
 
@@ -13,12 +15,15 @@ Based on the results from the GLMs we then investigate about the metrics that ar
 
 In this section, we present the results of our case study. The goal of our study is to evaluate the discrepancy between performance testing results in virtual and physical environments. Shown in Section~\ref{ec:related_work}, prior research examine performance testing results in three types of approaches: 1) examining individual performance metric, 2) examining relationship among performance metrics and 3) building statistical models using performance metrics. In the rest of this section, we compare the performance testing results based on such three approaches.
 
+\end{comment}
+
+
 \subsection{Examining individual performance metric}
 \label{sec:individual}
 
 \noindent \textbf{Approach.} First, we compare every individual performance metric between virtual and physical environments. Since the performance tests are conducted in different environments, intuitively the values of performance metrics are not the same. For example, the virtual environment may have higher CPU usage than the physical environment. Therefore, instead of comparing the values of each performance metric in both environments, we study whether the performance metric follow the same trend in virtual and physical environments. 
 
-First, we plot a quantile-quantile plot (q-q plot)~\cite{qqplots} for every performance metric in two environments. A q-q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. We also plot a 45-degree reference line on the q-q plots. If the performance metric in both environments follow the same distribution, the points on the q-q plots should fall approximately along this reference line. A large departure from the reference line indicates that the performance metric in virtual and physical environments come from populations with different distributions. 
+First, we plot a quantile-quantile plot (Q-Q plot)~\cite{qqplots} for every performance metric in two environments. A Q-Q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. We also plot a 45-degree reference line on the Q-Q plots. If the performance metric in both environments follow the same distribution, the points on the Q-Q plots should fall approximately along this reference line. A large departure from the reference line indicates that the performance metric in virtual and physical environments come from populations with different distributions. 
 
 Second, to quantitatively measure the discrepancy, we perform a Kolmogorov-Smirnov test~\cite{kstest} between every performance metric in virtual and physical environments. Since the values of each performance metric in both environment are not the same, we first scale the metrics based on their median values and their mean absolute deviation: 
 
@@ -30,19 +35,39 @@ where $M_{scale}$ is the scaled value of the metric, $M$ is the original value o
 Finally, we calculate the Spearman's ranking correlation between every performance metric in virtual environment and and the corresponding performance metric in physical environment, in order to assesses whether same the performance metric in two environments follow the same trend during the test. We choose Spearman's ranking correlation since it does not have any assumption on the distribution of the metrics. 
 
 \noindent \textbf{Results.}
-\ian{TODO}
+
+\textbf{Most performance metrics do not follow the same distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. Due to the limited space, we only present Q-Q plot for CPU User time cpu , IO data operations/sec and memory working set for both web sever and database server. The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the web cpu user time for DS2 in virtual environment shows higher values than in the physical environment in the median to high range of the distribution; while the Q-Q plot of CloudStore shows web cpu user time with higher values in the low range of the distribution. In addition, the lines of Q-Q plots for database memory working set shows completely different shape in DS2 and CloudStore. The results imply that the discrepancies between virtual and physical environments are different across subject systems.
+
+Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO the table and some number here} We find that out of X metrics, X metrics show constant values during the performance tests. Therefore, we do not perform Kolmogorov-Smirnov tests on such metrics. Only Y metrics have p-values higher than 0.05, showing statistically in-signifiant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly related to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly related to the workload. Since the workload between two environments are similar, it is expected that the metrics relate to the workload follow the same distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-signifiant difference between the distribution in virtual and physical environments (e.g., web server I/O write operations per second in DS2).
+
+%the p-values are larger than 0.05 in only X metrics. In 
+
+ %However, even if the distributions are different, the difference can be negligible. To find out the quantitative difference between the two non-identical distributions  we used Cliff's Delta \cite{cliffsdeltajack}. We did not apply this technique on counters such as \textit{elapsed time, handle count, creating process ID, ID process, thread count} and \textit{priority base} as the do not contribute to the conclusions of the performance tests. We labeled them as NA(not applicable) in our table. The results showed that most of the performance metrics did not belong to the same distribution and have a significant difference.
+
+
+
+%As seen in Figure 2 for the subject system DS2, the CPU user times for the web servers are closer to the line Z however the plots database servers' CPU user times are highly deviated from the same line as it not visible in the same plot. The disk IO operations/sec for the web servers gradually deviate form the line Z whereas the database server is, again, highly deviated. The same can be concluded about the memory working sets for both of our environments.
+%Figure 3 shows the Q-Q plots for CloudStore. The web servers CPU user times are not congruent with the line Z. The database server CPU user times towards the tail of the plot are closer to the line Z however they still do not follow the line Z. The disk IO operations for both servers tends to follow the line Z initally but gradually moves away. Further on, the memory working set for both of our servers, as seen, are distant to the line Z.
+
+\textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman correlation coefficient and corresponding p-value between the selected performance metrics as Q-Q plots. We find that the for the web server memory working set in CloudStore and the database server memory working set in D2S, there exist moderate (0.69) to strong (0.46) correlation between virtual and physical environments, respectively. By examining the metrics, we find that both metrics have a increasing trend that may be cause by memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Table~\ref{tab:correlationall} shows a summary of the spearman's ranking correlation of all the performance metrics in DS2 and CloudStore. Most of the correlations either have p-values higher than 0.05 or the absolute coefficient values fall between 0 to 0.3 (low correlation).
+
+\hypobox{\ian{todo}}
+
+%If the correlation value is closer to 1 the metrics have a strong correlation and if the value is closer to 0 the metrics have a weak correlation. A negative correlation means that if one of the metrics is increasing in value, the other is decreasing. For both of our subject systems we observe that the correlation values are mostly positive and are closer to 0 representing weak correlations. This conclusion, however, is not applicable to the user times from both environments as the p-value $>$ 0.05.
+
+
 %\textbf{Motivation}: Performance assurance activities are not only bounded by the idea that performance regression can only be identified relative to different versions of the software. A software system might also regress once it is transferred from one environment to another. According to the norm, practitioners often rely on performance metrics generated by the virtual environment prior to releasing it on a disparate environment. We address this question by comparing the metric values between the physical and virtual server. 
 
 %\textbf{Approach}: As mentioned earlier in Section 3, after setting up the subject systems, we used the number of requests as our workload for the systems. A script was written to randomly alter the workload after every minute for CloudStore and every two minutes for DS2. The script was based on an underlying assumption that every unit of change in the performance metrics there will be a consequent unit of change in the workload which eventually introduced variety in our dataset. \cite{linearregression}. Subsequently, the requests per minute were mapped against the performance metrics recorded via \textit{perfmon}.
 
-%The numerical values for requests per minute were extracted out of the web server's access logs. These requests were recorded per second and reached up to thousands in a minute, depending on the workload. We then, with the aid of a script, grouped and extracted the requests per minute for as long as the test systems were exercised. The metrics, on the contrary, were recorded every 10 seconds. A set of six records was averaged out as a minute according to the timestamps. This was called a single \textit{run}. The metrics generated for the web and database server were concatenated. Ultimately, we had a dataset consisting of 500 runs where every record represented a \textit{run}; the metrics and requests generated for a given minute. This process was carried out for both of our environments. The two datasets, to analyze any discrepancies, were then analyzed using R's q-q plots and \textit{cor} function.
+%The numerical values for requests per minute were extracted out of the web server's access logs. These requests were recorded per second and reached up to thousands in a minute, depending on the workload. We then, with the aid of a script, grouped and extracted the requests per minute for as long as the test systems were exercised. The metrics, on the contrary, were recorded every 10 seconds. A set of six records was averaged out as a minute according to the timestamps. This was called a single \textit{run}. The metrics generated for the web and database server were concatenated. Ultimately, we had a dataset consisting of 500 runs where every record represented a \textit{run}; the metrics and requests generated for a given minute. This process was carried out for both of our environments. The two datasets, to analyze any discrepancies, were then analyzed using R's Q-Q plots and \textit{cor} function.
 
 \begin{figure}[thb]
 	\centering
 	\includegraphics[width=0.9\columnwidth]{figures/qqplots_DS2.pdf}
-	\caption{Q-Q plots: DS2}
+	\caption{Q-Q plots for DS2.}
 %	\captionsetup{justification=centering}
-	\label{fig:Results Table}
+	\label{fig:qqds2}
 \end{figure}
 
 
@@ -50,14 +75,14 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 \begin{figure}[thb]
 	\centering
 	\includegraphics[width=0.9\columnwidth]{figures/qqplots_CS.pdf}
-	\caption{Q-Q plots: CloudStore}
+	\caption{Q-Q plots for CloudStore.}
 %	\captionsetup{justification=centering}
-	\label{fig:Results Table}
+	\label{fig:qqcs}
 \end{figure}
 
 \begin{table}[tbh]
 	\centering
-	\caption{Results of Mann-Whitney \textit{U} test and Cliff Delta on Performance Metrics}
+	\caption{Results of Ks test and Cliff Delta on Performance Metrics}
 	\label{my-label}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|c|c|c|}
@@ -77,13 +102,13 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 % \usepackage{graphicx}
 \begin{table}[thb]
 	\centering
-	\caption{Correlation and p-values of highlighted Performance Metrics}
-	\label{my-label}
+	\caption{Spearman's ranking correlation coefficients and p-values of the highlighted performance metrics.}
+	\label{tab:correlationrq1}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|c|c|}
 			\hline
 			\multirow{2}{*}{\textbf{Performance Metrics}} & \multicolumn{2}{c|}{\textbf{DS2}} & \multicolumn{2}{c|}{\textbf{CloudStore}} \\ \cline{2-5} 
-			& \textbf{Cor} & \textbf{p-value} & \textbf{Cor} & \textbf{p-value} \\ %\hline
+			& \textbf{coef.} & \textbf{p-value} & \textbf{coef.} & \textbf{p-value} \\ %\hline
 			\midrule 
 			\midrule 
 			Web Servers' User Times & 0.08 & 0.07 & -0.04 & 0.33 \\ \hline
@@ -98,13 +123,12 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 
 \begin{table}[tbh]
 	\centering
-	\caption{Correlation of All the Performance Metrics}
-	\label{my-label}
+	\caption{Summary of spearman's ranking correlation p-values and absolute coefficients of all the performance metrics in DS2 and CloudStore.}
+	\label{tab:correlationall}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|c|c|c|}
 			\hline
 			\multirow{3}{*}{\textbf{System}} & \multirow{3}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
-			&  & \multicolumn{4}{c|}{\textbf{abs(Cor})} \\ \cline{3-6} 
 			&  & \textbf{0.0$\sim$0.3} & \textbf{0.3$\sim$0.5} & \textbf{0.5$\sim$0.7} & \textbf{0.7$\sim$1} \\ %\hline
 			\midrule 
 			\midrule 
@@ -167,14 +191,6 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 %\textbf{Approach}: 
 %Following our data preprocessing, we decided to use Q-Q plot to identify if there exists a similarity between the distribution of our counters for the dedicated and the virtual server. We divided our metrics into three sub-categories namely \textit{processor, IO and memory}.
 
-Figure 2 and 3 show the results from our Q-Q plots generated for both of our environments. Due to the limited space, we chose one Q-Q plot to be displayed from each subset of metrics i.e. CPU, IO and memory. If the distributions of our performance metrics were similar, we should the points lying on roughly a straight line \cite{qq_plots}.
-
-As seen in Figure 2 for the subject system DS2, the CPU user times for the web servers are closer to the line Z however the plots database servers' CPU user times are highly deviated from the same line as it not visible in the same plot. The disk IO operations/sec for the web servers gradually deviate form the line Z whereas the database server is, again, highly deviated. The same can be concluded about the memory working sets for both of our environments.
-Figure 3 shows the q-q plots for CloudStore. The web servers CPU user times are not congruent with the line Z. The database server CPU user times towards the tail of the plot are closer to the line Z however they still do not follow the line Z. The disk IO operations for both servers tends to follow the line Z initally but gradually moves away. Further on, the memory working set for both of our servers, as seen, are distant to the line Z.
-
-Table I shows the results of our Mann-Whitney \textit{U} Tests. However, even if the distributions are different, the difference can be negligible. To find out the quantitative difference between the two non-identical distributions  we used Cliff's Delta \cite{cliffsdeltajack}. We did not apply this technique on counters such as \textit{elapsed time, handle count, creating process ID, ID process, thread count} and \textit{priority base} as the do not contribute to the conclusions of the performance tests. We labeled them as NA(not applicable) in our table. The results showed that most of the performance metrics did not belong to the same distribution and have a significant difference.
-
-Table 2 and 3 shows the Spearman correlation values between the selected performance metrics. If the correlation value is closer to 1 the metrics have a strong correlation and if the value is closer to 0 the metrics have a weak correlation. A negative correlation means that if one of the metrics is increasing in value, the other is decreasing. For both of our subject systems we observe that the correlation values are mostly positive and are closer to 0 representing weak correlations. This conclusion, however, is not applicable to the user times from both environments as the p-value $>$ 0.05.
 
 \subsection{Examining relationship among performance metrics}
 
@@ -198,16 +214,21 @@ First, we compare the changes in correlation between the performance metrics and
 %Next, we used heat maps to highlight the set of metrics which show a significant change in correlation values amongst themselves.
 %The correlation values between the metrics of physical server were stored in matrix A. The correlation values between the metrics of the virtual server were store in matrix B. Matrix Z was the absolute difference between these two matrices. For example the Spearman correlation value for CloudStore's physical server between web server's User Time and database server's IO write/Bytes sec is 0.94. The correlation value for the same pair of metrics in the virtual environment is 0.26. Then the Matrix Z will record a value which is the absolute difference of the aforementioned Spearman values i.e. 0.68. If the metric value has changed significantly, according to the legend, this will be denoted as a 'hot zone' in the heatmap denoted by a lighter gradient of color.
 
-\textbf{Results.}\ian{todo} Figure 4 and 5 are the heatmaps for the change in correlation values amongst the metrics of two environments. For DS2, figure 4, the hot spots are mostly prevalent between the IO operations, for both the web and database server, cross-environments. This means the correlations amongst IO operations in the physical environment are not the same as the correlation between IO operations in the virtual environment. While CloudStore's heatmap, figure 5, shows that the change in correlation values is not as similar to DS2. Most of the hot spots are scattered across the heatmaps, contrary to DS2 where we can see clusters around most of the IO operations. 
+\textbf{Results.}
 
-We also observed a similar change in correlation values between the processor times and other metrics. This trend may not be as strong as CloudStore's heatmap for DS2, however these changes in values can be found in both of our subject system.
+\noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Table~\ref{tab:top10ds2p} presents the top ten metrics with highest correlation to system throughput in the physical environment for DS2. We find that for these ten metrics, the difference in correlation coefficients in virtual and physical environment is up to 0.77 for rank change from X to Y.
 
-Table 3-6 are the top five highly correlated metrics with the load. In DS2, most of the IO operations from the web driver are highly correlated with the load in the physical environment. However, the database server is highly correlated than any of the metrics from the web driver in the virtual environment.
+\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{heat} present the heatmap that illustrates the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. Due to the limited space, we do not show the metric names in Figure~\ref{heat}. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heathotds2} and \ref{fig:heathotcs}. We find that the hotspot in DS2 corresponds to the changes in correlation among I/O related metrics, while the hotspot in CloudStore corresponds to memory related metrics. Prior research on virtual machines has similar findings about I/O and memory overhead in virutal machines~\cite{tocite}.
+
+
+\ian{todo: this paragraph maybe useful} Figure 4 and 5 are the heatmaps for the change in correlation values amongst the metrics of two environments. For DS2, figure 4, the hot spots are mostly prevalent between the IO operations, for both the web and database server, cross-environments. This means the correlations amongst IO operations in the physical environment are not the same as the correlation between IO operations in the virtual environment. While CloudStore's heatmap, figure 5, shows that the change in correlation values is not as similar to DS2. Most of the hot spots are scattered across the heatmaps, contrary to DS2 where we can see clusters around most of the IO operations.  We also observed a similar change in correlation values between the processor times and other metrics. This trend may not be as strong as CloudStore's heatmap for DS2, however these changes in values can be found in both of our subject system.
+
+%Table 3-6 are the top five highly correlated metrics with the load. In DS2, most of the IO operations from the web driver are highly correlated with the load in the physical environment. However, the database server is highly correlated than any of the metrics from the web driver in the virtual environment.
 Table 5 and 6 shows a much similar behavior of CloudStore in both the environments.
 
-We primarily learned that the DS2 IO operations' behavior in one environment are not similar to that of the physical environment. We also learned that the change in nature of correlation cross-environments is non-uniform.
+%We primarily learned that the DS2 IO operations' behavior in one environment are not similar to that of the physical environment. We also learned that the change in nature of correlation cross-environments is non-uniform.
 %Figure 4 and 5 are the heatmaps for the change in correlations' values between the metrics of two environments. For DS2, figure 4, 4he hot spots are mostly prevalent between the IO operations cross-environment while CloudStore's heatmap, figure 5, shows that the change in correlation values is not as similar to DS2. Most of the hot spots are scattered across the heatmaps, contrary to DS2 where we can see clusters around most of the IO operations.
-
+\hypobox{\ian{todo}}
 
 
 \begin{figure}[tbh]
@@ -215,7 +236,7 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 	\includegraphics[width=0.5\textwidth]{figures/ds2_smaller_new.png}
 	\caption{Heatmap: DS2}
 %	\captionsetup{justification=centering}
-	\label{fig:Results Table}
+	\label{fig:heathotds2}
 \end{figure}
 
 \begin{figure}[tbh]
@@ -223,7 +244,7 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 	{\includegraphics[width=\columnwidth]{figures/cloudstore_heatmap_smaller_new.png}}
 	\caption{Heatmap: CloudStore}
 	%\captionsetup{justification=centering}
-	\label{fig:Results Table}
+	\label{fig:heathotcs}
 \end{figure}
 
 
@@ -248,12 +269,12 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 % \usepackage{graphicx}
 \begin{table*}[tbh]
 	\centering
-	\caption{DS2: Top 10 highly correlated metrics with load (Physical Server)}
-	\label{my-label}
+	\caption{Top ten metrics with highest correlation to system throughput in the physical environment for DS2.}
+	\label{tab:top10ds2p}
 	\resizebox{\textwidth}{!}{%
 		\begin{tabular}{|c||c|c|c|c|}
 			\hline
-			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Physical Environment} & \textbf{Cor in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
+			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Correlation Coef. in Physical Environment} & \textbf{Correlation Coef. in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
 			\midrule
 			\midrule
 			1 & Web Server IO Other Ops/sec & 0.91 & 0.62 & 10 \\ \hline
@@ -288,6 +309,8 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
+
+\begin{comment}
 \begin{table*}[tbh]
 	\centering
 	\caption{DS2: Top 10 highly correlated metrics with load (Virtual Server)}
@@ -395,7 +418,7 @@ We primarily learned that the DS2 IO operations' behavior in one environment are
 	}
 \end{table*}
 
-
+\end{comment}
 \subsection{Building statistical models using performance metrics}
 \label{sec:model}
 \textbf{Motivation}: As discussed in earlier work \cite{Shang:2015:ADP:2668930.2688052} \cite{Nguyen:2012:ADP:2188286.2188344}, performance tests require a large dedication of resources as it is carried out just before the system is on the brink of deployment. This gives insufficient time to the performance engineers, leaving them with minimal resources. As a result they leverage on the performance assurance activities carried out in the virtual environment. The motivation behind this research question is to investigate whether the performance models generated from one environment can be applied and held representatives of the other. In essence, this will help the practitioners conclude the reliability of the performance activities carried out in the virtual environment. 
@@ -495,7 +518,15 @@ In order to identify the discrepancy between the models build using data from vi
 
 
  
-\textbf{Results.}\ian{todo} Tables 7-10 show the results of our approach. In Table 7, for our subject system DS2, we see that the statistically significant metrics for the GLM from both of our environments are different. The significant of the performance metrics in an GLM is environment dependent. Due to automatic selection of metrics we see a high fit and lower \textit{MAPE} values for our environments. Table 8 shows us the results when the model from the virtual was applied to predict load for the physical server and vice-versa. We observe a an immensely high \textit{MAPE} value for the former while physical-virtual prediction is almost 50\%. This means that the predicted and actual values of the workload have a mean absolute error percentage of almost 50\%. When the same set of metrics from the virtual environment were scaled the MAPE value for DS2 reduces drastically.
+\textbf{Results.}
+
+\noindent \textbf{The significant independent variables in the models built by performance testing results in virtual and physical environments are different.} Table~\ref{tab:modelsummaryds2} and \ref{tab:modelsummarycs} show the summary of statistical models built for virtual and physical environments for the two subject systems. We find that although all the models have good model fit (66.9\% to 94.6\%), the significant independent variables in the models are different between virtual and physical environments.
+
+\noindent \textbf{The prediction error illustrates discrepancies between models built by performance testing results in virtual and physical environments.} Although the significant independent variables in the models built by performance testing results in virtual and physical environments are different, the model may have similar prediction results due to correlations between metrics. However, we find that the external prediction errors are higher than internal prediction errors for all four models from virtual and physical environments for the two subject systems. In particular, show in Table~\ref{tab:errors} the prediction errors for 
+
+
+
+\ian{todo} Tables 7-10 show the results of our approach. In Table 7, for our subject system DS2, we see that the statistically significant metrics for the GLM from both of our environments are different. The significant of the performance metrics in an GLM is environment dependent. Due to automatic selection of metrics we see a high fit and lower \textit{MAPE} values for our environments. Table 8 shows us the results when the model from the virtual was applied to predict load for the physical server and vice-versa. We observe a an immensely high \textit{MAPE} value for the former while physical-virtual prediction is almost 50\%. This means that the predicted and actual values of the workload have a mean absolute error percentage of almost 50\%. When the same set of metrics from the virtual environment were scaled the MAPE value for DS2 reduces drastically.
 
 
 Table 9 shows us the results from CloudStore. Again, the ranks of the metrics that prove to contribute most to the model are not the same compared to both environments. After the data validation, we see a \textit{MAPE} value of almost 16\% for physical server and almost 5\% for virtual. As the GLM was based on automatic selection via \textit{stepwise} regression, we see a high percentage fit for our models. 
@@ -594,8 +625,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 % \usepackage{graphicx}
 \begin{table}[tbh]
 	\centering
-	\caption{DS2: Ranking of Performance Counters and Prediction errors}
-	\label{my-label}
+	\caption{Summary of statistical models built for DS2. The metrics listed in the table are the significant independent variables.}
+	\label{tab:modelsummaryds2}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|}
 			\hline
@@ -611,8 +642,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 			\textbf{} & 7. DB Server Pool Paged Bytes &  \\ \hline
 			\textbf{} & 8. DB Server Privileged Time &  \\ %\hline
 			\midrule
-			\textbf{Fit} & 94.6\% & 66.90\% \\ \hline
-			\textbf{MAPE} & 4.00\% & 10.52\% \\ \hline
+				\textbf{$R^2$}  & 94.6\% & 66.90\% \\ \hline
+%			\textbf{MAPE} & 4.00\% & 10.52\% \\ \hline
 		\end{tabular}%
 	}
 \end{table}
@@ -692,8 +723,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 
 \begin{table}[tbh]
 	\centering
-	\caption{CloudStore: Ranking of Performance Counters and Prediction errors}
-	\label{my-label}
+	\caption{Summary of statistical models built for CloudStore. The metrics listed in the table are the significant independent variables.}
+	\label{tab:modelsummarycs}
 	\resizebox{\columnwidth}{!}{%
 	\begin{tabular}{|c||c|c|}
 		\hline
@@ -709,8 +740,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 		\textbf{} & 7. DB Server Page Faults/sec &  \\ \hline
 		\textbf{} & 8. DB Server Working Set &  \\ %\hline
 		\midrule
-		\textbf{Fit} & 85.30\% & 90.20\% \\ \hline
-		\textbf{MAPE} & 15.63\% & 3.65\% \\ \hline
+		\textbf{$R^2$} & 85.30\% & 90.20\% \\ \hline
+%		\textbf{MAPE} & 15.63\% & 3.65\% \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -799,15 +830,14 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 %		\end{tabular}%
 %	}
 %\end{table}
-\begin{table}[tbh]
+\begin{table*}[tbh]
 	\centering
-	\caption{DS2: Summary of results after scaling}
-	\label{my-label}
-	\resizebox{\columnwidth}{!}{%
+	\caption{Internal and external prediction errors for both subject systems.}
+	\label{tab:errors}
+%	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|c|c|c|c|c|}
 			\hline
 			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
-			\midrule
 			\midrule
 			\textbf{P-P} & 0.00 & 0.01 & 0.02 & 0.03 & 0.05 & 0.3 & 4.00\% \\ \hline
 			\textbf{V-V} & 0.00 & 0.04 & 0.09 & 0.11 & 0.15 & 0.54 & 10.52\% \\ \hline
@@ -817,23 +847,11 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 			%
 			\textbf{Normalized Data:P(trained)-V(tested)} & 0.00 & 0.08 & 0.25  & 0.36 & 0.49 & 13.65 & 35.72\% \\ \hline
 			%
-		\end{tabular}%
-	}
-\end{table}
-
-
-
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-\begin{table}[tbh]
-	\centering
-	\caption{CloudStore: Summary of results after scaling}
-	\label{my-label}
-	\resizebox{\columnwidth}{!}{%
+		\end{tabular}\\
+\vspace{2ex}
 		\begin{tabular}{|c||c|c|c|c|c|c|c|}
 			\hline
 			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
-			\midrule
 			\midrule
 			\textbf{P-P} & 0.00 & 0.05 & 0.10 & 0.16 & 0.18 & 2.68 & 15.63\% \\ \hline
 			\textbf{V-V} & 0.00 & 0.01 & 0.03 & 0.04 & 0.05 & 0.50 & 3.65\% \\ \hline
@@ -844,8 +862,8 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 			\textbf{Normalized Data:P(trained)-V(tested)} &  0.00 &  0.04 & 0.09  &  0.17 & 0.17 & 2.29  & 17.21\% \\ \hline
 			%
 		\end{tabular}%
-	}
-\end{table}
+%	}
+\end{table*}
 
 
 %	
