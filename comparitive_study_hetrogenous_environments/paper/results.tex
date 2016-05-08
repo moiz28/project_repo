@@ -716,6 +716,29 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 \end{table}
 
 %
+%\end{table}
+%\begin{table}[tbh]
+%	\centering
+%	\caption{DS2: Summary of results after scaling}
+%	\label{my-label}
+%	\resizebox{\columnwidth}{!}{%
+%		\begin{tabular}{|c||c|c|c|c|c|c|c|}
+%			\hline
+%			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
+%			\midrule
+%			\midrule
+%			\textbf{P-P} & 1.977e-05 & 1.142e-02 & 2.543e-02 & 3.985e-02 & 5.212e-02 & 3.160e-01 & 4.00\% \\ \hline
+%			\textbf{V-V} & 0.0003329 & 0.0370600 & .0859800 & 0.1050000 & 0.1530000 & 0.5428000 & 10.51885\% \\ \hline
+%			\textbf{P-V'} & 0.0002277 & 0.0630600 & 0.1257000 & 0.1669000 & 0.2285000 & 0.9199000 & 16.68668\% \\ \hline
+%			\textbf{V-P'} & 0.001459 & 0.345300 & 0.440300 & 0.457900 & 0.555600 & 1.562000 & 45.79069\% \\ \hline
+%			\textbf{Normalized Data:V(trained)-P(tested)} & 0.00 & 0.09 & 0.20  & 0.27 & 0.34 & 2.82 & 27.31\% \\ \hline
+%		\end{tabular}%
+%	}
+%\end{table}
+
+
+
+%
 %
 %	\begin{table}[tbh]
 %		\centering
@@ -756,6 +779,26 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
+%
+%\end{table}
+%\begin{table}[tbh]
+%	\centering
+%	\caption{DS2: Summary of results after scaling}
+%	\label{my-label}
+%	\resizebox{\columnwidth}{!}{%
+%		\begin{tabular}{|c||c|c|c|c|c|c|c|}
+%			\hline
+%			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
+%			\midrule
+%			\midrule
+%			\textbf{P-P} & 1.977e-05 & 1.142e-02 & 2.543e-02 & 3.985e-02 & 5.212e-02 & 3.160e-01 & 4.00\% \\ \hline
+%			\textbf{V-V} & 0.0003329 & 0.0370600 & .0859800 & 0.1050000 & 0.1530000 & 0.5428000 & 10.51885\% \\ \hline
+%			\textbf{P-V'} & 0.0002277 & 0.0630600 & 0.1257000 & 0.1669000 & 0.2285000 & 0.9199000 & 16.68668\% \\ \hline
+%			\textbf{V-P'} & 0.001459 & 0.345300 & 0.440300 & 0.457900 & 0.555600 & 1.562000 & 45.79069\% \\ \hline
+%			\textbf{Normalized Data:V(trained)-P(tested)} & 0.00 & 0.09 & 0.20  & 0.27 & 0.34 & 2.82 & 27.31\% \\ \hline
+%		\end{tabular}%
+%	}
+%\end{table}
 \begin{table}[tbh]
 	\centering
 	\caption{DS2: Summary of results after scaling}
@@ -766,13 +809,18 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
 			\midrule
 			\midrule
-			\textbf{P-P} & 1.977e-05 & 1.142e-02 & 2.543e-02 & 3.985e-02 & 5.212e-02 & 3.160e-01 & 4.00 \\ \hline
-			\textbf{V-V} & 0.0003329 & 0.0370600 & .0859800 & 0.1050000 & 0.1530000 & 0.5428000 & 10.51885 \\ \hline
-			\textbf{P-V'} & 0.0002277 & 0.0630600 & 0.1257000 & 0.1669000 & 0.2285000 & 0.9199000 & 16.68668 \\ \hline
-			\textbf{V-P'} & 0.001459 & 0.345300 & 0.440300 & 0.457900 & 0.555600 & 1.562000 & 45.79069 \\ \hline
+			\textbf{P-P} & 0.00 & 0.01 & 0.02 & 0.03 & 0.05 & 0.3 & 4.00\% \\ \hline
+			\textbf{V-V} & 0.00 & 0.04 & 0.09 & 0.11 & 0.15 & 0.54 & 10.52\% \\ \hline
+			\textbf{P-V'} & 0.00 & 0.06 & 0.13 & 0.17 & 0.23 & 0.92 & 16.67\% \\ \hline
+			\textbf{V-P'} & 0.00 & 0.34 & 0.44 & 0.48 & 0.56 & 1.56 & 45.79\% \\ \hline
+			\textbf{Normalized Data:V(trained)-P(tested)} & 0.00 & 0.09 & 0.20  & 0.27 & 0.34 & 2.82 & 27.31\% \\ \hline
+			%
+			\textbf{Normalized Data:P(trained)-V(tested)} & 0.00 & 0.08 & 0.25  & 0.36 & 0.49 & 13.65 & 35.72\% \\ \hline
+			%
 		\end{tabular}%
 	}
 \end{table}
+
 
 
 % Please add the following required packages to your document preamble:
@@ -787,10 +835,14 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 			\textbf{} & \textbf{Min.} & \textbf{1st Qu.} & \textbf{Median} & \textbf{Mean} & \textbf{3rd Qu.} & \textbf{Max.} & \textbf{MAPE} \\ %\hline
 			\midrule
 			\midrule
-			\textbf{P-P} & 0.00 & 0.05 & 0.10 & 0.16 & 0.18 & 2.68 & 15.63 \\ \hline
-			\textbf{V-V} & 0.00 & 0.01 & 0.03 & 0.04 & 0.05 & 0.50 & 3.65 \\ \hline
-			\textbf{P-V'} & 4.07 & 4.64 & 4.83 & 5.13 & 5.10 & 33.36 & 513.00 \\ \hline
-			\textbf{V-P'} & 2.90 & 5.14 & 6.32 & 7.75 & 8.08 & 51.33 & 774.75 \\ \hline
+			\textbf{P-P} & 0.00 & 0.05 & 0.10 & 0.16 & 0.18 & 2.68 & 15.63\% \\ \hline
+			\textbf{V-V} & 0.00 & 0.01 & 0.03 & 0.04 & 0.05 & 0.50 & 3.65\% \\ \hline
+			\textbf{P-V'} & 4.07 & 4.64 & 4.83 & 5.13 & 5.10 & 33.36 & 513.00\% \\ \hline
+			\textbf{V-P'} & 2.90 & 5.14 & 6.32 & 7.75 & 8.08 & 51.33 & 774.75\% \\ \hline
+			\textbf{Normalized Data:V(trained)-P(tested)} & 0.00 & 0.03 &  0.07  & 0.11 & 0.13 & 1.00 & 10.73\% \\ \hline
+			%
+			\textbf{Normalized Data:P(trained)-V(tested)} &  0.00 &  0.04 & 0.09  &  0.17 & 0.17 & 2.29  & 17.21\% \\ \hline
+			%
 		\end{tabular}%
 	}
 \end{table}
@@ -830,6 +882,3 @@ Not only the \textit{MAPE} values are high when applying models cross environmen
 
 %\textbf{Results}:  We observed that \textit{MAPE} values for majority of our experiments run on physical environment fell under \textbf{30\%} while for the virtual the values were more than 200\%. 
 %We also concluded that because of the presence of the noise and the irregular behavior of the virtual environment, the experiments did not produce exact similar set of results. The difference in behavior was based on inconsistent \textit{User Time} and \textit{DISC IO} operations. This lead our to our next question that whether the performance testing done in virtual environment can be calibrated and applied to the physical environment, as profoundly practiced in the field of performance testing.
-
-	
-	
