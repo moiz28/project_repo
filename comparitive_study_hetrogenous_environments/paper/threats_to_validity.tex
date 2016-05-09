@@ -1,13 +1,23 @@
 This sections discusses the threats to our validity.
-\subsection{External validity}
-We chose two subject systems, CloudStore and DS2 for our study and two virtual environments, VirtualBox and VMware. All of the former mentioned entities have a credible history when it comes to the domain of software performance activities. \cite{5306331} \cite{Nguyen:2012:ADP:2188286.2188344}. Also, we made sure that our virtual environment is set up exactly the same as our physical environment by keeping a constant checks aided by scripts. Having said that, this study can be boosted by additional subject systems being tested in other types of virtual environment. 
 
-\subsection{Internal Validity}
+\noindent \textbf{External validity.}
+We chose two subject systems, CloudStore and DS2 for our study and two virtual machine software, VirtualBox and VMware. The two subject systems have years of history and prior performance engineering research has studied both systems~\cite{jackicsm2009,Nguyen:2012:ADP:2188286.2188344,tarekmsr16}. The virtual machine software that we used are widely used in practice. Nevertheless more case studies on other subject systems in other domains with other virtual machine software are needed to evaluate our findings.
 
-All of our models are dependent on the performance metrics' accuracy. Which means if the load on the server is beyond the capacity of the system to handle and builds up a queue, there is a possibility of noise sneaking in the recording process of the performance metrics. 
-The scaling approach we have adopted assumes that the for a particular metric, there exists alpha and beta values. However, if the metric value is constant it not possible to have an alpha and beta value associated with it in the model. Hence looking for an alternate scaling process is necessary for such a performance metric.
-We build performance regression models to compare the metrics from both of our environments. This models are accurate if there exists a high number of records for the performance counters. Additionally, we also assume that none of our dependent variable is correlated to the independent variable or vice-versa. 
+%Also, we made sure that our virtual environment is set up exactly the same as our physical environment by keeping a constant checks aided by scripts. Having said that, this study can be boosted by additional subject systems being tested in other types of virtual environment. 
 
-\subsection{Construct Validity}
-We compared our distributions using Mann-Whitney \textit{U} Tests. As this test is commonly used to compare two distributions, other tests like T-test can also be used for this purpose. 
-We used R's \textit{step()} function to build our generalized linear regression models. This function automatically selects the variables contributing most to the models however the models might be different if they are only based on p-values. To address this, we plan to build models with a predefined threshold for the p-values.
+\noindent \textbf{Internal Validity.}
+Our approach is based on the recorded performance counters. The quality of recorded performance metrics can impact the internal validity of our study. Replicating our study by other performance monitoring tools, such as psutil~\cite{psutil} may address this threat. Even though we build a statistical model using performance metrics and system throughput, we do not assume that there is causal relationship. The use of statistical model merely 
+aims to capture the relationship among multiple metrics. Similar approaches has been used in prior study~\cite{Cohen:2005:CIC:1095810.1095821, Shang:2015:ADP:2668930.2688052, xiong2013vperfguard}. 
+
+
+%All of our models are dependent on the performance metrics' accuracy. Which means if the load on the server is beyond the capacity of the system to handle and builds up a queue, there is a possibility of noise sneaking in the recording process of the performance metrics. 
+%The scaling approach we have adopted assumes that the for a particular metric, there exists alpha and beta values. However, if the metric value is constant it not possible to have an alpha and beta value associated with it in the model. Hence looking for an alternate scaling process is necessary for such a performance metric.
+%We build performance regression models to compare the metrics from both of our environments. This models are accurate if there exists a high number of records for the performance counters. Additionally, we also assume that none of our dependent variable is correlated to the independent variable or vice-versa. 
+
+\noindent \textbf{Construct Validity.}
+We monitor the performance by recording performance metrics every 10 seconds and combine the performance metrics for every minute together as a average value. There may exist unfinished system requests when you record the system performance, leading to noise in our data. We choose a time interval (10 seconds) that is much higher than the response time of the requests (less than 0.1 second), in order to minimize the noise. Repeating our study by choosing other time interval sizes would address this threat. In addition, repeating our study by using other aggregation value (like median) to combine performance metrics values may future verify our findings. We exploit two approaches to normalize performance data from different environment. There may exist other advance approaches to normalize performance data from heterogeneous environment. We plan to extend our study on other possible normalization approaches. There may exist other ways of examining performance testing results. We plan to extend our study by evaluating the discrepancy of using other ways of examining performance testing results in virtual and physical environments.
+
+
+
+%We compared our distributions using Mann-Whitney \textit{U} Tests. As this test is commonly used to compare two distributions, other tests like T-test can also be used for this purpose. 
+%We used R's \textit{step()} function to build our generalized linear regression models. This function automatically selects the variables contributing most to the models however the models might be different if they are only based on p-values. To address this, we plan to build models with a predefined threshold for the p-values.

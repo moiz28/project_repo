@@ -449,7 +449,7 @@ We then perform redundancy analysis~\cite{harrell2001regression} on the performa
 
 \subsubsection{B-2: Building statistical models}
 
-In the second step, we build a build a regression models~\cite{freedman2009statistical} using the performance metrics that are left after the reduction in the first step as independent variables and use the system throughput as dependent variable. Similar models have been build in prior research~\cite{cohen,xiong2013vperfguard}.
+In the second step, we build a build a regression models~\cite{freedman2009statistical} using the performance metrics that are left after the reduction in the first step as independent variables and use the system throughput as dependent variable. Similar models have been build in prior research~\cite{Cohen:2005:CIC:1095810.1095821,xiong2013vperfguard}.
 
 \subsubsection{B-3: Identifying insignificant metrics}
 Not all the metrics in the model are statistically significant. Therefore in this step, we only keep the metrics that statistically significantly contribute to the model. We leverage a The \textit{stepwise} function that adds the independent variables one by one to the model to exclude any metrics that not contributing to the model~\cite{RInAction}. 
