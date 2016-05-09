@@ -42,6 +42,21 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 
 The majority of the performance metrics have statistically significantly different distribution (p-values lower than 0.05 in Kolmogorov-Smirnov tests). We find that out of 44 metrics, 3 and 2 metrics have values with low variance during the performance tests, for DS2 and CloudStore, respectively. We cannot perform Kolmogorov-Smirnov tests on such metrics. Only 13 and 12 metrics have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-signifiant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly related to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly related to the workload. Since the workload between two environments are similar, it is expected that the metrics relate to the workload follow the same distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-signifiant difference between the distribution in virtual and physical environments (e.g., web server I/O write operations per second in DS2).
 
+\begin{table}[tbh]
+	\centering
+	\caption{Results of our KS-Test}
+	\label{ks-test}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{|c||c|c|}
+			\hline
+			\textbf{KS-Test} & \textbf{p-val\textless0.05} & \textbf{p-val\textgreater0.05} \\ %\hline
+			\midrule
+			\midrule
+			\textbf{DS2} & 26 & 16 \\ \hline
+			\textbf{CloudStore} & 31 & 12 \\ \hline
+		\end{tabular}%
+	}
+\end{table}
 %the p-values are larger than 0.05 in only X metrics. In 
 
  %However, even if the distributions are different, the difference can be negligible. To find out the quantitative difference between the two non-identical distributions  we used Cliff's Delta \cite{cliffsdeltajack}. We did not apply this technique on counters such as \textit{elapsed time, handle count, creating process ID, ID process, thread count} and \textit{priority base} as the do not contribute to the conclusions of the performance tests. We labeled them as NA(not applicable) in our table. The results showed that most of the performance metrics did not belong to the same distribution and have a significant difference.
@@ -218,7 +233,11 @@ The majority of the performance metrics have statistically significantly differe
 
 We calculate the Spearman's ranking correlation coefficient among all the metrics from each performance test in one environment to study the relationship among these metrics. Then we study whether such correlation coefficient is different between virtual and physical environment. 
 
+<<<<<<< HEAD
 First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU while in another environment, such correlation is low. In such a case, we would consider the that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Then, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory has a correlation of $0.3$ in virtual environment and $0.5$ in physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 44 metrics in total, we plot a heatmap in order to visualize the 1,936 absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmp, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
+=======
+First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU while in another environment, such correlation is low. In such a case, we would consider the that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Then, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory has a correlation of $0.3$ in virtual environment and $0.5$ in physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 53\ian{56 after removal of counters like threads elapsed time=44 \& (tests are not carried out on peaks or DS2 webserver IO read ops(all 0s)} metrics in total, we plot a heatmap in order to visualize the 2,809 absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmp, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
+>>>>>>> 3700fd4c6668fe95cf912ab53d02df25d29ab1b8
 
 %In particular, we 
 
@@ -460,7 +479,7 @@ We first build statistical models using performance metrics from one environment
 %\ian{need a figure here.}
 \subsubsection{B-1: Reducing counters}
 
-In the first step, we remove redundant performance metrics with low variance in both new and old tests. We first remove performance counters that have zero variance in both versions of the performance tests. We then perform a correlation analysis on the performance metrics. We used the Spearman's ranking correlation coefficient among all performance metrics from in one environment. We find the two performance metrics that have a higher than \ian{what's your threshold} correlation. From these two performance metrics, we remove the metric that have a higher average correlation with all other metrics. We repeating this step until there is no correlation that is higher than \ian{what's your threshold}.
+In the first step, we remove redundant performance metrics with low variance in both new and old tests. We first remove performance counters that have zero variance in both versions of the performance tests. We then perform a correlation analysis on the performance metrics. We used the Spearman's ranking correlation coefficient among all performance metrics from in one environment. We find the two performance metrics that have a higher than 0.75 correlation. From these two performance metrics, we remove the metric that have a higher average correlation with all other metrics. We repeating this step until there is no correlation that is higher than 0.75.
 
 We then perform redundancy analysis~\cite{harrell2001regression} on the performance metrics. The redundancy analysis would consider a performance metric redundant if it can be predicted from a combination of other metrics. We use each performance metric as a dependent variable and use the rest of the metrics as independent variables to build a regression model. We calculate the $R^2$ of each model and if the $R^2$ is larger than a threshold, the current dependent variable (i.e., performance metric) is considered redundant. We then remove the performance metric with the highest $R^2$ and repeat the process until no performance metric can be predicted with $R^2$ higher than the threshold.
 

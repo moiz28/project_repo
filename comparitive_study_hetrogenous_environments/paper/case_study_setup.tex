@@ -22,10 +22,14 @@ Dell DVD Store (DS2)~\cite{delldvd} is an online multi-tier e-commerce web appli
 
 \subsection{Environmental Setup}
 
+<<<<<<< Updated upstream
 The performance tests of the two subject systems are conducted on three machines in a lab environment. Each machine has an Intel i5 4690 Haswell Quad-Core 3.50 GHz CPU, with 8 GB of memory, connected to a local gigabyte ethernet. The first machine hosts the web server and application server (Apache and Tomcat). The second machine hosts the MySQL 5.6 database server. The load drivers (e.g., JMeter) was deployed on the third machine. The operating systems on the three machines are Windows 7. We disable all other processes and un-related system services to minimize their performance impact.
+=======
+The performance tests of the two subject systems are conducted on three machines in a lab environment. Each machine has an Intel i5 3.50GHz CPU\ian{todo}, with 8 GB of memory, connected to a local gigabyte ethernet. The first machine hosts the web server and application server (Apache and Tomcat). The second machine hosts the MySQL 5.6 database server. The load drivers (e.g., JMeter) was deployed on the third machine. The operating systems on the three machines are Windows 7. We disable all other processes and un-related system services to minimize their performance impact.
+>>>>>>> Stashed changes
 
 %was dedicated to the database server, the second machine was dedicated to the web server and the third machine was used to run the load driver.
-\noindent \textbf{Virtual environment.} We install one Virtual Box \ian{version?} and create only one virtual machine on one physical machine to avoid the interference between virtual machines. For each virtual machine, we allocate two cores and 3GB of memory. 
+\noindent \textbf{Virtual environment.} We install one Virtual Box \ian{version 4.3.28/5.0.16} and create only one virtual machine on one physical machine to avoid the interference between virtual machines. For each virtual machine, we allocate two cores and 3GB of memory. 
 
 %Our virtual setup was identical to our physical setup. The virtual environment was run on the same physical machines with all the resources provided to the host and the same set of aforementioned configuration for the virtual environment. We opted for single tenancy of the guest operating system to avoid any unwanted noise. 
 
