@@ -38,9 +38,9 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 
 \noindent \textbf{Results.}
 
-\textbf{Most performance metrics do not follow the same distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. Due to the limited space, we only present Q-Q plot for CPU User time cpu , IO data operations/sec and memory working set for both web sever and database server. The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the web cpu user time for DS2 in virtual environment shows higher values than in the physical environment in the median to high range of the distribution; while the Q-Q plot of CloudStore shows web cpu user time with higher values in the low range of the distribution. In addition, the lines of Q-Q plots for database memory working set shows completely different shape in DS2 and CloudStore. The results imply that the discrepancies between virtual and physical environments are different across subject systems.
+\textbf{Most performance metrics do not follow the same distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. Due to the limited space, we only present Q-Q plot for CPU User time, IO data operations/sec and memory working set for both web sever and database server. The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the web cpu user time for DS2 in virtual environment shows higher values than in the physical environment in the median to high range of the distribution; while the Q-Q plot of CloudStore shows web cpu user time with higher values in the low range of the distribution. In addition, the lines of Q-Q plots for database memory working set shows completely different shape in DS2 and CloudStore. The results imply that the discrepancies between virtual and physical environments are different across subject systems.
 
-Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO the table and some number here} We find that out of X metrics, X metrics show constant values during the performance tests. Therefore, we do not perform Kolmogorov-Smirnov tests on such metrics. Only Y metrics have p-values higher than 0.05, showing statistically in-signifiant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly related to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly related to the workload. Since the workload between two environments are similar, it is expected that the metrics relate to the workload follow the same distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-signifiant difference between the distribution in virtual and physical environments (e.g., web server I/O write operations per second in DS2).
+The majority of the performance metrics have statistically significantly different distribution (p-values lower than 0.05 in Kolmogorov-Smirnov tests). We find that out of 44 metrics, 3 and 2 metrics have values with low variance during the performance tests, for DS2 and CloudStore, respectively. We cannot perform Kolmogorov-Smirnov tests on such metrics. Only 13 and 12 metrics have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-signifiant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly related to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly related to the workload. Since the workload between two environments are similar, it is expected that the metrics relate to the workload follow the same distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-signifiant difference between the distribution in virtual and physical environments (e.g., web server I/O write operations per second in DS2).
 
 %the p-values are larger than 0.05 in only X metrics. In 
 
@@ -82,6 +82,7 @@ Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO 
 	\label{fig:qqcs}
 \end{figure}
 
+\begin{comment}
 \begin{table}[tbh]
 	\centering
 	\caption{Results of Ks test and Cliff Delta on Performance Metrics}
@@ -98,6 +99,7 @@ Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO 
 		\end{tabular}%
 	}
 \end{table}
+\end{comment}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -125,9 +127,11 @@ Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO 
 
 \begin{table}[tbh]
 	\centering
-	\caption{Summary of spearman's ranking correlation p-values and absolute coefficients of all the performance metrics in DS2 and CloudStore.}
+	\caption{Summary of spearman's ranking correlation p-values and absolute coefficients of all the performance metrics in DS2 and CloudStore. The numbers in the table are the number of metrics that fall into each category.}
 	\label{tab:correlationall}
 	\resizebox{\columnwidth}{!}{%
+	\begin{threeparttable}
+  
 		\begin{tabular}{|c||c|c|c|c|c|}
 			\hline
 			\multirow{3}{*}{\textbf{System}} & \multirow{3}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
@@ -137,6 +141,11 @@ Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO 
 			\textbf{DS2} & 8 & 28 & 4 & 0 & 1 \\ \hline
 			\textbf{CloudStore} & 5 & 29 & 4 & 4 & 2 \\ \hline
 		\end{tabular}%
+		\begin{tablenotes}
+			\item One metric in DS2 (Web I/O read operations/sec) is constant. Therefore, we do no calculate the correlation on that metric.
+		\end{tablenotes}
+		\end{threeparttable}
+	  
 	}
 \end{table}
 
@@ -209,7 +218,7 @@ Table~\ref{tab:ks} shows the results of our Kolmogorov-Smirnov tests. \ian{TODO 
 
 We calculate the Spearman's ranking correlation coefficient among all the metrics from each performance test in one environment to study the relationship among these metrics. Then we study whether such correlation coefficient is different between virtual and physical environment. 
 
-First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU while in another environment, such correlation is low. In such a case, we would consider the that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Then, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory has a correlation of $0.3$ in virtual environment and $0.5$ in physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 53\ian{right?} metrics in total, we plot a heatmap in order to visualize the 2,809 absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmp, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
+First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU while in another environment, such correlation is low. In such a case, we would consider the that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Then, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory has a correlation of $0.3$ in virtual environment and $0.5$ in physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 44 metrics in total, we plot a heatmap in order to visualize the 1,936 absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmp, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
 
 %In particular, we 
 
@@ -280,29 +289,37 @@ First, we compare the changes in correlation between the performance metrics and
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
-\begin{table*}[tbh]
+\begin{table}[tbh]
 	\centering
-	\caption{Top ten metrics with highest correlation to system throughput in the physical environment for DS2.}
+	\caption{Top ten metrics with highest correlation coefficient to system throughput in the physical environment for DS2. }
 	\label{tab:top10ds2p}
-	\resizebox{\textwidth}{!}{%
+	\resizebox{\columnwidth}{!}{%
+	\begin{threeparttable}
+	
 		\begin{tabular}{|c||c|c|c|c|}
 			\hline
-			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Correlation Coef. in Physical Environment} & \textbf{Correlation Coef. in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
+			\textbf{Rank} & \textbf{Performance } & \textbf{Coef. } & \textbf{Coef. } & \textbf{Rank in} \\ %\hline
+			 & \textbf{ Metrics} & \textbf{PE} & \textbf{VE} & \textbf{VE} \\ %\hline
 			\midrule
-			\midrule
-			1 & Web Server IO Other Ops/sec & 0.91 & 0.62 & 10 \\ \hline
-			2 & Web Server IO Other Bytes/sec & 0.91 & 0.62 & 12 \\ \hline
-			3 & Web Server IO Write Ops/sec & 0.91 & 0.63 & 9 \\ \hline
-			4 & Web Server IO Data Ops/sec & 0.91 & 0.63 & 8 \\ \hline
-			5 & Web Server IO Write Bytes/sec & 0.90 & 0.62 & 11 \\ \hline
-			6 & Web Server IO Data Bytes/sec & 0.90 & 0.61 & 13 \\ \hline
-			7 & DB Server IO Other Ops/sec & 0.84 & 0.75 & 3 \\ \hline
-			8 & DB Server IO Data Ops/sec & 0.83 & 0.07 & 41 \\ \hline
-			9 & DB Server IO Other Bytes/sec & 0.83 & 0.15 & 40 \\ \hline
-			10 & DB Server IO Read Ops/sec & 0.82 & 0.15 & 39 \\ \hline
+			1 & Web IO Other Ops/sec & 0.91 & 0.62 & 10 \\ \hline
+			2 & Web IO Other Bytes/sec & 0.91 & 0.62 & 12 \\ \hline
+			3 & Web IO Write Ops/sec & 0.91 & 0.63 & 9 \\ \hline
+			4 & Web IO Data Ops/sec & 0.91 & 0.63 & 8 \\ \hline
+			5 & Web IO Write Bytes/sec & 0.90 & 0.62 & 11 \\ \hline
+			6 & Web IO Data Bytes/sec & 0.90 & 0.61 & 13 \\ \hline
+			7 & DB IO Other Ops/sec & 0.84 & 0.75 & 3 \\ \hline
+			8 & DB IO Data Ops/sec & 0.83 & 0.07 & 41 \\ \hline
+			9 & DB IO Other Bytes/sec & 0.83 & 0.15 & 40 \\ \hline
+			10 & DB IO Read Ops/sec & 0.82 & 0.15 & 39 \\ \hline
 		\end{tabular}%
+		\begin{tablenotes}
+			\item PE in the table is short for physical environment; while VE is short for virtual environment.
+		\end{tablenotes}
+		\end{threeparttable}
+		
 	}
-\end{table*}
+	
+\end{table}
 
 
 %\begin{table}[tbh]
@@ -474,7 +491,7 @@ We then validated our models with the performance testing data that is from the 
 \subsubsection{V-3: External validation}
 To evaluate whether the model built using performance testing data in one environment (e.g., virtual environment) can apply to the other environment (e.g., physical environment), we test the model using the data from a different environment. For example, when we build a model using the data from a virtual environment, we test the model using the data from a physical environment. 
 
-Since the performance testing data are generated from different environments, directly applying the data on the model would intuitively generate a large amounts of error. We adopt two approach in order to normalize data in different environments. The first approach we used is the same when we compare distribution of each individual performance counters show in Section~\ref{sec:individual} by calculating the relative deviance of a metric value from its median value (normalization by deviance). The second approach that we adopt is an approach that is proposed by Nguyen \textit{et al.}~\cite{Nguyen:2012:ADP:2188286.2188344} that uses the load of the system to normalize the performance metric values across different environment (normalization by load). 
+Since the performance testing data are generated from different environments, directly applying the data on the model would intuitively generate a large amounts of error. We adopt two approach in order to normalize data in different environments: (1) \textbf{Normalization by deviance.} The first approach we used is the same when we compare distribution of each individual performance counters show in Section~\ref{sec:individual} by calculating the relative deviance of a metric value from its median value (normalization by deviance). (2) \textbf{Normalization by load.} The second approach that we adopt is an approach that is proposed by Nguyen \textit{et al.}~\cite{Nguyen:2012:ADP:2188286.2188344} that uses the load of the system to normalize the performance metric values across different environment. 
 
 %We addressed the presence of a high percentage error by adjusting our virtual environment's metrics to the phsyiscal environment according to the following equation:
 %As explained in RQ1, we perceived that our distributions generated by the performance metrics in our environments are not the same. We used R's \textit{predict} to predict our desired set of load, based on the training and testing mentioned in the previous subsections. \textcolor{red}{we used 1-fold cross validation here, necesaary to mention?}
@@ -493,11 +510,7 @@ throughput_{v}= \alpha_{v} \times M_{v} + \beta_{v}
 \begin{equation*}
 M_{normalized} = \frac{(\alpha_{v} \times M_{v})+\beta_{v}-\beta_{p}}{\alpha_{p}}
 	\end{equation*}
-
-
-where $throughput_{p}$ and $throughput_{v}$ are the system throughput in both environments. $M_{p}$ and $M_{v}$ are the performance metrics from both environments, while $M_{normalized}$ is the metric after normalization. $\alpha$ and $\beta$ are the coefficient and intercept values for the linear regression models.
-
-After normalization, we calculate the absolute percentage error for every data record in the testing data, ending up by having another absolute percentage error.
+where $throughput_{p}$ and $throughput_{v}$ are the system throughput in both environments. $M_{p}$ and $M_{v}$ are the performance metrics from both environments, while $M_{normalized}$ is the metric after normalization. $\alpha$ and $\beta$ are the coefficient and intercept values for the linear regression models. After normalization, we calculate the absolute percentage error for every data record in the testing data.
 
 
 %The selected counter was chosen on the basis of counters selected by \textit{stepwise}, trained in virtual and tested in physical environment. For every GLM there exists an intercept and a gradient value. We used the aforementioned values and applied them to the metric from the virtual environment as explained by equation 1.
