@@ -222,7 +222,7 @@ First, we compare the changes in correlation between the performance metrics and
 
 \noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Table~\ref{tab:top10ds2p} presents the top ten metrics with highest correlation to system throughput in the physical environment for DS2. We find that for these ten metrics, the difference in correlation coefficients in virtual and physical environment is up to 0.77 for rank change from X to Y.
 
-\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{heat} present the heatmap that illustrates the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. Due to the limited space, we do not show the metric names in Figure~\ref{heat}. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heathotds2} and \ref{fig:heathotcs}. We find that the hotspot in DS2 corresponds to the changes in correlation among I/O related metrics, while the hotspot in CloudStore corresponds to memory related metrics. Prior research on virtual machines has similar findings about I/O and memory overhead in virtual machines~\cite{tocite}.
+\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{heat} present the heatmap that illustrates the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. Due to the limited space, we do not show the metric names in Figure~\ref{heat}. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heatmap}. We find that the hotspot in DS2 corresponds to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{tocite}.
 
 
 %\ian{todo: this paragraph maybe useful} Figure 4 and 5 are the heatmaps for the change in correlation values amongst the metrics of two environments. For DS2, figure 4, the hot spots are mostly prevalent between the IO operations, for both the web and database server, cross-environments. This means the correlations amongst IO operations in the physical environment are not the same as the correlation between IO operations in the virtual environment. While CloudStore's heatmap, figure 5, shows that the change in correlation values is not as similar to DS2. Most of the hot spots are scattered across the heatmaps, contrary to DS2 where we can see clusters around most of the IO operations.  We also observed a similar change in correlation values between the processor times and other metrics. This trend may not be as strong as CloudStore's heatmap for DS2, however these changes in values can be found in both of our subject system.
@@ -232,24 +232,33 @@ First, we compare the changes in correlation between the performance metrics and
 
 %We primarily learned that the DS2 IO operations' behavior in one environment are not similar to that of the physical environment. We also learned that the change in nature of correlation cross-environments is non-uniform.
 %Figure 4 and 5 are the heatmaps for the change in correlations' values between the metrics of two environments. For DS2, figure 4, 4he hot spots are mostly prevalent between the IO operations cross-environment while CloudStore's heatmap, figure 5, shows that the change in correlation values is not as similar to DS2. Most of the hot spots are scattered across the heatmaps, contrary to DS2 where we can see clusters around most of the IO operations.
-\hypobox{The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with the I/O metrics and the memory metrics have the largest discrepancy. }
+\hypobox{The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with the I/O metrics have the largest discrepancy. }
 
 
-\begin{figure}[tbh]
-	\centering	
-	\includegraphics[width=0.5\textwidth]{figures/ds2_smaller_new.png}
-	\caption{Heatmap: DS2}
-%	\captionsetup{justification=centering}
-	\label{fig:heathotds2}
-\end{figure}
-
-\begin{figure}[tbh]
+\begin{figure*}[tbh]
 	\centering
-	{\includegraphics[width=\columnwidth]{figures/cloudstore_heatmap_smaller_new.png}}
-	\caption{Heatmap: CloudStore}
+	{\includegraphics[width=.9\textwidth]{figures/heat}}
+	\caption{Heatmap of correlation changes for DS2.}
 	%\captionsetup{justification=centering}
-	\label{fig:heathotcs}
-\end{figure}
+	\label{fig:heatmap}
+\end{figure*}
+
+
+%\begin{figure}[tbh]
+%	\centering	
+%	\includegraphics[width=\columnwidth]{figures/ds2_smaller_new.png}
+%	\caption{Heatmap: DS2}
+%	\captionsetup{justification=centering}
+%	\label{fig:heathotds2}
+%\end{figure}
+
+%\begin{figure}[tbh]
+%	\centering
+%	{\includegraphics[width=\columnwidth]{figures/cloudstore_heatmap_smaller_new.png}}
+%	\caption{Heatmap: CloudStore}
+%	%\captionsetup{justification=centering}
+%	\label{fig:heathotcs}
+%\end{figure}
 
 
 %\begin{table}[tbh]
@@ -431,7 +440,7 @@ First, we compare the changes in correlation between the performance metrics and
 \noindent \textbf{Approach. }
 
 We first build statistical models using performance metrics from one environment, then we validate our performance model with the metric values from the same environment and from a different environment.
-\ian{need a figure here.}
+%\ian{need a figure here.}
 \subsubsection{B-1: Reducing counters}
 
 In the first step, we remove redundant performance metrics with low variance in both new and old tests. We first remove performance counters that have zero variance in both versions of the performance tests. We then perform a correlation analysis on the performance metrics. We used the Spearman's ranking correlation coefficient among all performance metrics from in one environment. We find the two performance metrics that have a higher than \ian{what's your threshold} correlation. From these two performance metrics, we remove the metric that have a higher average correlation with all other metrics. We repeating this step until there is no correlation that is higher than \ian{what's your threshold}.
