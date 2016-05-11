@@ -4,7 +4,13 @@ In the previous section, we find discrepancy between performance testing results
 
 \subsection{Instability of virtual environment}
 
-In order to study whether the instability of virtual environment has an impact on the observed discrepancy, we repeat the same performance testing twice on virtual environments for both subject system. We perform the data analysis in Section~\ref{sec:model} by build statistical models using performance metrics. Table~\ref{tab:stabilityvm} shows the median absolute percentage error from building a model using one virtual environment and testing on another virtual environment. We find that the external validation errors are almost as low as internal validation error. Such low error shows that the performance testing results from the virtual environments are rather stable. 
+In order to study whether the instability of virtual environment has an impact on the observed discrepancy, we repeat the same performance tests on virtual environments for both subject system. We perform the data analysis in Section~\ref{sec:model} by build statistical models using performance metrics. %Table~\ref{tab:stabilityvm} shows the median absolute percentage error from building a model using one virtual environment and testing on another virtual environment. 
+We find that external validation error (0.04 and 0.13 for CloudStore and DS2) is almost as low as internal validation error (0.03 and 0.09 for CloudStore and DS2). Such low error shows that the performance testing results from the virtual environments are rather stable. 
+
+%We examine the models built when the errors are slightly higher than internal validation. We find metric XX is significant in the model while the metric is not included in other models built from virtual environment. Practitioners may need to be careful about such factors when building models from virtual environments. 
+
+%
+\begin{comment}
 \begin{table}[tbh]
 	\centering
 	\caption{Median absolute percentage error from building a model using the original test results in virtual environments and testing on repeated test results in virtual environments.}
@@ -17,12 +23,13 @@ In order to study whether the instability of virtual environment has an impact o
 			\midrule
 			\midrule
 			Internal validation & 0.03 & 0.09\\ \hline
-			External validation with virtual repeated test \# 1 & 0.06 & 0.12\\ \hline
-			External validation with virtual repeated test \# 2 & 0.05 & 0.16 \\ \hline
+%			External validation with virtual repeated test \# 1 & 0.04 & 0.24\\ \hline
+			External validation with virtual repeated test & 0.04 & 0.13 \\ \hline
 		%	External validation with VMWare test & 0.04 & 0.13 \\ \hline
 		\end{tabular}%
 	}
 \end{table}
+\end{comment}
 
 
 %\framebox{\begin{varwidth}{\textwidth}\textit{Yes, the performance tests carried out in the virtual environment are repeatable.}\end{varwidth}}
@@ -39,15 +46,15 @@ In order to study whether the instability of virtual environment has an impact o
 
 \subsection{Virtual machine software for the virtual environment}
 
-We also investigated the impact of choosing different virtual machine software on our experimental results. We set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual box. We repeat the performance tests for both subject systems. We train statistical models on the performance testing results from the original virtual environments and test with performance testing results from VMWare. Table~\ref{tab:vmware} shows that the median absolute percentage error agrees with the results when testing with the performance testing results from Virtual Box (see Table~\ref{tab:errors}). Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
+We also investigated the impact of choosing different virtual machine software on our experimental results. We set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual Box. We repeat the performance tests for both subject systems. We train statistical models on the performance testing results from VMWare and test on the results from both the original virtual environment data (Virtual Box) and the results from physical environments. We could not apply the normalization by deviance for the data from VMWare since some of the significant metrics in the model have a median absolute deviance of 0, making the normalize metric value to be infinite (see Equation~\ref{equ:mad}). We only apply the normalization by load. The low error on Virtual Box in Table~\ref{tab:vmware} shows that the the performance testing results from two different virtual machine software is similar. In addition, the high error when predicting with physical environment agrees with the results when testing with the performance testing results from Virtual Box (see Table~\ref{tab:errors}). Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
 
 %Similarly, we first train statistical models on the performance testing results from the original virtual environments and test with performance testing results from VMWare. We then train statistical models on the performance testing results from the original physical environments and tested it on the performance testing results from VMWare. 
 
-%Table~\ref{tab:stabilityvm} shows that when training statistical models on the performance testing results from the original virtual environments and test with performance testing results from VMWare, the mean absolute percentage error is slightly higher than internal validation. The internal validation median error is 0.03 and 0.09, while the external validation error with VMWare is 0.04 and 0.13, for CloudStore and DS2, respectively. Such results shows that there exists very small discrepancy between the performance testing results from Virtual box and VMWare. However, when training the model on the data from physical environment, the median absolute percentage error is always higher when testing on VMWare data with either normalization approaches (see Table~\ref{tab:vmware}). Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
+%Table~\ref{tab:stabilityvm} shows that when training statistical models on the performance testing results from the original virtual environments and test with performance testing results from VMWare, the mean absolute percentage error is slightly higher than internal validation. The internal validation median error is 0.03 and 0.09, while the external validation error with VMWare is 0.04 and 0.13, for CloudStore and DS2, respectively. Such results shows that there exists very small discrepancy between the performance testing results from Virtual Box and VMWare. However, when training the model on the data from physical environment, the median absolute percentage error is always higher when testing on VMWare data with either normalization approaches (see Table~\ref{tab:vmware}). Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
 
 \begin{table}[tbh]
 	\centering
-	\caption{Median absolute percentage error from building a model using physical environment and testing on VMWare data.}
+	\caption{Median absolute percentage error from building a model using VMWare data.}
 	\label{tab:vmware}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|}
@@ -55,14 +62,15 @@ We also investigated the impact of choosing different virtual machine software o
 			\multirow{2}{*}{\textbf{Validation type}} & \multicolumn{2}{c|}{\textbf{Median absolute percentage error}} \\ \cline{2-3} 
 			& \textbf{CloudStore} & \textbf{DS2} \\ %\hline
 			\midrule
-			External validation with normalization by deviance & 0.12 &0.19 \\ \hline
-			External validation with normalization by load & 4.79& 1.62 \\ \hline
+			External validation with Virtual Box results& 0.07&0.10\\ \hline
+%			External validation with physical normalization by deviance & 0.07 &0.06 \\ \hline
+			External validation with physical normalization by load & 7.52& 1.63 \\ \hline
 		\end{tabular}%
 	}
 \end{table}
 
 
-%We also investigated the impact of choosing different virtual machine software on our experimental results. We set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual box. We repeat the performance tests for both subject systems. Similarly, we train statistical models on the performance testing results from the virtual environments with VMWare and tested it on the performance testing results from the physical environment. The median relative absolute prediction error is \ian{results}. Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
+%We also investigated the impact of choosing different virtual machine software on our experimental results. We set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual Box. We repeat the performance tests for both subject systems. Similarly, we train statistical models on the performance testing results from the virtual environments with VMWare and tested it on the performance testing results from the physical environment. The median relative absolute prediction error is \ian{results}. Such results show that the discrepancy that we observed during our experiment also exiting with the virtual environments that are set up with VMWare.
 
 %\framebox{\begin{varwidth}{\textwidth}\textit{Yes, a change in virtual environment increased the error percentages for both of our subject systems.}\end{varwidth}}
 %\fbox{\textit{}}
@@ -96,9 +104,13 @@ We also investigated the impact of choosing different virtual machine software o
 
 
 \subsection{Resource Allocation}
-We study the impact of changing resource allocation on the results of our analysis. We change the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB. Similarly, we train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. Table~\ref{tab:changeresource}\ian{to add data} shows the corresponding the median absolute percentage error. We still observe large absolute percentage error, which illustrates the discrepancy between the performance testing results in both environment. 
+
+We study the impact of changing resource allocation on the results of our analysis. We change the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB. Similarly, we train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when normalizing based on load (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). Such results demonstrate the ability of reducing discrepancy in performance testing results by using normalization based on deviance.
+
+%Table~\ref{tab:changeresource}\ian{to add data} shows the corresponding the median absolute percentage error. We still observe large absolute percentage error, which illustrates the discrepancy between the performance testing results in both environment. 
+
 
 %We also change the computing resource on the physical machine and repeat the performance test. We build a model using the performance testing data from the original physical environment before changing the resource and test on the performance testing data from the physical environment after changing the resource. We find that the absolute percentage error are much lower than that between virtual and physical environments. Such results show that the observed discrepancy are indeed introduced by the virtual environment rather than the difference in computing resources.
 
 
-\hypobox{The discrepancy between performance testing results in virtual and physical environment exist when we repeat the same performance tests, setting up a virtual environment with another virtual machine software or changing resource allocations on the virtual machines.}
+%\hypobox{The discrepancy between performance testing results in virtual and physical environment exist when we repeat the same performance tests, setting up a virtual environment with another virtual machine software or changing resource allocations on the virtual machines.}

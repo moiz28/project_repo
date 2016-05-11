@@ -28,10 +28,11 @@ First, we compare every individual performance metric between virtual and physic
 First, we plot a quantile-quantile plot (Q-Q plot)~\cite{qqplots} for every performance metric in two environments. A Q-Q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. We also plot a 45-degree reference line on the Q-Q plots. If the performance metric in both environments follow the same distribution, the points on the Q-Q plots should fall approximately along this reference line. A large departure from the reference line indicates that the performance metric in virtual and physical environments come from populations with different distributions. 
 
 Second, to quantitatively measure the discrepancy, we perform a Kolmogorov-Smirnov test~\cite{kstest} between every performance metric in virtual and physical environments. Since the values of each performance metric in both environment are not the same, we first scale the metrics based on their median values and their mean absolute deviation: 
-
-	\[
+\begin{equation}
+	\label{equ:mad}
 		M_{scale}=\frac{M-\tilde{M}}{MAD(M))}		
-	\]
+\end{equation}
+	
 where $M_{scale}$ is the scaled value of the metric, $M$ is the original value of the metric, $\tilde{M}$ is the median value of the metric and $MAD(M)$ is the median absolute deviation of the metric. The Kolmogorov-Smirnov test gives a p-value as the test outcome. A p-value ≤ 0.05 means that the result is statistically significant, and we may reject the null hypothesis (i.e., two populations are from the same distribution). By rejecting the null hypothesis, we can accept the alternative hypothesis, which tells us the performance metrics in virtual and physical environments do not have the same distribution. We choose Kolmogorov-Smirnov test since it does not have any assumption on the distribution of the metrics.
 
 Finally, we calculate the Spearman's ranking correlation between every performance metric in virtual environment and and the corresponding performance metric in physical environment, in order to assesses whether same the performance metric in two environments follow the same trend during the test. We choose Spearman's ranking correlation since it does not have any assumption on the distribution of the metrics. 
@@ -42,6 +43,7 @@ Finally, we calculate the Spearman's ranking correlation between every performan
 
 The majority of the performance metrics have statistically significantly different distribution (p-values lower than 0.05 in Kolmogorov-Smirnov tests). We find that out of 44 metrics, 3 and 2 metrics have values with low variance during the performance tests, for DS2 and CloudStore, respectively. We cannot perform Kolmogorov-Smirnov tests on such metrics. Only 13 and 12 metrics have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-signifiant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly related to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly related to the workload. Since the workload between two environments are similar, it is expected that the metrics relate to the workload follow the same distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-signifiant difference between the distribution in virtual and physical environments (e.g., web server I/O write operations per second in DS2).
 
+\begin{comment}
 \begin{table}[tbh]
 	\centering
 	\caption{Results of our KS-Test}
@@ -57,6 +59,8 @@ The majority of the performance metrics have statistically significantly differe
 		\end{tabular}%
 	}
 \end{table}
+\end{comment}
+
 %the p-values are larger than 0.05 in only X metrics. In 
 
  %However, even if the distributions are different, the difference can be negligible. To find out the quantitative difference between the two non-identical distributions  we used Cliff's Delta \cite{cliffsdeltajack}. We did not apply this technique on counters such as \textit{elapsed time, handle count, creating process ID, ID process, thread count} and \textit{priority base} as the do not contribute to the conclusions of the performance tests. We labeled them as NA(not applicable) in our table. The results showed that most of the performance metrics did not belong to the same distribution and have a significant difference.
@@ -149,7 +153,7 @@ The majority of the performance metrics have statistically significantly differe
   
 		\begin{tabular}{|c||c|c|c|c|c|}
 			\hline
-			\multirow{3}{*}{\textbf{System}} & \multirow{3}{*}{\textbf{p\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p\textless0.05}} \\ \cline{3-6} 
+			\multirow{3}{*}{\textbf{System}} & \multirow{3}{*}{\textbf{p-value\textgreater0.05}} & \multicolumn{4}{c|}{\textbf{p-value\textless0.05}} \\ \cline{3-6} 
 			&  & \textbf{0.0$\sim$0.3} & \textbf{0.3$\sim$0.5} & \textbf{0.5$\sim$0.7} & \textbf{0.7$\sim$1} \\ %\hline
 			\midrule 
 			\midrule 
