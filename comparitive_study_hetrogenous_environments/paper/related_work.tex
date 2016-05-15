@@ -1,8 +1,6 @@
-In this section, we present the prior research that is related to this paper. We first discuss the prior research that analyze performance metrics that are collected during performance testing. In addition, we discuss the prior research that investigate the overheads of virtual environments.
+The work that is most related to the paper can be categorized into four amin areas, 1) individual performance metrics, 2) relationship among performance metrics, 3) statistical modelling based on performance metrics and analysis of VM overhead. Here, we discuss the state-of-the-art and how our work relates to prior work.
 
 \subsection{Analyzing performance metrics from performance testing} 
-
-Prior research has leveraged various types of analyses on the collected performance metrics during performance testing. The analyses on performance metrics typical focus on three aspects: 1) individual performance metrics, 2) relationship among performance metrics and 3) statistical modelling based on performance metrics. 
 
 \noindent \textbf{Individual performance metrics}
 
@@ -12,6 +10,8 @@ Malik \emph{et al$.$}~\cite{Malik:2010:ACL:1955601.1955936, haroon} propose appr
 
 Heger \emph{et al$.$}~\cite{DBLP:conf/wosp/HegerHF13} present an approach that uses software development history and unit tests to diagnose the root cause of performance regressions. In the first step of their approach, they leverage Analysis of Variance (ANOVA) to compare the response time of the system to detect performance regressions. Similarly, Jiang \emph{et al$.$}~\cite{jackicsm2009} extract response time from system logs. Instead of conducting statistical tests, Jiang \emph{et al$.$} visualize the trend of response time during performance tests, in order to identify performance issues.
 
+
+\emad{how does this compare to our work?}
 %
 
 %The ad hoc approach may fail to detect performance regressions if the target counters do not capture the performance regressions. Moreover, such ad hoc analysis does not detect the change of relationships between counters, such as the relationship between I/O and CPU.
@@ -19,16 +19,16 @@ Heger \emph{et al$.$}~\cite{DBLP:conf/wosp/HegerHF13} present an approach that u
 
 \noindent \textbf{Relationship among performance metrics}
 
-Malik \emph{et al$.$}~\cite{5635038} leverage Spearman's ranking correlation to capture the relationship among performance metrics. The deviance of correlation is calculated in order to pinpoint which subsystem should take responsibility of performance deviation.
+Malik \emph{et al$.$}~\cite{5635038} leverage Spearman's rank correlation to capture the relationship among performance metrics. The deviance of correlation is calculated in order to pinpoint which subsystem should take responsibility of performance deviation.
 
-Foo\emph{ et al$.$}~\cite{foo2010mining} propose an approach that leverage association rules in order to address the limitations of manually detecting performance regression in large scale software systems. Association rules capture the historical relationship among performance metrics and generate rules based on the results of prior performance tests. Deviation in the association rules are considered signs of performance regressions.
+Foo\emph{ et al$.$}~\cite{foo2010mining} propose an approach that leverages association rules in order to address the limitations of manually detecting performance regression in large scale software systems. Association rules capture the historical relationship among performance metrics and generate rules based on the results of prior performance tests. Deviation in the association rules are considered signs of performance regressions.
 
 Jiang \emph{et al$.$}~\cite{5270324} use normalized mutual information as a similarity measure to cluster correlated performance metrics. Since metrics in one cluster are highly correlated, the uncertainty among metrics in the cluster should be low. Jiang \emph{et al$.$} leverage entropy from information theory to monitor the uncertainty of each cluster. A significant change in the entropy is considered as a sign of a performance fault. %During the evaluation of the approach, the authors were able to detect 77\% of the injected faults and the faulty subsystems, without having any false positives.
 
 %Our approach also considers the correlations between performance counters by using regression models. However, our approach first aims to group performance counters into test aspects and focuses on detecting performance regressions instead of faults.
 
 
-
+\emad{how does this compare}
 
 
 %Malik\textit{ et al.}~\cite{haroon} derive performance signatures based on both supervised and unsupervised learning to detect performance anomalies. They use Principal Component Analysis as their unsupervised learning technique if the past tests are not marked pass or fail. PCA is used to to examine the relationships between different performance metrics.
@@ -42,7 +42,7 @@ Cohen \textit{et al$.$}~\cite{cohen2004correlating} propose an approach that bui
 
 Jiang \emph{et al$.$}~\cite{Jiang:2009:SMM:1555228.1555233} propose an approach that improves the Ordinary Least Squares regression models that are built from performance metrics and use the model to detect faults in a system. 
 
-In this paper, we analyze performance metrics in both virtual and physical environment based on all the above three types of analyses. Our findings may be valuable to help better evaluate and understand the findings from above prior research.
+In our work, we analyze performance metrics in both virtual and physical environment based on all the above three types of analyses. Our findings can help better evaluate and understand the findings from the aforementioned research.
 
 
 %Model-based approached use the target counters(e.g. DISC I/O and CPU Utilization) to build models and these models are then used to detect performance regression int he system. What make the model-based approach celebrated is the inclusion and comparison of numerous performance counters at the same time. 
@@ -54,7 +54,7 @@ Kraft \textit{et al$.$}~\cite{kraft2011io} discuss the issues that are related t
 
 Aravind \textit{et al$.$}~\cite{menon2005diagnosing} audit the performance overheads in Xen virtual machines. They uncover the origins of overheads that might exist in the network I/O causing a peculiar system behavior. However, there study is limited to Xen virtual machine only while mainly focusing on network related performance overheads.
 
-Prior research on virtual environment overhead is rather general without considering a particular software reliability ensuring task. In this paper, we focus our on the context of performance testing. We evaluate the discrepancy of performance testing results from virtual and physical environments.
+Prior research on virtual environment overhead is rather general without considering a particular software reliability ensuring task\emad{is this relevant?}. In this paper, we focus our on the context of performance testing. We evaluate the discrepancy of performance testing results from virtual and physical environments.
 
 %Previous literature has its limitations as most of the performance regression testing and regression modelling  is performed in virtual environments. Through our work we validate the usage of virtual environments in the field of performance engineering.
 
