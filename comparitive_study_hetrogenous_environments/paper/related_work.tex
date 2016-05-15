@@ -11,7 +11,7 @@ Malik \emph{et al$.$}~\cite{Malik:2010:ACL:1955601.1955936, haroon} propose appr
 Heger \emph{et al$.$}~\cite{DBLP:conf/wosp/HegerHF13} present an approach that uses software development history and unit tests to diagnose the root cause of performance regressions. In the first step of their approach, they leverage Analysis of Variance (ANOVA) to compare the response time of the system to detect performance regressions. Similarly, Jiang \emph{et al$.$}~\cite{jackicsm2009} extract response time from system logs. Instead of conducting statistical tests, Jiang \emph{et al$.$} visualize the trend of response time during performance tests, in order to identify performance issues.
 
 
-\emad{how does this compare to our work?}
+%\emad{how does this compare to our work?}
 %
 
 %The ad hoc approach may fail to detect performance regressions if the target counters do not capture the performance regressions. Moreover, such ad hoc analysis does not detect the change of relationships between counters, such as the relationship between I/O and CPU.
@@ -28,7 +28,7 @@ Jiang \emph{et al$.$}~\cite{5270324} use normalized mutual information as a simi
 %Our approach also considers the correlations between performance counters by using regression models. However, our approach first aims to group performance counters into test aspects and focuses on detecting performance regressions instead of faults.
 
 
-\emad{how does this compare}
+%\emad{how does this compare}
 
 
 %Malik\textit{ et al.}~\cite{haroon} derive performance signatures based on both supervised and unsupervised learning to detect performance anomalies. They use Principal Component Analysis as their unsupervised learning technique if the past tests are not marked pass or fail. PCA is used to to examine the relationships between different performance metrics.
@@ -54,7 +54,7 @@ Kraft \textit{et al$.$}~\cite{kraft2011io} discuss the issues that are related t
 
 Aravind \textit{et al$.$}~\cite{menon2005diagnosing} audit the performance overheads in Xen virtual machines. They uncover the origins of overheads that might exist in the network I/O causing a peculiar system behavior. However, there study is limited to Xen virtual machine only while mainly focusing on network related performance overheads.
 
-Prior research on virtual environment overhead is rather general without considering a particular software reliability ensuring task\emad{is this relevant?}. In this paper, we focus our on the context of performance testing. We evaluate the discrepancy of performance testing results from virtual and physical environments.
+Prior research on virtual environment overhead is rather general without considering the impact of such overhead on software reliability ensuring tasks. In this paper, we evaluate the discrepancy between virtual and physical environments by focusing on the impact on performance testing results. 
 
 %Previous literature has its limitations as most of the performance regression testing and regression modelling  is performed in virtual environments. Through our work we validate the usage of virtual environments in the field of performance engineering.
 
