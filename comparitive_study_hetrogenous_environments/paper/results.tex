@@ -72,7 +72,7 @@ The majority of the performance metrics have statistically significantly differe
 %As seen in Figure 2 for the subject system DS2, the CPU user times for the web servers are closer to the line Z however the plots database servers' CPU user times are highly deviated from the same line as it not visible in the same plot. The disk IO operations/sec for the web servers gradually deviate form the line Z whereas the database server is, again, highly deviated. The same can be concluded about the memory working sets for both of our environments.
 %Figure 3 shows the Q-Q plots for CloudStore. The web servers CPU user times are not congruent with the line Z. The database server CPU user times towards the tail of the plot are closer to the line Z however they still do not follow the line Z. The disk IO operations for both servers tends to follow the line Z initally but gradually moves away. Further on, the memory working set for both of our servers, as seen, are distant to the line Z.
 
-\textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman correlation coefficient and corresponding p-value between the selected performance metrics as Q-Q plots. We find that the for the web server memory working set in CloudStore and the database server memory working set in D2S, there exist strong (0.69) to moderate (0.46) correlation between virtual and physical environments, respectively. By examining the metrics, we find that both metrics have a increasing trend that may be cause by memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Instead of showing the selected metrics as the Q-Q plots, Table~\ref{tab:correlationall} shows a summary of the spearman's ranking correlation of all the performance metrics. Most of the correlations have an absolute value of 0 to 0.3 (low correlation), or the correlation is not statistically significant (p-val\textgreater0.05).
+\textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman correlation coefficient and corresponding p-value between the selected performance metrics as Q-Q plots. We find that for the web server memory working set in CloudStore and the database server memory working set in D2S, there exist strong (0.69) to moderate (0.46) correlation between virtual and physical environments, respectively. By examining the metrics, we find that both metrics have a increasing trend that may be cause by memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Instead of showing the selected metrics as the Q-Q plots, Table~\ref{tab:correlationall} shows a summary of the spearman's ranking correlation of all the performance metrics. Most of the correlations have an absolute value of 0 to 0.3 (low correlation), or the correlation is not statistically significant (p-val\textgreater0.05).
 
 \hypobox{Performance metrics typically do not follow the same distribution or follow the same trend in virtual and physical environments. System load metric (throughput) and some performance metrics that are correlated with system load may be exceptions.}
 
@@ -87,7 +87,7 @@ The majority of the performance metrics have statistically significantly differe
 
 \begin{figure}[thb]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures/qqplots_DS2.pdf}
+	\includegraphics[width=0.9\columnwidth]{figures/ds2_qq_red.pdf}
 	\caption{Q-Q plots for DS2.}
 %	\captionsetup{justification=centering}
 	\label{fig:qqds2}
@@ -97,7 +97,7 @@ The majority of the performance metrics have statistically significantly differe
 
 \begin{figure}[thb]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{figures/qqplots_CS.pdf}
+	\includegraphics[width=0.9\columnwidth]{figures/cs_qq_red.pdf}
 	\caption{Q-Q plots for CloudStore.}
 %	\captionsetup{justification=centering}
 	\label{fig:qqcs}
