@@ -13,7 +13,7 @@
 	\label{fig:Approach}
 \end{figure*}
 
-In this section, we present our case study setup. The goal of our case study is to evaluate the discrepancy between performance testing results from virtual and physical environments. An overview of our case study setup is shown in Figure~\ref{fig:Approach}..
+In this section, we present our case study setup. The goal of our case study is to evaluate the discrepancy between performance testing results from virtual and physical environments. An overview of our case study setup is shown in Figure~\ref{fig:Approach}.
 
 
 \subsection{Subject Systems}
@@ -48,7 +48,7 @@ DS2 is released with a dedicated load driver program that is designed to exercis
 %\subsection{Metrics Collection}
 \subsection{Data collection and preprocessing}
 
-\noindent \textbf{Performance metrics.} We used \textit{PerfMon}~\cite{perfmon} to record the values of performance metrics. \textit{PerfMon} is a performance monitoring tool used to observe and record performance metrics such as CPU utilization, memory usage and disk IOs. We record all the available performance metrics that can be monitored on a single process by \emph{PerfMon}.  We recorded the performance metrics of both the process of web server/application and the database server with an interval of 10 seconds. In total, we recored 44 performance metrics. 
+\noindent \textbf{Performance metrics.} We used \textit{PerfMon}~\cite{perfmon} to record the values of performance metrics. \textit{PerfMon} is a performance monitoring tool used to observe and record performance metrics such as CPU utilization, memory usage and disk IOs. We record all the available performance metrics that can be monitored on a single process by \emph{PerfMon}.  We recorded the performance metrics of both the process of web server and the database server with an interval of 10 seconds. In total, we recored 44 performance metrics. 
 
 \noindent \textbf{System throughput.} We used the web server access logs from Apache and Tomcat to calculate the throughput of the system by measuring the number of requests per minute. The two data sets were then concatenated and mapped against requests using their respective timestamps.
 
