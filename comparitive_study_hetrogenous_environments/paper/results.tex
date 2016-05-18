@@ -72,7 +72,7 @@ The majority of the performance metrics have statistically significantly differe
 %As seen in Figure 2 for the subject system DS2, the CPU user times for the web servers are closer to the line Z however the plots database servers' CPU user times are highly deviated from the same line as it not visible in the same plot. The disk IO operations/sec for the web servers gradually deviate form the line Z whereas the database server is, again, highly deviated. The same can be concluded about the memory working sets for both of our environments.
 %Figure 3 shows the Q-Q plots for CloudStore. The web servers CPU user times are not congruent with the line Z. The database server CPU user times towards the tail of the plot are closer to the line Z however they still do not follow the line Z. The disk IO operations for both servers tends to follow the line Z initally but gradually moves away. Further on, the memory working set for both of our servers, as seen, are distant to the line Z.
 
-\textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman correlation coefficient and corresponding p-value between the selected performance metrics as Q-Q plots. We find that for the web server memory working set in CloudStore and the database server memory working set in D2S, there exists strong (0.69) to moderate (0.46) correlation between virtual and physical environments, respectively. By examining the metrics, we find that both metrics have an increasing trend that may be cause by memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Instead of showing the selected metrics as the Q-Q plots, Table~\ref{tab:correlationall} shows a summary of the spearman's ranking correlation of all the performance metrics. Most of the correlations have an absolute value of 0 to 0.3 (low correlation), or the correlation is not statistically significant (p-val\textgreater0.05).
+\textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman correlation coefficient and corresponding p-value between the selected performance metrics as Q-Q plots. We find that for the web server memory working set in CloudStore and the database server memory working set in D2S, there exists strong (0.69) to moderate (0.46) correlation between virtual and physical environments, respectively. By examining the metrics, we find that both metrics have an increasing trend that may be cause by memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Instead of showing the selected metrics as the Q-Q plots, Table~\ref{tab:correlationall} shows a summary of the spearman's rank correlation of all the performance metrics. Most of the correlations have an absolute value of 0 to 0.3 (low correlation), or the correlation is not statistically significant (p-val\textgreater0.05).
 
 \hypobox{Performance metrics typically do not follow the same distribution or follow the same trend in virtual and physical environments. System load metric (throughput) and some performance metrics that are correlated with system load may be exceptions.}
 
@@ -127,7 +127,7 @@ The majority of the performance metrics have statistically significantly differe
 % \usepackage{graphicx}
 \begin{table}[thb]
 	\centering
-	\caption{Spearman's ranking correlation coefficients and p-values of the highlighted performance metrics.}
+	\caption{Spearman's rank correlation coefficients and p-values of the highlighted performance metrics.}
 	\label{tab:correlationrq1}
 	\resizebox{\columnwidth}{!}{%
 		\begin{tabular}{|c||c|c|c|c|}
@@ -148,7 +148,7 @@ The majority of the performance metrics have statistically significantly differe
 
 \begin{table}[tbh]
 	\centering
-	\caption{Summary of spearman's ranking correlation p-values and absolute coefficients of all the performance metrics in DS2 and CloudStore. The numbers in the table are the number of metrics that fall into each category.}
+	\caption{Summary of spearman's rank correlation p-values and absolute coefficients of all the performance metrics in DS2 and CloudStore. The numbers in the table are the number of metrics that fall into each category.}
 	\label{tab:correlationall}
 	\resizebox{\columnwidth}{!}{%
 	\begin{threeparttable}
@@ -237,7 +237,7 @@ The majority of the performance metrics have statistically significantly differe
 
 \noindent \textbf{Approach.} 
 
-We calculate Spearman's ranking correlation coefficient among all the metrics from each performance test in one environment to study the relationship among these metrics. Then we study whether such correlation coefficient is different between the virtual and physical environment. 
+We calculate Spearman's rank correlation coefficient among all the metrics from each performance test in one environment to study the relationship among these metrics. Then we study whether such correlation coefficient is different between the virtual and physical environment. 
 
 First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU; while in another environment, such correlation is low. In such a case, we would consider that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Second, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory have a correlation of $0.3$ in the virtual environment and $0.5$ in the physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 44 metrics in total, we plot a heatmap in order to visualize the 1,936 absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmp, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
 
@@ -483,7 +483,7 @@ We follow a model building approach that is similar to the approach from prior r
 %\ian{need a figure here.}
 \subsubsection{B-1: Reducing counters}
 
-We first remove performance counters that have constant values in the test results, since such metrics cannot be included in a statistical model. We then perform a correlation analysis on the performance metrics. We used the Spearman's ranking correlation coefficient among all performance metrics from in one environment. We find the two performance metrics that have a higher than 0.75 correlation. From these two performance metrics, we remove the metrics that have a higher average correlation with all other metrics. We repeat this step until there is no correlation higher than 0.75.
+We first remove performance counters that have constant values in the test results, since such metrics cannot be included in a statistical model. We then perform a correlation analysis on the performance metrics. We used the Spearman's rank correlation coefficient among all performance metrics from in one environment. We find the two performance metrics that have a higher than 0.75 correlation. From these two performance metrics, we remove the metrics that have a higher average correlation with all other metrics. We repeat this step until there is no correlation higher than 0.75.
 
 We then perform redundancy analysis~\cite{harrell2001regression} on the performance metrics. The redundancy analysis would consider a performance metric redundant if it can be predicted from a combination of other metrics. We use each performance metric as a dependent variable and use the rest of the metrics as independent variables to build a regression model. We calculate the $R^2$ of each model and if the $R^2$ is larger than a threshold (0.9), the current dependent variable (i.e., performance metric) is considered redundant. We then remove the performance metric with the highest $R^2$ and repeat the process until no performance metric can be predicted with $R^2$ higher than the threshold. For example, if CPU can be linearly modeled by the rest of the performance metrics with $R^2\textgreater0.9$, we remove the metric for CPU, 
 
