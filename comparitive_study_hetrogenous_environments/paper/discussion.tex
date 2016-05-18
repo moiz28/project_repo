@@ -1,4 +1,4 @@
-\emad{Overall, this section seems rushed to me, but again we do not have much space here.}
+%\emad{Overall, this section seems rushed to me, but again we do not have much space here.}
 
 In the previous section, we find that there is a discrepancy between performance testing results from the virtual and physical environments. However, such discrepancy can also be due to other factors such 1) the instability of the virtual environments, 2) the virtual machine that we used or 3) the different hardware resources on the virtual environments. Therefore, in this section, we examine the impact of such factors to better understand our results. 
 
@@ -6,9 +6,7 @@ In the previous section, we find that there is a discrepancy between performance
 
 \subsection{Instability of virtual environment}
 
-\emad{The purpose of this subsection in not clear to me}
-
-In order to study whether the instability of the virtual environment has an impact on the observed discrepancy, we repeat the same performance tests on the virtual environments for both subject systems. We perform the data analysis in Section~\ref{sec:model} by building statistical models using performance metrics. %Table~\ref{tab:stabilityvm} shows the median absolute percentage error from building a model using one virtual environment and testing on another virtual environment. 
+If the performance of virtual machines are unstable, the observed discrepancy in Section~\ref{sec:results} may due to the instability of virtual environment, i.e., the performance testing results are not repeatable from virtual environments. In order to study whether virtual environment is unstable, leading to discrepancy in performance testing results, we repeat the same performance tests on the virtual environments for both subject systems. We perform the data analysis in Section~\ref{sec:model} by building statistical models using performance metrics. %Table~\ref{tab:stabilityvm} shows the median absolute percentage error from building a model using one virtual environment and testing on another virtual environment. 
 We find that external validation error (0.04 and 0.13 for CloudStore and DS2) is almost as low as the internal validation error (0.03 and 0.09 for CloudStore and DS2). Such low error shows that the performance testing results from the virtual environments are rather stable. 
 
 %We examine the models built when the errors are slightly higher than internal validation. We find metric XX is significant in the model while the metric is not included in other models built from virtual environment. Practitioners may need to be careful about such factors when building models from virtual environments. 
@@ -109,7 +107,7 @@ We also investigated the impact of choosing different virtual machine software o
 
 \subsection{Resource Allocation}
 
-We study the impact of changing the allocated resources on the results of our analysis. We change the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB \emad{why do we compare to this setup?}. Similarly, we train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when normalizing based on load (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). Such results demonstrate the ability of reducing discrepancy in performance testing results by using normalization based on deviance. \emad{Is this what we want to say or that our results are the same as the earlier setup.}
+We study the impact of changing the allocated resources on the results of our analysis. We only increase the allocated resources in order to ensure the execution of the subject systems. We increase the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB. We cannot allocate more resource to the virtual environment since we need to keep resources for the hosting OS. Similarly, we train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when normalizing based on load (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). Such results show the minimal impact to our findings by changing resource allocation. Moreover, our results demonstrate the ability of reducing discrepancy in performance testing results by using normalization based on deviance. 
 
 %Table~\ref{tab:changeresource}\ian{to add data} shows the corresponding the median absolute percentage error. We still observe large absolute percentage error, which illustrates the discrepancy between the performance testing results in both environment. 
 
