@@ -1,0 +1,227 @@
+
+%\documentclass[10pt, conference, compsocconf]{IEEEtran}
+
+
+%\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+%\begin{document}
+%
+% paper title
+%
+% can use linebreaks \\ within to get better formatting as desired
+%\title{Studying the Impact of Logging Practices on Code Quality of Systems Software}
+
+
+% author names and affiliations
+% use a multiple column layout for up to two different
+% affiliations
+
+%\author{\IEEEauthorblockN{Weiyi Shang, Meiyappan Nagappan, Ahmed E. Hassan, Emad Shihab}
+%\IEEEauthorblockA{Software Analysis and Intelligence Lab (SAIL)\\ Queen's University\\
+%Kingston, Ontario, Canada\\
+%\{swy, mei, ahmed, emad\}@cs.queensu.ca}
+%}
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+% make the title area
+%\maketitle
+
+
+
+
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\input{setup}
+
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+\usepackage{balance}
+\usepackage{amssymb,amsmath}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{times}
+\usepackage{cite}
+\usepackage{fancybox}
+\usepackage{color}
+\usepackage{array}
+\usepackage{subfigure}
+\usepackage{epstopdf}
+\usepackage{booktabs}
+\usepackage{caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+%\usepackage{subfig}
+%\usepackage{xspace}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{breaklinks=true}
+\urlstyle{same}
+\def\UrlBreaks{\do\/\do-} %to break the urls, all in one line
+
+
+
+\newcommand{\conclusionbox}[1]{%
+	\vspace{2mm}
+	\framebox[0.45\textwidth][c]{%
+		\parbox[b]{0.42\textwidth}{%
+			{\it #1}
+		}
+	}
+	\vspace{2mm}
+}
+
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+% \journalname{myjournal}
+%
+\begin{document}
+
+\title{Empirical Study on the Discrepancy between Performance Testing Results from Virtual and Physical Environments}
+
+%\subtitle{Do you have a subtitle?\\ If so, write it here}
+
+\titlerunning{Discrepancy between Performance Testing Results between diff. environments}        % if too long for running head
+
+\author{Muhammad Moiz Arif         \and
+        Weiyi Shang \and
+		Emad Shihab
+}
+
+%\authorrunning{Short form of author list} % if too long for running head
+
+\institute{Muhammad Moiz Arif , Weiyi Shang, Emad Shihab\at
+              Department of Computer Science and Software Engineering\\
+		Concordia University\\
+			Montreal, Quebec, Canada\\
+              \email{\{mo\_ari, shang, eshihab\}@cse.concordia.ca}           %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+%          \and
+%           Meiyappan Nagappan \at
+%		              Software Analysis and Intelligence Lab (SAIL)\\
+%					Queen's University\\
+%					Kingston, Ontario, Canada\\
+%		              Tel.: +1 613-533-6802\\
+%		              \email{mei@cs.queensu.ca}
+%					   \and
+%			 Ahmed E. Hassan\at
+%	          	Software Analysis and Intelligence Lab (SAIL)\\
+%					Queen's University\\
+%					Kingston, Ontario, Canada\\
+%		             Tel.: +1 613-533-6802\\
+%		            \email{ahmed@cs.queensu.ca}
+%		   \and
+%	          Emad Shihab\at
+%				Software Analysis and Intelligence Lab (SAIL)\\
+%					Queen's University\\
+%					Kingston, Ontario, Canada\\
+%			Tel.: +1 613-533-6802\\
+%		\email{emad@cs.queensu.ca}
+}
+
+\date{Received: date / Accepted: date}
+
+
+\maketitle
+
+\makeatletter
+\def\ps@headings{%
+\def\@oddfoot{\scriptsize \hfill \thepage }%
+\def\@evenfoot{\scriptsize \thepage \hfill}}
+\makeatother
+\pagestyle{headings}
+
+\begin{abstract}
+
+Performance plays an indispensable role for software reliability. 
+%The unreliability of software systems in the field is often caused by performance issues than functional bugs. 
+Performance tests are typically conducted in order to ensure the performance of software systems. Such performance tests often consume large amounts of computing resources, such as long running time in the performance testing environments. Making it worse, the ever evolving field environment requires frequently updating the performance testing environment. In practice, virtual machines (VMs) are widely exploited to provide flexible and less costly environments for performance tests. However, the use of VMs may introduce extra overheads (e.g., a higher than expected memory utilization) to the testing environment, leading to un-realistic performance testing results. Yet, to the best of our knowledge, little research has studied such overhead in the context of performance testing activities, nor has investigated the impact on performance testing results. 
+
+In this paper, we perform a case study on two open source systems, i.e., Dell DVD Store and CloudStore, to evaluate the discrepancy between the performance testing results from virtual and physical environments. We conduct the same performance tests in both virtual and physical environments. In order to evaluate the discrepancy, we compare the performance testing results based on the three aspects that are typically examined for performance testing results: 1) individual performance metric, 2) relationship among performance metrics and 3) performance models that are build from the performance metrics. Our results illustrate the discrepancy between performance testing results from virtual and physical environments. In particular, individual performance metrics from virtual and physical environments do not share the same shape of distribution. The correlations among performance metrics in virtual environment are different from the correlations in physical environment. Finally, the statistical models that are built based on the performance counters from virtual environment are different from the models that are build from the physical environment. Normalizing performance metrics based on deviance may reduced such discrepancy. Practitioners should be aware of such discrepancy and may leverage normalization techniques when analyzing performance testing results from virtual environments.
+
+
+
+
+%	activities, including performance modeling and performance regression detection. The two activities are conducted in both environments that consists of physical machines or VMs. We observed that the comparison between the virtual and physical environments is not straight forward. We also observed that the performance of our subject systems between two environments is not identical.
+
+%	\textcolor{red}{(insert implications)}
+
+%	\textit{Keywords--Performance engineering; Performance testing; Performance modeling; Performance analysis}	
+\end{abstract}
+
+%\begin{IEEEkeywords}
+%Software maintenance, Mining software repositories, Software logs, Software quality
+%\end{IEEEkeywords}
+
+%\IEEEpeerreviewmaketitle
+%\vspace{-0.2cm}
+
+
+\section{Introduction}
+%\vspace{-0.1cm}
+\label{sec:intro}
+\input{intro}
+
+\section{Background and Related Work}
+%\vspace{-0.1cm}
+\label{sec:related}
+\input{related}
+
+\section{Case Study Setup}
+%\vspace{-0.1cm}
+\label{sec:case}
+\input{case}
+
+
+\section{Case Study Results}
+%\vspace{-0.1cm}
+
+\label{sec:results}
+\input{results}
+
+\section{Discussion}
+\label{sec:discussion}
+\input{discussion}
+	
+\section{Threats to Validity}
+%\vspace{-0.1cm}
+\label{sec:threats}
+\input{threats}
+
+
+\section{Conclusion}
+%\vspace{-0.1cm}
+
+\label{sec:conclusion}
+\input{conclusion}
+
+%\section*{Acknowledgment}
+
+%The author thanks Emad Shihab and Thanh H$.$D$.$ Nguyen for their suggestions on the early version of this work. The author appreciates the generosity of the Performance Engineering team at Research In Motion (RIM). Working with the team as an embedded researcher, the author has gained an appreciation of the current practice of mining large-scale software logs.
+
+\bibliographystyle{spmpsci}
+\bibliography{references}
+%\balance
+
+\end{document}
+
+
