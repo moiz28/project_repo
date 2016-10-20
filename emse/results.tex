@@ -34,7 +34,7 @@ The majority of the performance metrics have statistically significantly differe
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		Performance metrics typically do not follow the same distribution or follow the same trend in virtual and physical environments. System load metric (throughput) and some performance metrics that are correlated with system load may be exceptions.
+		Performance metrics typically do not follow the same distribution or follow the same trend in virtual and physical environments.
 	}%
 }
 
@@ -574,9 +574,11 @@ We think the reason is that the normalization based on load performs better, eve
 \end{table*}
 
 
+		The statistical models built by performance testing results in virtual and physical environments have discrepancy. The external prediction errors are higher than internal prediction errors, showing that one cannot apply the models from one environment on performance testing data acquired from another environment. Normalizing the performance metrics by deviance may minimize such discrepancy and reduce the external prediction error.
+
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		The statistical models built by performance testing results in virtual and physical environments have discrepancy. The external prediction errors are higher than internal prediction errors, showing that one cannot apply the models from one environment on data from another environment. Normalizing the performance metrics by deviance may minimize such discrepancy and reduce the external prediction error. Practitioners may consider normalizing the performance testing result data from virtual environment by deviance before analysis.
+	We suggest that practitioners may consider normalizing the performance testing result data from virtual environment by deviance before analysis.
 	}%
 }
 

@@ -50,16 +50,16 @@ Kraft \textit{et al$.$}~\cite{kraft2011io} discuss the issues that are related t
 
 Aravind \textit{et al$.$}~\cite{menon2005diagnosing} audit the performance overheads in Xen virtual machines. They uncover the origins of overheads that might exist in the network I/O causing a peculiar system behavior. However, there study is limited to Xen virtual machine only while mainly focusing on network related performance overheads.
 
-Brosig \textit{et al$.$}~\cite{brosig2013evaluating} predict the performance overheads of virtualized environments using Petri-nets in Xenserver. The authors worked on visualization overheads with respect to queuing networks only.
+Brosig \textit{et al$.$}~\cite{brosig2013evaluating} predict the performance overheads of virtualized environments using Petri-nets in Xenserver. The authors worked on visualization overheads with respect to queuing networks only. The authors were able to accurately predict server utilization but had significant errors for multiple VMs.
 
 
-Huber \textit{et al$.$}~\cite{huber2011evaluating} present a similar kind of study between cloud-like environments. They compare the performance of virtual environments and study the degradation between the two. They further use regression based models to investigate CPU and memory performance. However, to calculate performance overhead they scale their model between two virtualized environments. On the contrary, we investigate whether there exists a uniformity between the relationships in physical and virtual environments.  
+Huber \textit{et al$.$}~\cite{huber2011evaluating} present a similar kind of study to ours between cloud-like environments. The authors compare the performance of virtual environments and study the degradation between the two environments. Huber \textit{et al$.$} further use regression based models to investigate CPU and memory performance. However, to calculate performance overhead they scale their model between two virtualized environments. On the contrary, we investigate whether there exists a uniformity between the relationships in physical and virtual environments.  
 
-\textcolor{red}{where does the following related work fits in?}
+%\textcolor{red}{where does the following related work fits in?}
 
 Luo \textit{et al$.$}~\cite{Luo:2016:MPR:2901739.2901765} converge the set of inputs that may cause software regression. They apply genetic algorithms to detect such combinations. 
 
-Prior research on virtual environment overhead is rather general and is based on operating system point of view without considering the impact of such overhead on software reliability ensuring tasks. In this paper, we evaluate the discrepancy between virtual and physical environments by focusing on the impact of performance testing results and answer that whether such discrepancy will specifically impact the results and practices in software  performance testing.  
+Prior research focuses on overhead of virtual environments without considering the impact of such overhead in performance assurance activities. In this paper, we evaluate the discrepancy between virtual and physical environments by focusing on the impact of performance testing results and answer that whether such discrepancy will specifically impact the results and practices in software  performance testing.  
 
 %Previous literature has its limitations as most of the performance regression testing and regression modelling  is performed in virtual environments. Through our work we validate the usage of virtual environments in the field of performance engineering.
 
