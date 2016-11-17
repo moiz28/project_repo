@@ -12,7 +12,7 @@ First, we compare every individual performance metric between virtual and physic
 
 First, we plot a quantile-quantile plot (Q-Q plot)~\cite{qqplots} for every performance metric in two environments. A Q-Q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. We also plot a 45-degree reference line on the Q-Q plots. If the performance metrics in both environments follow the same shape of distribution, the points on the Q-Q plots should fall approximately along this reference (i.e., 45-degree) line. A large departure from the reference line indicates that the performance metrics in the virtual and physical environments come from populations with different shapes of distributions. 
 
-Second, to quantitatively measure the discrepancy, we perform a Kolmogorov-Smirnov test~\cite{kstest} between every performance metric in the virtual and physical environments. Since the scales of each performance metric in both environments are not the same, we first normalize the metrics based on their median values and their mean absolute deviation: 
+Second, to quantitatively measure the discrepancy, we perform a Kolmogorov-Smirnov test~\cite{kstest} between every performance metric in the virtual and physical environments. Since the scales of each performance metric in both environments are not the same, we first normalize the metrics based on their median values and their median absolute deviation: 
 \begin{equation}
 	\label{equ:mad}
 		M_{normalized}=\frac{M-\tilde{M}}{MAD(M))}		
@@ -24,7 +24,7 @@ Finally, we calculate Spearman's rank correlation between every performance metr
 
 \noindent \textbf{Results.}
 
-\textbf{Most performance metrics do not follow the same shape of distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. Due to the limited space, we only present Q-Q plot for CPU user time, IO data operations/sec and memory working set for both web sever and database server\footnote{The complete results are shared online at http://das.encs.concordia.ca/wp-content/uploads/2016/04/Arif\_results.zip}. The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the web cpu user time for DS2 in the virtual environment shows higher values than in the physical environment at the median to high range of the distribution; while the Q-Q plot of CloudStore shows web cpu user time with higher values at the low range of the distribution. In addition, the lines of the Q-Q plots for database memory working set show completely different shapes in DS2 and in CloudStore. The results imply that the discrepancies between virtual and physical environments are different across subject systems. The impact of the subject systems will be discussed in future work.
+\textbf{Most performance metrics do not follow the same shape of distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. Due to the limited space, we only present Q-Q plot for CPU user time, IO data operations/sec and memory working set for both web sever and database server\footnote{The complete results are shared online at http://das.encs.concordia.ca/wp-content/uploads/2016/04/Arif\_results.zip}. The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the web cpu user time for DS2 in the virtual environment shows higher values than in the physical environment at the median to high range of the distribution; while the Q-Q plot of CloudStore shows web cpu user time with higher values at the low range of the distribution. In addition, the lines of the Q-Q plots for database memory working set show completely different shapes in DS2 and in CloudStore. The results imply that the discrepancies between virtual and physical environments are present between the subject systems. The impact of the subject systems will be discussed in future work.
 
 The majority of the performance metrics have statistically significantly different distribution (p-values lower than 0.05 in Kolmogorov-Smirnov tests). Only 13 and 12 metrics have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-significant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly relate to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly relate to the workload. Since the workload between the two environments are similar, it is expected that the metrics related to the workload follow the same shape of distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-significant difference between the distribution in virtual and physical environments (e.g., web server I/O write operations per second in DS2). %\emad{should we list the metrics}
 
@@ -111,16 +111,16 @@ The majority of the performance metrics have statistically significantly differe
 
 We calculate Spearman's rank correlation coefficient among all the metrics from each performance test in one environment to study the relationship among these metrics. Then we study whether such correlation coefficient is different between the virtual and physical environment. 
 
-First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU; while in another environment, such correlation is low. In such a case, we would consider that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Second, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory have a correlation of $0.3$ in the virtual environment and $0.5$ in the physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 44 metrics in total, we plot a heatmap in order to visualize the 1,936 absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmap, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
+First, we compare the changes in correlation between the performance metrics and the system throughput. For example, in one environment, the system throughput may be highly correlated with CPU; while in another environment, such correlation is low. In such a case, we would consider that there exist discrepancy in the correlation coefficient between CPU and the system throughput. Second, for every two metrics, we calculate the absolute difference between the correlation in two environments. For example, if CPU and Memory have a correlation of $0.3$ in the virtual environment and $0.5$ in the physical environment, we report the absolute difference in correlation as $0.2$ ($|0.3-0.5|$). Since we have 44 metrics in total, we plot a heatmap in order to visualize the \textcolor{red}{1936} absolute difference values between every pair of performance metrics. The lighter the color for each block in the heatmap, the larger the absolute difference in correlation a pair of performance metrics have. With the heatmap, we can quickly spot the metrics that have large discrepancy in correlation coefficient. 
 
 
 \noindent \textbf{Results.}
 
 
 
-\noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Table~\ref{tab:top10ds2p} presents the top ten metrics with the highest correlation to system throughput in the physical environment for DS2. We find that for these ten metrics, the difference in correlation coefficients in virtual and physical environments is up to 0.78 and the rank changes from \#9 to \#40.
+\noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Table~\ref{tab:top10ds2p} and  Table~\ref{tab:top10csp} present the top ten metrics with the highest correlations to system throughput in the physical environment for DS2 and CloudStore respectively. We find that for these top ten metric sets, the difference in correlation coefficients in virtual and physical environments is up to \textcolor{red}{0.78} and the rank changes from \#9 to \#40 in DS2 and \#1 to \#10 in CloudStore.
 
-\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{fig:heatmap} present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{menon2005diagnosing,kraft2011io}.
+\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs} {\tiny abhi ruk}present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{menon2005diagnosing,kraft2011io}.
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
@@ -182,16 +182,16 @@ First, we compare the changes in correlation between the performance metrics and
 	
 \end{table}
 
-
-\begin{table*}[tbh]
+\begin{table}[tbh]
 	\centering
-	\caption{CloudStore: Top 10 highly correlated metrics with load (Physical Server)}
-	\label{my-label}
-	\resizebox{\textwidth}{!}{%
+	\caption{Top ten metrics with highest correlation coefficient to system throughput in the physical environment for CloudStore}
+	\label{tab:top10csp}
+	\begin{threeparttable}
+	
 		\begin{tabular}{|c||c|c|c|c|}
 			\hline
-			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Physical Environment} & \textbf{Cor in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
-			\midrule
+			\textbf{Rank} & \textbf{Performance } & \textbf{Coef. } & \textbf{Coef. } & \textbf{Rank in} \\ %\hline
+			& \textbf{ Metrics} & \textbf{PE} & \textbf{VE} & \textbf{VE} \\ %\hline
 			\midrule
 			1 & DB Server IO Other Bytes/sec & 0.98 & 0.73 & 10 \\ \hline
 			2 & DB Server IO Read Ops/sec & 0.98 & 0.84 & 7 \\ \hline
@@ -204,33 +204,63 @@ First, we compare the changes in correlation between the performance metrics and
 			9 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 1 \\ \hline
 			10 & Web Server IO Other Ops/sec & 0.98 & 0.70 & 14 \\ \hline
 		\end{tabular}%
-	}
-\end{table*}
+		\begin{tablenotes}
+			\item PE in the table is short for physical environment; while VE is short for virtual environment.
+		\end{tablenotes}
+	\end{threeparttable}
+	
+	
+\end{table}
 
 
-\begin{table*}[tbh]
-	\centering
-	\caption{CloudStore: Top 10 highly correlated metrics with load (Virtual Server)}
-	\label{my-label}
-	\resizebox{\textwidth}{!}{%
-		\begin{tabular}{|c||c|c|c|c|}
-			\hline
-			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Virtual Environment} & \textbf{Cor in Physical Environment} & \textbf{Rank in Physical Environment} \\ %\hline
-			\midrule
-	     	\midrule
-			1 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 9 \\ \hline
-			2 & DB Server IO Write Ops/sec & 0.97 & 0.98 & 4 \\ \hline
-			3 & DB Server IO Write Bytes/Sec & 0.96 & 0.98 & 7 \\ \hline
-			4 & DB Server IO Data Bytes/sec & 0.96 & 0.98 & 6 \\ \hline
-			5 & DB Server IO Read Bytes/sec & 0.93 & 0.98 & 3 \\ \hline
-			6 & DB Server IO Data Ops/sec & 0.92 & 0.98 & 5 \\ \hline
-			7 & DB Server IO Read Ops/sec & 0.83 & 0.98 & 2 \\ \hline
-			8 & DB Server User Time & 0.78 & 0.89 & 22 \\ \hline
-			9 & DB Server Processor Time & 0.76 & 0.91 & 21 \\ \hline
-			10 & DB Server IO Other Bytes/sec & 0.72 & 0.97 & 1 \\ \hline
-		\end{tabular}%
-	}
-\end{table*}
+%\begin{table*}[tbh]
+%	\centering
+%	\caption{CloudStore: Top 10 highly correlated metrics with load (Physical Server)}
+%	\label{my-label}
+%	\resizebox{\textwidth}{!}{%
+%		\begin{tabular}{|c||c|c|c|c|}
+%			\hline
+%			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Physical Environment} & \textbf{Cor in Virtual Environment} & \textbf{Rank in Virtual Environment} \\ %\hline
+%			\midrule
+%			\midrule
+%			1 & DB Server IO Other Bytes/sec & 0.98 & 0.73 & 10 \\ \hline
+%			2 & DB Server IO Read Ops/sec & 0.98 & 0.84 & 7 \\ \hline
+%			3 & DB Server IO Read Bytes/sec & 0.98 & 0.93 & 5 \\ \hline
+%			4 & DB Server IO Write Ops/sec & 0.98 & 0.97 & 2 \\ \hline
+%			5 & DB Server IO Data Ops/sec & 0.98 & 0.92 & 6 \\ \hline
+%			6 & DB Server IO Data Bytes/sec & 0.98 & 0.96 & 4 \\ \hline
+%			7 & DB Server IO Write Bytes/sec & 0.98 & 0.96 & 3 \\ \hline
+%			8 & Web Server IO Other Bytes/sec & 0.98 & 0.68 & 16 \\ \hline
+%			9 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 1 \\ \hline
+%			10 & Web Server IO Other Ops/sec & 0.98 & 0.70 & 14 \\ \hline
+%		\end{tabular}%
+%	}
+%\end{table*}
+
+
+%\begin{table*}[tbh]
+%	\centering
+%	\caption{CloudStore: Top 10 highly correlated metrics with load (Virtual Server)}
+%	\label{my-label}
+%	\resizebox{\textwidth}{!}{%
+%		\begin{tabular}{|c||c|c|c|c|}
+%			\hline
+%			\textbf{Rank} & \textbf{Performance Metrics} & \textbf{Cor in Virtual Environment} & \textbf{Cor in Physical Environment} & \textbf{Rank in Physical Environment} \\ %\hline
+%			\midrule
+%	     	\midrule
+%			1 & DB Server IO Other Ops/sec & 0.98 & 0.98 & 9 \\ \hline
+%			2 & DB Server IO Write Ops/sec & 0.97 & 0.98 & 4 \\ \hline
+%			3 & DB Server IO Write Bytes/Sec & 0.96 & 0.98 & 7 \\ \hline
+%			4 & DB Server IO Data Bytes/sec & 0.96 & 0.98 & 6 \\ \hline
+%			5 & DB Server IO Read Bytes/sec & 0.93 & 0.98 & 3 \\ \hline
+%			6 & DB Server IO Data Ops/sec & 0.92 & 0.98 & 5 \\ \hline
+%			7 & DB Server IO Read Ops/sec & 0.83 & 0.98 & 2 \\ \hline
+%			8 & DB Server User Time & 0.78 & 0.89 & 22 \\ \hline
+%			9 & DB Server Processor Time & 0.76 & 0.91 & 21 \\ \hline
+%			10 & DB Server IO Other Bytes/sec & 0.72 & 0.97 & 1 \\ \hline
+%		\end{tabular}%
+%	}
+%\end{table*}
 
 \subsection{Building statistical models using performance metrics}
 \label{sec:model}
