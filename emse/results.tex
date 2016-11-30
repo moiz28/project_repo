@@ -128,7 +128,7 @@ First, we compare the changes in correlation between the performance metrics and
 
 \noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Table~\ref{tab:top10ds2p} and  Table~\ref{tab:top10csp} present the top ten metrics with the highest correlations to system throughput in the physical environment for DS2 and CloudStore, respectively. We find that for these top ten metric sets, the difference in correlation coefficients in virtual and physical environments is up to \textbf{0.78} and the rank changes from \#9 to \#40 in DS2 and \#1 to \#10 in CloudStore.
 
-\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs} {\tiny abhi ruk}\ian{what is this?????}present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{menon2005diagnosing,kraft2011io}. In such a situation, when practitioner observe that the relationship between I/O metrics and other metrics change, the change may not indicate a performance regression, but rather due to the use of virtual environment.
+\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs} present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we can find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figure~\ref{fig:heatmap} and Figure~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{menon2005diagnosing,kraft2011io}. In such a situation, when practitioner observe that the relationship between I/O metrics and other metrics change, the change may not indicate a performance regression, but rather due to the use of virtual environment.
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
@@ -171,6 +171,7 @@ First, we compare the changes in correlation between the performance metrics and
 			\textbf{Rank} & \textbf{Performance } & \textbf{Coef. } & \textbf{Coef. } & \textbf{Rank in} \\ %\hline
 			 & \textbf{ Metrics} & \textbf{PE} & \textbf{VE} & \textbf{VE} \\ %\hline
 			\midrule
+			\midrule
 			1 & Web IO Other Ops/sec & 0.91 & 0.62 & 10 \\ \hline
 			2 & Web IO Other Bytes/sec & 0.91 & 0.62 & 12 \\ \hline
 			3 & Web IO Write Ops/sec & 0.91 & 0.63 & 9 \\ \hline
@@ -200,6 +201,7 @@ First, we compare the changes in correlation between the performance metrics and
 			\hline
 			\textbf{Rank} & \textbf{Performance } & \textbf{Coef. } & \textbf{Coef. } & \textbf{Rank in} \\ %\hline
 			& \textbf{ Metrics} & \textbf{PE} & \textbf{VE} & \textbf{VE} \\ %\hline
+			\midrule
 			\midrule
 			1 & DB Server IO Other Bytes/sec & 0.98 & 0.73 & 10 \\ \hline
 			2 & DB Server IO Read Ops/sec & 0.98 & 0.84 & 7 \\ \hline
