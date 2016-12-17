@@ -127,13 +127,13 @@ First, we compare the changes in correlation between the performance metrics and
 
 
 
-\noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Tables~\ref{tab:top10ds2p} and ~\ref{tab:top10csp} present the top ten metrics with the highest correlations to system throughput in the physical environment for DS2 and CloudStore, respectively. We chose system throughput to be our touchstone as it was kept identical between the environments.  We find that for these top ten metric sets, the difference in correlation coefficients in virtual and physical environments is up to \textbf{0.78} and the rank changes from \#9 to \#40 in DS2 and \#1 to \#10 in CloudStore.
+\noindent \textbf{The correlation between system throughput and performance metrics changes between virtual and physical environments.} Tables~\ref{tab:top10ds2p} and~\ref{tab:top10csp} present the top ten metrics with the highest correlations to system throughput in the physical environment for DS2 and CloudStore, respectively. We chose system throughput to be our touchstone as it was kept identical between the environments.  We find that for these top ten metric sets, the difference in correlation coefficients in virtual and physical environments is up to \textbf{0.78} and the rank changes from \#9 to \#40 in DS2 and \#1 to \#10 in CloudStore.
 
-\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figures~\ref{fig:heatmap} and ~\ref{fig:heatmap_cs} present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figures~\ref{fig:heatmap} and ~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{menon2005diagnosing,kraft2011io}. In such a situation, when practitioners observe that the relationship between I/O metrics and other metrics change, the change may not indicate a performance regression, but rather the change may be due to the use of a virtual environment.
+\noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figures~\ref{fig:heatmap} and~\ref{fig:heatmap_cs} present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figures~\ref{fig:heatmap} and~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overheads in virtual machines~\cite{menon2005diagnosing,kraft2011io}. In such a situation, when practitioners observe that the relationship between I/O metrics and other metrics change, the change may not indicate a performance regression, but rather the change may be due to the use of a virtual environment.
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-	The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with the I/O metrics have the largest discrepancy.
+	The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with I/O metrics have the largest discrepancy.
 	}%
 }
 
@@ -286,43 +286,42 @@ As discussed in the last step (c.f., Section~\ref{sec:relation}), the relationsh
 \noindent \textbf{Approach. }
 
 %\emad{we should really add a reason as to why we are doing this}
-We follow a model building approach that is similar to the approach from prior research~\cite{Shang:2015:ADP:2668930.2688052,Cohen:2005:CIC:1095810.1095821,xiong2013vperfguard}. We first build statistical models using performance metrics from one environment, then we validate our performance model with the metric values from the same environment and also from a different environment.
-%\ian{need a figure here.}
+We follow a model building approach that is similar to the approach from prior research~\cite{Shang:2015:ADP:2668930.2688052,Cohen:2005:CIC:1095810.1095821,xiong2013vperfguard}. We first build statistical models using performance metrics from one environment, then we test the accuracy of our performance model with the metric values from the same environment and also from a different environment. For example, if the model was built in a physical environment it was tested in both, physical and virtual environment.
+
 \subsubsection{B-1: Reducing counters}
 
-We first remove performance counters that have constant values in the test results, since such metrics cannot be included in a statistical model. We then perform a correlation analysis on the performance metrics. We used the Spearman's rank correlation coefficient among all performance metrics from one environment. We find the two performance metrics that have a higher than 0.75 correlation. From these two performance metrics, we remove the metric that has a higher average correlation with all other metrics. We repeat this step until there is no correlation higher than 0.75.
+Mathematically, The performance metrics that show little or no variation do not contribute to the statistical models hence we first remove performance metrics that have constant values in the test results. We then perform a correlation analysis on the performance metrics. We used the Spearman's rank correlation coefficient among all performance metrics from one environment. We find the pair of performance metrics that have a higher than 0.75 correlation\cite{Syer2016}. From these two performance metrics, we remove the metric that has a higher average correlation with all other metrics. We repeat this step until there exists no correlation higher than 0.75.
 
 
-We then perform redundancy analysis~\cite{harrell2001regression} on the performance metrics. The redundancy analysis would consider a performance metric redundant if it can be predicted from a combination of other metrics. We use each performance metric as a dependent variable and use the rest of the metrics as independent variables to build a regression model. We calculate the $R^2$ of each model and if the $R^2$ is larger than a threshold (0.9), the current dependent variable (i.e., performance metric) is considered redundant. We then remove the performance metric with the highest $R^2$ and repeat the process until no performance metric can be predicted with $R^2$ higher than the threshold. For example, if CPU can be linearly modeled by the rest of the performance metrics with $R^2\textgreater0.9$, we remove the metric for CPU.
+We then perform redundancy analysis~\cite{harrell2001regression} on the performance metrics. The redundancy analysis would consider a performance metric redundant if it can be predicted from a combination of other metrics. We use each performance metric as a dependent variable and use the rest of the metrics as independent variables to build a regression model. We calculate the $R^2$ of each model and if the $R^2$ is larger than a threshold (0.9)\cite{Syer2016}, the current dependent variable (i.e., performance metric) is considered redundant. We then remove the performance metric with the highest $R^2$ and repeat the process until no performance metric can be predicted with $R^2$ higher than the threshold. For example, if CPU can be linearly modeled by the rest of the performance metrics with $R^2\textgreater0.9$, we remove the metric for CPU.
+
+Not all the metrics in the model are statistically significant. Therefore in this step, we only keep the metrics that have a statistically significant contribution to the model. We leverage the \textit{stepwise} function that adds the independent variables one by one to the model to exclude any metrics that are not contributing to the model~\cite{RInAction}. 
 
 \subsubsection{B-2: Building statistical models}
 
-In the second step, we build a regression model~\cite{freedman2009statistical} using the performance metrics that are left after the reduction in the first step as independent variables and use the system throughput as dependent variable. Similar models have been built in prior research~\cite{Cohen:2005:CIC:1095810.1095821,xiong2013vperfguard}.
-
-\subsubsection{B-3: Identifying insignificant metrics}
-Not all the metrics in the model are statistically significant. Therefore in this step, we only keep the metrics that have a statistically significant contribution to the model. We leverage the \textit{stepwise} function that adds the independent variables one by one to the model to exclude any metrics that are not contributing to the model~\cite{RInAction}. 
+In the second step, we build a regression model~\cite{freedman2009statistical} using the performance metrics that are left after the reduction and removal of statistically insignificant metrics in the previous step as independent variables and use the system throughput as our dependent variable. Similar models have been built in prior research~\cite{Cohen:2005:CIC:1095810.1095821,xiong2013vperfguard}.
 
 \subsubsection{B-4: Finalizing statistical models}
 After removing all the insignificant metrics, we have all the metrics that significantly contribute to the model. We use these metrics as independent variables to build the final model.
 
 \subsubsection{V-1: Validating model fit}
 
-Before we validate the model with internal and external data, we first examine how good the model fit is. If the models have a poor fit to the data, then our findings from the model may be biased by the noise from the poor model quality. We calculate the $R^2$ of each model to measure fit. If the model perfectly fits the data, the $R^2$ of the model is 1, while a zero $R^2$ value indicates that the model is completely random. We also would like to estimate the impact that each independent variable has on the model fit. We follow a ``drop one'' approach~\cite{Chambers1990}, which measures the impact of an independent variable on a model by measuring the difference in the performance of models built using: (1) all independent variables (the full model), and (2) all independent variables except for the one under test (the dropped model). A Wald statistic~\cite{harrell2015regression} is reported by comparing the performance of these two models. A larger Wald statistic indicates that an independent variable has a larger impact on the model's performance, i.e., model fit. A similar approach has been leveraged by prior research in~\cite{mcintosh2015emse}. We then rank the independent variables by their impact on model fit. 
+Before we validate the model with internal and external data, we first examine how good the model fit is. If the model have a poor fit to the data, then our findings from the model may be biased by the noise from the poor model quality. We calculate the $R^2$ of each model to measure fit. If the model perfectly fits the data, the $R^2$ of the model is 1, while a zero $R^2$ value indicates that the model does not explains the variability of the response data. We also would like to estimate the impact that each independent variable has on the model fit. We follow a ``drop one'' approach~\cite{Chambers1990}, which measures the impact of an independent variable on a model by measuring the difference in the performance of models built using: (1) all independent variables (the full model), and (2) all independent variables except for the one under test (the dropped model). A Wald statistic~\cite{harrell2015regression} is reported by comparing the performance of these two models. A larger Wald statistic indicates that an independent variable has a larger impact on the model's performance, i.e., model fit. A similar approach has been leveraged by prior research in~\cite{mcintosh2015emse}. We then rank the independent variables by their impact on model fit. 
 
 
 %After removing any outliers for both of our subject systems, we built our GLM, initially, using all the physical server's metrics. We trained and tested our model on the same server i.e. physical. We then reduced our model, iteratively, using only the metrics that our contributing the most to the model. This was achieved using R's \textit{stepwise} function. The \textit{stepwise} function adds the independent variables one by one to the model to exclude any metrics that not contributing to the model \cite{RInAction}. Once the metrics were automatically selected out on the physical server, we used R's \textit{ANOVA}, or \textit{analysis of deviance} to rank the metrics according to their deviance value. Higher the deviance value for a given performance metric in the model, higher the contribution of the performance metric to the model. This approach was similarly applied to the set of metrics from the virtual server to build a generalized linear model. R's \textit{deviancepercentage} was used to determine the explanatory part or fit of our model. It is used to calculate the percentage of deviance for a given GLM model.
 
 \subsubsection{V-2: Internal validation}
 
-We validate our models with the performance testing data that is from the same environment. We leverage a standard 10-fold cross validation process, which starts by partitioning the performance data to 10 partitions. We take one partition (fold) at a time as the test set, and trains on the remaining nine partitions~\cite{10foldcross,kohavi1995study}, similar to prior research~\cite{haroon}. For every data point in the testing data, we calculate the absolute percentage error. For example, for a data point with a throughput value of 100 requests per minute, if our predicted value is 110 requests per minute, the absolute percentage error is $0.1$ ($\frac{|110-100|}{100}$). After the ten-fold cross validation, we have a distribution of absolute percentage error for all the data records.
+We validate our models with the performance testing data that is from the same environment. We leverage a standard 10-fold cross validation process, which starts by partitioning the performance data to 10 partitions. We take one partition (fold) at a time as the test set, and trains on the remaining nine partitions~\cite{10foldcross,kohavi1995study}, similar to prior research~\cite{haroon}. For every data point in the testing data, we calculate the absolute percentage error. For example, for a data point with a throughput value of 100 requests per minute, if our predicted value is 110 requests per minute, the absolute percentage error is $0.1$ ($\frac{|110-100|}{100}$). After the ten-fold cross validation, we have a distribution of absolute percentage error (\textit{MAPE}) for all the data records.
 
 %We partitioned our results into two segments; the explanatory and the predictive part for our models, trailed by applying our model to predict load cross-environments. The explanatory part calculates the percentage of deviance explained by our models i.e. the fit of the model while the predictive part explains the error percentage between the actual and predicted load values. Both of these parts were addressed by building generalized linear models that only incorporated the metrics which were selected via R \textit{stepwise stepwise} or commonly knows as \textit{stepwise} function, from the complete set of metrics from the dataset.
 
 
 \subsubsection{V-3: External validation}
-To evaluate whether the model built using performance testing data in one environment (e.g., virtual environment) can apply to another environment (e.g., physical environment), we test the model using the data from a different environment. For example, when we build a model using the data from a virtual environment, we test the model using the data from a physical environment. 
+To evaluate whether the model built using performance testing data in one environment (e.g., virtual environment) can apply to another environment (e.g., physical environment), we test the model using the data from the other environment.
 
-Since the performance testing data is generated from different environments, directly applying the data on the model would intuitively generate large amounts of error. We adopt two approaches in order to normalize the data in different environments: (1) \textbf{Normalization by deviance.} The first approach we use is the same when we compare the distribution of each individual performance counter shown in Equation~\ref{equ:mad} from Section~\ref{sec:individual} by calculating the relative deviance of a metric value from its median value. (2) \textbf{Normalization by load.} The second approach that we adopt is an approach that is proposed by Nguyen \textit{et al.}~\cite{Nguyen:2012:ADP:2188286.2188344}. The approach uses the load of the system to normalize the performance metric values across different environments. 
+Since the performance testing data is generated from different environments, directly applying the data on the model would intuitively generate large amounts of error. We adopt two approaches in order to normalize the data in different environments: (1) \textbf{Normalization by deviance.} The first approach we use is the same when we compare the distribution of each individual performance counter shown in Equation~\ref{equ:mad} from Section~\ref{sec:individual} by calculating the relative deviance of a metric value from its median value. (2) \textbf{Normalization by load.} The second approach that we adopt is an approach that is proposed by Nguyen \textit{et al.}~\cite{Nguyen:2012:ADP:2188286.2188344}. The approach uses the load of the system to normalize the performance metric values across different environments. As there are varying inputs for the performance tests that we carried out, normalization by load helps in normalizing the multi-modal distribution that might be because of the trivial tasks like background processes(bookkeeping).
 
 %We addressed the presence of a high percentage error by adjusting our virtual environment's metrics to the phsyiscal environment according to the following equation:
 %As explained in RQ1, we perceived that our distributions generated by the performance metrics in our environments are not the same. We used R's \textit{predict} to predict our desired set of load, based on the training and testing mentioned in the previous subsections. \textcolor{red}{we used 1-fold cross validation here, necesaary to mention?}
@@ -351,16 +350,16 @@ where $throughput_{p}$ and $throughput_{v}$ are the system throughput in the phy
 
 
 \subsubsection{Identifying model discrepancy}
-In order to identify the discrepancy between the models build using data from the virtual and physical environments, we compare the two distributions of absolute percentage error based on our internal and external validation. If the two distributions are significantly different (e.g., the absolute percentage error from internal validation is much lower than that from external validation), the two models are considered to have a discrepancy. To be more concrete, in total for each subject system, we ended up with four distributions of absolute percentage error: 1) modeling using the virtual environment and testing internally (on data from the virtual environment), 2) modeling using the virtual environment and testing externally (on data from the physical environment), 3) modeling using the physical environment and testing internally (on data from the physical environment), 2) modeling using the physical environment and testing externally (on data from the virtual environment). We compare distributions 1) and 2) and we compare distributions 3) and 4). Since normalization based on deviance will change the metrics values to be negative when the metric value is lower than median, such negative values cannot be used to calculate absolute percentage error. We perform a min-max normalization on the metric values before calculating the absolute percentage error. In addition, if the observed throughput value after normalization is zero (when the observed throughput value is the minimum value of both the observed and predicted throughput values), we cannot calculate the absolute percentage error for that particular data record. Therefore, we remove the data record if the throughput value after normalization is zero. In our case study, we only removed one data record when performing external validation with the model built in the physical environment. 
+In order to identify the discrepancy between the models built using data from the virtual and physical environments, we compare the two distributions of absolute percentage error based on our internal and external validation. If the two distributions are significantly different (e.g., the absolute percentage error from internal validation is much lower than that from external validation), the two models are considered to have a discrepancy. To be more concrete, in total for each subject system, we ended up with four distributions of absolute percentage error: 1) modeling using the virtual environment and testing internally (on data from the virtual environment), 2) modeling using the virtual environment and testing externally (on data from the physical environment), 3) modeling using the physical environment and testing internally (on data from the physical environment), 4) modeling using the physical environment and testing externally (on data from the virtual environment). We compare distributions 1) and 2) and we compare distributions 3) and 4). Since normalization based on deviance will change the metrics values to be negative when the metric value is lower than median, such negative values cannot be used to calculate absolute percentage error. We perform a min-max normalization on the metric values before calculating the absolute percentage error. In addition, if the observed throughput value after normalization is zero (when the observed throughput value is the minimum value of both the observed and predicted throughput values), we cannot calculate the absolute percentage error for that particular data record. Therefore, we remove the data record if the throughput value after normalization is zero. In our case study, we only removed one data record when performing external validation with the model built in the physical environment. 
 
 
 \noindent \textbf{Results.}
 
-\noindent \textbf{The statistically significant independent variables in the models built by performance testing results in virtual and physical environments are different.} Tables~\ref{tab:modelsummaryds2} and \ref{tab:modelsummarycs} show the summary of the statistical models built for the virtual and physical environments for the two subject systems. We find that all the models have good model fit (66.9\% to 94.6\%). However, some statistically significant independent variables in one model do not appear in the other model. For example, Web Server Virtual Bytes ranks \#4 for the model built from physical environment data of CloudStore, while the metric is not significant in the model built from the virtual environment data. In fact, none of the significant variables in the model built from virtual environment are related to the web server's memory (see Table~\ref{tab:modelsummarycs}). We do observe some performance metrics that are significant in both models even with the same ranking. For example, Web Server IO Other Bytes/sec is the \#1 significant metric for both models built from the virtual and physical environment data of DS2 (see Table~\ref{tab:modelsummaryds2}). 
+\noindent \textbf{The statistically significant performance metrics leveraged by the models in virtual and physical environments are not the same.} Tables~\ref{tab:modelsummaryds2} and \ref{tab:modelsummarycs} show the summary of the statistical models built for the virtual and physical environments for the two subject systems. We find that all the models have good model fit (66.9\% to 94.6\%). However, some statistically significant independent variables in one model do not appear in the other model. For example, Web Server Virtual Bytes ranks \#4 for the model built from the physical environment data of CloudStore, while the metric is not significant in the model built from the virtual environment data. In fact, none of the significant variables in the model built from the virtual environment are related to the web server's memory (see Table~\ref{tab:modelsummarycs}). We do observe some performance metrics that are significant in both models even with the same ranking. For example, Web Server IO Other Bytes/sec is the \#1 significant metric for both models built from the virtual and physical environment data of DS2 (see Table~\ref{tab:modelsummaryds2}). 
 
-\noindent \textbf{The prediction error illustrates discrepancies between models built by performance testing results in the virtual and physical environments.} Although the significant independent variables in the models built by the performance testing results in the virtual and physical environments are different, the model may have similar prediction results due to correlations between metrics. However, we find that the external prediction errors are higher than internal prediction errors for all four models from the virtual and physical environments for the two subject systems. In particular, Table~\ref{tab:errors} shows the prediction errors using normalization based on load is always higher than that of the internal validation. For example, the median absolute percentage error for CloudStore using normalization by load is 632\% and 483\% for the models built in the physical environment and virtual environment, respectively; while the median absolute percentage error in interval validation is only 2\% and 10\% for for the models built in physical environment and virtual environment, respectively. However, in some cases, the normalization by deviance can produce low absolute percentage error in external validation. For example, the median absolute percentage error for CloudStore can be reduced to 9\% using normalization by deviance. 
+\noindent \textbf{The prediction error illustrates discrepancies between models built in virtual and physical environments.} Although the significant independent variables in the models built by the performance testing results in the virtual and physical environments are different, the model may have similar prediction results due to correlations between metrics. However, we find that the external prediction errors are higher than internal prediction errors for all four models from the virtual and physical environments for the two subject systems. In particular, Table~\ref{tab:errors} shows the prediction errors using normalization based on load is always higher than that of the internal validation. For example, the median absolute percentage error for CloudStore using normalization by load is 632\% and 483\% for the models built in the physical environment and virtual environment, respectively; while the median absolute percentage error in interval validation is only 2\% and 10\% for the models built in the physical and virtual environments, respectively. However, in some cases, the normalization by deviance can produce low absolute percentage error in external validation. For example, the median absolute percentage error for CloudStore can be reduced to 9\% using normalization by deviance. 
 
-We think the reason is that the normalization based on load performs better, even though is shown to be effective in prior research~\cite{Nguyen:2012:ADP:2188286.2188344}, assumes a linear relationship between the performance metric and the system load. However, such an assumption may not be true in some performance testing results. For example, Table~\ref{tab:top10ds2p} shows that some I/O related metrics do have low correlation with the system load in virtual environments. On the other hand, the normalization based on deviance shows much lower prediction error. We think the reason is that the virtual environments may introduce metric values with high variance. Normalizing based on the deviance controls such variance, leading to lower prediction errors.
+One possible reason is that the normalization based on load performs better, even though is shown to be effective in prior research~\cite{Nguyen:2012:ADP:2188286.2188344}, assumes a linear relationship between the performance metric and the system load. However, such an assumption may not be true in some performance testing results. For example, Table~\ref{tab:top10ds2p} shows that some I/O related metrics do have low correlation with the system load in virtual environments. On the other hand, the normalization based on deviance shows much lower prediction error. We think the reason is that the virtual environments may introduce metric values with high variance. Normalizing based on the deviance controls such variance, leading to lower prediction errors.
 
 %\ian{todo} Tables 7-10 show the results of our approach. In Table 7, for our subject system DS2, we see that the statistically significant metrics for the GLM from both of our environments are different. The significant of the performance metrics in an GLM is environment dependent. Due to automatic selection of metrics we see a high fit and lower \textit{MAPE} values for our environments. Table 8 shows us the results when the model from the virtual was applied to predict load for the physical server and vice-versa. We observe a an immensely high \textit{MAPE} value for the former while physical-virtual prediction is almost 50\%. This means that the predicted and actual values of the workload have a mean absolute error percentage of almost 50\%. When the same set of metrics from the virtual environment were scaled the MAPE value for DS2 reduces drastically.
 
@@ -453,6 +452,27 @@ We think the reason is that the normalization based on load performs better, eve
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
+
+
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+%\begin{table}trbh]
+%	\centering
+%	\caption{My caption}
+%	\label{my-label}
+%	\begin{tabular}{|c|c|c|}
+%		\hline
+%		\multirow{2}{*}{Rank} & \multicolumn{2}{c|}{\textbf{Environment}} \\ \cline{2-3} 
+%		& Physical & Virtual \\ \hline
+%	\end{tabular}
+%\end{table}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+
 \begin{table}[tbh]
 	\centering
 	\caption{Summary of statistical models built for DS2. The metrics listed in the table are the significant independent variables.}
@@ -463,92 +483,20 @@ We think the reason is that the normalization based on load performs better, eve
 			\textbf{Environment} & \textbf{Physical} & \textbf{Virtual} \\ %\hline
 			\midrule
 			\midrule
-			\textbf{Ranking} & 1. Web Server IO Other Bytes/sec & 1. Web Server IO Other Bytes/sec \\ \hline
-			\textbf{} & 2. Web Server Page Faults/sec & 2. DB server Working Set - Peak \\ \hline
-			\textbf{} & 3. DB Server Page Faults/sec & 3. Web Server Virtual Bytes \\ \hline
-			\textbf{} & 4. DB Server IO Write Bytes/sec & 4. Web Server Page Faults/sec \\ \hline
-			\textbf{} & 5. Web Server IO Read Bytes/sec & 5. DB Server Page Faults/sec \\ \hline
-			\textbf{} & 6. DB Server User Time & 6. DB Server IO Data Ops/sec \\ \hline
-			\textbf{} & 7. DB Server Pool Paged Bytes &  \\ \hline
-			\textbf{} & 8. DB Server Privileged Time &  \\ %\hline
+			\textbf{1} & Web Server IO Other Bytes/sec & Web Server IO Other Bytes/sec \\ \hline 
+			\textbf{2} & Web Server Page Faults/sec & DB server Working Set - Peak \\ \hline
+			\textbf{3} & DB Server Page Faults/sec & Web Server Virtual Bytes \\  \hline
+			\textbf{4} & DB Server IO Write Bytes/sec & Web Server Page Faults/sec \\ \hline
+			\textbf{5} & Web Server IO Read Bytes/sec & DB Server Page Faults/sec \\ \hline
+			\textbf{6} & DB Server User Time & DB Server IO Data Ops/sec \\ \hline
+			\textbf{7} & DB Server Pool Paged Bytes & -  \\ \hline
+			\textbf{8} & DB Server Privileged Time &  - \\ \hline
 			\midrule
 				\textbf{$R^2$}  & 94.6\% & 66.90\% \\ \hline
 %			\textbf{MAPE} & 4.00\% & 10.52\% \\ \hline
 		\end{tabular}%
 	}
 \end{table}
-%
-%	\begin{table}[tbh]
-%		\centering
-%			\caption{DS2: Prediction errors cross-environments}
-%			\label{resultRQ3}
-%			\begin{tabular}{c|c}
-%				\toprule
-%				\textbf{Training - Testing}   & \textbf{MAPE}\\  
-%				\midrule 
-%				Physical-Virtual       & 49.97\% \\
-%				Virtual - Physical        & 6033.16\% \\
-%				Virtual - Physical \textbf{(after scaling)}      & 16.04\% \\
-%				\bottomrule             
-%			\end{tabular}
-%	\end{table}
-
-
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-%\begin{table}[tbh]
-		%	\centering
-		%	\caption{DS2: Prediction errors cross-environments}
-		%	\label{my-label}
-		%	%\resizebox{\columnwidth}{!}{%
-		%		\begin{tabular}{|c|c||c|}
-		%			\hline
-		%			\textbf{Training} & \textbf{Testing} & \textbf{MAPE} \\ %\hline
-		%			\midrule
-		%			\midrule
-		%			Virtual & Physical & 16.04\% \\ \hline
-		%			Phyiscal & Virtual & 25.33\% \\ \hline
-		%		\end{tabular}%
-		%	%}
-		%\end{table}
-%	
-%	
-%	\begin{table}[tbh]
-%		\centering
-%			\caption{CloudStore: Ranking of Performance Counters and Prediction errors}
-%			\label{tab:resultRQ1}
-%			\resizebox{\columnwidth}{!}{%
-%				\begin{tabular}{c||cc}
-%					\toprule
-%					\textbf{Training-Testing} & \textbf{Physical - Physical} & \textbf{Virtual - Virtual} \\  
-%					\midrule 
-%					\textbf{Ranking}     & 1. Web Server Privileged Time & 1. Web Server IO Data Bytes/sec \\
-%					\\
-%					& 2. Database Server Privileged Time & 2. Database Server User Time \\
-%					\\
-%					& 3. Web Server Page Faults/sec & 3.Database Server IO Other Bytes/sec\\
-%					\\
-%					& 4. Web Server Virtual Bytes & 4.Database Server Page Faults/sec\\
-%					\\
-%					& 5. Database Server Pool Nonpaged Bytes & \\
-%					\\
-%					& 6. Database Server Page Faults/sec & \\
-%					\\
-%					& 7. Database Server Page File Bytes &\\
-%					\\
-%					& 8. Database Server Working Set &\\
-%					\\
-%					\midrule
-%					\textbf{Fit} &  85.20\% &  89.10\% \\
-%					\midrule
-%					\textbf{MAPE} & 15.75\% & 4.70\% \\
-%					\bottomrule             
-%				\end{tabular}%
-%			}
-%	\end{table}
-%	%\end{landscape}
-%	
-
 
 
 \begin{table}[tbh]
@@ -561,14 +509,14 @@ We think the reason is that the normalization based on load performs better, eve
 		\textbf{Environment} & \textbf{Physical} & \textbf{Virtual} \\ %\hline
 		\midrule
 		\midrule
-		\textbf{Ranking} & 1. Web Server Privileged Time & 1. Web Server IO Write Ops/sec \\ \hline
-		\textbf{} & 2. DB Server Privileged Time & 2. DB Server IO Read Ops/sec \\ \hline
-		\textbf{} & 3. Web Server Page Faults/sec & 3. Web Server Privileged Time \\ \hline
-		\textbf{} & 4. Web Server Virtual Bytes & 4. DB Server Privileged Time \\ \hline
-		\textbf{} & 5. Web Server Page File Bytes Peak & 5. DB Server IO Other Bytes/sec \\ \hline
-		\textbf{} & 6. DB Server Pool Nonpaged Bytes & 6. DB Server Pool Nonpaged Bytes \\ \hline
-		\textbf{} & 7. DB Server Page Faults/sec &  \\ \hline
-		\textbf{} & 8. DB Server Working Set &  \\ %\hline
+		\textbf{1} & Web Server Privileged Time & Web Server IO Write Ops/sec \\ \hline
+		\textbf{2} & DB Server Privileged Time & DB Server IO Read Ops/sec \\ \hline
+		\textbf{3} & Web Server Page Faults/sec &  Web Server Privileged Time \\ \hline
+		\textbf{4} & Web Server Virtual Bytes & DB Server Privileged Time \\ \hline
+		\textbf{5} & Web Server Page File Bytes Peak &  DB Server IO Other Bytes/sec \\ \hline
+		\textbf{6} & DB Server Pool Nonpaged Bytes & DB Server Pool Nonpaged Bytes \\ \hline
+		\textbf{7} & DB Server Page Faults/sec & -  \\ \hline
+		\textbf{8} & DB Server Working Set & - \\ %\hline
 		\midrule
 		\textbf{$R^2$} & 85.30\% & 90.20\% \\ \hline
 %		\textbf{MAPE} & 15.63\% & 3.65\% \\ \hline
@@ -624,7 +572,7 @@ We think the reason is that the normalization based on load performs better, eve
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-			The statistical models built by performance testing results in virtual and physical environments have discrepancy. Normalizing the performance metrics by deviance may minimize such discrepancy and may be consider by practitioners before examining performance testing results.
+			We find that the statistical models built by performance testing results in an environment can not advocate for the other environment due to discrepancies present. Normalizing the performance metrics by deviance may minimize such discrepancy and should be considered by practitioners before examining performance testing results.
 	}%
 }
 
