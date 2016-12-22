@@ -6,3 +6,6 @@
 *.spl
 *.gz
 .DS_Store
+*.aux
+
+emse/main.pdf
