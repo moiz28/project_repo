@@ -2,33 +2,24 @@
 In the previous section, we find that there is a discrepancy between performance testing results from the virtual and physical environments. However, such discrepancy can also be due to other factors such 1) the instability of the virtual environments, 2) the virtual machine that we used or 3) the different hardware resources on the virtual environments. Therefore, in this section, we examine the impact of such factors to better understand our results. 
 
 
-\subsection{Instability of virtual environment}
+\subsection{Investigating the stability of virtual environments}
 
-\subsubsection{Motivation}
+We perform our in one virtual environment and compare the performance metrics to the physical environment. However, the stability of the results obtained from the virtual enviroment need to be validated, in particular since VMs tend to be highly sensitive to the environment that they run in \todo{can we add a citation here}.
 
-A major challenge in our case studies was to make our virtual environment stable. If the performance of virtual machines are unstable, the observed discrepancy in Section~\ref{sec:results} may be due to the instability of virtual environment. We address the hypothesis that if our virtual environment was unstable, then the performance testing results should not be repeatable and congruent between different runs in the same virtual environment. 
-
-\subsubsection{Approach}
+%A major challenge in our case studies was to make our virtual environment stable. If the performance of virtual machines are unstable, the observed discrepancy in Section~\ref{sec:results} may be due to the instability of virtual environment. We address the hypothesis that if our virtual environment was unstable, then the performance testing results should not be repeatable and congruent between different runs in the same virtual environment. 
 
 In order to study whether the virtual environment is stable, we repeat the same performance tests, twice, on the virtual environments for both subject systems. In total, we had results from three performance tests. We perform the data analysis in Section~\ref{sec:model} by building statistical models using performance metrics. %Table~\ref{tab:stabilityvm} shows the median absolute percentage error from building a model using one virtual environment and testing on another virtual environment. 
 As the previously mentioned approach, we build a model based on one of the runs, serving as our training data for the model, and tested it on another run. In this case, we define external validation when a model is trained on a different run than it is tested on. We validate our model by predicting the throughput of a different run.  
  
- \subsubsection{Results}
-Values(prediction error) closer to 0 indicate that our model was able to successfully explain the variation of the throughput of a different run. This also means that the external validation error closer to 1 or higher depicts an instability of the environment. We find that external validation error (0.04 and 0.13 for CloudStore and DS2) is almost as low as the internal validation error (0.03 and 0.09 for CloudStore and DS2). Such low error shows that the performance testing results from the virtual environments are rather stable. 
+Prediction error values \emad{can you cite the equation used to measure this prediction error} closer to 0 indicate that our model was able to successfully explain the variation of the throughput of a different run. This also means that the external validation error closer to 1 or higher depicts an instability of the environment. We find the external validation error to be 0.04 and 0.13 for CloudStore and DS2, respectively. The internal validation error is 0.03 and 0.09 for CloudStore and DS2, respectively. Such low error values show that the performance testing results from the virtual environments are rather stable. 
 
-\subsection{Virtual machine software for the virtual environment}
+\subsection{Investigating the Impact of Specific Virtual Machine Software}
 
-\subsubsection{Motivation}
+In all of our experiments, we used the Virtual Box software to setup our virtual environment. However, there exist a plethora of VM software (i.e., it can be argued that our chosen subject systems behave differently in another environment). The question that arises then is whether the choice of VM software impacts our findings. In order to address the aforementioned hypothesis, we set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual Box.
 
-We also investigated the impact of choosing different virtual machine software on our experimental results. It can be argued that our chosen subject systems behave differently in another environment. In order to address the aforementioned hypothesis, we set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual Box.
+To investigate this phenomena, we repeat the performance tests for both subject systems. We train statistical models on the performance testing results from VMWare and test on the results from both the original virtual environment data (Virtual Box) and the results from the physical environments. We could not apply the normalization by deviance for the data from VMWare since some of the significant metrics in the model have a median absolute deviance of 0, making the normalized metric value to be infinite (see Equation~\ref{equ:mad}). We only apply the normalization by load. 
 
-\subsubsection{Approach}
-
-
-We repeat the performance tests for both subject systems. We train statistical models on the performance testing results from VMWare and test on the results from both the original virtual environment data (Virtual Box) and the results from the physical environments. We could not apply the normalization by deviance for the data from VMWare since some of the significant metrics in the model have a median absolute deviance of 0, making the normalized metric value to be infinite (see Equation~\ref{equ:mad}). We only apply the normalization by load. 
-
- \subsubsection{Results}
-The low percentage error when our model was tested on Virtual Box in Table~\ref{tab:vmware} shows that the performance testing results from the two different virtual machine software is similar. In addition, the high error when predicting with physical environment agrees with the results when testing with the performance testing results from the Virtual Box (see Table~\ref{tab:errors}). Such results show that the discrepancy observed during our experiment also exits with the virtual environments that are set up with VMWare.
+Table~\ref{tab:vmware} shows that the performance testing results from the two different virtual machine software is similar, as supported by the low percentage error when our model was tested on Virtual Box. In addition, the high error when predicting with physical environment agrees with the results when testing with the performance testing results from the Virtual Box (see Table~\ref{tab:errors}). Such results show that the discrepancy observed during our experiment also exits with the virtual environments that are set up with VMWare.
 
 \begin{table}[tbh]
 	\centering
@@ -46,17 +37,10 @@ The low percentage error when our model was tested on Virtual Box in Table~\ref{
 		\end{tabular}
 \end{table}
 
-\subsection{Resource Allocation}
+\subsection{Investigating the Impact of Allocated Resources}
 
+Another aspect that may impact our results is the resources allocated and the configuration of the virtual environment. As we already were working on an optimal point for our vritual environment to avoid system crashes, we only could increase the allocated resources in order to ensure the execution of the subject systems. \emad{ha? I don't get the previous sentance}
 
-\subsubsection{Motivation}
+To investigate the impact of the allocated resources, we increase the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB. We cannot allocate more resource to the virtual environment since we need to keep resources for the hosting OS. We train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. 
 
-The third hypothesis about our study may be the result of our analysis is based on the resources allocated and the configuration of the virtual environment. As we already were working on an optimal point for our vritual environment to avoid system crashes, we only could increase the allocated resources in order to ensure the execution of the subject systems.
-
-
-\subsubsection{Approach}
-We increase the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB. We cannot allocate more resource to the virtual environment since we need to keep resources for the hosting OS. We train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. 
-
-
-\subsubsection{Results}
-Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when we normalize by load as per Equation~\ref{equ:mad} (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). By altering the resource allocated, such results show the minimal impact to our findings. Moreover, our results demonstrate the ability of reducing the discrepancy in performance testing results by using normalization based on deviance. 
+Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when we normalize by load as per Equation~\ref{equ:mad} (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). By altering the resource allocated, such results show the minimal impact to our findings. Moreover, our results demonstrate the ability of reducing the discrepancy in performance testing results by using normalization based on deviance. \emad{This results part is confusing. I think it needs to be rewritten more clearly.}
