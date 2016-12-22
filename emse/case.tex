@@ -13,11 +13,11 @@
 	\label{fig:Approach}
 \end{figure}
 
-In this section, we present our case study setup. The goal of our case study is to evaluate the discrepancy between performance testing results from virtual and physical environments. An overview of our case study setup is shown in Figure~\ref{fig:Approach}.
+The goal of our case study is to evaluate the discrepancy between performance testing results from virtual and physical environments. An overview of our case study setup is shown in Figure~\ref{fig:Approach}.
 
 
 \subsection{Subject Systems}
-Dell DVD Store (DS2)~\cite{delldvd} is an online multi-tier e-commerce web application that are widely used in performance testing and prior performance engineering research~\cite{Shang:2015:ADP:2668930.2688052,Nguyen:2012:ADP:2188286.2188344, jackicsm2009}. We deploy DS2 on an Apache (Version 3.0.0) web application server with MySQL 5.6 database server~\cite{mysql}. CloudStore~\cite{cloudstore}, our second subject system is an open source application based on the TPC-W benchmark~\cite{tpcw}. CloudStore is widely used to evaluate the performance of cloud computing infrastructure when hosting web-based software systems and is leveraged in prior research~\cite{tarekmsr16}. We deploy CloudStore on \textit{Apache Tomcat}~\cite{tomcat} (version 7.0.65) with MySQL 5.6 database server~\cite{mysql}. 
+Dell DVD Store (DS2)~\cite{delldvd} is an online multi-tier e-commerce web application that is widely used in performance testing and prior performance engineering research~\cite{Shang:2015:ADP:2668930.2688052,Nguyen:2012:ADP:2188286.2188344, jackicsm2009}. We deploy DS2 on an Apache (Version 3.0.0) web application server with MySQL 5.6 database server~\cite{mysql}. CloudStore~\cite{cloudstore}, our second subject system is an open source application based on the TPC-W benchmark~\cite{tpcw}. CloudStore is widely used to evaluate the performance of cloud computing infrastructure when hosting web-based software systems and is leveraged in prior research~\cite{tarekmsr16}. We deploy CloudStore on \textit{Apache Tomcat}~\cite{tomcat} (version 7.0.65) with MySQL 5.6 database server~\cite{mysql}. 
 
 
 \subsection{Environmental Setup}
@@ -37,7 +37,7 @@ The performance tests of the two subject systems are conducted on three machines
 %Following the set up of our subject systems on the respective servers, the systems were exercised with an aid of drivers. These drivers generated multi-type web requests and simulated real-time user behavior depending on the input parameters provided. We ran our performance tests for numerous hours while recording all the performance metrics generated for varying load applied on our software systems.
 \subsection{Performance tests}
 
-DS2 is released with a dedicated load driver program that is designed to exercise DS2 for performance testing. We used the load driver to conduct performance testing on DS2. We used Apache JMeter~\cite{apachejmeter} to generate a workload to conduct the performance tests on CloudStore. For both subject systems, the workload of the performance tests is variated periodically in order to avoid bias from a consistent workload. The workload variation was introduced by the number of threads. A higher number of threads represents a higher number of users accessing the system. Each performance test is run after a 15 minute warming up period of the system and lasts for 9 hours. 
+DS2 is released with a dedicated load driver program that is designed to exercise DS2 for performance testing. We used the load driver to conduct performance testing on DS2. We used Apache JMeter~\cite{apachejmeter} to generate a workload to conduct the performance tests on CloudStore. For both subject systems, the workload of the performance tests is varied periodically in order to avoid bias from a consistent workload. The workload variation was introduced by the number of threads. A higher number of threads represents a higher number of users accessing the system. Each performance test is run after a 15 minute warming up period of the system and lasts for 9 hours. 
 
 
 %and the last 30 minutes in order to 
@@ -52,4 +52,4 @@ DS2 is released with a dedicated load driver program that is designed to exercis
 
 \noindent \textbf{System throughput.} We used the web server access logs from Apache and Tomcat to calculate the throughput of the system by measuring the number of requests per minute. The two data sets were then concatenated and mapped against requests using their respective timestamps.
 
-In order to combine the two datasets of performance metrics and system throughput, and to minimize noise of performance metrics recording, we calculate the mean values of the performance metrics in every minute and combine the datasets of performance metrics and system throughput based on the time stamp on a per minute basis. A similar approach has been applied to address mining performance metrics challenges~\cite{foo2010mining}.
+In order to combine the two datasets of performance metrics and system throughput, and to minimize noise of the performance metric recording, we calculate the mean values of the performance metrics in every minute. Then, we combine the datasets of performance metrics and system throughput based on the time stamp on a per minute basis. A similar approach has been applied to address mining performance metrics challenges~\cite{foo2010mining}.
