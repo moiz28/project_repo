@@ -1,0 +1,102 @@
+\documentclass[12pt]{report}
+
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{fancybox}
+\usepackage{cuthesis}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{csquotes}
+\usepackage{multirow}
+\usepackage{pdflscape}
+\usepackage{subfigure}
+
+
+
+\linespread{1.6}
+
+\author{Muhammad Moiz Arif}
+\title {Thesis Title Here}
+\degree{Master of Applied Science in Software Engineering}
+\dept  {Computer Science and Software Engineering}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define commands for frequently used words or phrases
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\SATD}{self-admitted technical debt\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define commands for your RQs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\chapterIIIrqi}{\textbf{RQ:}}
+\newcommand{\chapterIVrqi}{\textbf{RQ1. \\}}
+\newcommand{\chapterIVrqii}{\textbf{RQ2. \\}}
+\newcommand{\chapterIVrqiii}{\textbf{RQ3. \\}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define command to create a conclusion box to answer your RQs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\conclusionbox}[1]{%
+    \vspace{6mm}
+    \framebox[0.95\textwidth][c]{%
+        \parbox[b]{0.92\textwidth}{%
+            {\it #1}
+        }
+    }
+    \vspace{6mm}
+}
+
+
+\begin{document}
+
+\begin{abstract}
+
+Thesis abstract.
+
+\end{abstract}
+
+\begin{acknowledgments}
+
+Thesis acknowledgments.
+
+\end{acknowledgments}
+
+\begin{publications}
+
+The following publications are related to this thesis:
+
+\begin{enumerate}
+
+\item \textbf{Moiz} 
+
+\item \textbf{Moiz}, 
+\end{enumerate}
+
+\end{publications}
+
+\chapter{Introduction}
+\label{introduction}
+\input{introduction.tex}
+
+\chapter{Literature Review}
+\label{literature_review}
+\input{literature_review.tex}
+
+\chapter{Chapter 3 Title}
+\label{chapter3}
+\input{chapter3.tex}
+
+\chapter{Chapter 4 Title}
+\label{chapter4}
+\input{chapter4.tex}
+
+\chapter{Summary, Contributions and Future Work}
+\label{conclusion}
+\input{conclusion.tex}
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bibliography.bib}  
+\bibliographystyle{alpha}
+\end{document}
