@@ -12,6 +12,35 @@
 \usepackage{pdflscape}
 \usepackage{subfigure}
 
+%\usepackage{graphicx}
+%\usepackage{balance}
+\usepackage{amssymb,amsmath}
+%\usepackage{wrapfig}
+%\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{times}
+%\usepackage{cite}
+%\usepackage{fancybox}
+%\usepackage{color}
+%\usepackage{array}
+%\usepackage{subfigure}
+%\usepackage{epstopdf}
+%\usepackage{booktabs}
+%\usepackage{caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+%\usepackage{subfig}
+%\usepackage{xspace}
+%\usepackage[hyphens]{url}
+%\usepackage[hidelinks]{hyperref}
+%\hypersetup{breaklinks=true}
+%\urlstyle{same}
+%\def\UrlBreaks{\do\/\do-} %to break the urls, all in one line
+%\newcommand{\ian}[1]{\textcolor{blue}{{\it [Ian: #1]}}}
+%\newcommand{\emad}[1]{\textcolor{green}{{\it [Emad: #1]}}}
+%\newcommand{\todo}[1]{\textcolor{red}{{\it [TODO: #1]}}}
+
 
 
 \linespread{1.6}
@@ -53,7 +82,9 @@
 
 \begin{abstract}
 
-Thesis abstract.
+Large software systems often undergo performance tests to ensure their capability to handle expected loads. These performance tests often consume large amounts of computing resources and time since heavy loads need to be generated. Making it worse, the ever evolving field requires frequent updates to the performance testing environment. In practice, virtual machines (VMs) are widely exploited to provide flexible and less costly environments for performance tests. However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results. Yet, little or no research has studied the overhead and impact on test results of using VMs in performance testing activities. 
+
+To evaluate the discrepancy between the performance testing results from virtual and physical environments, we perform a case study on two open source systems - namely Dell DVD Store and CloudStore. We conduct the same performance tests in both virtual and physical environments and compare the performance testing results based on the three aspects that are typically examined for performance testing results: 1) individual performance metrics (e.g. CPU Time from virtual environment vs. CPU Time from physical environment), 2) the relationship among performance metrics (e.g. correlation between CPU and I/O) and 3) performance models that are built to predict system performance. Our results show that 1) individual performance metrics from virtual and physical environments do not follow the same distribution hence practitioners cannot simply use a scaling factor to compare the performance between environments,  2) correlations among performance metrics in virtual environments are different from those in physical environments 3) statistical models built based on the performance counters from virtual environments are different from the models built from physical environments suggesting that practitioners cannot use the performance testing results across virtual and physical environments. In order to assist the practitioners leverage performance testing results in both environments, we also investigate ways to transform results from virtual and physical environments and performance metrics based on deviance may reduced the discrepancy between performance metrics. Overall, we recommend that practitioners should not simply assume that performance testing results done on virtual environments will be the same in physical environments.
 
 \end{abstract}
 
@@ -71,7 +102,7 @@ The following publications are related to this thesis:
 
 \item \textbf{Moiz} 
 
-\item \textbf{Moiz}, 
+%\item \textbf{Moiz}, 
 \end{enumerate}
 
 \end{publications}
@@ -88,15 +119,12 @@ The following publications are related to this thesis:
 \label{chapter3}
 \input{chapter3.tex}
 
-\chapter{Chapter 4 Title}
-\label{chapter4}
-\input{chapter4.tex}
 
 \chapter{Summary, Contributions and Future Work}
 \label{conclusion}
 \input{conclusion.tex}
 
-\addcontentsline{toc}{chapter}{Bibliography}
+%\addcontentsline{toc}{chapter}{Bibliography}
 \bibliography{bibliography.bib}  
 \bibliographystyle{alpha}
 \end{document}
