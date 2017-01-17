@@ -7,7 +7,7 @@
 	\centering
 	\includegraphics[width=1\textwidth]{figures/overview.pdf}
 	\caption{Approach Figure example}
-	\label{chap3:fig:approach}
+	\label{fig:Approach}
 \end{figure}
 
 
@@ -66,7 +66,7 @@ In order to combine the two datasets of performance metrics and system throughpu
 
 
 
-The goal of our study is to evaluate the discrepancy between performance testing results from virtual and physical environments, particularly considering the impact of discrepancy on the analysis of such results. We do not predict the applications' performance or throughput based on the amount of work done by the underlying architecture or the overhead induced by the virtual environment. Instead, our experiments are set in the context of analyzing performance testing data, based on the related work. Shown in Section~\ref{sec:related}, prior research and practitioners examines performance testing results in three types of approaches: 1) examining individual performance metrics, 2) examining the relationship among performance metrics and 3) building statistical models using performance metrics. Therefore, our experiments focus on examining the discrepancy that may impact three such approaches.
+The goal of our study is to evaluate the discrepancy between performance testing results from virtual and physical environments, particularly considering the impact of discrepancy on the analysis of such results. We do not predict the applications' performance or throughput based on the amount of work done by the underlying architecture or the overhead induced by the virtual environment. Instead, our experiments are set in the context of analyzing performance testing data, based on the related work. Shown in Section ??, prior research and practitioners examines performance testing results in three types of approaches: 1) examining individual performance metrics, 2) examining the relationship among performance metrics and 3) building statistical models using performance metrics. Therefore, our experiments focus on examining the discrepancy that may impact three such approaches.
 
 
 
@@ -680,9 +680,10 @@ Table~\ref{tab:vmware} shows that the performance testing results from the two d
 
 \begin{table}[tbh]
 	\centering
+%\resizebox{\textwidth}{!}
 	\caption{Median absolute percentage error from building a model using VMWare data.}
 	\label{tab:vmware}
-	\begin{tabular}{|c||c|c|}
+	\resizebox{\textwidth}{!}{\begin{tabular}{|c||c|c|}
 		\hline
 		\multirow{2}{*}{\textbf{Validation type}} & \multicolumn{2}{c|}{\textbf{Median absolute percentage error}} \\ \cline{2-3} 
 		& \textbf{CloudStore} & \textbf{DS2} \\ %\hline
@@ -691,7 +692,7 @@ Table~\ref{tab:vmware} shows that the performance testing results from the two d
 		External validation with Virtual Box results& 0.07&0.10\\ \hline
 		%			External validation with physical normalization by deviance & 0.07 &0.06 \\ \hline
 		External validation with physical normalization by load & 7.52& 1.63 \\ \hline
-	\end{tabular}
+	\end{tabular}}
 \end{table}
 
 \subsection{Investigating the Impact of Allocated Resources}
