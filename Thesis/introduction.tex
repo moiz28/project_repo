@@ -1,12 +1,6 @@
 % -*- root: cuthesis_masters.tex -*-  
 
-At the core of any software system is the software team who develop it...
-
-
-
-
-
-
+%At the core of any software system is the software team who develop it...
 
 \section{Introduction}
 %Cloud computing has eliminated the need for hardware decisions. It is now a significant part of the IT industry incorporating not only the leading names like \textit{Facebook, Amazon, Google} etc but also small-scaled business ventures that are migrating on to a cloud based environment. According to a survey \textit{'survey'}, up to 70\% of the companies are moving from conventional physical data servers? to cloud based servers. The primary concerns when migrating are, usually, costs, availability performance etc of the system. 
@@ -57,7 +51,7 @@ Prior studies show that virtual environments are widely exploited in practice~\c
 
 
 %what we do
-In this paper, we perform a study on two open-source systems, DS2~\cite{delldvd} and CloudStore~\cite{cloudstore}, where performance tests are conducted on virtual and physical environments. Our study focuses on the discrepancy between the two environments, the impact of discrepancy on performance testing results and highlights potential opportunities to minimize the discrepancy. In particular, we compare performance testing results from virtual and physical environments based on the three widely examined aspects, i.e., individual performance metric, the relationship between the performance metrics and models that predict performance. 
+In this thesis, we perform a study on two open-source systems, DS2~\cite{delldvd} and CloudStore~\cite{cloudstore}, where performance tests are conducted on virtual and physical environments. Our study focuses on the discrepancy between the two environments, the impact of discrepancy on performance testing results and highlights potential opportunities to minimize the discrepancy. In particular, we compare performance testing results from virtual and physical environments based on the three widely examined aspects, i.e., individual performance metric, the relationship between the performance metrics and models that predict performance. 
 %by running performance tests in both virtual and physical environments. We compare the performance test results that are generated from both the environments. In particular, we compare the performance testing results by 1) examining individual performance metric, 2) examining relationship among performance metrics and 3) building statistical models using performance metrics. 
 
 %what we find
@@ -87,13 +81,53 @@ In this paper, we perform a study on two open-source systems, DS2~\cite{delldvd}
 %\end{description}
 
 \section{Research Hypothesis}
+Prior research and our industrial experience lead us to an investigation based on the following hypothesis:
+%	\fbox{%
+%		\parbox{\textwidth}{%
+%			\textit{
+%			For large-scale software systems, performance assurance activities are carried primarily in virtual environments. There is little research regarding the reliability of testing in a different environment compared to physical. We hypothesize that for software testing activities there exists a discrepancy between physical and virtual environments. We believe that the approaches used so far do not scale well. 
+%			Furthermore, we believe practitioners should be aware of such existing discrepancies when analyzing software performance in a foreign environment.
+%				   }
+%		}%
+%	}
+	
+\begin{framed}
+		\textit{For large-scale software systems, performance assurance activities are carried primarily in virtual environments. There is little research regarding the reliability of testing in a different environment compared to physical. We hypothesize that for software testing activities there exists a discrepancy between physical and virtual environments. We believe that the approaches used so far do not scale well.} 
+		\par 	
+		\textit{Furthermore, we believe practitioners should be aware of such existing discrepancies when analyzing software performance in a foreign environment.}
+\end{framed}
+
 
 
 \section{Thesis Overview}
 
 %The rest of the paper is organized as follows. Section~\ref{sec:related} presents the background and related work. Section~\ref{sec:case} presents the case study setup. Section~\ref{sec:results} presents the results of our cases study, followed by a discussion of our results in Section~\ref{sec:discussion}. Section~\ref{sec:threats} discusses the threats to validity of our findings. Finally, Section~\ref{sec:conclusion} concludes this paper.
 
+\textbf{Chapter 2: Literature Review:} In this chapter, we discuss the related work that has discussed performance assurance activities carried out in virtual environments and the associated overhead caused by it. The chapter is divided in two parts:
+
+	\textbf{Part I:} Addresses the methodologies that are used to detect performance anomalies. We present the work sub divided into three categories: individual performance metrics, relationship among performance metrics, statistical modeling based on performance metrics.   
+	
+    \textbf{Part II:} Addresses the work that points to the overheads present in virtual environments. We present the state-of-the-art approaches used to detect performance anomalies and how such approaches helps us in detection of overheads. The chapter wraps up by comparing the current limitations and our work in the field of performance engineering.
+
+From the literature review, we deduced that a lot of work has been affiliated to the generation of performance alarms and the detection of performance issues however little work has highlighted the reliability of testing done in virtual environments.
+\\
+
+\noindent\textbf{Chapter 3: Testing For the Ubiety of Discrepancy:} In this chapter, we perform case studies on two open source subject systems. We generate the performance metrics by applying realistic and varying workloads in identically set up physical and virtual environments. Followed up data cleansing and removing any reasonable outliers present in our data. Next, we analyze the performance metrics in three possible ways: individually, as a collection, and as an input to statistical models. 
+\\
+
+\noindent\textbf{Chapter 4: Studying the impact of modifying the virtual environment}
+Furthermore, we elaborate and solidify the conclusion drawn by discussing possibilities as how the use of virtual environments may effect our results: by changing the type of the virtual machine, by modifying the allocated resources and testing the repeatability(hence the stability) of our chosen virtual environment.
+Lastly, we discuss the threats to validity for this thesis.
+\\
+
 
 \section{Thesis Contributions}
 
-We find that 1) performance metrics have different shapes of distributions and trends in virtual environments compared to physical environments 2) there are large differences in correlations among performance metrics measured in virtual and physical environments, and 3) statistical models using performance metrics from virtual environments do not apply to physical environments (i.e., produce high prediction error) and vice versa. Then, we examined the feasibility of using normalizations to help alleviate the discrepancy between performance metrics. We find that in some cases, normalizing performance metrics based on deviance may reduce the prediction error when using performance metrics collected from one environment and applying it on another. Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment. The overhead from virtual environments does not only impact the scale of the performance metrics, but also impacts the relationship among performance metrics. On the other hand, we find that practitioners who leverage both, virtual and physical environments, may be able to reduce the discrepancy that may arise due to the environment (i.e., virtual vs. physical) by applying normalization techniques.
+The major contributions of thesis are as follows:
+
+\begin{itemize}
+	\item Performance metrics have different shapes of distributions and trends in virtual environments compared to physical environments.
+	\item There are large differences in correlations among performance metrics measured in virtual and physical environments.
+	\item statistical models using performance metrics from virtual environments do not apply to physical environments (i.e., produce high prediction error) and vice versa.
+	\item  Then, we examined the feasibility of using normalizations to help alleviate the discrepancy between performance metrics. We find that in some cases, normalizing performance metrics based on deviance may reduce the prediction error when using performance metrics collected from one environment and applying it on another. Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment. The overhead from virtual environments does not only impact the scale of the performance metrics, but also impacts the relationship among performance metrics. On the other hand, we find that practitioners who leverage both, virtual and physical environments, may be able to reduce the discrepancy that may arise due to the environment (i.e., virtual vs. physical) by applying normalization techniques.
+\end{itemize}
