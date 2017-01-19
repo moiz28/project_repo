@@ -1,59 +1,70 @@
-% -*- root: cuthesis_masters.tex -*-
-\section{Introduction}
-\label{chap4:sec:introduction}
 
-\section{Approach}
-\label{chap4:sec:approach}
+In the previous section, we find that there is a discrepancy between performance testing results from the virtual and physical environments. However, such discrepancy can also be due to other factors such 1) the instability of the virtual environments, 2) the virtual machine that we used or 3) the different hardware resources on the virtual environments. Therefore, in this section, we examine the impact of such factors to better understand our results. 
 
 
-\section{Experiment Results}
-\label{chap4:experiment_results}
+\subsection{Investigating the stability of virtual environments}
 
-% \begin{landscape}
-% \begin{table*}[!thb]
-%     \centering
-%         \caption{Landscape Table Example}
-%         \label{chap4:tbl:improvement_f1measure}
-%         \resizebox{\columnwidth}{!}{%
-%         \begin{tabular}{l| c c c c c| c c c c c}
-%         \toprule
-        
-%         % draw first line. The * centralizes the Project column, then set the total size of columns that we have
-%         \multirow{5}{*}{\textbf{\thead{Project}}} & \multicolumn{5}{c|}{\textbf{\thead{Design Debt}}} & \multicolumn{5}{c}{\textbf{\thead{Requirement Debt}}} 
-%         % indicates that from now on we are filling the content of the next line
-%         \\ 
-%         \cmidrule{2-6}
-%         \cmidrule{7-11}
-%         % remainder columns
-%         & {\textbf{\thead{Our\\Approach}}} & {\textbf{\thead{Comment\\Patterns}}} & {\textbf{\thead{Random\\Classifier}}} & {\textbf{\thead{Imp. Over\\Comment\\Patterns}}} & {\textbf{\thead{Imp. Over\\Random\\Classifier}}} & {\textbf{\thead{Our\\Approach}}} & {\textbf{\thead{Comment\\Patterns}}} & {\textbf{\thead{Random\\Classifier}}} & {\textbf{\thead{Imp. Over\\Comment\\Patterns}}} & {\textbf{\thead{Imp. Over\\Random\\Classifier}}} \\
-  
-%         \midrule                                                  
-%         \textbf{Ant}       &0.517&0.237&0.044&2.1$\times$& 11.7 $\times$&0.154&0.000&0.006&-             & 25.6$\times$  \\
-%         \textbf{ArgoUML}   &0.814&0.107&0.144&7.6$\times$& 5.6  $\times$&0.595&0.000&0.079&-             & 7.5 $\times$  \\
-%         \textbf{Columba}   &0.601&0.264&0.037&2.2$\times$& 16.2 $\times$&0.804&0.117&0.013&6.8  $\times$ & 61.8$\times$  \\
-%         \textbf{EMF}       &0.470&0.231&0.034&2.0$\times$& 13.8 $\times$&0.381&0.000&0.007&-             & 54.4$\times$  \\
-%         \textbf{Hibernate} &0.744&0.227&0.193&3.2$\times$& 3.8  $\times$&0.476&0.000&0.041&-             & 11.6$\times$  \\
-%         \textbf{JEdit}     &0.509&0.342&0.037&1.4$\times$& 13.7 $\times$&0.091&0.000&0.003&-             & 30.3$\times$  \\
-%         \textbf{JFreeChart}&0.492&0.282&0.077&1.7$\times$& 6.3  $\times$&0.321&0.000&0.007&-             & 45.8$\times$  \\
-%         \textbf{JMeter}    &0.731&0.194&0.072&3.7$\times$& 10.1 $\times$&0.237&0.148&0.005&1.6 $\times$  & 47.4$\times$  \\
-%         \textbf{JRuby}     &0.783&0.620&0.123&1.2$\times$& 6.3  $\times$&0.435&0.409&0.043&1.0 $\times$  & 10.1$\times$  \\
-%         \textbf{SQuirrel}  &0.540&0.175&0.055&3.0$\times$& 9.8  $\times$&0.541&0.000&0.014&-             & 38.6$\times$  \\
-%         \midrule 
-%         \textbf{Average}   &0.620&0.267&0.081&2.3$\times$&7.6   $\times$&0.403&0.067&0.021&6.0 $\times$  & 19.1$\times$ \\ 
-%         \bottomrule
-%         \end{tabular}
-%     }    
-% \end{table*}
-% \end{landscape}
+Thus far, we perform our case studies in one virtual environment and compare the performance metrics to the physical environment. However, the stability of the results obtained from the virtual environment need to be validated, in particular since VMs tend to be highly sensitive to the environment that they run in \cite{leitner}.
 
-\section{Discussion}
-\label{chap4:sec:discussion}
+%A major challenge in our case studies was to make our virtual environment stable. If the performance of virtual machines are unstable, the observed discrepancy in Section~\ref{sec:results} may be due to the instability of virtual environment. We address the hypothesis that if our virtual environment was unstable, then the performance testing results should not be repeatable and congruent between different runs in the same virtual environment. 
 
-\section{Related Work}
-\label{chap4:sec:related_work}
+In order to study whether the virtual environment is stable, we repeat the same performance tests, twice, on the virtual environments for both subject systems. In total, we had results from three performance tests. We perform the data analysis in Section~\ref{sec:model} by building statistical models using performance metrics. %Table~\ref{tab:stabilityvm} shows the median absolute percentage error from building a model using one virtual environment and testing on another virtual environment. 
+As the previously mentioned approach, we build a model based on one of the runs, serving as our training data for the model, and tested it on another run. In this case, we define external validation when a model is trained on a different run than it is tested on. We validate our model by predicting the throughput of a different run.  
+ 
+Prediction error values (see section 4.3.5) closer to 0 indicate that our model was able to successfully explain the variation of the throughput of a different run. This also means that the external validation error closer to 1 or higher depicts instability of the environment. We find the external validation error to be 0.04 and 0.13 for CloudStore and DS2, respectively. The internal validation error is 0.03 and 0.09 for CloudStore and DS2, respectively. Such low error values show that the performance testing results from the virtual environments are rather stable. 
 
-\section{Threats to Validity}
-\label{chap4:sec:threats_to_validity}
+\subsection{Investigating the Impact of Specific Virtual Machine Software}
 
-\section{Conclusion and Future Work}
-\label{chap4:sec:conclusion}
+In all of our experiments, we used the Virtual Box software to setup our virtual environment. However, there exist a plethora of VM software (i.e., it can be argued that our chosen subject systems behave differently in another environment). The question that arises then is whether the choice of VM software impacts our findings. In order to address the aforementioned hypothesis, we set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual Box.
+
+To investigate this phenomenon, we repeat the performance tests for both subject systems. We train statistical models on the performance testing results from VMWare and test on the results from both the original virtual environment data (Virtual Box) and the results from the physical environments. We could not apply the normalization by deviance for the data from VMWare since some of the significant metrics in the model have a median absolute deviance of 0, making the normalized metric value to be infinite (see Equation~\ref{equ:mad}). We only apply the normalization by load. 
+
+Table~\ref{tab:vmware} shows that the performance testing results from the two different virtual machine software is similar, as supported by the low percentage error when our model was tested on Virtual Box. In addition, the high error when predicting with physical environment agrees with the results when testing with the performance testing results from the Virtual Box (see Table~\ref{tab:errors}). Such results show that the discrepancy observed during our experiment also exits with the virtual environments that are set up with VMWare.
+
+\begin{table}[tbh]
+	\centering
+	%\resizebox{\textwidth}{!}
+	\caption{Median absolute percentage error from building a model using VMWare data.}
+	\label{tab:vmware}
+	\resizebox{\textwidth}{!}{\begin{tabular}{|c||c|c|}
+			\hline
+			\multirow{2}{*}{\textbf{Validation type}} & \multicolumn{2}{c|}{\textbf{Median absolute percentage error}} \\ \cline{2-3} 
+			& \textbf{CloudStore} & \textbf{DS2} \\ %\hline
+			\midrule
+			\midrule
+			External validation with Virtual Box results& 0.07&0.10\\ \hline
+			%			External validation with physical normalization by deviance & 0.07 &0.06 \\ \hline
+			External validation with physical normalization by load & 7.52& 1.63 \\ \hline
+		\end{tabular}}
+	\end{table}
+	
+	
+\subsection{Investigating the Impact of Allocated Resources}
+
+Another aspect that may impact our results is the resources allocated and the configuration of the virtual environment. We did not decrease the system resources as decreasing the resources may lead to crashes in the testing environment.
+
+To investigate the impact of the allocated resources, we increase the computing resources allocated to the virtual environments by increasing the CPU to be 3 cores and increasing the memory to be 5GB. We cannot allocate more resource to the virtual environment since we need to keep resources for the hosting OS. We train statistical models on the new performance testing results and tested it on the performance testing results from the physical environment. 
+
+Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when we normalize by load as per Equation~\ref{equ:mad} (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). We conclude that our findings still hold when the allocated resources are changed and this change has minimal impact on the results of our case studies.
+
+
+\subsection{External validity.}
+We chose two subject systems, CloudStore and DS2 for our study and two virtual machine software, VirtualBox and VMware. The two subject systems have years of history and prior performance engineering research has studied both systems~\cite{jackicsm2009,Nguyen:2012:ADP:2188286.2188344,tarekmsr16}. The virtual machine software that we used is widely used in practice. Nevertheless more case studies on other subject systems in other domains with other virtual machine software are needed to evaluate our findings. We also present our results based on our subject systems only and do not generalize for all the virtual machines.
+
+%Also, we made sure that our virtual environment is set up exactly the same as our physical environment by keeping a constant checks aided by scripts. Having said that, this study can be boosted by additional subject systems being tested in other types of virtual environment. 
+
+\subsection{Internal Validity.}
+Our approach is based on the recorded performance metrics. The quality of recorded performance metrics can impact the internal validity of our study. Replicating our study by other performance monitoring tools, such as psutil~\cite{psutil} may address this threat. Even though we build a statistical model using performance metrics and system throughput, we do not assume that there is causal relationship. The use of statistical models merely aims to capture the relationship among multiple metrics. Similar approaches have been used in the prior studies~\cite{Cohen:2005:CIC:1095810.1095821, Shang:2015:ADP:2668930.2688052, xiong2013vperfguard}. 
+
+
+%All of our models are dependent on the performance metrics' accuracy. Which means if the load on the server is beyond the capacity of the system to handle and builds up a queue, there is a possibility of noise sneaking in the recording process of the performance metrics. 
+%The scaling approach we have adopted assumes that the for a particular metric, there exists alpha and beta values. However, if the metric value is constant it not possible to have an alpha and beta value associated with it in the model. Hence looking for an alternate scaling process is necessary for such a performance metric.
+%We build performance regression models to compare the metrics from both of our environments. This models are accurate if there exists a high number of records for the performance counters. Additionally, we also assume that none of our dependent variable is correlated to the independent variable or vice-versa. 
+
+\subsection{Construct Validity.}
+We monitor the performance by recording performance metrics every 10 seconds and combine the performance metrics for every minute together as an average value. There may exist unfinished system requests when we record the system performance, leading to noise in our data. We choose a time interval (10 seconds) that is much higher than the response time of the requests (less than 0.1 second), in order to minimize the noise. Repeating our study by choosing other time interval sizes would address this threat. We exploit two approaches to normalize performance data from different environments. We also see that our {$R^2$} value is high. Although a higher {$R^2$} determines our model is accurate but it may also be an indication of overfit. There may exist other advance approaches to normalize performance data from heterogeneous environment. We plan to extend our study on other possible normalization approaches. There may exist other ways of examining performance testing results. We plan to extend our study by evaluating the discrepancy of using other ways of examining performance testing results in virtual and physical environments.
+
+
+
+%We compared our distributions using Mann-Whitney \textit{U} Tests. As this test is commonly used to compare two distributions, other tests like T-test can also be used for this purpose. 
+%We used R's \textit{step()} function to build our generalized linear regression models. This function automatically selects the variables contributing most to the models however the models might be different if they are only based on p-values. To address this, we plan to build models with a predefined threshold for the p-values.
