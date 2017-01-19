@@ -3,16 +3,8 @@
 \section{Summary of Addressed Topics}
 
 
-Performance assurance activities are vital in ensuring software reliability. Virtual environments are often used to conduct performance tests. However, the discrepancy between performance testing results in virtual and physical environments are never evaluated. We aimed to highlight that whether a discrepancy present between physical and virtual environments will impact the studies and tests carried out in the software domain. In this paper, we evaluate such discrepancy by conducting performance tests on two open source systems (DS2 and CloudStore) in both, virtual and physical environments. By examining the performance testing results, we find that there exists a discrepancy between performance testing results in virtual and physical environments when examining individual performance metrics, the relationship among performance metrics and building statistical models from performance metrics, even after we normalize performance metrics across different environments. The major contribution of this paper includes: 
+Performance assurance activities are vital in ensuring software reliability. Virtual environments are often used to conduct performance tests. However, the discrepancy between performance testing results in virtual and physical environments are never evaluated. We aimed to highlight that whether a discrepancy present between physical and virtual environments will impact the studies and tests carried out in the software domain. In this thesis, we evaluate such discrepancy by conducting performance tests on two open source systems (DS2 and CloudStore) in both, virtual and physical environments. By examining the performance testing results, we find that there exists a discrepancy between performance testing results in virtual and physical environments when examining individual performance metrics, the relationship among performance metrics and building statistical models from performance metrics, even after we normalize performance metrics across different environments. 
 %\vspace{-0.15cm}
-\begin{itemize} \itemsep -0.4pt 
-	\item Our paper is the first research attempt to evaluate the discrepancy between performance testing results in virtual and physical environments.
-	\item We find that relationships among I/O related metrics have large differences between virtual and physical environments.
-	\item We find that normalizing performance metrics based on deviance may reduce the discrepancy. Practitioners may exploit such normalization techniques when analyzing performance testing results from virtual environments.
-\end{itemize}
-%\vspace{-0.15cm}
-Our results highlight the need to be aware of the discrepancy between performance testing results in virtual and physical environments, for both practitioners and researchers. Future research effort may focus on minimizing such discrepancy in order to improve the use of virtual environments in performance engineering and reliability assurance activities.
-
 
 
 %Our paper magnifies the impact of performance in difference environments. Additionally, we observed that the performance metrics from different environment do not belong to the same distribution. We tried to mitigate this impact by using scaled metrics in our performance regression models. As a result, the percentage error dropped drastically for one of our subject systems are increased for the other. We concluded that scaling may not apply to every subject system. We plan to see in what ways we can leverage the metrics from the virtual environment and use them for prediction of the metrics in the physical environment. We also plan to investigate the injection of regression in the system being hosted in a virtual environment will behave similar to that under regression in a physical environment. 
@@ -20,5 +12,15 @@ Our results highlight the need to be aware of the discrepancy between performanc
 
 
 \section{Contributions}
+The major contribution of this work includes: 
+%\vspace{-0.15cm}
+\begin{itemize} \itemsep -0.4pt 
+	\item This is the first research attempt to evaluate the discrepancy between performance testing results in virtual and physical environments.
+	\item We find that relationships among I/O related metrics have large differences between virtual and physical environments.
+	\item We find that normalizing performance metrics based on deviance may reduce the discrepancy. Practitioners may exploit such normalization techniques when analyzing performance testing results from virtual environments.
+\end{itemize}
+
 
 \section{Future Work}
+
+Our results highlight the need to be aware of the discrepancy between performance testing results in virtual and physical environments, for both practitioners and researchers. Future research effort may focus on minimizing such discrepancy in order to improve the use of virtual environments in performance engineering and reliability assurance activities.
