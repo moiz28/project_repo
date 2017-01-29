@@ -66,7 +66,7 @@ In order to combine the two datasets of performance metrics and system throughpu
 
 
 
-The goal of our study is to evaluate the discrepancy between performance testing results from virtual and physical environments, particularly considering the impact of discrepancy on the analysis of such results. We do not predict the applications' performance or throughput based on the amount of work done by the underlying architecture or the overhead induced by the virtual environment. Instead, our experiments are set in the context of analyzing performance testing data, based on the related work. Shown in Section ??, prior research and practitioners examines performance testing results in three types of approaches: 1) examining individual performance metrics, 2) examining the relationship among performance metrics and 3) building statistical models using performance metrics. Therefore, our experiments focus on examining the discrepancy that may impact three such approaches.
+The goal of our thesis is to evaluate the discrepancy between performance testing results from virtual and physical environments, particularly considering the impact of discrepancy on the analysis of such results. We do not predict the applications' performance or throughput based on the amount of work done by the underlying architecture or the overhead induced by the virtual environment. Instead, our experiments are set in the context of analyzing performance testing data, based on the related work. Shown in Section \ref{literature_review}, prior research and practitioners examines performance testing results in three types of approaches: 1) examining individual performance metrics, 2) examining the relationship among performance metrics and 3) building statistical models using performance metrics. Therefore, our experiments focus on examining the discrepancy that may impact three such approaches.
 
 
 
@@ -95,7 +95,23 @@ Finally, we calculate Spearman's rank correlation between every performance metr
 \noindent \textbf{Results.}
 \textbf{Most performance metrics do not follow the same shape of distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. Due to the limited space, we only present Q-Q plot for CPU user time, IO data operations/sec and memory working set for both web sever and database server\footnote{The complete results are shared online at http://das.encs.concordia.ca/wp-content/uploads/2016/04/Arif\_results.zip}. The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the web CPU user time for DS2 in the virtual environment shows higher values than in the physical environment at the median to high range of the distribution; while the Q-Q plot of CloudStore shows web CPU user time with higher values at the low range of the distribution. In addition, the lines of the Q-Q plots for database memory working set show completely different shapes in DS2 and in CloudStore. The results imply that the discrepancies between virtual and physical environments are present between the subject systems. The impact of the subject systems warrants its own study.
 
-The majority of the performance metrics had statistically significantly different distributions (p-values lower than 0.05 in Kolmogorov-Smirnov tests). Only 13 and 12 metrics (out of 44 for each environment) have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-significant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly relate to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly relate to the workload. Since the workload between the two environments are similar, it is expected that the metrics related to the workload follow the same shape of distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-significant differences between the distributions in the virtual and physical environments (e.g., web server I/O write operations per second in DS2). %\emad{should we list the metrics}
+The majority of the performance metrics had statistically significantly different distributions (p-values lower than 0.05 in Kolmogorov-Smirnov tests) as shown in Table \ref{KS-Test}. Only 13 and 12 metrics (out of 44 for each environment) have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-significant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly relate to the execution of the subject system (e.g., web server CPU privileged time in DS2), or highly relate to the workload. Since the workload between the two environments are similar, it is expected that the metrics related to the workload follow the same shape of distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-significant differences between the distributions in the virtual and physical environments (e.g., web server I/O write operations per second in DS2). %\emad{should we list the metrics}
+
+
+\begin{table*}[tp]
+	\centering
+	\caption{K–S Test results for all the performance metrics across both environments.}
+	\label{KS-Test}
+		\begin{tabular}{|c||c|}
+			\hline
+			\textbf{Subject System} & \textbf{p-value\textless0.05} \\  
+			\midrule
+			\midrule
+			DS2 & 31 \\ \hline
+			CloudStore & 32 \\ \hline
+		\end{tabular}%
+\end{table*}
+
 
 
 \textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman correlation coefficient and corresponding p-value between the selected performance metrics for which we shared the Q-Q plots. We find that for the web server memory working set in CloudStore and the database server memory working set in DS2, there exists strong (0.69) to moderate (0.46) correlation between the virtual and physical environments, respectively. By examining the metrics, we find that both metrics have an increasing trend that may be caused by a memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Instead of showing the selected metrics as the Q-Q plots, Table~\ref{tab:correlationall} shows a summary of the spearman's rank correlation of all the performance metrics. Most of the correlations have an absolute value of 0 to 0.3 (low correlation), or the correlation is not statistically significant (p-val\textgreater0.05).
@@ -530,7 +546,7 @@ One possible reason is that the normalization based on load performs better, eve
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 
-\begin{table}[tbh]
+\begin{table}[tp]
 	\centering
 	\caption{Summary of statistical models built for DS2. The metrics listed in the table are the significant independent variables.}
 	\label{tab:modelsummaryds2}
@@ -556,7 +572,7 @@ One possible reason is that the normalization based on load performs better, eve
 \end{table}
 
 
-\begin{table*}[tp]
+\begin{table}[tbh]
 	\centering
 	\caption{Summary of statistical models built for CloudStore. The metrics listed in the table are the significant independent variables.}
 	\label{tab:modelsummarycs}
@@ -579,9 +595,9 @@ One possible reason is that the normalization based on load performs better, eve
 			%		\textbf{MAPE} & 15.63\% & 3.65\% \\ \hline
 		\end{tabular}%
 	}
-\end{table*}
+\end{table}
 
-\begin{table*}[tp]
+\begin{table}[tbh]
 	\centering
 	\caption{Internal and external prediction errors for both subject systems.}
 	\label{tab:errors}
@@ -623,7 +639,7 @@ One possible reason is that the normalization based on load performs better, eve
 		\end{tabular}%
 	}
 	\vspace{-0.3cm}
-\end{table*}
+\end{table}
 
 
 

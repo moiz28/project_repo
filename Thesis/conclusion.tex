@@ -1,9 +1,19 @@
 % -*- root: cuthesis_masters.tex -*-
 
+
+
+
 \section{Summary of Addressed Topics}
 
 
-Performance assurance activities are vital in ensuring software reliability. Virtual environments are often used to conduct performance tests. However, the discrepancy between performance testing results in virtual and physical environments are never evaluated. We aimed to highlight that whether a discrepancy present between physical and virtual environments will impact the studies and tests carried out in the software domain. In this thesis, we evaluate such discrepancy by conducting performance tests on two open source systems (DS2 and CloudStore) in both, virtual and physical environments. By examining the performance testing results, we find that there exists a discrepancy between performance testing results in virtual and physical environments when examining individual performance metrics, the relationship among performance metrics and building statistical models from performance metrics, even after we normalize performance metrics across different environments. 
+Performance assurance activities are vital in ensuring software reliability. Virtual environments are often used to conduct performance tests. However, the discrepancy between performance testing results in virtual and physical environments are never evaluated. In this thesis, we aimed to highlight that whether a discrepancy present between physical and virtual environments will impact the studies and tests carried out in the software domain. Following are the summaries of chapters covered in this thesis.
+
+Chapter 2 contains a detailed literature review and examination of state-of-art approaches present for software regression detection and modeling. It is important to include such review as it will help build research gateways while defining the analogies that we have used in this domain. 
+
+Chapter 3 discusses the results of our investigation to find discrepancy between virtual and physical environments. In this chapter, we analyze our results, based on the performance metrics of two open source subject systems (DS2 and CloudStore). Prior studies have also used our chosen subject systems in the field of software performance engineering. We evaluate the aforementioned discrepancy by conducting performance tests on two open source systems in both, virtual and physical environments. By examining the performance testing results, we find that there exists a discrepancy between performance testing results in virtual and physical environments when examining individual performance metrics, the relationship among performance metrics and building statistical models from performance metrics, even after we normalize performance metrics across different environments. 
+
+Chapter 4 concludes the work by adding a series of experiments carried out to address if there is a difference in the choice of virtual environments/configurations. Here, we sub divide the experiments into three categories: changing the type of virtual environment, changing the resources allocated to the virtual environment and investigating the stability of our virtual environment by repeating the set of our experiments. We evaluate that our virtual environment is stable. We conclude that altering the external factors has almost insignificant impact on our conclusion in Chapter 3. It reassures that there exists performance discrepancy even between different virtual environments and configurations.  
+ 
 %\vspace{-0.15cm}
 
 
@@ -12,15 +22,33 @@ Performance assurance activities are vital in ensuring software reliability. Vir
 
 
 \section{Contributions}
+
+
+The goal of our thesis is to investigate if there exists a discrepancy between virtual and physical environments. If yes, to what extent it effects the performance assurance activities analyzed and compared in both environments. We reach our conclusions after an analysis on the performance metrics based on: 1) individual performance metrics 2) relationship among performance metrics and 3) statistical models based on the performance metrics.
+
 The major contribution of this work includes: 
 %\vspace{-0.15cm}
 \begin{itemize} \itemsep -0.4pt 
-	\item This is the first research attempt to evaluate the discrepancy between performance testing results in virtual and physical environments.
-	\item We find that relationships among I/O related metrics have large differences between virtual and physical environments.
-	\item We find that normalizing performance metrics based on deviance may reduce the discrepancy. Practitioners may exploit such normalization techniques when analyzing performance testing results from virtual environments.
+	\item \textbf{A detailed state-of-the art review of the related literature} We cover in detail the performance assurance activities that are adapted to detect performance discrepancies and anomalies. We chose the most suitable  sources to map our work to and and showed that the current approaches do not address the discrepancies present in virtual environments.
+	
+	\item \textbf{This is the first research attempt to evaluate the discrepancy between performance testing results in virtual and physical environments.} We show that the current approaches do not consider performance discrepancies present between virtual and physical environments. We provide a detailed analysis 
+	
+	\item \textbf{Identifying the performance metrics that contribute most to the discrepancies.} We find that relationships among I/O related metrics have large differences between virtual and physical environments. We prove this with the help of analyzing performance metrics as a singular entity and also as an input to regression models.
+	
+	\item \textbf{Normalization via deviance} We find that normalizing performance metrics based on deviance may reduce the discrepancy. Practitioners may exploit such normalization techniques when analyzing performance testing results from virtual environments.
 \end{itemize}
 
 
 \section{Future Work}
 
 Our results highlight the need to be aware of the discrepancy between performance testing results in virtual and physical environments, for both practitioners and researchers. Future research effort may focus on minimizing such discrepancy in order to improve the use of virtual environments in performance engineering and reliability assurance activities.
+
+\subsection{Performance regression and heterogeneous environments}
+We conducted a set of experiments in a curated environment where there was no presence of performance regression our subject systems. We believe that it will be interesting to see if these results still verify if performance regression is injected in our subject systems.
+
+\subsection{Cloud Environments}
+Despite the fact that we carried out our experiments in different types virtual environments, we also plan to examine the behavior of our subject systems in cloud environments. Issued like noise from other systems and how to isolate and monitor our system with and without regression may lead to numerous possibilities.
+
+
+\subsection{Support for practitioners}
+Lastly, we plan to discover an approach that can lead us on to a precise scaling factor between different environments. It will be appealing to find out a scaling factor which incorporates the discrepancies present, dynamically.
