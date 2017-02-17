@@ -2,20 +2,40 @@
 
 %In this chapter we present related work on ...
 
-In this section, we discuss the related work of this thesis in two main areas: 1) analyzing performance metrics from performance testing and 2) analysis of VM overhead. 
+Software systems are expected to serve millions of concurrent requests. However, the systems are first tested to ensure that they are working correctly under a certain load(s). This load is also known as the rate at which the system is processing the requests. 
+In this chapter, we discuss the motivation behind load testing and similar work done in the field of performance engineering. We later survey the state-of-the-art literature that is related to out work.
 
-\subsection{Background}
+\section{Background}
 
-\subsection{Literature Review}
+Generically, performance assurance activities are carried out by analyzing the system responses on a variety of loads. For example, to detect performance regression, the system is analyzed after applying a load profile. This load profile depicts the normal workload of the system once it is functional in the field \cite{464549}.
 
-\subsubsection{123123}
+We observe that the terms performance testing \cite{Dillenseger2009,Menasce02loadtesting,Menasce:2002}, load testing \cite{536461,Bayan:2008,perf_load_stress,perf_web} and stress testing \cite{Bayan:2008,Yang:1996,4020172} are also used interchangeably. 
 
-\subsubsection{Analyzing performance metrics from performance testing} 
+\subsection{What is the difference between load testing, stress testing and performance testing?}
+
+Although there are similarities between with these three types of testing techniques, for example all of these are carried out after functional testing, we now differentiate between the application of these tests.
+
+\subsubsection{Load Testing}
+
+The rate at which which the requests are submitted to a system is called the load \cite{Beizer:1984}. This system is more commonly known as system under test or \textit{SUT}. Load testing is carried out later than conventional testing in a software's life. This may be done on a prototype or a working system than a design or a model. Load testing is used to detect load related problems. For example, deadlocks, buffer overflows, high response times and low throughput \cite{464549,Barna:2011,6032540}. 
+
+In some exceptional cases where the non functional requirements are not present, one of ways to determine if the test has passed is by saying comparing it to the results of the previous version. This is also known as the "no-worse-than-before" principle. As the name suggests, the version being tested should be, if not better, than equal to the previous version. \cite{Dumke:2001}
+
+\subsubsection{Performance Testing}
+
+\subsubsection{Stress Testing}
+
+\section{Literature Review}
+
+In this section, we discuss the related work of this thesis in two main areas: 1) analyzing performance metrics from performance testing and 2) analysis of VM overhead.
+
+
+\subsection{Analyzing performance metrics from performance testing} 
 
 Prior research has proposed a slew of techniques to analyze performance testing results, i.e. performance metrics. Such techniques typically examine three different aspects of the metrics: 1) individual performance metrics, 2) the relationship among performance metrics, and 3) statistical modeling based on performance metrics.
 
 
-\subsubsection{Individual performance metrics}
+\subsection{Individual performance metrics}
 \label{sec:relatedindividual}
 Nguyen \textit{et al$.$}~\cite{Nguyen:2012:ADP:2188286.2188344} introduce the concept of using control charts~\cite{shewhart1931economic} in order to detect performance regressions. Control charts use a predefined threshold to detect performance anomalies. However control charts assume that the output follows a uni-model distribution, which may be an inappropriate assumption for performance. Nguyen \textit{et al$.$} propose an approach to normalize performance metrics between heterogeneous environments in order to build robust control charts. %However, the experiments are only carried out on the virtual machines in contrast to our approach.
 
@@ -32,7 +52,7 @@ Similarly, Jiang \emph{et al$.$}~\cite{jackicsm2009} extract response time from 
 %The ad hoc approach may fail to detect performance regressions if the target counters do not capture the performance regressions. Moreover, such ad hoc analysis does not detect the change of relationships between counters, such as the relationship between I/O and CPU.
 
 
-\subsubsection{Relationship among performance metrics}
+\subsection{Relationship among performance metrics}
 \label{sec:relatedrelation}
 
 Malik \emph{et al$.$}~\cite{5635038} leverage Spearman's rank correlation to capture the relationship among performance metrics. The deviance of correlation is calculated in order to pinpoint which subsystem should take responsibility of the performance deviation.
@@ -45,7 +65,7 @@ Jiang \emph{et al$.$}~\cite{5270324} use normalized mutual information as a simi
 
 %Malik\textit{ et al.}~\cite{haroon} derive performance signatures based on both supervised and unsupervised learning to detect performance anomalies. They use Principal Component Analysis as their unsupervised learning technique if the past tests are not marked pass or fail. PCA is used to to examine the relationships between different performance metrics.
 
-\subsubsection{Statistical modeling based on performance metrics}
+\subsection{Statistical modeling based on performance metrics}
 \label{sec:relatedmodel}
 
 Xiong \textit{et al$.$}~\cite{xiong2013vperfguard} proposed a model-driven approach named \textit{vPerfGuard} to detect software performance regressions in a cloud-environment. The approach builds models between workload metrics and a performance metric, such as CPU. The models can be used to detect workload changes and assists in identifying performance bottlenecks. Since the usage of \emph{vPerfGuard} is typically in a virtual environment, our study may help the future evaluation of \textit{vPerfGuard}. Similarly, Shang\textit{ et al.}~\cite{Shang:2015:ADP:2668930.2688052} propose an approach of including only a limited number of performance metrics for building statistical models. The approach leverages an automatic clustering technique in order to find the number of models to be build for the performance testing results. By building statistical models for each cluster, their approach is applicable to detect injected performance regressions. %We use the same technique in our study to inject performance regression in the target system nonetheless the limitation of their study to perform their experiments in a virtual environment persists.
@@ -62,7 +82,7 @@ In our work, we compare performance testing results from both virtual and physic
 %Model-based approached use the target counters(e.g. DISC I/O and CPU Utilization) to build models and these models are then used to detect performance regression int he system. What make the model-based approach celebrated is the inclusion and comparison of numerous performance counters at the same time. 
 %Jiang \textit{et al. }\cite{jiang2011system} used an improved least square regression models to detect system faults.
 
-\subsubsection{Analysis of VM overhead}
+\subsection{Analysis of VM overhead}
 
 Kraft \textit{et al$.$}~\cite{kraft2011io} discuss the issues that are related to disk I/O in a virtual environment. They examine the performance degradation of disk request response time by recommending a trace-driven approach. Kraft \textit{et al.} emphasize on the latencies existing in virtual machine requests for disc IO due to increments in time associated with request queues. 
 
