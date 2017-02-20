@@ -27,9 +27,17 @@ Although there may be some similarities present between performance and load tes
 
 Performance test is detailed than load testing as it may be used to cover designs \cite{csurgay1999performance,denaro2004early,denaro2005performance}, algorithms \cite{cangussu2009segment,cangussu2007reducing}, and system configurations \cite{hoskins2005software,pozin2011models,sopitkamol2005method}. The goal behind performance testing may be to test performance requirements \cite{pozin2011models} or exploratory. For example, to answer questions such as how do various configurations impact the performance of the system \cite{Menasce:2000,Menasce:1994,Menasce:2001,pozin2011models}.
 
-
-
 \subsubsection{Stress Testing}
+
+Stress testing is testing the application under "stress" or extreme load. This can be used to detect how resilient the system or to detect further load-related problems. For example, memory leaks and deadlocks. These "stressful" conditions for the system can be either load related(normal \cite{zhang2002automated,kalita2011investigation,chakravarty2010stress} or heavy load \cite{Dillenseger2009,kalita2011investigation,huebner2001performance}) or limited resources allocated/failures (for example, disk or database failures) \cite{acharya2009mining}. We noted that in some cases it may also be used to detect the competency of the SUT \cite{garousi2010genetic,garousi2008empirical,garousi2006traffic,garousi2008traffic}.
+
+
+Having stated all of the above, there are instances where the interest of a performance test may overlap with load testing pr stress testing and vice-versa. For example, to check robustness of the system when put in extreme conditions, or to check how an algorithm works when handling large files. 
+
+\subsection{What is a load test execution?}
+
+
+
 
 \section{Literature Review}
 
