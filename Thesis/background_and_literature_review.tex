@@ -34,11 +34,21 @@ Stress testing is testing the application under "stress" or extreme load. This c
 
 Having stated all of the above, there are instances where the interest of a performance test may overlap with load testing pr stress testing and vice-versa. For example, to check robustness of the system when put in extreme conditions, or to check how an algorithm works when handling large files. 
 
-We focus on load testing, which is to detect how the SUT behaves under load to detect functional and/or non functional problems. 
+We focus on performance testing, which is to detect performance related behavior of our \textit{SUT}.
 
-\subsection{What is a load test execution?}
+\subsection{What is a test execution?}
 
+Before the phase of text execution, practitioners have to develop the test for the system. It is based on either the realistic usage of the system when functional or with the goal to uncover problems \cite{jiang2015survey}.
+Once the test is developed, it is followed by its execution. 
 
+\begin{figure*}[thb!]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/bck1.pdf}
+	\caption{Test execution phases}
+	\label{fig:test_phases}
+\end{figure*}
+
+As shown in figure \ref{fig:test_phases}, the lifecycle of a typical performance test is made up of four phases. \textit{Setup}, that is system and test execution setup. \textit{Testing}, that is the actual phase where the test is run and terminated at the end of the time frame. \textit{Data Collection}, that is the phase where the performance metrics and executions logs are collected and further analyzed in the fourth phase \cite{jiang2015survey}.
 
 
 \section{Literature Review}
