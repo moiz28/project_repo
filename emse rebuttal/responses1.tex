@@ -40,11 +40,10 @@
 \begin{letter}{}
 
 \address{
-Weiyi Shang\\
-EV 3.129, 1515 Ste. Catherine Street West\\
+Muhammad Moiz Arif\\
+EV 3.274, 1515 Saint-Catherine Street West\\
 Department of Computer Science and Software Engineering, Concordia University\\ 
-Montreal, QC, Canada H3G 1M8 \\
-1 514-848-2424 ext. 7801\\
+Montreal, QC, Canada H3G 2W1 \\
 } 
 
 
@@ -59,7 +58,7 @@ In the end, we added new analysis results as suggested by the reviewers. We stud
 %significantly expanded our threats to validity section with more discussion of our approach, and experiments to support our heuristics for identifying test files. 
 
 %Below, we repeat each of the reviewer's comments and provide our responses. 
-Below, we include a description of the changes that we made to our manuscript with respect to each of the reviewers’ comments. We denote the reviewers comments in italic typeface, and our responses follow below each reviewer comment.
+Below, we include a description of the changes that we made to our manuscript with respect to each of the reviewer's comments. We denote the reviewers comments in italic typeface, and our responses follow below each reviewer comment.
 
 
 %We thank the reviewers for their valuable feedback. This document includes a list of changes and rebuttal to the comments that were raised by the reviewers. Below, we include a description of the changes made to our manuscript with respect to each of the reviewers’ comments. We denote the reviewers comments in italic typeface. Our responses follow below each reviewer comment.
@@ -67,147 +66,328 @@ Below, we include a description of the changes that we made to our manuscript wi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \vspace{1em}
 \noindent {\Large {\bf Reviewer 1 Comment}}
 
-\comment{1}{This article studies the user reviews for top mobile Apps in the Google Play Store and compares its findings with those on IOS apps.  The study is quite impressive in the scale as they collected user reviews of 10,000+ top apps on a daily basis over a period of two months. Their findings are quite interesting to learn, which have some commonalities as well as differences from previous results.  It would be even more interesting if the analysis can have something on the topics and content summaries of the user reviews, e.g., ratings, popular words in the reviews, and so on.  Currently it is mostly on the statistics, e.g., number of reviews.
-}
-
-\response{Thanks for the suggestion! We studied the topics in the top 100 most reviewed apps and investigated the global and local topics in app reviews. The study results are briefly discussed  in the paper as an infobox due to the imposed word count limits on the actual article. We hope this infobox satisfies your request while still ensuring that we do not exceed the imposed word count limits.
+\comment{1}{Is there any evidence supporting that VMs are widely used for performance testing? There has been much work on performance testing (e.g., Nistor ICSE 13, Jin PLDI 12) that does not rely on VMs. The paper should provide more details on the background and motivation for this study, such as why and in what circumstances VMs are used in performance testing. 
 }
 
 
-\noindent {\Large {\bf Reviewer 2 Comment}}
+There are discussions online:
+http://stackoverflow.com/questions/8906954/can-you-use-a-virtual-machine-to-performance-test-an-application
+Even discussed here:
 
-\comment{2}{
-In this paper, the author conducted data analysis over the reviews on Mobile Apps in Google playstore. They found some interesting facts, such as a very small number of Apps received much more reviews than the others. Though the authors argued strongly that their findings are different from Pagano and Maalej's and Hoon et al.'s observations, in fact, there is no New finding in this study. The real difference is that the previous study was conducted over Appstore and this one was conducted on Google Playstore. Thus, I do not think this paper should be published without a new finding.
-}
+https://social.technet.microsoft.com/Forums/windowsserver/en-US/06c0e09b-c5b4-4e2c-90e3-61b06483fe5b/performance-test-is-not-reliable-on-virtual-machine?forum=winserverhyperv
 
-\response{App stores (and in particular user and developer interactions through app reviews) are a whole new domain of study in computing today. Our study is important in that it raises a warning flag about the importance of looking across such stores and that the computing community cannot just assume that the observed patterns are universal. Instead according to our study, there are differences between stores. For example, while prior studies highlight that many iOS developers are overwhelmed with reviews, we note that this is not the case for most Android apps. Furthermore, we are the first to dig deeper into the relation between app reviews and other meta data (as pointed by reviewer 3). Table 2 details the key differences between our study and prior studies
-}
+This one is amazing:
+
+http://sqa.stackexchange.com/questions/7709/performance-testing-systems-on-virtual-machines-that-normally-run-on-physical-ma
+
+WOW man this is like a gift:
+
+http://www.webperformance.com/library/reports/Virtualization2/
+
+And this sugar crm supports both cloud and on-premise options. Plus BES.
+
+People even talk about building perf testing labs using vm
+http://searchvmware.techtarget.com/tip/Building-a-VMware-test-lab-How-to-obtain-and-interpret-performance-metrics
+
+Are these enough:)
+
+And it?s our expeirence with our industial partner over the years.
+
+You better add a subsection in your background to disccuss this.
+
+In order to better motivate our paper we added motivation example:
+
+A guy has a software system based on premise and cloud due to the constraints and flexib they test on vm correlation model building and finds that io is impacting their performance. Turns out vm io is being hampered. 
+
+Cite the io xen server. 
+
+If they knew there were discrepancy they wouldnt worry. Approaches to reduce noise.
 
 
-\noindent {\Large {\bf Reviewer 3 Comments}}
 
-\comment{3}{
-On the other hand, the study remains mostly at the descriptive level, leaving out implications, interpretation, and discussions. I would really appreciate more context in a discussion section on why the study is important and which implications it has, e.g. for automated extraction of topics, triaging etc. as the beginning of the manuscript might ``promise''.
-}
-
-\response{The greatest implication and take-home message of this paper is that practitioners and researchers on mobile app should be mindful of the differences among different app stores. Assumptions of having the same observations/patterns across different apps stores may not hold. With the awareness of the differences, techniques that are designed to assist mobile app developers should be optimized for different app stores. Similarly, researchers should examine whether other empirical findings do hold across app stores.
-We added the discussion of the implication of our paper to the new revision of the paper.
-}
-
-
-\comment{3}{
-Related work is complete, but could be set more into the context of this manuscript.
-}
-
-\response{The related work is set into the context of this paper in the follow 3 aspects
-\begin{enumerate}
-	\item The importance of mobile app user reviews motivates our study.
-	\item The findings of this paper ascertains the context of prior techniques that analyze mobile app user reviews.
-	\item Prior empirical studies on mobile app user reviews focus on iOS apps, while our findings on Google Play Store are different.
-\end{enumerate}
-These points are highlighted in bold in Section ``Mobile App Analytics'' in the new draft.
-}
-
-\comment{3}{
-Due to the app selection and sampling process, the presented results are only valid for free, established, popular apps - a fact that should be carefully noted throughout the manuscript.
-}
-
-\response{We noted such limitation in the new revision of the paper.
+\comment{1}{The study does not address the most important problem in performance testing, i.e., fault detection. Even if the discrepancy exist, thzere is no evidence showing that such discrepancy can affect testing effectiveness. The ultimate objective of performance testing is to find performance bugs. It would be more convincing if the authors can evaluate the discrepancy in finding bugs between VMs and physical environments. 
 }
 
 
-\comment{3}{
-Language and typos should be checked.
+Say this is the first step. First we need to know what is the descrepancy, how big and how to reduce.
+Then it makes sense to see the impact on fault and will be our future work. However, without understaing the nature of the descrpancy and directly see the impact on fault, you can?t really reason about results.
+
+
+
+\comment{1}{ The paper is not clear about how the three aspects of testing results can help to find performance problems. Especially for the second analysis - the correlation between metrics - why is it useful? 
 }
 
-\response{Fixed.
+
+I sent you a paper about using correlation. Try to find it.
+
+To see the trends
+To the realtionships between metrics 
+To see the impact of metrics the all together. Many to many.
+
+
+Elaborate related work and motivation research question. 
+
+
+\comment{1}{ In the related work section, instead of just describing the three types of analysis, the authors should relate the existing work to the proposed study. Does the discussed existing work rely on VMs? If it does, are there any problems caused by the discrepancy between VMs and physical environments?
+}
+
+Say explcitly where in the paper they have mentioned or cite papers where you can see this.
+Their analysis is not domain specified so we are just testing in both the envion. And we find out that its dispcrepance.
+
+\comment{5}{As virtualization becomes wildly adopted, many companies use virtual environment as their production environment to reduce operation costs. Does that invalidate the purpose of this study? What if an application is actually deployed in a virtual environment?
 }
 
 
+That sounds like another study about vm variance. But that?s not the focus of our paper. Some software needs to run on premise anyways. 
 
-\comment{3}{
-Introduction
-- Yet little is known about the reviewing dynamics of the Google Play Store =\textgreater This seems a bit exaggerated.
+We never talk about test and running in vm. We talk about a scenario where we use vm and physical. Particularly many large s/w systems offering vm and premise. Like CRM and BES. we clarify in the introduction.
+
+
+
+Detailed comments:
+
+\comment{1}{Section 3.3: "the workload of the performance tests is varied periodically in order to avoid bias from a consistent workload" - how did it get varied.
 }
 
-\response{The sentence is rephrased in the new draft. 
+
+Through the change in number of threads, threads represented users. As the users and number of requests sent/received are directly proportional in these software, eventually varying the workload.
+Although 7) the reviewer mentions that we have varied it according to the number of threads.
+
+Random workload, try to point it out. We clarify. 
+
+
+
+\comment{1}{"The work-load variation was introduced by the number of threads." Why not consider other types of workloads, such as the amount of input data? Increasing the number of threads may also be used to speedup the performance. 
 }
 
-\comment{3}{
-The number of downloads and releases impact the number of received reviews =\textgreater Should be "correlates with" instead of "impacts". In the case of downloads and releases - other than categories - the authors do not know which influences which, so a causal relation is not given per se.
+What input data? If the reviewers mean the input data for the website It is an e-commerce website and the drivers for both systems come with predefined actioned. Log in, browse, buy, exit.
+
+
+This is a limitation we discuss in threads to validity. Only users=threads.
+
+
+\comment{1}{The quality of the performance tests could greatly influence the testing results. The paper should provide more details. Examples of performance tests can be useful. Also, how many performance tests are used in the study? Why does a test take so long (9 hours) to execute? Is running performance tests twice sufficient to reduce influence of randomness?
 }
 
-\response{The sentence is rephrased as suggested.
+Example of performance tests, I think I will put it under exploratory performance testing. Of course it is not done to see functional/non-functional anomalies. 
+The nature of the study itself requires 1 performance tests spread out over 9 hours. Concatenating multiple tests will only create noise in our data. Combination of workloads and usage scenario. We do not change performance tests, taken s/w as is. We do not want to impact any thing by making a special performacne test. 
+9 hours: I will site COR-PAUL who ran the test for 24 hours. The idea is to work on metrics under review statistically stable.  CITE: Jack.
+Its  about the sample size want to make sure enough data.
+We actually ran the test multiple times to reduce the randomness and to reach stable test output. But we took the best two runs and compared to them to evaluate the existence of randomness.
+Its a miscommunication. We actually ran at 3 times. And we do not guarantee that running it thrice will remove all the randomness. Add this to threads to validity. Limitation. 
+
+
+\comment{1}{Different performance tests may performance different functionalities (e.g., SQL query VS server restart). The functionalities should be evaluated separately. 
 }
 
-\comment{3}{
-Mobile App Analytics
-- ll. 47ff: The related work (apart from the two studies that are also shown in the table) could be presented in more detail. What were concrete outcomes? How do they concretely relate to the authors' work?}
 
-\response{Please refer to our response to comment 3.2.
+I think this reviewer did not understand how our two software work and I can guess it by the questions. There is no need to evaluate different functionalities because atomically both the drivers are role-playing as a user. Log in - browse - buy - pay - logout. If the nature of all the transactions remains same based on the SQL query, I believe there is no need of evaluating it as different functionalities. 
 
-The related work are set to present three aspects as our response to comment 3.2. We added more information about the outcomes of the related work. Related work does not consider that the assumptions of having the same observations/patterns across different apps stores may not hold. Our work makes the implication and take-home message that practitioners and researchers on mobile app should be mindful of the differences among different app stores. With the awareness of the differences, techniques that are designed to assist mobile app developers should be optimized for different app stores. Similarly, researchers should examine whether other empirical findings do hold across app stores.
+We use a combination of things. Whatever the test driver is based on. Test on single feature maybe system behaves in a different way but ours is based on compound exercising the system.
 
+\comment{1}{Section 3.1: what is the size of each application?
+}
+Will mention.
+
+
+\comment{1}{On page 7, the design choice of combining metrics of two datasets is not justified. 
 }
 
-\comment{3}{
-Studied Apps
-- The fact that only 500 reviews per day were sampled at max is a pity. This does not really allow to describe the full spectrum of how reviews distribute. However, the median \_should\_ still be stable, given that the authors only found few apps with more than 500 reviews.
+%To disregard the presence of multicollinearity or %counter-intuitive results such as simpsons paradox
+%https://en.wikipedia.org/wiki/Simpson%27s_paradox 
+
+We considered it as one system. For a user its just a box. 
+
+\comment{1}{On page 7, realistically, interference on the real-world systems cannot be restricted like the one mentioned in the setup. The concern is that, by leaving out the system load, the statistical model might miss the opportunity to adjust to the real-world situation. Also, different assumptions about the system workload could affect the choice of the statistical model and thus perturb the prediction results.
 }
 
-\response{Thanks for the suggestion. We find the median number of reviews per app per day to be 0. We elaborate such finding in table 2 in the new revision of the paper.
+Dr. Shang will attend.
+
+
+\comment{1}{On page 15, what is the purpose of removing "metric that has a higher average correlation with all other metrics"?
 }
 
-\comment{3}{
-- Only top apps are studied =\textgreater this reduces the subjects and generalizability to popular apps
-- Only ``stable'' (old) apps are studied =\textgreater this reduces the subjects and generalizability to popular, established apps
-- Only free apps are studied =\textgreater this reduces the subjects and generalizability to popular, established, free apps.
+
+Explain.
+Dr. shang r function.
+
+We did it based on R. we removed the one which is more correlated to other metrics.
+
+
+\comment{1}{On page 16, what regression model is used? On page 17, linear regression model is mentioned briefly. Why is a linear model chosen? Not until on page 19, the assumption of a linear relationship is mentioned. A brief writing of the design decision would be more appropriate. 
+}
+Lrm. because prior work and easy to explain.
+
+Say you can use other models. You use linear model since it?s easier to explain, and also used in prior work, cite my paper icpe and the vperfguard
+
+\comment{1}{R-squared is used without explanation. If 10-fold cross validation has an explanation, R2 may deserve one too.
 }
 
-\response{We agree that our findings are limited to top, stable and free apps in Google Play Store. We mention such limitations in the new revision of the paper.
+Yes please explain.
+
+\comment{1}{On page 18, "good model fit (66.9\% to 94.6\%)", is that the absolute percentage error?
+}
+R2
+
+\comment{1}{There is much work on performance testing and bug detection, which should be discussed in related work. 
 }
 
-\comment{3}{
-- Why would spam reviews be a problem? I don't see the argument that there are usually few reviews as an argument for not having spam. Spammers might choose relevant apps. Also I don't think it is relevant that you must login before reviewing, as this is no limitation for spammers. And: In the end there is spam, according to [3] (the study is for iOS, but there you have to login as well).
+Yes
+Look for performance bug detection. 4 or 5 papers. Look at the reviewers example.
+
+
+\comment{1}{If the trace data can be made public, others may use it to replicate the experiments.
 }
+yes
 
-\response{The paragraph is removed from the new revision.
-}
 
-\comment{3}{
-Our Findings
-- I don't really see much on the beanplots. Maybe a traditional boxplot with whiskers and outliers would give a better impression?
-}
 
-\response{We tried to use boxplots as well. For figure 1(a) and figure 1(b): All other apps, box plots and bean plot would show similar information since the distribution is highly skewed (more than half of the data is 0). On the other hand, the figure 1 (b): 100 most reviewed apps, the bean plot can show the density of apps in different amount of reviews. For example, we can observe that most of the top 100 reviewed apps have around 10,000 reviews during the studied period. Such information can't be shown by boxplots. However, if the reviewer feels that box plots are more appropriate, we can replace them in the next revision.
+%\vspace{1em}
+%\noindent {\Large {\bf Reviewer 1 Comment}}
 
-}
+%\comment{1}{This article studies the user reviews for top mobile Apps in the Google Play Store and compares its findings with those on IOS apps.  The study is quite impressive in the scale as they collected user reviews of 10,000+ top apps on a daily basis over a period of two months. Their findings are quite interesting to learn, which have some commonalities as well as differences from previous results.  It would be even more interesting if the analysis can have something on the topics and content summaries of the user reviews, e.g., ratings, popular words in the reviews, and so on.  Currently it is mostly on the statistics, e.g., number of reviews.
+%}
 
-\comment{3}{
-- ... ``4,275 reviews in a single day such large numbers would lead to increasing the overall reported average of the received reviews on a daily basis.'' =\textgreater Yes, but not necessarily the median!
-}
+%\response{Thanks for the suggestion! We studied the topics in the top 100 most reviewed apps and investigated the global and local topics in app reviews. The study results are briefly discussed  in the paper as an infobox due to the imposed word count limits on the actual article. We hope this infobox satisfies your request while still ensuring that we do not exceed the imposed word count limits.
+%}
 
-\response{We do not mean that the the findings from prior study on Facebook represent the normal situation (like median) of other apps in iOS store. We try to explain that some apps, like Facebook, may have way over 500 reviews per day. Therefore, our limitation of seeing only 500 reviews may be the reason that we observe lower amount of reviews compared to prior studied. However, only 20 apps have more than 500 reviews per day. Therefore, we still calculate the average number of reviews in a single day in order to compare to prior study results.
 
-To further address such limitation, we check the median number of reviews in a single day for each app. We find that the median number is 0. Although Hoon et al. in prior study reports that the median number of reviews per year is 50 and 30 for free and paid apps, respectively, we cannot directly compare such results (median 50 or 30 reviews per year) with our result (median 0 review per day). We report the median number of reviews for each app per day in table 2.
-}
+%\noindent {\Large {\bf Reviewer 2 Comment}}
 
-\comment{3}{
-- Figure 1b should read ``All other apps''. It is wrong as it is now.
-}
+%\comment{2}{
+%In this paper, the author conducted data analysis over the reviews on Mobile Apps in Google playstore. They found some interesting facts, such as a very small number of Apps received much more reviews than the others. Though the authors argued strongly that their findings are different from Pagano and Maalej's and Hoon et al.'s observations, in fact, there is no New finding in this study. The real difference is that the previous study was conducted over Appstore and this one was conducted on Google Playstore. Thus, I do not think this paper should be published without a new finding.
+%}
 
-\response{Fixed.
-}
+%\response{App stores (and in particular user and developer interactions through app reviews) are a whole new domain of study in computing today. Our study is important in that it raises a warning flag about the importance of looking across such stores and that the computing community cannot just assume that the observed patterns are universal. Instead according to our study, there are differences between stores. For example, while prior studies highlight that many iOS developers are overwhelmed with reviews, we note that this is not the case for most Android apps. Furthermore, we are the first to dig deeper into the relation between app reviews and other meta data (as pointed by reviewer 3). Table 2 details the key differences between our study and prior studies
+%}
 
-\comment{3}{
-- Most apps receive few feedback and thus would not benefit from automated analyses. =\textgreater 20 reviews per day is already an amount where you would need a person for reading, triaging, detecting duplicates etc. So I would not subscribe this actually.
-}
 
-\response{We calculate the number of tokens from all the reviews of everyday for every app. The median number of words for app to receive for one day is 46. Such results confirm that most apps do not receive large amounts of feedback. We include such results in the new revision of the paper.
-}
+%\noindent {\Large {\bf Reviewer 3 Comments}}
+
+%\comment{3}{
+%On the other hand, the study remains mostly at the descriptive level, leaving out implications, interpretation, and discussions. I would really appreciate more context in a discussion section on why the study is important and which implications it has, e.g. for automated extraction of topics, triaging etc. as the beginning of the manuscript might ``promise''.
+%}
+
+%\response{The greatest implication and take-home message of this paper is that practitioners and researchers on mobile app should be mindful of the differences among different app stores. Assumptions of having the same observations/patterns across different apps stores may not hold. With the awareness of the differences, techniques that are designed to assist mobile app developers should be optimized for different app stores. Similarly, researchers should examine whether other empirical findings do hold across app stores.
+%We added the discussion of the implication of our paper to the %new revision of the paper.
+%}
+
+
+%\comment{3}{
+%Related work is complete, but could be set more into the %context of this manuscript.
+%}
+
+%\response{The related work is set into the context of this %paper in the follow 3 aspects
+%\begin{enumerate}
+%	\item The importance of mobile app user reviews motivates our study.
+%	\item The findings of this paper ascertains the context of prior techniques that analyze mobile app user reviews.
+%	\item Prior empirical studies on mobile app user reviews focus on iOS apps, while our findings on Google Play Store are different.
+%\end{enumerate}
+%These points are highlighted in bold in Section ``Mobile App Analytics'' in the new draft.
+%}
+
+%\comment{3}{
+%Due to the app selection and sampling process, the presented results are only valid for free, established, popular apps - a fact that should be carefully noted throughout the manuscript.
+%}
+
+%\response{We noted such limitation in the new revision of the paper.
+%}
+
+
+%\comment{3}{
+%Language and typos should be checked.
+%}
+
+%\response{Fixed.
+%}
+
+
+
+%\comment{3}{
+%Introduction
+%- Yet little is known about the reviewing dynamics of the %Google Play Store =\textgreater This seems a bit exaggerated.
+%}
+
+%\response{The sentence is rephrased in the new draft. 
+%}
+
+%\comment{3}{
+%The number of downloads and releases impact the number of received reviews =\textgreater Should be "correlates with" instead of "impacts". In the case of downloads and releases - other than categories - the authors do not know which influences which, so a causal relation is not given per se.
+%}
+
+%\response{The sentence is rephrased as suggested.
+%}
+
+%\comment{3}{
+%Mobile App Analytics
+%- ll. 47ff: The related work (apart from the two studies that are also shown in the table) could be presented in more detail. What were concrete outcomes? How do they concretely relate to the authors' work?}
+
+%\response{Please refer to our response to comment 3.2.
+
+%The related work are set to present three aspects as our response to comment 3.2. We added more information about the outcomes of the related work. Related work does not consider that the assumptions of having the same observations/patterns across different apps stores may not hold. Our work makes the implication and take-home message that practitioners and researchers on mobile app should be mindful of the differences among different app stores. With the awareness of the differences, techniques that are designed to assist mobile app developers should be optimized for different app stores. Similarly, researchers should examine whether other empirical findings do hold across app stores.
+
+%}
+
+%\comment{3}{
+%Studied Apps
+%- The fact that only 500 reviews per day were sampled at max is a pity. This does not really allow to describe the full spectrum of how reviews distribute. However, the median \_should\_ still be stable, given that the authors only found few apps with more than 500 reviews.
+%}
+
+%\response{Thanks for the suggestion. We find the median number of reviews per app per day to be 0. We elaborate such finding in table 2 in the new revision of the paper.
+%}
+
+%\comment{3}{
+%- Only top apps are studied =\textgreater this reduces the subjects and generalizability to popular apps
+%- Only ``stable'' (old) apps are studied =\textgreater this reduces the subjects and generalizability to popular, established apps
+%- Only free apps are studied =\textgreater this reduces the subjects and generalizability to popular, established, free apps.
+%}
+
+%\response{We agree that our findings are limited to top, stable and free apps in Google Play Store. We mention such limitations in the new revision of the paper.
+%}
+
+%\comment{3}{
+%- Why would spam reviews be a problem? I don't see the argument that there are usually few reviews as an argument for not having spam. Spammers might choose relevant apps. Also I don't think it is relevant that you must login before reviewing, as this is no limitation for spammers. And: In the end there is spam, according to [3] (the study is for iOS, but there you have to login as well).
+%}
+
+%\response{The paragraph is removed from the new revision.
+%}
+
+%\comment{3}{
+%Our Findings
+%- I don't really see much on the beanplots. Maybe a traditional boxplot with whiskers and outliers would give a better impression?
+%}
+
+%\response{We tried to use boxplots as well. For figure 1(a) and figure 1(b): All other apps, box plots and bean plot would show similar information since the distribution is highly skewed (more than half of the data is 0). On the other hand, the figure 1 (b): 100 most reviewed apps, the bean plot can show the density of apps in different amount of reviews. For example, we can observe that most of the top 100 reviewed apps have around 10,000 reviews during the studied period. Such information can't be shown by boxplots. However, if the reviewer feels that box plots are more appropriate, we can replace them in the next revision.
+
+%}
+
+%\comment{3}{
+%- ... ``4,275 reviews in a single day such large numbers would lead to increasing the overall reported average of the received reviews on a daily basis.'' =\textgreater Yes, but not necessarily the median!
+%}
+
+%\response{We do not mean that the the findings from prior study on Facebook represent the normal situation (like median) of other apps in iOS store. We try to explain that some apps, like Facebook, may have way over 500 reviews per day. Therefore, our limitation of seeing only 500 reviews may be the reason that we observe lower amount of reviews compared to prior studied. However, only 20 apps have more than 500 reviews per day. Therefore, we still calculate the average number of reviews in a single day in order to compare to prior study results.
+
+%To further address such limitation, we check the median number of reviews in a single day for each app. We find that the median number is 0. Although Hoon et al. in prior study reports that the median number of reviews per year is 50 and 30 for free and paid apps, respectively, we cannot directly compare such results (median 50 or 30 reviews per year) with our result (median 0 review per day). We report the median number of reviews for each app per day in table 2.
+%}
+
+%\comment{3}{
+%- Figure 1b should read ``All other apps''. It is wrong as it is now.
+%}
+
+%\response{Fixed.
+%}
+
+%\comment{3}{
+%- Most apps receive few feedback and thus would not benefit from automated analyses. =\textgreater 20 reviews per day is already an amount where you would need a person for reading, triaging, detecting duplicates etc. So I would not subscribe this actually.
+%}
+
+%\response{We calculate the number of tokens from all the reviews of everyday for every app. The median number of words for app to receive for one day is 46. Such results confirm that most apps do not receive large amounts of feedback. We include such results in the new revision of the paper.
+%}
 
 
 
@@ -221,7 +401,7 @@ updated manuscript.
  \vspace{2mm}
  
 \noindent{Sincerely,}\\
-\noindent{Stuart McIlroy, Weiyi Shang, Nasir Ali, Ahmed E. Hassan}\\
+\noindent{Muhammad Moiz Arif, Weiyi Shang, \& Emad Shihab}\\
 %\noindent{\tt{\{tsehsun, sthomas, hemmati, mei, ahmed\}@cs.queensu.ca}}
 \end{letter}
  
@@ -232,7 +412,3 @@ updated manuscript.
 
 
 \end{document}
-
-
-
-
