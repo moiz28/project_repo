@@ -10,9 +10,8 @@
 \usepackage{letterbib}
 
 \usepackage{natbib}
-%\usepackage{natbib}
-
-
+\usepackage{url}
+\usepackage{xcolor}
 
 %\usepackage[pdftex]{graphicx}
 %\usepackage{textcomp}
@@ -52,7 +51,7 @@ Montreal, QC, Canada H3G 2W1 \\
  
 \noindent Thank you for your insightful feedback and comments, both positive and constructive, and for allowing us the opportunity to improve our manuscript. We have taken each of your comments into consideration and made the appropriate changes and extensions to our manuscript. 
 
-In the end, we added new analysis results as suggested by the reviewers. We studied topics in user reviews in Google Play Store. We also made several clarifications throughout the paper, improved paper presentation, and improved the discussion of related work. We feel that the paper is now much stronger.
+%In the end, we added new analysis results as suggested by the reviewers. We studied topics in user reviews in Google Play Store. We also made several clarifications throughout the paper, improved paper presentation, and improved the discussion of related work. We feel that the paper is now much stronger.
 
 
 %significantly expanded our threats to validity section with more discussion of our approach, and experiments to support our heuristics for identifying test files. 
@@ -75,38 +74,41 @@ Below, we include a description of the changes that we made to our manuscript wi
 }
 
 
-There are discussions online:
-http://stackoverflow.com/questions/8906954/can-you-use-a-virtual-machine-to-performance-test-an-application
-Even discussed here:
+\response{Thank you for pointing this out. We found online discussions by developers and testers supporting our argument of testing across heterogeneous environments \cite{performanceonvvirtual}\cite{stackoverflow}\cite{windowsserver}. We also find a an experiment similar to our hypothesis where a web application(Sugar CRM) is tested for identifying performance issues between the physical and virtual environments\cite{sugarcrmexp}. There also exist VMware test labs to test an application and analyze performance metrics in a virtual environment \cite{vmware_test_lab}. In addition to that, we also highlight that Sugar CRM and Blackberry's BES server are offered with options of deployment on-premise or on cloud \cite{bbs} \cite{sugarcrm}. Furthermore, our experience with industrial partners speaks that virtual environments are used to test applications because of their flexibility. We have added a motivating example too to better motivate our paper.
+}
 
-https://social.technet.microsoft.com/Forums/windowsserver/en-US/06c0e09b-c5b4-4e2c-90e3-61b06483fe5b/performance-test-is-not-reliable-on-virtual-machine?forum=winserverhyperv
+%There are discussions online:
+%http://stackoverflow.com/questions/8906954/can-you-use-a-virtual-machine-to-performance-test-an-application
+%Even discussed here:
 
-This one is amazing:
+%https://social.technet.microsoft.com/Forums/windowsserver/en-US/06c0e09b-c5b4-4e2c-90e3-61b06483fe5b/performance-test-is-not-reliable-on-virtual-machine?forum=winserverhyperv
 
-http://sqa.stackexchange.com/questions/7709/performance-testing-systems-on-virtual-machines-that-normally-run-on-physical-ma
+%This one is amazing:
 
-WOW man this is like a gift:
+%http://sqa.stackexchange.com/questions/7709/performance-testing-systems-on-virtual-machines-that-normally-run-on-physical-ma
 
-http://www.webperformance.com/library/reports/Virtualization2/
+%wOW man this is like a gift:
 
-And this sugar crm supports both cloud and on-premise options. Plus BES.
+%http://www.webperformance.com/library/reports/Virtualization2/
 
-People even talk about building perf testing labs using vm
-http://searchvmware.techtarget.com/tip/Building-a-VMware-test-lab-How-to-obtain-and-interpret-performance-metrics
+%And this sugar crm supports both cloud and on-premise options. Plus BES.
 
-Are these enough:)
+%People even talk about building perf testing labs using vm
+%http://searchvmware.techtarget.com/tip/Building-a-VMware-test-lab-How-to-obtain-and-interpret-performance-metrics
 
-And it?s our expeirence with our industial partner over the years.
+%Are these enough:)
 
-You better add a subsection in your background to disccuss this.
+%And it?s our expeirence with our industial partner over the years.
 
-In order to better motivate our paper we added motivation example:
+%You better add a subsection in your background to disccuss this.
 
-A guy has a software system based on premise and cloud due to the constraints and flexib they test on vm correlation model building and finds that io is impacting their performance. Turns out vm io is being hampered. 
+%In order to better motivate our paper we added motivation example:
 
-Cite the io xen server. 
+%A guy has a software system based on premise and cloud due to the constraints and flexib they test on vm correlation model building and finds that io is impacting their performance. Turns out vm io is being hampered. 
 
-If they knew there were discrepancy they wouldnt worry. Approaches to reduce noise.
+%Cite the io xen server. 
+
+%If they knew there were discrepancy they wouldnt worry. Approaches to reduce noise.
 
 
 
@@ -114,8 +116,10 @@ If they knew there were discrepancy they wouldnt worry. Approaches to reduce noi
 }
 
 
-Say this is the first step. First we need to know what is the descrepancy, how big and how to reduce.
-Then it makes sense to see the impact on fault and will be our future work. However, without understaing the nature of the descrpancy and directly see the impact on fault, you can?t really reason about results.
+\response{This study serves as a building block towards fault detection. The goal is to dig deeper into the nature of the discrepancy, its magnitude and approaches to reduce it. Our future work is directed towards fault detection as the next step. However, we understand that without analyzing or not having the knowledge about discrepancy between the two environments, we can not directly look at the impact on faults. }
+
+%Say this is the first step. First we need to know what is the descrepancy, how big and how to reduce.
+%Then it makes sense to see the impact on fault and will be our future work. However, without understaing the nature of the descrpancy and directly see the impact on fault, you can?t really reason about results.
 
 
 
@@ -123,33 +127,37 @@ Then it makes sense to see the impact on fault and will be our future work. Howe
 }
 
 
-I sent you a paper about using correlation. Try to find it.
+\textcolor{red}{I sent you a paper about using correlation. Try to find it.\\Elaborate related work and motivation research question. }
 
-To see the trends
-To the realtionships between metrics 
-To see the impact of metrics the all together. Many to many.
+%To see the trends
+%To the realtionships between metrics 
+%To see the impact of metrics the all together. Many to many.
 
-
-Elaborate related work and motivation research question. 
-
-
-\comment{1}{ In the related work section, instead of just describing the three types of analysis, the authors should relate the existing work to the proposed study. Does the discussed existing work rely on VMs? If it does, are there any problems caused by the discrepancy between VMs and physical environments?
+\response{The investigation(s) in this work are based on the following 3 aspects:
+\begin{enumerate}
+	\item The first approach is used to identify the trends and distributions of performance metrics. As a result, we can look at the differences at a finer level between the two environments and not just by numbers only.
+	\item The second approach, was used to identify the change in the nature of relationship between performance metrics. We believe that a change in these relationships can effect the behavior of the subject systems in the two environments.
+	\item The third and final approach is used to see examine the impact of the metrics all together. This analysis also serves as the baseline for our future study i.e. fault detection.
+\end{enumerate}
+We have addressed and rephrased this in the journal.
 }
 
-Say explcitly where in the paper they have mentioned or cite papers where you can see this.
-Their analysis is not domain specified so we are just testing in both the envion. And we find out that its dispcrepance.
+
+\comment{1}{In the related work section, instead of just describing the three types of analysis, the authors should relate the existing work to the proposed study. Does the discussed existing work rely on VMs? If it does, are there any problems caused by the discrepancy between VMs and physical environments?
+}
+
+\textcolor{red}{Say explicitly where in the paper they have mentioned or cite papers where you can see this.}\\
+%The analysis menioned is not domain specified so we are just testing in both the envion. And we find out that its dispcrepance.
+\response{We mention at the end of section 2.2:\textit{"Prior research focused on the overhead of virtual environments without considering the impact...and investigate whether such impact can be minimized in practice"}. The domain is not specified in most of the papers that we have mentioned as our related work. Hence, we tested in both the environments and concluded that the methodologies can not be applied as is.}
 
 \comment{5}{As virtualization becomes wildly adopted, many companies use virtual environment as their production environment to reduce operation costs. Does that invalidate the purpose of this study? What if an application is actually deployed in a virtual environment?
 }
 
+\response{We agree however that would mean that we need to study the variance present in the virtual environment. We highlight a scenario where both the environments are used and not just only virtual. Like mentioned in response 1.1, some software needs to run on premise on anyways. Particularly large software systems like CRM and BES. We clarify this in the new revision.}
+%That sounds like another study about vm variance. But that?s not the focus of our paper. Some software needs to run on premise anyways. 
 
-That sounds like another study about vm variance. But that?s not the focus of our paper. Some software needs to run on premise anyways. 
-
-We never talk about test and running in vm. We talk about a scenario where we use vm and physical. Particularly many large s/w systems offering vm and premise. Like CRM and BES. we clarify in the introduction.
-
-
-
-Detailed comments:
+%We never talk about test and running in vm. We talk about a scenario where we use vm and physical. Particularly many large s/w systems offering vm and premise. Like CRM and BES. we clarify in the introduction.
+%Detailed comments:
 
 \comment{1}{Section 3.3: "the workload of the performance tests is varied periodically in order to avoid bias from a consistent workload" - how did it get varied.
 }
@@ -407,8 +415,9 @@ updated manuscript.
  
 %\bibliographystyle{natbib}      % basic style, author-year citations
 %\bibliographystyle{spmpsci}      % mathematics and physical sciences
-%\bibliographystyle{spphys}       % APS-like style for physics
-%\bibliography{responses1} 
+\bibliographystyle{plain}
+%bibliographystyle{spphys}       % APS-like style for physics
+\bibliography{responses1} 
 
 
 \end{document}
