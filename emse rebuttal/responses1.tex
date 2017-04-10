@@ -153,7 +153,7 @@ We have addressed and rephrased this in the journal.
 \comment{5}{As virtualization becomes wildly adopted, many companies use virtual environment as their production environment to reduce operation costs. Does that invalidate the purpose of this study? What if an application is actually deployed in a virtual environment?
 }
 
-\response{We agree however that would mean that we need to study the variance present in the virtual environment. We highlight a scenario where both the environments are used and not just only virtual. Like mentioned in response 1.1, some software needs to run on premise on anyways. Particularly large software systems like CRM and BES. We clarify this in the new revision.}
+\response{We agree however that would mean that we need to study the variance present in the virtual environment. We highlight a scenario where both the environments are used and not just only virtual. Like mentioned in response 1.1, some software have the option to run on premise. Particularly large software systems like CRM and BES. We clarify this in the new revision.}
 %That sounds like another study about vm variance. But that?s not the focus of our paper. Some software needs to run on premise anyways. 
 
 %We never talk about test and running in vm. We talk about a scenario where we use vm and physical. Particularly many large s/w systems offering vm and premise. Like CRM and BES. we clarify in the introduction.
@@ -163,44 +163,59 @@ We have addressed and rephrased this in the journal.
 }
 
 
-Through the change in number of threads, threads represented users. As the users and number of requests sent/received are directly proportional in these software, eventually varying the workload.
-Although 7) the reviewer mentions that we have varied it according to the number of threads.
+%?Through the change in number of threads, threads represented users. As the users and number of requests sent/received are directly proportional in these software, eventually varying the workload.
+%Although 7) the reviewer mentions that we have varied it according to the number of threads.
 
-Random workload, try to point it out. We clarify. 
-
+%Random workload, try to point it out. We clarify. 
+\textcolor{red}{Ask a}\\
+\response{We varied it randomly. Although the variation was identical between both the environments. The variation was introduced by the number of threads as mentioned in section 3.3 \textit{"The workload variation was introduced by..."}. }
 
 
 \comment{1}{"The work-load variation was introduced by the number of threads." Why not consider other types of workloads, such as the amount of input data? Increasing the number of threads may also be used to speedup the performance. 
 }
 
-What input data? If the reviewers mean the input data for the website It is an e-commerce website and the drivers for both systems come with predefined actioned. Log in, browse, buy, exit.
+\textcolor{red}{Ask a}
+%What input data? If the reviewers mean the input data for the website It is an e-commerce website and the drivers for both systems come with predefined actioned. Log in, browse, buy, exit.
 
 
-This is a limitation we discuss in threads to validity. Only users=threads.
-
+%This is a limitation we discuss in threads to validity. Only users=threads.
+\response{The use cases are predefined in the performance testing suite which is a limitation of our subject systems. We now discuss it in our revised threads to validity.}
 
 \comment{1}{The quality of the performance tests could greatly influence the testing results. The paper should provide more details. Examples of performance tests can be useful. Also, how many performance tests are used in the study? Why does a test take so long (9 hours) to execute? Is running performance tests twice sufficient to reduce influence of randomness?
 }
 
-Example of performance tests, I think I will put it under exploratory performance testing. Of course it is not done to see functional/non-functional anomalies. 
-The nature of the study itself requires 1 performance tests spread out over 9 hours. Concatenating multiple tests will only create noise in our data. Combination of workloads and usage scenario. We do not change performance tests, taken s/w as is. We do not want to impact any thing by making a special performacne test. 
-9 hours: I will site COR-PAUL who ran the test for 24 hours. The idea is to work on metrics under review statistically stable.  CITE: Jack.
-Its  about the sample size want to make sure enough data.
-We actually ran the test multiple times to reduce the randomness and to reach stable test output. But we took the best two runs and compared to them to evaluate the existence of randomness.
-Its a miscommunication. We actually ran at 3 times. And we do not guarantee that running it thrice will remove all the randomness. Add this to threads to validity. Limitation. 
+%Example of performance tests, I think I will put it under exploratory performance testing. Of course it is not done to see functional/non-functional anomalies. 
+%The nature of the study itself requires 1 performance tests spread out over 9 hours. Concatenating multiple tests will only create noise in our data. Combination of workloads and usage scenario. We do not change performance tests, taken s/w as is. We do not want to impact any thing by making a special performacne test. 
+%9 hours: I will site COR-PAUL who ran the test for 24 hours. The idea is to work on metrics under review statistically stable.  CITE: Jack.
+%Its  about the sample size want to make sure enough data.
+%We actually ran the test multiple times to reduce the randomness and to reach stable test output. But we took the best two runs and compared to them to evaluate the existence of randomness.
+%Its a miscommunication. We actually ran at 3 times. And we do not guarantee that running it thrice will remove all the randomness. Add this to threads to validity. Limitation. 
+
+\response{We answer the questions accordingly:
+	\begin{enumerate}
+		\item We use the same type of performance tests as used in the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}\cite{foo2010mining}. \textcolor{red}{Should I mention the exact type which was "exploratory performance testing(ref: Jack's journal paper)"?}
+		\item In total, there are 3 performance tests used in this study.
+		\item It was very necessary for this study that the systems are stable and the sample sizes are statistically significant. A longer run of the tests would ensure we have covered more data points, than the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}. In the future, we can extend our study to run for even a longer period of time.
+		\item We ran it 3 times in total. We do not guarantee that running it thrice would completely eliminate the randomness.
+		\\\\
+		We have clarify all of the aforementioned points in the updated version of our manuscript.
+	\end{enumerate}}
 
 
 \comment{1}{Different performance tests may performance different functionalities (e.g., SQL query VS server restart). The functionalities should be evaluated separately. 
 }
 
+We decided to test the subject system as a compound. Testing just one of the functionalities may result in a different system behavior but we used only the testing suite which is a mix of all the functionalities, depicting a real-time user. Though we rely on the test only hence this has been added to our threads to validity. 
 
-I think this reviewer did not understand how our two software work and I can guess it by the questions. There is no need to evaluate different functionalities because atomically both the drivers are role-playing as a user. Log in - browse - buy - pay - logout. If the nature of all the transactions remains same based on the SQL query, I believe there is no need of evaluating it as different functionalities. 
+%I think this reviewer did not understand how our two software work and I can guess it by the questions. There is no need to evaluate different functionalities because atomically both the drivers are role-playing as a user. Log in - browse - buy - pay - logout. If the nature of all the transactions remains same based on the SQL query, I believe there is no need of evaluating it as different functionalities. 
 
-We use a combination of things. Whatever the test driver is based on. Test on single feature maybe system behaves in a different way but ours is based on compound exercising the system.
+%We use a combination of things. Whatever the test driver is based on. Test on single feature maybe system behaves in a different way but ours is based on compound exercising the system.
+
 
 \comment{1}{Section 3.1: what is the size of each application?
 }
-Will mention.
+
+\response{Added in the updated manuscript.}
 
 
 \comment{1}{On page 7, the design choice of combining metrics of two datasets is not justified. 
@@ -209,49 +224,58 @@ Will mention.
 %To disregard the presence of multicollinearity or %counter-intuitive results such as simpsons paradox
 %https://en.wikipedia.org/wiki/Simpson%27s_paradox 
 
-We considered it as one system. For a user its just a box. 
+%We considered it as one system. For a user its just a box. 
+\response{As for the user it is just a box, we considered it a one complete system. This is now added in the updated manuscript.}
 
 \comment{1}{On page 7, realistically, interference on the real-world systems cannot be restricted like the one mentioned in the setup. The concern is that, by leaving out the system load, the statistical model might miss the opportunity to adjust to the real-world situation. Also, different assumptions about the system workload could affect the choice of the statistical model and thus perturb the prediction results.
 }
 
-Dr. Shang will attend.
+\textcolor{red}{Dr. Shang will attend.} \textcolor{blue}{(although we did not assume anything)}
 
 
 \comment{1}{On page 15, what is the purpose of removing "metric that has a higher average correlation with all other metrics"?
 }
 
 
-Explain.
-Dr. shang r function.
+%Explain.
+%Dr. shang r function.
 
-We did it based on R. we removed the one which is more correlated to other metrics.
-
+%We did it based on R. we removed the one which is more correlated to other metrics.
+\response{We used it to any remove multicollinearity present between performance metrics. This was based on the functions based in R.}
 
 \comment{1}{On page 16, what regression model is used? On page 17, linear regression model is mentioned briefly. Why is a linear model chosen? Not until on page 19, the assumption of a linear relationship is mentioned. A brief writing of the design decision would be more appropriate. 
 }
-Lrm. because prior work and easy to explain.
+%Lrm. because prior work and easy to explain.
 
-Say you can use other models. You use linear model since it?s easier to explain, and also used in prior work, cite my paper icpe and the vperfguard
+%Say you can use other models. You use linear model since it?s easier to explain, and also used in prior work, cite my paper icpe and the vperfguard
 
+\response{We chose linear regression model as it is used in prior work \cite{xiong2013vperfguard}\cite{Shang:2015:ADP:2668930.2688052}. Also, the model is straightfoward to explain compared to that other models that we may have used. We have added this brief in our revised manuscript. }
+
+\response{arg1}
 \comment{1}{R-squared is used without explanation. If 10-fold cross validation has an explanation, R2 may deserve one too.
 }
 
-Yes please explain.
+\response{We have now provided this explanation.}
 
 \comment{1}{On page 18, "good model fit (66.9\% to 94.6\%)", is that the absolute percentage error?
 }
-R2
+
+\response{No, that is the value of the R2 of our model.}
 
 \comment{1}{There is much work on performance testing and bug detection, which should be discussed in related work. 
 }
 
-Yes
-Look for performance bug detection. 4 or 5 papers. Look at the reviewers example.
+%Yes
+%Look for performance bug detection. 4 or 5 papers. Look at the reviewers example.
+
+\textcolor{red}{Nistor ICSE 13, Jin PLDI 12 + 2/3}\\\\
+\response{}
 
 
 \comment{1}{If the trace data can be made public, others may use it to replicate the experiments.
 }
-yes
+
+\response{We agree. We have now made the data public.} \textcolor{red}{should i mention the url?}
 
 
 
