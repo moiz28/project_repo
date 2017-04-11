@@ -277,8 +277,163 @@ We decided to test the subject system as a compound. Testing just one of the fun
 
 \response{We agree. We have now made the data public.} \textcolor{red}{should i mention the url?}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{2em}
+
+\noindent {\Large {\bf Reviewer 2 Comments}}
+
+\comment{2}{Therefore, the claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold.}
+
+\response{arg1}
+
+\comment{2}{Some work exists in that have implicitly compared the difference between the metrics harvested from the VMs and Physical machines, however, performance testing was not their main focus. A few explicit research efforts exist to gauge the difference between metrics collected from physical and virtual environment. I am pointing to one such work conducted by Netto from PUCRS and Sadd from Dell "Evaluating load generation in virtualized environments for software performance testing". They conducted several load tests on both virtual machines and physical machines.}
 
 
+say you compare it using typical anlaysis of perf tests. and cite it.\\\\
+\response{arg1}
+
+\comment{2}{However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results. ???? Why testing over virtualized lead to unrealistic PT results?
+	}
+\\\\
+The overhead is very complex not just see the overhead and evaluate the dicrepancy. b/c the overhead is not straight forward. You better read the vm overhead paper and cite them and say the overhead is rather complex. So you can;t just add up the overhead direct on top of the results.
+\\\\
+\response{arg1}
+
+\comment{2}{ Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment????.. Is there any evidence to back up the current practice(s) in which practitioner generalize the result of one environment to another (phy to Vir), especially of the large scale software, you mentioned in the paper?
+	}\\\\
+	Vm and on premise. 
+	
+	In the light of this:
+	http://www.bluelinkerp.com/hosted-onpremises-solutions/
+	You can also mention about BES, which is also both on cloud and on premise.
+	if you can find some thing to say, some apps can be hold both on cloud and on premise, then they may not have the effor to testing for each environment
+	\\
+	\\
+\response{}
+
+\comment{2}{Exploring, identifying and minimizing such discrepancy will help practitioners and researchers understand and leverage performance testing results from virtual and physical environments???????..Why would they *LEVERAGE* performance testing results from virtual and physical and to achieve *WHAT* purpose. Bench-marking folks won't like this idea}
+\\\\
+Counter narrative: Many companies also try to virtualize their load generation infrastructure which seems like a good idea for maintenance and elasticity reasons. However, they defiantly do tests on physical environment for the show-off purpose of their performance. This is a fact that you can squeeze the most performance out of physical environment. Nevertheless, especially for SaaS infrastructure, or to cater the need of stakeholders and large clients, virtualized environment are used and performance results obtained are attributed to specific virtual environment. That's why the benchmark teams exists in large enterprise that catalog the performance under different virtualized environment. Application of findings from one environment to another is not a usual practice.
+\\\\
+better look for some examples online, like web posts.\\\\
+\response{arg1}
+
+\comment{2}{Since the authors have framed the paper as an empirical study, it is very important to provide the necessary information in the paper for replication purpose. Replication, allows other researcher to validate authors claim(s) and in cases, compare it with their own techniques/cases and findings. What are workload parameters are used in this paper for DS2 and for Cloud Store using JMeter? }\\\\
+say you will share everything
+\\\\
+\response{arg1}
+
+\comment{2}{Did you used the same hardware for setting up the virtual environment?
+	}\\\\
+	yes\\\\
+\response{arg1}
+
+\comment{2}{Among the three machines, on which machine you were running perfmon agent (remote collection)? OR you were running it on all three machines?
+	
+	}
+\response{On db and app server, but we monitor the process perf.}
+
+\comment{2}{How did you ensured that environment remained constant for each performance test? For example after few tests, the disk may get full hence IOPS can get impacted. 
+	}\\\\
+\response{Say you restore the environemnt such as db.
+	}
+
+\comment{2}{ For both the Q-Q plots for D2 and Cloud store, the metrics do not have the same trend. Did you used the samples of the performance tests results when the test was in equilibrium? If yes how did you ensured that?
+	}
+	
+\response{We waited till the point of stability and only then we processed. 
+	}
+
+\comment{2}{Also, before calculating the correlation among the performance metrics from virtual and physical environments, did you removed ramp-up and ramp-down observations of the performance metrics for a test? The system is usually not stable during warm-up and cool-down period. Ramp-up and down periods, for a test repeated multiple time under a given workload, and constant environment, many not necessary be correlated to each other.
+	}
+	
+\response{yes}
+
+\comment{2}{What is the implication of this study?
+	}
+	
+Future resarch should investigate how to reduce the discrepancy and to be careful when working in two environments. 
+	
+
+\response{arg1}
+
+\comment{2}{In order to assist the practitioners leverage performance testing results in both environments, we also investigate ways to transform results from virtual and physical environments and performance metrics based on deviance may reduced [REDUCE] the discrepancy between performance metrics... Weird sentence, unless am reading between lines.
+	}
+	
+\response{arg1}
+
+\comment{2}{?.such challenges, virtual environments (i.e., VMs) are often leveraged for performance testing [8,8,47]... why "8" is repeated in the ref?}
+
+\response{arg1}
+
+\comment{2}{ ?ents, such overhead would not significantly impact on the practitioners who examine the performance testing results...significantly impact WHAT on the practitioners?
+	}
+	
+\response{arg1}
+
+\comment{2}{...paper, we perform a study on two open-source systems, DS2 [13] and CloudStore [10], where performance tests are conducted on[USING] virtual and physical environments
+	}
+	
+\response{arg1}
+
+\comment{2}{we study whether the performance metric follow[S] the same shape of [THE] distribution and the same trend in virtual and physical environments.
+	}
+	
+\response{arg1}
+
+\comment{2}{...which can lead to [A] different set of conclusions.}
+
+\response{arg1}
+
+\comment{2}{For example, [THE] virtual environment has a CPU's utilization spike at a certain time [,] but the spike is absent in the physical
+	}
+	
+\response{arg1}
+
+\comment{2}{...there exist[S] a plethora of VM software
+	}
+	
+\response{arg1}
+
+\comment{2}{...high when we normalize by [THE] load as per Equation
+	}
+	
+\response{arg1}
+
+\comment{2}{In the reference section, there is an extra '24' hanging at the end of the page}
+
+\response{arg1}
+
+\vspace{2em}
+
+\noindent {\Large {\bf Reviewer 3 Comments}}
+
+
+\comment{3}{The test environments are not quite clear.  This concern is minor because it could be fixed with complete descriptions of the hardware and virtual environment configuration.  For example, is the physical server disk setup a RAID?  SSD?  SATA/NVMe?  Is the network traffic generated locally or is it simulated from another machine (which would be influenced by the network hardware)?
+	Perhaps more importantly, what is the disk setup on the virtual machine?  One of the findings in the paper is that the I/O metrics differ more than the CPU/memory metrics when compared to the physical machine.  That is definitely not surprising if the VM is configured to use VDI or another virtual disk, given the overhead in mimicking a drive within an existing filesystem.  It is possible to use disk passthrough in Virtual Box and other VM software.  In that case, a physical disk is passed by the host OS directly to the guest OS.  That setup tends to be much much closer to native speed.
+	}
+	
+\response{}
+
+
+
+\comment{3}{Unclear research methodology.  At several points, the paper is not clear on exactly what methodology is being followed.  One potential deal breaker for this paper is that the test scenarios for the virtual and physical environments are "similar" so the distributions should have the same shape (first sentence on page 10).  The test scenarios should be identical, not just similar.  Similar implies that the authors created a test scenario for each environment using the same tools.  They should instead have created just one test scenario.  If the test scenarios are not the same, then the discrepancy could obviously be due to a different scenario.  One way to ensure that the tests are the same is to record the network traffic of one run and use the recorded traffic as input for the next run.  In a virtual environment, one can even use the same time and date settings.
+	\\\\
+	The paper needs clear and precise research questions.  The paper jumps into methodology and analysis without clearly explaining what is to be analyzed.  For example consider section 4.1, "Examining individual performance metrics."  It is not explained exactly what an "individual" metric is.  I had to try to understand it from reading the Approach subsection in 4.1.  The concept is not that difficult; the section is just comparing, e.g., a CPU metric in one environment with the same metric in the other environment.  It just needs to be explained more clearly up front.  Some of the language is confusing, such as "intuitively the scales of performance metrics are not the same."  I am not sure if the sentence refers to scales not being the same across metrics or across environments.
+	\\\\The authors have tendency to explain what they are not doing, before explaining what they are doing.  That is confusing because it makes it difficult to understand the methodology.  For example in Section 4, "We do not predict... Instead, our experiments are set in..."
+	\\\\
+	All of these issues with unclear research methodology could be fixed by adding clear research questions and a methodology for answering each question.  The bigger problem here is that the methodology is unclear enough that it might be obscuring more important problems under the surface.
+	
+	
+	}
+
+\response{}
+
+\comment{3}{Lack of actionable findings.  The paper repeats in several places that there is a discrepancy between the performance of virtual and physical environments.  That is interesting, but it is not actionable.  As a programmer or tester, I am not sure how to use this information.  The paper does not give an explanation of how large the difference is, except by presenting the charts and figures.  For example, in the last paragraph on page 9, "By looking closely at such metrics, we find..."  Earlier it states that the "lines on the Q-Q plot are not close."  I can see what the authors mean by looking at the figures, but is that a big difference?  As a tester, I am already aware that the virtual environment is not a perfect reflection of a physical one.  What I am wondering is, is the difference big enough that I need to worry about it?  The paper does not quite answer that question.  Perhaps the paper could go into an example to show how the results might affect decision-making,
+	to give some context for understanding the results.
+	}
+
+\response{}
 %\vspace{1em}
 %\noindent {\Large {\bf Reviewer 1 Comment}}
 
