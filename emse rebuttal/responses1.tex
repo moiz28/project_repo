@@ -284,20 +284,20 @@ We decided to test the subject system as a compound. Testing just one of the fun
 
 \comment{2}{Therefore, the claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold.}
 
-\response{arg1}
+\response{Thank you for your feedback. We have toned it down in the revised manuscript.}\\\textcolor{red}{I am not sure what is he trying to say here}
 
 \comment{2}{Some work exists in that have implicitly compared the difference between the metrics harvested from the VMs and Physical machines, however, performance testing was not their main focus. A few explicit research efforts exist to gauge the difference between metrics collected from physical and virtual environment. I am pointing to one such work conducted by Netto from PUCRS and Sadd from Dell "Evaluating load generation in virtualized environments for software performance testing". They conducted several load tests on both virtual machines and physical machines.}
 
 
-say you compare it using typical anlaysis of perf tests. and cite it.\\\\
-\response{arg1}
+%say you compare it using typical anlaysis of perf tests. and cite it.\\\\
+\response{We do not compare the two environments based on load tests. We do it on the basis of typical analysis of a performance test. \cite{jack_tse}}
 
 \comment{2}{However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results. ???? Why testing over virtualized lead to unrealistic PT results?
 	}
 \\\\
-The overhead is very complex not just see the overhead and evaluate the dicrepancy. b/c the overhead is not straight forward. You better read the vm overhead paper and cite them and say the overhead is rather complex. So you can;t just add up the overhead direct on top of the results.
+%The overhead is very complex not just see the overhead and evaluate the dicrepancy. b/c the overhead is not straight forward. You better read the vm overhead paper and cite them and say the overhead is rather complex. So you can;t just add up the overhead direct on top of the results.
 \\\\
-\response{arg1}
+\response{The overhead in a virtual environment is not}\\\textcolor{red}{better read the vm overhead paper and cite} them
 
 \comment{2}{ Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment????.. Is there any evidence to back up the current practice(s) in which practitioner generalize the result of one environment to another (phy to Vir), especially of the large scale software, you mentioned in the paper?
 	}\\\\
