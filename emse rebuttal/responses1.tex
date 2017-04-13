@@ -290,14 +290,14 @@ We decided to test the subject system as a compound. Testing just one of the fun
 
 
 %say you compare it using typical anlaysis of perf tests. and cite it.\\\\
-\response{We do not compare the two environments based on load tests. We do it on the basis of typical analysis of a performance test. \cite{jack_tse}}
+\response{We do not compare the two environments based on load tests. We do it on the basis of typical analysis of a performance test. \cite{jack_tse}\cite{nguyen2012automated}}
 
 \comment{2}{However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results. ???? Why testing over virtualized lead to unrealistic PT results?
 	}
 \\\\
 %The overhead is very complex not just see the overhead and evaluate the dicrepancy. b/c the overhead is not straight forward. You better read the vm overhead paper and cite them and say the overhead is rather complex. So you can;t just add up the overhead direct on top of the results.
 \\\\
-\response{The overhead in a virtual environment is not}\\\textcolor{red}{better read the vm overhead paper and cite} them
+\response{The overhead in a virtual environment can not be simply added on with the results and analyzed. It is rather complex to calculate and evaluate the discrepancy. That is why \textit{Huber et al.} try to build a performance model to predict performance of applications that are migrated from a native system to a virtual environment or from a virtual environment to a new one \cite{huber2011}. There are similar studies which indicate that the overhead in virtual environment may hamper the results of performance tests \cite{brosig2013}\cite{menon2005}.  }
 
 \comment{2}{ Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment????.. Is there any evidence to back up the current practice(s) in which practitioner generalize the result of one environment to another (phy to Vir), especially of the large scale software, you mentioned in the paper?
 	}\\\\
@@ -309,7 +309,7 @@ We decided to test the subject system as a compound. Testing just one of the fun
 	if you can find some thing to say, some apps can be hold both on cloud and on premise, then they may not have the effor to testing for each environment
 	\\
 	\\
-\response{}
+\response{Please refer to our response for the comment R1.1. We mention that there are some large-scale systems that offer deployment in both enviornments, on-premise and on cloud. For example, Sugar CRM, Blackberry's BES server and Blue Link ERP \cite{sugarcrm}\cite{bbs}\cite{blue_link}. We also notice through online threads that there are no separate tests written for physical and virtual environments hence the comparison of results can not be straight forward. \cite{vmware_thread}. }
 
 \comment{2}{Exploring, identifying and minimizing such discrepancy will help practitioners and researchers understand and leverage performance testing results from virtual and physical environments???????..Why would they *LEVERAGE* performance testing results from virtual and physical and to achieve *WHAT* purpose. Bench-marking folks won't like this idea}
 \\\\
