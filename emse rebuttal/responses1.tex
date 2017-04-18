@@ -194,7 +194,7 @@ We have addressed and rephrased this in the journal.
 \response{We answer the questions accordingly:
 	\begin{enumerate}
 		\item We use the same type of performance tests as used in the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}\cite{foo2010mining}. \textcolor{red}{Should I mention the exact type which was "exploratory performance testing(ref: Jack's TSE paper)"?}
-		\item In total, there are 3 performance tests used in this study.
+		\item In total, there are 3 performance tests used in this study, as mentioned in section 6.1: \textit{"In total, we had results from three performance tests"}
 		\item It was very necessary for this study that the systems are stable and the sample sizes are statistically significant. A longer run of the tests would ensure we have covered more data points, than the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}. In the future, we can extend our study to run for even a longer period of time.
 		\item We ran it 3 times in total. We do not guarantee that running it thrice would completely eliminate the randomness.
 		\\\\
@@ -307,7 +307,7 @@ We decided to test the subject system as a compound. Testing just one of the fun
 %	http://www.bluelinkerp.com/hosted-onpremises-solutions/
 %	You can also mention about BES, which is also both on cloud and on premise.
 %	if you can find some thing to say, some apps can be hold both on cloud and on premise, then they may not have the effor to testing for each environment
-\response{Please refer to our response for the comment R1.1. We mention that there are some large-scale systems that offer deployment in both enviornments, on-premise and on cloud. For example, Sugar CRM, Blackberry's BES server and Blue Link ERP \cite{sugarcrm}\cite{bbs}\cite{blue_link}. We also notice through online threads that there are no separate tests written for physical and virtual environments hence the comparison of results can not be straight forward. \cite{vmware_thread}. }
+\response{Please refer to our response to the comment R1.1. We mention that there are some large-scale systems that offer deployment in both enviornments, on-premise and on cloud. For example, Sugar CRM, Blackberry's BES server and Blue Link ERP \cite{sugarcrm}\cite{bbs}\cite{blue_link}. We also notice through online threads that there are no separate tests written for physical and virtual environments hence the comparison of results can not be straight forward. \cite{vmware_thread}. }
 
 \comment{2}{Exploring, identifying and minimizing such discrepancy will help practitioners and researchers understand and leverage performance testing results from virtual and physical environments...Why would they *LEVERAGE* performance testing results from virtual and physical and to achieve *WHAT* purpose. Bench-marking folks won't like this idea}
 \\\\
@@ -408,6 +408,8 @@ say you will share everything
 
 \vspace{2em}
 
+page 18 interval validation: check-
+
 \noindent {\Large {\bf Reviewer 3 Comments}}
 
 
@@ -415,7 +417,7 @@ say you will share everything
 	Perhaps more importantly, what is the disk setup on the virtual machine?  One of the findings in the paper is that the I/O metrics differ more than the CPU/memory metrics when compared to the physical machine.  That is definitely not surprising if the VM is configured to use VDI or another virtual disk, given the overhead in mimicking a drive within an existing filesystem.  It is possible to use disk passthrough in Virtual Box and other VM software.  In that case, a physical disk is passed by the host OS directly to the guest OS.  That setup tends to be much much closer to native speed.
 	}
 	
-\response{}
+\response{Thank you for your feedback in helping us making it a stronger manuscript. We have now provided a detailed description of environment configuration. \textcolor{red}{about the network traffic, it was simulated what can I say about this by not being hampered by the concordia network?}. One of our focus when carrying out the experiments was to keep the environment setup as close to real world as possible. There are online posts as why disk pass through is not used any more in the real world environment \cite{diskpassthrough}. Due to lack of flexibility and lack of support we decided to use a virtual disk.}
 
 
 
@@ -429,13 +431,23 @@ say you will share everything
 	
 	}
 
-\response{}
+\response{According to the explanation provided, our tests were completely identical i.e. same test scenario ran on both environments. The reason we used the word "similar" is because we believed due to difference between physical and virtual, a test run will never be identical.\\
+	We now have also added research questions and rephrased the unclear explanations. }
 
 \comment{3}{Lack of actionable findings.  The paper repeats in several places that there is a discrepancy between the performance of virtual and physical environments.  That is interesting, but it is not actionable.  As a programmer or tester, I am not sure how to use this information.  The paper does not give an explanation of how large the difference is, except by presenting the charts and figures.  For example, in the last paragraph on page 9, "By looking closely at such metrics, we find..."  Earlier it states that the "lines on the Q-Q plot are not close."  I can see what the authors mean by looking at the figures, but is that a big difference?  As a tester, I am already aware that the virtual environment is not a perfect reflection of a physical one.  What I am wondering is, is the difference big enough that I need to worry about it?  The paper does not quite answer that question.  Perhaps the paper could go into an example to show how the results might affect decision-making,
 	to give some context for understanding the results.
 	}
 
-\response{}
+\response{Please refer to our response to the comment R2.30. We also mention in Section 7 on how we have contributed based on this work. We revise and update the conclusions as follows:
+	\begin{itemize}
+		\item The performance test from virtual environments can not be reused so the results can not be transferred as-is across environments especially with the \textit{MAPE} values as big as 600\%.
+		\item We also evaluate the method proposed by \textit{Nguyen et al.} to use testing results in a different environment. Although, in their case, the environment are not virtual and physical.
+		\item We propose a way that by \textit{normalization by deviance}, practitioners may reduce the discrepancy present.		
+	\end{itemize}
+We now  also provided a motivating example to help clarify the situation where our work's findings would apply.
+	
+	}
+	
 %\vspace{1em}
 %\noindent {\Large {\bf Reviewer 1 Comment}}
 
