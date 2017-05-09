@@ -75,7 +75,7 @@ Below, we include a description of the changes that we made to our manuscript wi
 
 
 \response{Thank you for pointing this out. The motivation of this paper starts from our extensive collaboration with industrial practitioners, where we find that a large amounts of the performance testing are conducted in virtual environments. In order to confirm that our experiences with industry is not an exceptional case, we find online discussions and posts by developers and testers about performance testing in virtual environment \cite{performanceonvvirtual}\cite{stackoverflow}\cite{windowsserver}. In addition, we find that the developers of SugarCRM are documenting their experiences in conducting load testing (which has a big overlap with performance testing) on virtual environments \cite{sugarcrmexp}. \\
-Based on these cases, we are confident that our experiences with our industrial practitioners who use virtual environment for performance testing is not an exceptional case. In fact, Reviewer 3 also support the fact that using virtual environments in performance testing is common.
+Based on these cases, we are confident that our experiences with our industrial practitioners who use virtual environment for performance testing is not an exceptional case. In fact, Reviewer 3 also support the fact that using virtual environments in performance testing is common. We add this in the introduction section.
 }
 
 %\response{Thank you for pointing this out. We found online discussions by developers and testers supporting our argument of testing across heterogeneous environments \cite{performanceonvvirtual}\cite{stackoverflow}\cite{windowsserver}. We also find a an experiment similar to our hypothesis where a web application(Sugar CRM) is tested for identifying performance issues between the physical and virtual environments\cite{sugarcrmexp}. There also exist VMware test labs to test an application and analyze performance metrics in a virtual environment \cite{vmware_test_lab}. In addition to that, we also highlight that Sugar CRM and Blackberry's BES server are offered with options of deployment on-premise or on cloud \cite{bbs} \cite{sugarcrm}. Furthermore, our experience with industrial partners speaks that virtual environments are used to test applications because of their flexibility. We have added a motivating example too to better motivate our paper.
@@ -120,7 +120,7 @@ Based on these cases, we are confident that our experiences with our industrial 
 
 
 \response{We totally agree with this comment. The ultimate goal is to have investigate the impact on the detection of real world performance bugs. This paper is rather the first step to lay a ground to deeply understand such discrepancy.  Without such knowledge, directly evaluate on performance bugs would be rather treating the syndrome. With the knowledge of such discrepancy, we can better, in the future, understand the existence and magnitude of impact on detecting real world performance bugs. In addition, another contribution of our paper, besides the road towards real world performance bugs, is the effort of identifying approaches that may minimize the discrepancy. In particular, we find that the approach proposed by Nguyen et al.\cite{Nguyen:2012} for heterogeneous environments does not effectively reduce the discrepancy and we propose a new approach that is shown to be more effective. Our future work on evaluating the impact of real world performance bugs will based on the testing results that are processed with reduced discrepancy.  
-We add more discussion according to this comment in our threats to validity and conclusion section as well as the  future work section.}
+We add more discussion according to this comment in our conclusion.}
 
 %Say this is the first step. First we need to know what is the descrepancy, how big and how to reduce.
 %Then it makes sense to see the impact on fault and will be our future work. However, without understaing the nature of the descrpancy and directly see the impact on fault, you can?t really reason about results.
@@ -130,21 +130,38 @@ We add more discussion according to this comment in our threats to validity and 
 \comment{1}{ The paper is not clear about how the three aspects of testing results can help to find performance problems. Especially for the second analysis - the correlation between metrics - why is it useful? 
 }
 
-
-\textcolor{red}{I sent you a paper about using correlation. Try to find it.\\Elaborate related work and motivation research question. }
-
 %To see the trends
 %To the realtionships between metrics 
 %To see the impact of metrics the all together. Many to many.
 
-\response{The investigation(s) in this work are based on the following 3 aspects:
-\begin{enumerate}
-	\item The first approach is used to identify the trends and distributions of performance metrics. As a result, we can look at the differences at a finer level between the two environments and not just by numbers only.
-	\item The second approach, was used to identify the change in the nature of relationship between performance metrics. We believe that a change in these relationships can effect the behavior of the subject systems in the two environments.
-	\item The third and final approach is used to see examine the impact of the metrics all together. This analysis also serves as the baseline for our future study i.e. fault detection.
-\end{enumerate}
-We have addressed and rephrased this in the journal.
-}
+%\response{The investigation(s) in this work are based on the following 3 aspects:
+%\begin{enumerate}
+%	\item The first approach is used to identify the trends and distributions of performance metrics. As a result, we can look at the differences at a finer level between the two environments and not just by numbers only.
+%	\item The second approach, was used to identify the change in the nature of relationship between performance metrics. We believe that a change in these relationships can effect the behavior of the subject systems in the two environments.
+%	\item The third and final approach is used to see examine the impact of the metrics all together. This analysis also serves as the baseline for our future study i.e. fault detection.
+%\end{enumerate}
+%We have addressed and rephrased this in the journal.
+%}
+
+
+\response{Response.  The investigation(s) in this work are based on the following 3 aspects:
+	\begin{itemize}
+	
+	\item The first aspect to identify the trends and shape of the distributions of performance metrics. Due to the difference between testing environments, performance testing results are expected to be different in raw value. However, the shape of distribution and the trend should be similar. For example, when there is higher low, CPU increases. If in one environment, we observe the CPU has increasing trend while not seeing the same trend in another environment, we observe a discrepancy. Therefore, we use QQ plot and normalized KS tests to examine the differences in trends and shape of the distributions.
+	
+	\item The second aspect, is to identify the combination between two performance
+	metrics. As claimed by  Cohen et al. \cite{cohen2004correlating}, combinations of performance metrics are significantly more predictive towards performance issues than individual metrics. We believe that a change in these combinations of relationships can reflect the discrepancy of performance in the two environments.
+	
+	\item The third aspect is used to see the combination of all performance metrics all together by constructing a statistical model. Similar approach has been adopted by Xiong et al. \cite{xiong2013vperfguard,cohen2004correlating}. This
+	analysis also serves as the baseline for our future study i.e. fault detection.
+	
+\end{itemize}
+	We have addressed and rephrased this in the journal.
+	
+	In short, the three aspects are three ways that performance engineers may exploit to examine the performance testing results. We would like to set our study in such a context and see if the differences between VM and physical environment would impact such analyses results, instead of simply checking the raw value of performance metrics.
+
+	}
+
 
 
 \comment{1}{In the related work section, instead of just describing the three types of analysis, the authors should relate the existing work to the proposed study. Does the discussed existing work rely on VMs? If it does, are there any problems caused by the discrepancy between VMs and physical environments?
@@ -154,17 +171,15 @@ We have addressed and rephrased this in the journal.
 %The analysis menioned is not domain specified so we are just testing in both the envion. And we find out that its dispcrepance.
 %\response{We mention at the end of section 2.2:\textit{"Prior research focused on the overhead of virtual environments without considering the impact...and investigate whether such impact can be minimized in practice"}. The domain is not specified in most of the papers that we have mentioned as our related work. Hence, we tested in both the environments and concluded that the methodologies can not be applied as is.}
 
-\response{We did not find that the authors have explicitly mentioned their approaches being applied in heterogeneous environment. Some of the related works do not mention their environment while some have explicitly mentioned working in a virtual(cloud) environment. \cite{xiong2013vperfguard}}.
+\response{Some prior research does not explicitly mention the environment. Other prior research is performed on either virtual or physical environments only. For example, vPerfGuard \cite{xiong2013vperfguard} is only conducted in the virtual environment. However, none of them discuss the issue with being on both virtual and physical environments. This motivates our research. We added such discussion in our related work section to clarify.}.
 
 \comment{5}{As virtualization becomes wildly adopted, many companies use virtual environment as their production environment to reduce operation costs. Does that invalidate the purpose of this study? What if an application is actually deployed in a virtual environment?
 }
 
 
 
-\response{Thanks for the comment. We agree that some of the applications may later deployed in a similar virtual environment. However, there still exist many scenarios that would value our study. As a first scenario, many systems have historical performance testing results that are based on the physical environments \cite{chenanalytics}. When comparing the new performance testing results and the old performance testing results, such discrepancy needs to be known. Second, software systems are often released both in virtual environment as cloud based services or on-premise. For example, SugarCRM and BlackBerry\cite{bbs} Enterprise Service sell their systems both on-premise and on cloud based services. Ensuring the consistency between two solutions, or knowing the need (or to what extent) repeating performance tests in different environment is important to save resources. 
-We clarify this and add more discussion about this in the background of our new revision. 
-	
-	.}
+\response{Thanks for the comment. We agree that some of the applications may later deployed in a similar virtual environment. However, there still exist many scenarios that would value our study. As a first scenario, many systems have historical performance testing results that are based on the physical environments \cite{chenanalytics}. When comparing the new performance testing results and the old performance testing results, such discrepancy needs to be known. Second, software systems are often released both in virtual environment as cloud based services or on-premise. For example, SugarCRM \cite{sugarcrm} and BlackBerry\cite{bbs} Enterprise Service sell their systems both on-premise and on cloud based services. Ensuring the consistency between two solutions, or knowing the need (or to what extent) repeating performance tests in different environment is important to save resources. 
+We clarify this and add more discussion about this in the introduction of our new revision.}
 %\response{We agree however that would mean that we need to study the variance present in the virtual environment. We highlight a scenario where both the environments are used and not just only virtual. Like mentioned in response 1.1, some software have the option to run on premise. Particularly large software systems like CRM and BES. We clarify this in the new revision.}
 %That sounds like another study about vm variance. But that?s not the focus of our paper. Some software needs to run on premise anyways. 
 
@@ -189,7 +204,7 @@ We clarify this and add more discussion about this in the background of our new 
 
 
 %This is a limitation we discuss in threads to validity. Only users=threads.
-\response{Thanks for the comment. We agree that there exist many ways of varying workload. The choice of varying number of threads is mainly due to the provided performance test driver of the subject systems. Using other variation is planned in our future work. We discuss this limitation and the plan of future work in our new revision of the paper. }
+\response{Thanks for the comment. We agree that there exist many ways of varying workload. We opt to use the similar performance tests as prior studies that analyze performance testing results \cite{nguyen2012automated}, since we want to set our study in that context. Using other variation is planned in our future work. We discuss this limitation and the plan of future work in our new revision of the paper.}
 
 \comment{1}{The quality of the performance tests could greatly influence the testing results. The paper should provide more details. Examples of performance tests can be useful. Also, how many performance tests are used in the study? Why does a test take so long (9 hours) to execute? Is running performance tests twice sufficient to reduce influence of randomness?
 }
@@ -204,10 +219,11 @@ We clarify this and add more discussion about this in the background of our new 
 \response{We apologize for the confusion. We answer the questions accordingly:
 	\begin{enumerate}
 		\item We use the same performance tests as used in the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}\cite{foo2010mining}. 
-		\item Performance tests are typically run for a long period of time, similar to prior studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}\cite{foo2010mining}. The long length of performance tests reduces the risks that are introduced due to unstableness of the system, the missing coverage of certain load and the lack of statistically significant data for analysis. Infuture work, we can extend our study to run for even a longer period of time (e.g., 72 hours).
+		\item Performance tests are typically run for a long period of time, similar to prior studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}\cite{foo2010mining}. The long length of performance tests reduces the risks that are introduced due to unstableness of the system, the missing coverage of certain load and the lack of statistically significant data for analysis. In future work, we can extend our study to run for even a longer period of time (e.g., 72 hours).
 		\item Apologetically, this is a miss reported number in the last revision. In fact, we ran each performance test 3 times in total. However, we do not guarantee that running it three time would completely eliminate the randomness. Our discussion on the variance between the same tests on the same environment is included in the discussion section.
 		\\\\
-		We have clarified all of the aforementioned points in the updated version of our manuscript.
+		We have clarified all of the aforementioned points in the updated version of our manuscript. In addition, we discuss the quality of performance tests as a possible threats to validity of our findings.
+		
 	\end{enumerate}}
 
 
@@ -227,8 +243,9 @@ We clarify this and add more discussion about this in the background of our new 
 \comment{1}{Different performance tests may performance different functionalities (e.g., SQL query VS server restart). The functionalities should be evaluated separately. 
 }
 
-We decided to test the subject system as a compound. Although testing a smaller unit of  functionalities may benefit in locating the performance issues. However the goal of the paper is to examining the discrepancy of the system as a whole, which is closer to the performance impact on real users. In our future work, we will separate different components of the system and conduct lower level, isolated performance tests, in order to investigate on impact on performance bugs.
-We add discussion in the new revision of our paper.
+\response{We decided to test the subject system as a whole. Although testing a smaller unit of  functionalities may benefit in locating the performance issues. However the goal of the paper is to examining the discrepancy of the system as a whole, which is closer to the performance impact on real users. In our future work, we will separate different components of the system and conduct lower level, isolated performance tests, in order to investigate on impact on performance bugs.
+We add discussion in the new revision of our paper.}
+
 
 
 %I think this reviewer did not understand how our two software work and I can guess it by the questions. There is no need to evaluate different functionalities because atomically both the drivers are role-playing as a user. Log in - browse - buy - pay - logout. If the nature of all the transactions remains same based on the SQL query, I believe there is no need of evaluating it as different functionalities. 
@@ -254,7 +271,10 @@ We add discussion in the new revision of our paper.
 \comment{1}{On page 7, realistically, interference on the real-world systems cannot be restricted like the one mentioned in the setup. The concern is that, by leaving out the system load, the statistical model might miss the opportunity to adjust to the real-world situation. Also, different assumptions about the system workload could affect the choice of the statistical model and thus perturb the prediction results.
 }
 
-\textcolor{red}{Dr. Shang will attend.} \textcolor{blue}{(although we did not assume anything)}
+\response{We agree that in real world, the systems may have different interference to impact their performance. However, in our experiments, we opt for a more controlled environment to better understand the differences without any interference, hence we can limit the chance that the discrepancy is from handling interference rather than the environments. Future work can be applied to investigate the performance impact from different environments by handling interference, with having the knowledge of environment discrepancy.
+	On the other hand, we agree that system load counters may illustrate valuable knowledge of the system. We include throughput metrics that are associated with system load. In addition, we will include more metrics in our future work.
+	
+	We discuss the above points in our new manuscript threats section and future work section.}
 
 
 \comment{1}{On page 15, what is the purpose of removing "metric that has a higher average correlation with all other metrics"?
