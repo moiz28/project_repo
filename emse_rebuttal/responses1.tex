@@ -272,9 +272,8 @@ We add discussion in the new revision of our paper.}
 }
 
 \response{We agree that in real world, the systems may have different interference to impact their performance. However, in our experiments, we opt for a more controlled environment to better understand the differences without any interference, hence we can limit the chance that the discrepancy is from handling interference rather than the environments. Future work can be applied to investigate the performance impact from different environments by handling interference, with having the knowledge of environment discrepancy.
-	On the other hand, we agree that system load counters may illustrate valuable knowledge of the system. We include throughput metrics that are associated with system load. In addition, we will include more metrics in our future work.
-	
-	We discuss the above points in our new manuscript threats section and future work section.}
+On the other hand, we agree that system load counters may illustrate valuable knowledge of the system. We include throughput metrics that are associated with system load. In addition, we will include more metrics in our future work.
+We discuss the above points in our new manuscript threats section.}
 
 
 \comment{1}{On page 15, what is the purpose of removing "metric that has a higher average correlation with all other metrics"?
@@ -285,7 +284,7 @@ We add discussion in the new revision of our paper.}
 %Dr. shang r function.
 
 %We did it based on R. we removed the one which is more correlated to other metrics.
-\response{We used such an approach to remove multicollinearity that is present between performance metrics. In fact, the approach is based on a popular R function findCorrelation \cite{cor_r}. In essence, whenever two metrics are found to be highly correlated, one of them needs to be removed. To determine which one to remove, the approach chooses the one that is more highly correlated with the rest of the metrics. We elaborate the description of our approach in the new revision of the paper.
+\response{We used such an approach to remove multicollinearity that is present between performance metrics. In fact, the approach is based on a popular statistical analysis, [Kuhn, Building Predictive Models in R Using the caret Package, Journal of Statistical Software] \cite{cor_R}. In essence, whenever two metrics are found to be highly correlated, one of them needs to be removed. To determine which one to remove, the approach chooses the one that is more highly correlated with the rest of the metrics. We elaborate the description of our approach in the new revision of the paper.
 	}
 
 \comment{1}{On page 16, what regression model is used? On page 17, linear regression model is mentioned briefly. Why is a linear model chosen? Not until on page 19, the assumption of a linear relationship is mentioned. A brief writing of the design decision would be more appropriate. 
@@ -314,12 +313,12 @@ We add discussion in the new revision of our paper.}
 
 \response{We include the new discussion in more related work about performance testing and bug detection. The list of newly added related work include:
 	\begin{itemize}
-		\item Nistor et al.: Toddler: Detecting Performance Problems via Similar Memory-access Patterns \cite{Nistor}
-		\item Jin et al.: Understanding and Detecting Real-world Performance Bugs  \cite{Jin}
-		\item Nistor et al.: Discovering, reporting, and fixing performance bugs \cite{nistor_2}
-		\item Tsakiltsidis et al.: On Automatic Detection of Performance Bugs \cite{Tsakiltsidis}
-		\item Malik et al.: Automatic Comparison of Load Tests to Support the Performance Analysis of Large Enterprise Systems \cite{h_malik_p_bugs}
-		\item Zaman et al.: A qualitative study on performance bug \cite{zaman_p_bugs}
+		\item Nistor et al.: Toddler: Detecting Performance Problems via Similar Memory-access Patterns  in ICSE '13 \cite{Nistor}.
+		\item Jin et al.: Understanding and Detecting Real-world Performance Bugs in PLDI '12 \cite{Jin}.
+		\item Nistor et al.: Discovering, reporting, and fixing performance bugs in MSR '13 \cite{nistor_2}.
+		\item Tsakiltsidis et al.: On Automatic Detection of Performance Bugs in ISSREW '16 \cite{Tsakiltsidis}.
+		\item Malik et al.: Automatic Comparison of Load Tests to Support the Performance Analysis of Large Enterprise Systems in CSMR '10 \cite{h_malik_p_bugs}.
+		\item Zaman et al.: A qualitative study on performance bug in MSR '12 \cite{zaman_p_bugs}.
 		
 	\end{itemize}
 	
