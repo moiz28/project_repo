@@ -157,7 +157,6 @@ Jiang \emph{et al$.$}~\cite{Jiang:2009:SMM:1555228.1555233} propose an approach 
 
 In our work, we compare performance testing results from both virtual and physical environments based on all the above three types of analyses. Our findings can help better evaluate and understand the findings from the aforementioned research. Prior research does not explicitly mention the environment. Other prior research is performed on either virtual or physical environments only. For example, the research conducted by Xiong \textit{et al$.$} \cite{xiong2013vperfguard} is only conducted in the virtual environment. However, none of them discuss the applicability of their approaches cross-environments.
 
-\cite{Nistor} \cite{Jin} \cite{nistor_2} \cite{Tsakiltsidis} \cite{h_malik_p_bugs} \cite{zaman_p_bugs}
 \subsection{Analysis of VM overhead}
 
 Kraft \textit{et al$.$}~\cite{kraft2011io} discuss the issues that are related to disk I/O in a virtual environment. They examine the performance degradation of disk request response time by recommending a trace-driven approach. Kraft \textit{et al.} emphasize on the latencies existing in virtual machine requests for disc IO due to increments in time associated with request queues. 
@@ -174,8 +173,11 @@ Luo \textit{et al$.$}~\cite{Luo:2016:MPR:2901739.2901765} converge the set of in
 
 Prior research focused on the overhead of virtual environments without considering the impact of such overhead on performance testing and assurance activities. In this paper, we evaluate the discrepancy between virtual and physical environments by focusing on the impact of performance testing results and investigate whether such impact can be minimized in practice.
 
-
 \subsection{Performance testing and bug detection}
+
+There has been much work on performance testing and bug detection. Nistor \textit{et al$.$} detect the presence of functional and loop-related performance bugs with the help of their developed tool \cite{Nistor}. Jin \textit{et al$.$} present a study on wide range of performance bugs. \cite{Jin}. The authors examine rule-based performance bug detection in performance bug patches . Nistor \textit{et al$.$} in another study highlight that performance bug detection based on tools is limited \cite{nistor_2}. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end user . Tsakiltsidis {et al$.$} use prediction models to detect and predict performance bugs based on extraction from source code repositories \cite{Tsakiltsidis}. Malik {et al$.$} present a study to uncover functional bugs via load testing\cite{h_malik_p_bugs}. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman {et al$.$} study the tracking and fixing of performance bugs\cite{zaman_p_bugs}.
+
+However, none of the above mentioned performance bug detection approach has been applied to different environment. In most of the cases the environment is not explicitly mentioned. Hence, to generalize the findings across environments remains an open topic.
 
 \section{A Motivating Example}
 \label{sec:motivating_example}

@@ -336,28 +336,31 @@ We discuss the above points in our new manuscript threats section.}
 
 \noindent {\Large {\bf Reviewer 2 Comments}}
 
-\comment{2}{Therefore, the claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold.}
-
-\response{Thank you for your feedback. We have toned it down in the revised manuscript.}\\\textcolor{red}{I am not sure what is he trying to say here} [Dr. Shang will attend]
-
-\comment{2}{Some work exists in that have implicitly compared the difference between the metrics harvested from the VMs and Physical machines, however, performance testing was not their main focus. A few explicit research efforts exist to gauge the difference between metrics collected from physical and virtual environment. I am pointing to one such work conducted by Netto from PUCRS and Sadd from Dell "Evaluating load generation in virtualized environments for software performance testing". They conducted several load tests on both virtual machines and physical machines.}
+\comment{2}{Therefore, the claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold.
+	
+Some work exists in that have implicitly compared the difference between the metrics harvested from the VMs and Physical machines, however, performance testing was not their main focus. A few explicit research efforts exist to gauge the difference between metrics collected from physical and virtual environment. I am pointing to one such work conducted by Netto from PUCRS and Sadd from Dell "Evaluating load generation in virtualized environments for software performance testing". They conducted several load tests on both virtual machines and physical machines.}
 
 
 %say you compare it using typical anlaysis of perf tests. and cite it.\\\\
-\response{After reading the work mentioned we identified the authors approach is based on comparing the raw values collected via load testing. However, we analyse the results from a software performance test?s perspective \cite{jack_tse}\cite{nguyen2012automated}. We have added this work in our related work.}
+%\response{After reading the work mentioned we identified the authors approach is based on comparing the raw values collected via load testing. However, we analyse the results from a software performance test?s perspective \cite{jack_tse}\cite{nguyen2012automated}. We have added this work in our related work.}
 
-\comment{2}{However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results. ???? Why testing over virtualized lead to unrealistic PT results?
+\response{Thank you for your feedback. 
+	
+	We agree that there exist prior studies such as the one mentioned above that examine performance counters from both environments. However, the comparison is rather simple. For example, in the above mentioned study, the authors directly compare the metric values. In fact, difference exists between any two tests, even from the same environments, yet statistically, they may not. Therefore, we examine the performance testing results in the context that when performance engineers use different statistical analyses on these results and see whether the difference between vm and physical would impact the statistical analyses results. 
+	
+	We discuss the above difference between our work and prior studies in related work section. In addition, we have revised our manuscript to say our work is one of the first works that examine the discrepancy between performance testing results in virtual and physical environments. 
+	}
+
+
+\comment{2}{However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results...Why testing over virtualized lead to unrealistic PT results?
 	}
 \\\\
 %The overhead is very complex not just see the overhead and evaluate the dicrepancy. b/c the overhead is not straight forward. You better read the vm overhead paper and cite them and say the overhead is rather complex. So you can;t just add up the overhead direct on top of the results.
 \\\\
-\response{Prior studies on systems and hardwares investigate the overhead of virtual machines. For example, Huber et al. try to
-	build a performance model to predict performance of applications that are migrated from a native system
-	to a virtual environment or from a virtual environment to a new one [4]. There are similar studies which
-	indicate that the overhead in virtual environment may hamper the results of performance tests \cite{brosig2013}\cite{menon2005}. However, it is found that such overhead cannot be simply added up to the existing system load, while it instead brings confounding effect on the system performance overall. Having known the existence of such overhead, interpreting performance testing results is not straightforward.}
+\response{Prior studies on systems and hardwares have investigated the overhead of virtual machines. For example, Huber et al. try to build a performance model to predict performance of applications that are migrated from a native system to a virtual environment or from a virtual environment to a new one \cite{huber2011}. There are similar studies which indicate that the overhead in virtual environment may hamper the results of performance tests \cite{brosig2013}\cite{menon2005}. However, it is found that such overhead cannot be simply added up to the existing system load, while it instead brings confounding effect on the system performance overall. Having known the existence of such overhead, interpreting performance testing results is not straightforward.}
 %\response{The overhead in a virtual environment can not be simply added on with the results and analyzed. It is rather complex to calculate and evaluate the discrepancy. That is why \textit{Huber et al.} try to build a performance model to predict performance of applications that are migrated from a native system to a virtual environment or from a virtual environment to a new one \cite{huber2011}. There are similar studies which indicate that the overhead in virtual environment may hamper the results of performance tests \cite{brosig2013}\cite{menon2005}.  }
 
-\comment{2}{ Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment????.. Is there any evidence to back up the current practice(s) in which practitioner generalize the result of one environment to another (phy to Vir), especially of the large scale software, you mentioned in the paper?
+\comment{2}{ Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment... Is there any evidence to back up the current practice(s) in which practitioner generalize the result of one environment to another (phy to Vir), especially of the large scale software, you mentioned in the paper?
 	}
 %	Vm and on premise. 
 	
@@ -399,7 +402,7 @@ say you will share everything
 \comment{2}{How did you ensured that environment remained constant for each performance test? For example after few tests, the disk may get full hence IOPS can get impacted. 
 	}
 	
-\response{We restore the environments before before conducting every test. We add such clarification in the new revision.}
+\response{We restore the environments and restart the systems before conducting every test. We add such clarification in the new revision.}
 
 \comment{2}{ For both the Q-Q plots for D2 and Cloud store, the metrics do not have the same trend. Did you used the samples of the performance tests results when the test was in equilibrium? If yes how did you ensured that?
 	}
