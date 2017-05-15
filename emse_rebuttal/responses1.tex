@@ -51,12 +51,11 @@ Montreal, QC, Canada H3G 2W1 \\
  
 \noindent Thank you for your insightful feedback and comments, both positive and constructive, and for allowing us the opportunity to improve our manuscript. We have taken each of your comments into consideration and made the appropriate changes and extensions to our manuscript. 
 
-%In the end, we added new analysis results as suggested by the reviewers. We studied topics in user reviews in Google Play Store. We also made several clarifications throughout the paper, improved paper presentation, and improved the discussion of related work. We feel that the paper is now much stronger.
+\textcolor{red}{EDITOR comment: Reviewer 3 tells you about the worrysome tendency that he sees in your paper to explain what it is that you are not doing, before explaining what you are doing. Please correct it in the revised version of the paper.
+Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.}
 
+We added a better motivation for our work. We also highlight how our work is different from the related literature provided as examples. We have provided how the three aspects of testing results impact the results from a practitioners point of view. Details for the testing environment especially the disk specs have been added.
 
-%significantly expanded our threats to validity section with more discussion of our approach, and experiments to support our heuristics for identifying test files. 
-
-%Below, we repeat each of the reviewer's comments and provide our responses. 
 Below, we include a description of the changes that we made to our manuscript with respect to each of the reviewer's comments. We denote the reviewers comments in italic typeface, and our responses follow below each reviewer comment.
 
 
@@ -430,34 +429,27 @@ Counter narrative: Many companies also try to virtualize their load generation i
 
 
 
-\comment{2}{In order to assist the practitioners leverage performance testing results in both environments, we also investigate ways to transform results from virtual and physical environments and performance metrics based on deviance may reduced [REDUCE] the discrepancy between performance metrics... Weird sentence, unless am reading between lines.
-	}
+\comment{2}{In order to assist the practitioners leverage performance testing results in both environments, we also investigate ways to transform results from virtual and physical environments and performance metrics based on deviance may reduced [REDUCE] the discrepancy between performance metrics... Weird sentence, unless am reading between lines.}
 
 \comment{2}{...such challenges, virtual environments (i.e., VMs) are often leveraged for performance testing [8,8,47]... why "8" is repeated in the ref?}
 
-\comment{2}{...ents, such overhead would not significantly impact on the practitioners who examine the performance testing results...significantly impact WHAT on the practitioners?
-	}
+\comment{2}{...ents, such overhead would not significantly impact on the practitioners who examine the performance testing results...significantly impact WHAT on the practitioners?}
 
-\comment{2}{...paper, we perform a study on two open-source systems, DS2 [13] and CloudStore [10], where performance tests are conducted on[USING] virtual and physical environments
-	}
+\comment{2}{...paper, we perform a study on two open-source systems, DS2 [13] and CloudStore [10], where performance tests are conducted on[USING] virtual and physical environments}
 
 
-\comment{2}{we study whether the performance metric follow[S] the same shape of [THE] distribution and the same trend in virtual and physical environments.
-	}
+\comment{2}{we study whether the performance metric follow[S] the same shape of [THE] distribution and the same trend in virtual and physical environments.}
 
 
 \comment{2}{...which can lead to [A] different set of conclusions.}
 
-\comment{2}{For example, [THE] virtual environment has a CPU's utilization spike at a certain time [,] but the spike is absent in the physical
-	}
+\comment{2}{For example, [THE] virtual environment has a CPU's utilization spike at a certain time [,] but the spike is absent in the physical}
 	
 
-\comment{2}{...there exist[S] a plethora of VM software
-	}
+\comment{2}{...there exist[S] a plethora of VM software}
 	
 
-\comment{2}{...high when we normalize by [THE] load as per Equation
-	}
+\comment{2}{...high when we normalize by [THE] load as per Equation}
 
 
 \comment{2}{In the reference section, there is an extra '24' hanging at the end of the page}
@@ -466,7 +458,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 
 page 18 interval validation: check-
 
-\response{All above typos are fixed. We also proofread it to eliminate language issues.}
+\response{All above typos are fixed, except for comment 2.39, which is not a typo but the page number. We also proofread it again to eliminate language issues.}
 
 \comment{2}{Overall, interesting research and paper was a joyful read.}
 
@@ -487,6 +479,7 @@ page 18 interval validation: check-
 
 \response{Thank you for your feedback in helping us making it a stronger manuscript. We have now
 	provided a detailed description of environment configuration in the new draft.
+	The network traffic was generated on another machine. As we were well below the capacity the network overhead did not make a difference. In addition, as the network setup was same for both of our environments the effect would cancel out during the analysis.
 	One of the concern was about using disk passthrough. We opted to not use disk passthrough mainly due to the fact that disk passthrough was not enabled in our experiences of collaborating with our industrial partners, which primarily motivates this work. The main reason is the portability issues, since practitioners want to quickly deploy an existing vm image that's designed for performance testing and start performance tests right away, there are other discussions online about why disk passthrough may not be a good idea\cite{diskpassthrough}. Based on such information and mainly practices in our industrial collaboration, we opted not to enable it.
 	We elaborate our choice in the new revision.}
 
@@ -506,14 +499,11 @@ page 18 interval validation: check-
 	
 	In particular, we did not adopt an approach that monitor the network traffic to control load. Our experiments are trying to replicate the practice of our industrial practitioners, where VMs hosting performance tests are pre setup and the load drivers, with the same configurations, are setup in the VM. Practitioners will start the performance tests by initiating the load driver without really controlling the network traffic. We agree that leveraging a more controlled experiment is beneficial to further understand the discrepancy.
 	
-	We clarify our experiments in the new draft and discuss the limitation of our approach. We also discuss the practice of conducting performance testing using virtual machines in order to better motivate the study and motivate our experimental choices. We put conducting a controlled experiment in our future plan as part of the conclusion of the paper.
-	 }
+	We clarify our experiments in the new draft and discuss the limitation of our approach. We also discuss the practice of conducting performance testing using virtual machines in order to better motivate the study and motivate our experimental choices. Please refer to comment 1.1 and 1.3. We put conducting a controlled experiment in our future plan as part of the conclusion of the paper.}
 
-\comment{3}{Lack of actionable findings.  The paper repeats in several places that there is a discrepancy between the performance of virtual and physical environments.  That is interesting, but it is not actionable.  As a programmer or tester, I am not sure how to use this information.  The paper does not give an explanation of how large the difference is, except by presenting the charts and figures.  For example, in the last paragraph on page 9, "By looking closely at such metrics, we find..."  Earlier it states that the "lines on the Q-Q plot are not close."  I can see what the authors mean by looking at the figures, but is that a big difference?  As a tester, I am already aware that the virtual environment is not a perfect reflection of a physical one.  What I am wondering is, is the difference big enough that I need to worry about it?  The paper does not quite answer that question.  Perhaps the paper could go into an example to show how the results might affect decision-making,
-	to give some context for understanding the results.
-	}
+\comment{3}{Lack of actionable findings.  The paper repeats in several places that there is a discrepancy between the performance of virtual and physical environments.  That is interesting, but it is not actionable.  As a programmer or tester, I am not sure how to use this information.  The paper does not give an explanation of how large the difference is, except by presenting the charts and figures.  For example, in the last paragraph on page 9, "By looking closely at such metrics, we find..."  Earlier it states that the "lines on the Q-Q plot are not close."  I can see what the authors mean by looking at the figures, but is that a big difference?  As a tester, I am already aware that the virtual environment is not a perfect reflection of a physical one.  What I am wondering is, is the difference big enough that I need to worry about it?  The paper does not quite answer that question.  Perhaps the paper could go into an example to show how the results might affect decision-making, to give some context for understanding the results.}
 
-\response{Thanks for pointing this out. This comment was also raised by reviewer 2. Please refer to our response to the comment R2.30. We add the discussion of such actionable implications in the new draft of this paper.}
+\response{Thanks for pointing this out. This comment was also raised by reviewer 2. Please refer to our response to the comment R2.29. We add the discussion of such actionable implications in the new draft of this paper. We have also added a motivating example.}
 	
 %\vspace{1em}
 %\noindent {\Large {\bf Reviewer 1 Comment}}

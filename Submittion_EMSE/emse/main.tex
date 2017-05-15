@@ -215,8 +215,8 @@ Dell DVD Store (DS2)~\cite{delldvd} is an online multi-tier e-commerce web appli
 The performance tests of the two subject systems are conducted on three machines in a lab environment. Each machine has an Intel i5 4690 Haswell Quad-Core 3.50 GHz CPU, with 8 GB of memory, connected to a local gigabyte ethernet. The first machine hosts the web server and application server (Apache and Tomcat). The second machine hosts the MySQL 5.6 database server. The load drivers were deployed on the third machine. We separate the load driver, the web/application server and the database server on different machines in order to mimic real world scenario and avoid interference among these processes. For example, isolating the web and database driver would ensure that the processor is not overused. The operating systems on the three machines are Windows 7. We disable all other processes and unrelated system services to minimize their performance impact. Since our goal is to compare performance metrics in virtual and physical environments, we setup the two different environments, which we detail next.
 
 
-\noindent \textbf{Virtual environment.} We install one Virtual Box (version 5.0.16) and create only one virtual machine on one physical machine to avoid the interference between virtual machines. For each virtual machine, we allocate two cores and three gigabytes of memory, which is well below capacity to make sure we are topping out and pushing our configuration for unrealistic results. 
-
+\noindent \textbf{Virtual environment.} We install one Virtual Box (version 5.0.16) and create only one virtual machine on one physical machine to avoid the interference between virtual machines. For each virtual machine, we allocate two cores and three gigabytes of memory, which is well below capacity to make sure we are topping out and pushing our configuration for unrealistic results. We used a 100GB SATA storage. As an alternate, there is a possibility of using disk pass through. Since practitioners want to quickly deploy an existing virtual machine image that’s designed for performance testing and start performance tests right away we chose not to use disk pass through \cite{diskpassthrough}. 
+We set up our network based on NAT. The network traffic was generated on another machine to keep our experiments as close to the real-world as possible.
 
 
 \noindent \textbf{Physical environment.} To make the physical environment similar to the virtual environment, we only enable two cores and 3GB memory for each machine for the physical environment. 
@@ -245,12 +245,12 @@ The goal of our study is to evaluate the discrepancy between performance testing
 
 
 
-\subsection{Examining individual performance metrics}
+\subsection{Is the trend or distribution of individual performance metrics similar across environments?}
 \label{sec:individual}
 
 
 \noindent \textbf{Motivation.}
-The most intuitive approach of examining performance testing results is to examine individual performance metrics. As shown in Section~\ref{sec:relatedindividual}, prior studies propose different approaches that typically compare the distribution or trend of each performance metric from different tests. Primarily, this approach is used to identify the trends and distribution of performance metrics. As a result, we can look at the trends at a finer level that may not be represented numerically. Due to the difference between testing environments, performance testing results are expected to be different in raw value. However, the shape of distribution and the trend should be similar. For example, when there is higher low, CPU increases. If in one environment, we observe the CPU has increasing trend while not seeing the same trend in another environment, we observe a discrepancy. Therefore, we use QQ plot and normalized KS tests to examine the differences in trends and shape of the distributions. 
+The most intuitive approach of examining performance testing results is to examine individual performance metrics. The term individual here refers to, for example, comparing a CPU performance metric's trend from one environment trend the same performance metric from the other environment. As shown in Section~\ref{sec:relatedindividual}, prior studies propose different approaches that typically compare the distribution or trend of each performance metric from different tests. Primarily, this approach is used to identify the trends and distribution of performance metrics. As a result, we can look at the trends at a finer level that may not be represented numerically. Due to the difference between testing environments, performance testing results are expected to be different in raw value. However, the shape of distribution and the trend should be similar. For example, when there is higher low, CPU increases. If in one environment, we observe the CPU has increasing trend while not seeing the same trend in another environment, we observe a discrepancy. Therefore, we use QQ plot and normalized KS tests to examine the differences in trends and shape of the distributions. 
 
 
 \noindent \textbf{Approach.} 
@@ -345,7 +345,7 @@ The majority of the performance metrics had statistically significantly differen
 
 
 
-\subsection{Examining the relationship among performance metrics}
+\subsection{How much has the relation changed between the performance metrics across environment?}
 \label{sec:relation}
 \noindent \textbf{Motivation.}
 The relationship between two performance counters may significantly change between two environments, which may be a hint of performance issues or system regressions. We have used the following approach to examine the relationships between the performance metrics. As claimed by Cohen et al. \cite{cohen2004correlating}, combinations of performance metrics are significantly more predictive towards performance issues than individual metrics. A change in these combinations of relationships can reflect the discrepancy of performance and can help a practitioner identify the behavioral changes of a system between the two environments. For instance, in one release of the system, the CPU may be highly correlated with I/O while (e.g., when I/O is high, CPU is also high); while on a new release of the system, the correlation between CPU and I/O may become low. Such change to the correlation may expose a performance issue (e.g., the high CPU without I/O operation may be due to a performance bug). However, if there is a significant difference in correlations simply due to the platform being used, i.e., virtual vs. physical, then practitioners may need to be warned that a correlation discrepancy may be false. Therefore, we examine whether the relationship among performance metrics has a discrepancy between the virtual and physical environments. 
@@ -453,8 +453,7 @@ First, we compare the changes in correlation between the performance metrics and
 \end{table}
 
 
-
-\subsection{Building statistical models using performance metrics}
+\subsection{What is the effect on statistical models using the performance metrics?}
 \label{sec:model}
  
 
@@ -690,7 +689,7 @@ We chose two subject systems, CloudStore and DS2 for our study and two virtual m
 \subsection{Internal Validity.}
 Our approach is based on the recorded performance metrics however the quality of performance tests may still have room for improvement. The quality of recorded performance metrics can impact the internal validity of our study. Replicating our study by other performance monitoring tools, such as psutil~\cite{psutil} may address this threat. We followed the approaches in the related work to introduce the workload variation on our subject systems however we acknowledge that this is not the only way. In the future, we also plan to run the tests for a longer period of time (for example, 72 hours). Even though we build a statistical model using performance metrics and system throughput, we do not assume that there is causal relationship. The use of statistical models merely aims to capture the relationship among multiple metrics. Similar approaches have been used in the prior studies~\cite{Cohen:2005:CIC:1095810.1095821, Shang:2015:ADP:2668930.2688052, xiong2013vperfguard}. We also consider the subject systems as a whole from the user's point of view. Hence, we do not test just one of the functionalities, for example an atomic SQL query. In the future we also plan to conduct performance tests on an isolated lower level components. The performance testing carried out on the subject systems was dependent on the use cases which were predefined in the testing suite which may also be another limitation of our subject systems.
 
-In the real world, the systems may have different interference to impact their performance. However, in our experiments, we opt for a more controlled environment to better understand the differences without any interference, hence we can limit the chance that the discrepancy is from handling interference rather than the environments. Future work can be applied to investigate the performance impact from different environments by handling interference, with having the knowledge of environment discrepancy.
+In the real world, the systems may have different interferences to impact their performance. However, in our experiments, we opt for a more controlled environment to better understand the differences without any interference, hence we can limit the chance that the discrepancy is from handling interference rather than the environments. Future work can be applied to investigate the performance impact from different environments by handling interference, a better controlled experiment with having the knowledge of environment discrepancy.
 On the other hand, we agree that system load counters may illustrate valuable knowledge of the system. We include throughput metrics that are associated with system load. In addition, we will include more metrics in our future work.
 
 \subsection{Construct Validity.}
