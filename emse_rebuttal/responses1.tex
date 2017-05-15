@@ -340,6 +340,7 @@ We discuss the above points in our new manuscript threats section.}
 	
 Some work exists in that have implicitly compared the difference between the metrics harvested from the VMs and Physical machines, however, performance testing was not their main focus. A few explicit research efforts exist to gauge the difference between metrics collected from physical and virtual environment. I am pointing to one such work conducted by Netto from PUCRS and Sadd from Dell "Evaluating load generation in virtualized environments for software performance testing". They conducted several load tests on both virtual machines and physical machines.}
 
+\underline{Context}: Prior studies show that virtual environments are widely exploited in practice... "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied" when compared to related literature.
 
 %say you compare it using typical anlaysis of perf tests. and cite it.\\\\
 %\response{After reading the work mentioned we identified the authors approach is based on comparing the raw values collected via load testing. However, we analyse the results from a software performance test?s perspective \cite{jack_tse}\cite{nguyen2012automated}. We have added this work in our related work.}
@@ -383,13 +384,11 @@ Counter narrative: Many companies also try to virtualize their load generation i
 
 
 \comment{2}{Since the authors have framed the paper as an empirical study, it is very important to provide the necessary information in the paper for replication purpose. Replication, allows other researcher to validate authors claim(s) and in cases, compare it with their own techniques/cases and findings. What are workload parameters are used in this paper for DS2 and for Cloud Store using JMeter? }
-say you will share everything
 
 
 \response{We will share our data and our load driver configuration for replication purposes.}
 
-\comment{2}{Did you used the same hardware for setting up the virtual environment?
-	}
+\comment{2}{Did you used the same hardware for setting up the virtual environment?}
 	
 \response{Yes, we have used the same hardware for setting up the virtual environment. We clarify this in the new revision.}
 
@@ -413,7 +412,8 @@ say you will share everything
 \comment{2}{Also, before calculating the correlation among the performance metrics from virtual and physical environments, did you removed ramp-up and ramp-down observations of the performance metrics for a test? The system is usually not stable during warm-up and cool-down period. Ramp-up and down periods, for a test repeated multiple time under a given workload, and constant environment, many not necessary be correlated to each other.
 	}
 	
-\response{We completely agree with the comment and the sample was taken after the warm up, the ramp-up and before the cool-down period.}
+\response{We completely agree with the comment and the sample was taken after the warm up, the ramp-up and before the cool-down period.
+	We ran the warm up period for 2 minutes. We remove the recorded performance metrics during this time frame. As explained in comment 2.27, we removed the recorded data during our ramp-up and cool down period in order to ensure equilibrium.}
 
 \comment{2}{What is the implication of this study?
 	}
