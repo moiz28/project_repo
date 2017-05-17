@@ -145,6 +145,7 @@ Foo\emph{ et al$.$}~\cite{foo2010mining} propose an approach that leverages asso
 
 Jiang \emph{et al$.$}~\cite{5270324} use normalized mutual information as a similarity measure to cluster correlated performance metrics. Since metrics in one cluster are highly correlated, the uncertainty among metrics in the cluster should be low. Jiang \emph{et al$.$} leverage entropy from information theory to monitor the uncertainty of each cluster. A significant change in the entropy is considered as a sign of a performance fault. 
 
+
 \subsubsection{Statistical modeling based on performance metrics}
 \label{sec:relatedmodel}
 
@@ -156,6 +157,7 @@ Cohen \textit{et al$.$}~\cite{cohen2004correlating} propose an approach that bui
 Jiang \emph{et al$.$}~\cite{Jiang:2009:SMM:1555228.1555233} propose an approach that improves the Ordinary Least Squares regression models that are built from performance metrics and use the model to detect faults in a system. The authors conclude their approach is more efficient than the current linear-model approach.
 
 In our work, we compare performance testing results from both virtual and physical environments based on all the above three types of analyses. Our findings can help better evaluate and understand the findings from the aforementioned research. Prior research does not explicitly mention the environment. Other prior research is performed on either virtual or physical environments only. For example, the research conducted by Xiong \textit{et al$.$} \cite{xiong2013vperfguard} is only conducted in the virtual environment. However, none of them discuss the applicability of their approaches cross-environments.
+
 
 \subsection{Analysis of VM overhead}
 
@@ -172,6 +174,7 @@ Huber \textit{et al$.$}~\cite{huber2011evaluating} present a study on cloud-like
 Luo \textit{et al$.$}~\cite{Luo:2016:MPR:2901739.2901765} converge the set of inputs that may cause software regression. They apply genetic algorithms to detect such combinations. Netto \textit{et al$.$} \cite{netto2011evaluating} present a similar study to compare performance metrics generated via load tests between the two environments. However, the author did not analyse the results from a statistical perspective.
 
 Prior research focused on the overhead of virtual environments without considering the impact of such overhead on performance testing and assurance activities. In this paper, we evaluate the discrepancy between virtual and physical environments by focusing on the impact of performance testing results and investigate whether such impact can be minimized in practice.
+
 
 \subsection{Performance testing and bug detection}
 
