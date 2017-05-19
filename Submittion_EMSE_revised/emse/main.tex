@@ -283,7 +283,8 @@ The majority of the performance metrics had statistically significantly differen
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		Performance metrics typically do not follow the same distribution in virtual and physical environments. We conclude that there exists a discrepancy between physical and virtual environment. Practitioners cannot compare individual performance metric with a simple scaling factor applied to the metrics.  
+		\textbf{Findings: }Performance metrics typically do not follow the same distribution in virtual and physical environments.\\ 
+		\textbf{Actionable implications: }Practitioners cannot assume an straightforward overhead from the virtual environment nor compare single performance metric after applying a simple scaling factor to the metric.  
 	}%
 }
 
@@ -372,7 +373,8 @@ First, we compare the changes in correlation between the performance metrics and
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with I/O metrics have the largest discrepancy.
+		\textbf{Findings: }The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with I/O metrics have the largest discrepancy.\\
+		\textbf{Actionable implications: }Practitioners should always verify whether the inconsistency of correlations between performance metrics (especially I/O metrics) are due to virtual environments.
 	}%
 }
 
@@ -635,7 +637,8 @@ One possible reason is that the normalization based on load performs better, eve
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		We find that the statistical models built by performance testing results in an environment cannot advocate for the other environment due to discrepancies present. Normalizing the performance metrics by deviance may minimize such discrepancy and should be considered by practitioners before examining performance testing results.
+		\textbf{Findings: }We find that the statistical models built by performance testing results in an environment cannot advocate for the other environment due to discrepancies present. Normalization technique for heterogeneous environments and workloads that is proposed by prior research may not work for virtual and physical environment.\\
+		 \textbf{Actionable implications: }Normalizing the performance metrics by deviance may minimize such discrepancy and should be considered by practitioners before examining performance testing results. 
 	}%
 }
 \section{Discussion}
