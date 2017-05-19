@@ -36,6 +36,7 @@
 \urlstyle{same}
 \def\UrlBreaks{\do\/\do-} %to break the urls, all in one line
 
+\newcommand{\ian}[1]{\textcolor{blue}{{\it [Ian says: #1]}}}
 
 \newcommand{\conclusionbox}[1]{%
 	\vspace{2mm}
@@ -177,10 +178,11 @@ Prior research focused on the overhead of virtual environments without consideri
 
 \subsection{Performance testing and bug detection}
 
-There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools . Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end user. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extraction from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
+There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools. Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end user. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extraction from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
 
 However, none of the above mentioned performance bug detection approach has been applied in different environments. In most of the cases, the environment is not explicitly mentioned. Hence, to generalize the findings across environments remains an open topic.
 
+\begin{comment}
 \section{A Motivating Example}
 \label{sec:motivating_example}
 
@@ -193,6 +195,7 @@ To cover the performance test for an on-premise deployment of the system and to 
 However, when Ben applies his model to the same version of the system in a physical environment he sees a very high percentage error close to 100\%. He examines it further and sees that the magnitude of some of the performance metrics especially I/O performance metrics from the virtual environment is nowhere close to the I/O performance metrics from the physical environment. He concludes that the system's I/O performance in the virtual environment is being hampered.
 
 From this example we note that if Ben would have known the discrepancy present between the results of physical and virtual environment, he would have not been surprised with the high prediction percentage error he observed. He may apply our suggested approach, normalization by deviance (as discussed in section 5.3.5), in order to reduce and and re-analyze the performance tests between the two environments.
+\end{comment}
 
 
 \section{Case Study Setup}
@@ -706,7 +709,7 @@ In our performance tests, we consider the subject systems as a whole from the us
 
 In practice, the system performance may be interfered by other environmental issues. However, in our experiments, we opt for a more controlled environment to better understand the discrepancy without any environmental interference, hence we can limit the chance that the discrepancy is from handling interference rather than the environments. Future work can be applied to investigate the performance impact from different environments by handling interference.
 
-We recorded 44 performance metrics that are readily available from \emph{PerfMon} and calculated throughput of the subject system. However, there may exist other valuable performance metrics, such as system load. Prior study shows that most performance metrics are often correlated to each other~\cite{}\ian{cite Haroon CSMR 2010}. Future work may expand our list of performance metrics to address this threat.
+We recorded 44 performance metrics that are readily available from \emph{PerfMon} and calculated throughput of the subject system. However, there may exist other valuable performance metrics, such as system load. Prior study shows that most performance metrics are often correlated to each other~\cite{harooncsmr}\ian{cite Haroon CSMR 2010}. Future work may expand our list of performance metrics to address this threat.
 
 
 
