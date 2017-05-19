@@ -36,6 +36,7 @@
 \urlstyle{same}
 \def\UrlBreaks{\do\/\do-} %to break the urls, all in one line
 
+%\newcommand{\ian}[1]{\textcolor{blue}{{\it [Ian says: #1]}}}
 
 \newcommand{\conclusionbox}[1]{%
 	\vspace{2mm}
@@ -179,22 +180,24 @@ Prior research focused on the overhead of virtual environments without consideri
 
 \subsection{Performance testing and bug detection}
 
-There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools . Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end user. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extraction from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
+There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools. Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end user. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extraction from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
 
 However, none of the above mentioned performance bug detection approach has been applied in different environments. In most of the cases, the environment is not explicitly mentioned. Hence, to generalize the findings across environments remains an open topic.
 
-\section{A Motivating Example}
-\label{sec:motivating_example}
+%\begin{comment}
+%\section{A Motivating Example}
+%\label{sec:motivating_example}
 
-Ben is a performance engineer for a large-scale software system that provides services both on cloud and on-premise. After every update, it is Ben's duty to ensure that the performance of the system passes the performance tests as it is of critical importance.
+%Ben is a performance engineer for a large-scale software system that provides services both on cloud and on-premise. After every update, it is Ben's duty to ensure that the performance of the system passes the performance tests as it is of critical importance.
 
-In order to carry out a performance test Ben has to exercise the system. Due to the ever-evolving environment and user requirements Ben decides that because of the flexibility offered, he will deploy his system in a virtual environment. After the deployment, Ben applies a workload to exercise the system. The workload is as close to the field like load as possible. During the course of this test, the performance metrics are monitored and collected.
+%In order to carry out a performance test Ben has to exercise the system. Due to the ever-evolving environment and user requirements Ben decides that because of the flexibility offered, he will deploy his system in a virtual environment. After the deployment, Ben applies a workload to exercise the system. The workload is as close to the field like load as possible. During the course of this test, the performance metrics are monitored and collected.
 
-To cover the performance test for an on-premise deployment of the system and to save resources, Ben decides to use a model-based approach. On the basis of his prior experience, he uses the system throughput as the dependent variable and the rest of performance metrics as the independent variables. He then applies the model to predict his throughput of the same version of the system in a physical or his on-premise environment. Ben expects a prediction percentage error less than 10\% in order to consider the two systems in harmony.
+%To cover the performance test for an on-premise deployment of the system and to save resources, Ben decides to use a model-based approach. On the basis of his prior experience, he uses the system throughput as the dependent variable and the rest of performance metrics as the independent variables. He then applies the model to predict his throughput of the same version of the system in a physical or his on-premise environment. Ben expects a prediction percentage error less than 10\% in order to consider the two systems in harmony.
 
-However, when Ben applies his model to the same version of the system in a physical environment he sees a very high percentage error close to 100\%. He examines it further and sees that the magnitude of some of the performance metrics especially I/O performance metrics from the virtual environment is nowhere close to the I/O performance metrics from the physical environment. He concludes that the system's I/O performance in the virtual environment is being hampered.
+%However, when Ben applies his model to the same version of the system in a physical environment he sees a very high percentage error close to 100\%. He examines it further and sees that the magnitude of some of the performance metrics especially I/O performance metrics from the virtual environment is nowhere close to the I/O performance metrics from the physical environment. He concludes that the system's I/O performance in the virtual environment is being hampered.
 
-From this example we note that if Ben would have known the discrepancy present between the results of physical and virtual environment, he would have not been surprised with the high prediction percentage error he observed. He may apply our suggested approach, normalization by deviance (as discussed in section 5.3.5), in order to reduce and and re-analyze the performance tests between the two environments.
+%From this example we note that if Ben would have known the discrepancy present between the results of physical and virtual environment, he would have not been surprised with the high prediction percentage error he observed. He may apply our suggested approach, normalization by deviance (as discussed in section 5.3.5), in order to reduce and and re-analyze the performance tests between the two environments.
+%\end{comment}
 
 
 \section{Case Study Setup}
@@ -282,7 +285,8 @@ The majority of the performance metrics had statistically significantly differen
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		Performance metrics typically do not follow the same distribution in virtual and physical environments. We conclude that there exists a discrepancy between physical and virtual environment. Practitioners cannot compare individual performance metric with a simple scaling factor applied to the metrics.  
+		\textbf{Findings: }Performance metrics typically do not follow the same distribution in virtual and physical environments.\\ 
+		\textbf{Actionable implications: }Practitioners cannot assume an straightforward overhead from the virtual environment nor compare single performance metric after applying a simple scaling factor to the metric.  
 	}%
 }
 
@@ -371,7 +375,8 @@ First, we compare the changes in correlation between the performance metrics and
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with I/O metrics have the largest discrepancy.
+		\textbf{Findings: }The correlations between performance metrics and system load may change considerably between virtual and physical environments. The correlation among performance metrics may also change considerably between virtual and physical environments. The correlations that are related with I/O metrics have the largest discrepancy.\\
+		\textbf{Actionable implications: }Practitioners should always verify whether the inconsistency of correlations between performance metrics (especially I/O metrics) are due to virtual environments.
 	}%
 }
 
@@ -634,7 +639,8 @@ One possible reason is that the normalization based on load performs better, eve
 
 \noindent\fbox{%
 	\parbox{\textwidth}{%
-		We find that the statistical models built by performance testing results in an environment cannot advocate for the other environment due to discrepancies present. Normalizing the performance metrics by deviance may minimize such discrepancy and should be considered by practitioners before examining performance testing results.
+		\textbf{Findings: }We find that the statistical models built by performance testing results in an environment cannot advocate for the other environment due to discrepancies present. Normalization technique for heterogeneous environments and workloads that is proposed by prior research may not work for virtual and physical environment.\\
+		 \textbf{Actionable implications: }Normalizing the performance metrics by deviance may minimize such discrepancy and should be considered by practitioners before examining performance testing results. 
 	}%
 }
 \section{Discussion}
@@ -708,7 +714,7 @@ In our performance tests, we consider the subject systems as a whole from the us
 
 In practice, the system performance may be interfered by other environmental issues. However, in our experiments, we opt for a more controlled environment to better understand the discrepancy without any environmental interference, hence we can limit the chance that the discrepancy is from handling interference rather than the environments. Future work can be applied to investigate the performance impact from different environments by handling interference.
 
-We recorded 44 performance metrics that are readily available from \emph{PerfMon} and calculated throughput of the subject system. However, there may exist other valuable performance metrics, such as system load. Prior study shows that most performance metrics are often correlated to each other~\cite{}\ian{cite Haroon CSMR 2010}. Future work may expand our list of performance metrics to address this threat.
+We recorded 44 performance metrics that are readily available from \emph{PerfMon} and calculated throughput of the subject system. However, there may exist other valuable performance metrics, such as system load. Prior study shows that most performance metrics are often correlated to each other~\cite{harooncsmr}\ian{cite Haroon CSMR 2010}. Future work may expand our list of performance metrics to address this threat.
 
 
 
