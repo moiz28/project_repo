@@ -54,22 +54,24 @@ Montreal, QC, Canada H3G 2W1 \\
  
 \noindent Thank you for your insightful feedback and comments, both positive and constructive, and for allowing us the opportunity to improve our manuscript. We have taken each of your comments into consideration and made the appropriate changes and extensions to our manuscript. 
 
-EDITOR comments:
-	Overall the reviewers believe that the presented work is of great interest to the EMSE readers. All three reviewers are supportive of the publication of the work provided that the authors perform a major revision of the manuscript.	
-	\\\\
-	Reviewer 1 wants to see supporting evidence that VMs are widely used for performance testing. The reviewer points out there has been much work on performance testing -- the reviewer points out related work -- Nistor ICSE 13, Jin PLDI 12 that does not rely on VMs. Reviewer 3 tells you about the worrysome tendency that he sees in your paper to explain what it is that you are not doing, before explaining what you are doing. Please correct it in the revised version of the paper.
-	\\\\
-	We have now added motivation to our paper by giving examples and references of software like SugarCRM and BlackBerry's BES server. We have also added the related work on performance detection and bugs in our related work section. Furthermore, we have rephrased and have used a direct approach in our explanations.
-	\\\\
-	The authors should clarify points in the paper. Reviewer 1 states that the the paper is not clear about how the three aspects of testing results can help to find performance problems. Also, the reviewer needs clarifications for the second analysis - the correlation between metrics - why is it useful? Reviewer 2 points out that your claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold. Reviewer 3 also complains that the test environments are not quite clear and that the paper needs clear and precise research questions.
-	\\\\
-	We have addressed that how our approach using three aspects of performance testing can help in identifying a performance discrepancy from a statistical point of view. Additionally, we have clarified an ambiguity present between our work and the related work. We now add that our work is first to examine the discrepancy between performance testing results in virtual and physical environment. A description of testing environments has now been added.
-	\\\\
-	Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.
-	\\\\
-	We also have rephrased the implications and actionable findings of the paper. We not only emphasize that developers should not add overhead from virtual environments as is, but we also say that in order to normalize the performance metrics between the two environments prior approaches may not work. We propose an approach to minimize the deviance hence developers should leverage such an approach before processing performance testing results.
+\noindent {\Large {\bf Editor Comments}}
+
+\emph{	Overall the reviewers believe that the presented work is of great interest to the EMSE readers. All three reviewers are supportive of the publication of the work provided that the authors perform a major revision of the manuscript.	}
+
+{\bf Comment E.1.}	
+\emph{		Reviewer 1 wants to see supporting evidence that VMs are widely used for performance testing. The reviewer points out there has been much work on performance testing -- the reviewer points out related work -- Nistor ICSE 13, Jin PLDI 12 that does not rely on VMs. Reviewer 3 tells you about the worrysome tendency that he sees in your paper to explain what it is that you are not doing, before explaining what you are doing. Please correct it in the revised version of the paper.}
+
+	\response{We have now added motivation to our paper by giving examples of online discussion and references of commercial software systems. Please see our response to comment R1.1. We have also added discussions to related work on performance detection and bugs in our related work section. Furthermore, we have rephrased and have used a direct approach in our explanations.}
+
+	{\bf Comment E.2.}
+\emph{	The authors should clarify points in the paper. Reviewer 1 states that the the paper is not clear about how the three aspects of testing results can help to find performance problems. Also, the reviewer needs clarifications for the second analysis - the correlation between metrics - why is it useful? Reviewer 2 points out that your claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold. Reviewer 3 also complains that the test environments are not quite clear and that the paper needs clear and precise research questions.}
+
+	\response{We have clarified that our paper was set in the context of how performance testing results are analyzed in practice (the three aspects). We explained in detail how each aspect is useful to find performance problems and how our findings impact the use of each type of analysis. Please see the details to our responses to comment R1.3 and 2.29. Additionally, we have clarified an ambiguity present between our work and the related work. A description of testing environments has now been added.}
 	
-	
+	{\bf Comment E.3.}		
+\emph{		Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.}
+
+	\response{ We improved our description to research methodology. We also have rephrased the implications and actionable findings of the paper. We not only emphasize that developers should not add overhead from virtual environments as is, but we also say that in order to normalize the performance metrics between the two environments prior approaches may not work. We propose an approach to minimize the deviance hence developers should leverage such an approach before processing performance testing results. We also discuss the impact of our findings on each type of analysis on performance testing results. Please see our responses to comments R2.29 and 3.43.}
 	
 	
 	
