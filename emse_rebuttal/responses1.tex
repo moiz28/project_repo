@@ -63,11 +63,11 @@ EDITOR comments:
 	\\\\
 	The authors should clarify points in the paper. Reviewer 1 states that the the paper is not clear about how the three aspects of testing results can help to find performance problems. Also, the reviewer needs clarifications for the second analysis - the correlation between metrics - why is it useful? Reviewer 2 points out that your claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold. Reviewer 3 also complains that the test environments are not quite clear and that the paper needs clear and precise research questions.
 	\\\\
-	We have addressed that how our approach using three aspects of performance testing can help in identifying a performance discrepancy from a statistical point of view. Additionally, we have clarified an ambiguity present between our work and the related work. We now add that our work is first to examine the discrepancy between performance testing results in virtual and physical environment. A description of testing environments has now been added.
+	We have addressed that how our approach using three aspects of performance testing can help in identifying a performance discrepancy from a statistical point of view. Additionally, we have discussed the differences between our work and the related work. We now add that our work is first to examine the discrepancy between performance testing results in virtual and physical environment. A description of testing environments has now been added.
 	\\\\
 	Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.
 	\\\\
-	We also have rephrased the implications and actionable findings of the paper. We not only emphasize that developers should not add overhead from virtual environments as is, but we also say that in order to normalize the performance metrics between the two environments prior approaches may not work. We propose an approach to minimize the deviance hence developers should leverage such an approach before processing performance testing results.
+	We also have rephrased the implications and actionable findings of the paper. We not only emphasize that developers should not add overhead from virtual environments as is, but we also say that in order to normalize the performance metrics between the two environments prior approaches may not work. We propose an approach to minimize the deviance hence developers should leverage such an approach before analyzing performance testing results.
 	
 	
 	
@@ -94,7 +94,7 @@ Below, we include a description of the changes that we made to our manuscript wi
 }
 
 
-\response{Thank you for pointing this out. The motivation of this paper starts from our extensive collaboration with industrial practitioners, where we find that a large amounts of the performance testing are conducted in virtual environments. In order to confirm that our experiences with industry is not an exceptional case, we find online discussions and posts by developers and testers about performance testing in virtual environment \cite{performanceonvvirtual}\cite{stackoverflow}\cite{windowsserver}. In addition, we find that the developers of SugarCRM are documenting their experiences in conducting load testing (which has a big overlap with performance testing) on virtual environments \cite{sugarcrmexp}. \\
+\response{Thank you for pointing this out. The motivation of this paper started from our extensive collaboration with our industrial practitioners, where we found that a large amounts of the performance testing are conducted in virtual environments. In order to confirm that our experiences with industry is not an exceptional case, we find online discussions and posts by developers and testers about performance testing in virtual environment \cite{performanceonvvirtual}\cite{stackoverflow}\cite{windowsserver}. In addition, we find that the developers of SugarCRM are documenting their experiences in conducting load testing (which has a big overlap with performance testing) on virtual environments \cite{sugarcrmexp}. \\
 Based on these cases, we are confident that our experiences with our industrial practitioners who use virtual environment for performance testing is not an exceptional case. In fact, Reviewer 3 also support the fact that using virtual environments in performance testing is common. We add this in the introduction section.
 }
 
@@ -139,7 +139,7 @@ Based on these cases, we are confident that our experiences with our industrial 
 }
 
 
-\response{We totally agree with this comment. The ultimate goal is to have investigate the impact on the detection of real world performance bugs. This paper is rather the first step to lay a ground to deeply understand such discrepancy.  Without such knowledge, directly evaluate on performance bugs would be rather treating the syndrome. With the knowledge of such discrepancy, we can better, in the future, understand the existence and magnitude of impact on detecting real world performance bugs. In addition, another contribution of our paper, besides the road towards real world performance bugs, is the effort of identifying approaches that may minimize the discrepancy. In particular, we find that the approach proposed by Nguyen et al.\cite{Nguyen:2012} for work loads in heterogeneous environments does not effectively reduce the discrepancy and we propose a new approach that is shown to be more effective. Our future work on evaluating the impact of real world performance bugs will based on the testing results that are processed with the reduced discrepancy.  
+\response{We totally agree with this comment. The ultimate goal is to investigate the impact on the detection of real world performance bugs. This paper is rather the first step to lay a ground to deeply understand such discrepancy.  Without such knowledge, directly evaluate on performance bugs would be rather treating the syndrome. With the knowledge of such discrepancy, we can better, in the future, understand the existence and magnitude of impact on detecting real world performance bugs. In addition, another contribution of our paper, besides the road towards real world performance bugs, is the effort of identifying approaches that may minimize the discrepancy. In particular, we find that the approach proposed by Nguyen et al.\cite{Nguyen:2012} for workloads in heterogeneous environments does not effectively reduce the discrepancy and we propose a new approach that is shown to be more effective. Our future work on evaluating the impact of real world performance bugs will based on the testing results that are processed with the reduced discrepancy.  
 We add more discussion according to this comment in our conclusion.}
 
 %Say this is the first step. First we need to know what is the descrepancy, how big and how to reduce.
@@ -164,21 +164,21 @@ We add more discussion according to this comment in our conclusion.}
 %}
 
 
-\response{The investigations in this work are based on the following 3 aspects:
+\response{The investigations in this work are based on the following 3 types of analyses:
 	\begin{itemize}
 	
-	\item The first aspect to identify the trends and shape of the distributions of performance metrics. Due to the difference between testing environments, performance testing results are expected to be different in raw value. However, the shape of distribution and the trend should be similar. For example, when there is higher load, CPU increases. If in one environment, we observe the CPU has increasing trend while not seeing the same trend in another environment, we observe a discrepancy. Therefore, we use QQ plot and normalized KS tests to examine the differences in trends and shape of the distributions.
+	\item The first type of analysis to identify the trends and shape of the distributions of performance metrics. Due to the difference between testing environments, performance testing results are expected to be different in raw value. However, the shape of distribution and the trend should be similar. For example, when there is higher load, CPU increases. If in one environment, we observe the CPU has increasing trend while not seeing the same trend in another environment, we observe a discrepancy. Therefore, we use QQ plot and normalized KS tests to examine the differences in trends and shape of the distributions.
 	
-	\item The second aspect, is to identify the combination between two performance
+	\item The second type of analysis, is to identify the combination between two performance
 	metrics. As claimed by  Cohen et al. \cite{cohen2004correlating}, combinations of performance metrics are significantly more predictive towards performance issues than individual metrics. We believe that a change in these combinations of relationships can reflect the discrepancy of performance in the two environments.
 	
-	\item The third aspect is used to see the combination of all performance metrics all together by constructing a statistical model. Similar approach has been adopted by Xiong et al. \cite{xiong2013vperfguard,cohen2004correlating}. This
+	\item The third type of analysis is used to see the combination of all performance metrics all together by constructing a statistical model. Similar approach has been adopted by Xiong et al. \cite{xiong2013vperfguard,cohen2004correlating}. This
 	analysis also serves as the baseline for our future study i.e. fault detection.
 	
 \end{itemize}
 	We have addressed and rephrased this in the new revision.
 	
-	In short, the three aspects are three ways that performance engineers may exploit to examine the performance testing results. We would like to set our study in such a context and see if the differences between virtual and physical environment would impact such analyses results, instead of simply checking the raw value of performance metrics, which is expected to always have differences.
+	In short, the three types of analyses are three ways that performance engineers may exploit to examine the performance testing results. We would like to set our study in such a context and see if the differences between virtual and physical environment would impact such analyses results, instead of simply checking the raw value of performance metrics, which is expected to always have differences.
 
 	}
 
@@ -191,14 +191,14 @@ We add more discussion according to this comment in our conclusion.}
 %The analysis menioned is not domain specified so we are just testing in both the envion. And we find out that its dispcrepance.
 %\response{We mention at the end of section 2.2:\textit{"Prior research focused on the overhead of virtual environments without considering the impact...and investigate whether such impact can be minimized in practice"}. The domain is not specified in most of the papers that we have mentioned as our related work. Hence, we tested in both the environments and concluded that the methodologies can not be applied as is.}
 
-\response{Prior research does not explicitly mention the environment. Other prior research is performed on either virtual or physical environments only. For example, vPerfGuard \cite{xiong2013vperfguard} is only conducted in the virtual environment. However, none of them discuss the issue with being on both virtual and physical environments. This motivates our research. We added such discussion in our related work section to clarify.}.
+\response{Prior research does not explicitly mention the environment. Other prior research is performed on either virtual or physical environments only. For example, vPerfGuard \cite{xiong2013vperfguard} is only conducted in the virtual environment. However, none of them discuss the issue with being on both virtual and physical environments. This motivates our research. We added such discussion in our related work section to clarify.}
 
 \comment{5}{As virtualization becomes wildly adopted, many companies use virtual environment as their production environment to reduce operation costs. Does that invalidate the purpose of this study? What if an application is actually deployed in a virtual environment?
 }
 
 
 
-\response{Thanks for the comment. We agree that some of the applications may later deployed in a similar virtual environment. However, there still exist many scenarios that would value our study. As a first scenario, many systems have historical performance testing results that are based on the physical environments \cite{chenanalytics}. When comparing the new performance testing results and the old performance testing results, such discrepancy needs to be known. Second, software systems are often released both in virtual environment as cloud based services or on-premise. For example, SugarCRM \cite{sugarcrm} and BlackBerry Enterprise Service \cite{bbs} sell their systems both on-premise and on cloud based services. Ensuring the consistency between two solutions, or knowing the need (or to what extent) repeating performance tests in different environment is important to save resources. In addition, we also evaluate the discrepancy between performance tests both on virtual environment and with different virtual machines, which is also valuable performance testing and system deployment, both, are carried in virtual environments.
+\response{Thanks for the comment. We agree that some of the applications may later deployed in a similar virtual environment. However, there still exist many scenarios that would value our study. As a first scenario, many systems have historical performance testing results that are based on the physical environments \cite{chenanalytics}. When comparing the new performance testing results and the old performance testing results, such discrepancy needs to be known. Second, software systems are often released both in virtual environment as cloud based services or on-premise. For example, SugarCRM \cite{sugarcrm} and BlackBerry Enterprise Service \cite{bes} sell their systems both on-premise and on cloud based services. Ensuring the consistency between two solutions, or knowing the need (or to what extent) repeating performance tests in different environment is important to save resources. In addition, we also evaluate the discrepancy between performance tests both on virtual environment and with different virtual machines, which is also valuable performance testing and system deployment, both, are carried in virtual environments.
 We clarify this and add more discussion about this in the introduction of our new revision.}
 %\response{We agree however that would mean that we need to study the variance present in the virtual environment. We highlight a scenario where both the environments are used and not just only virtual. Like mentioned in response 1.1, some software have the option to run on premise. Particularly large software systems like CRM and BES. We clarify this in the new revision.}
 %That sounds like another study about vm variance. But that?s not the focus of our paper. Some software needs to run on premise anyways. 
@@ -370,7 +370,7 @@ Some work exists in that have implicitly compared the difference between the met
 
 \response{Thank you for your feedback. 
 	
-	We agree that there exist prior studies such as the one mentioned above that examine performance counters from both environments. However, the comparison is rather simple. For example, in the above mentioned study, the authors directly compare the metric values. In fact, difference exists between any two tests, even from the same environments, yet statistically, they may not. Therefore, we examine the performance testing results in the context that when performance engineers use different statistical analyses on these results and see whether the difference between vm and physical would impact the statistical analyses results. 
+	We agree that there exist prior studies such as the one mentioned above that examine performance counters from both environments. However, the comparison is rather simple. For example, in the above mentioned study, the authors directly compare the metric values. In fact, difference exists between any two tests, even from the same environments, yet statistically, they may not. Therefore, we examine the performance testing results in the context that when performance engineers use different statistical analyses on these results and see whether the difference between VM and physical would impact the statistical analyses results. 
 	
 	We discuss the above difference between our work and prior studies in related work section. In addition, we have revised our manuscript to say our work is one of the first works that examine the discrepancy between performance testing results in virtual and physical environments. 
 	}
@@ -393,14 +393,14 @@ Some work exists in that have implicitly compared the difference between the met
 %	You can also mention about BES, which is also both on cloud and on premise.
 %	if you can find some thing to say, some apps can be hold both on cloud and on premise, then they may not have the effor to testing for each environment
 \response{
-	Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our responses to comment 1.1 and 1.5.
+	Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our responses to comment R1.1 and R1.5.
 	In short, we find that the use of virtual environment in performance testing is not an exceptional cases but rather common in practice. In addition, there exist scenarios that both physical and virtual environments are used for systems (e.g., services provided both on cloud and on-premise).}
 
 \comment{2}{Exploring, identifying and minimizing such discrepancy will help practitioners and researchers understand and leverage performance testing results from virtual and physical environments...Why would they *LEVERAGE* performance testing results from virtual and physical and to achieve *WHAT* purpose. Bench-marking folks won't like this idea
 \\\\
 Counter narrative: Many companies also try to virtualize their load generation infrastructure which seems like a good idea for maintenance and elasticity reasons. However, they defiantly do tests on physical environment for the show-off purpose of their performance. This is a fact that you can squeeze the most performance out of physical environment. Nevertheless, especially for SaaS infrastructure, or to cater the need of stakeholders and large clients, virtualized environment are used and performance results obtained are attributed to specific virtual environment. That's why the benchmark teams exists in large enterprise that catalog the performance under different virtualized environment. Application of findings from one environment to another is not a usual practice}.
 
-\response{Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our responses to comment 1.5. In short, the practitioners may need to compare to historical performance testing results or hosting the system both as cloud service or on-premise.}
+\response{Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our responses to comment R1.5. We also discuss the impact of our findings on the analyses of performance testing results.}
 
 
 %\response{\textcolor{blue}{better look for some examples online, like web posts.}}
@@ -436,7 +436,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 	}
 	
 \response{We completely agree with the comment and the sample was taken after the warm up, the ramp-up and before the cool-down period.
-	We ran the warm up period for 2 minutes. We remove the recorded performance metrics during this time frame. As explained in comment 2.27, we removed the recorded data during our ramp-up and cool down period in order to ensure equilibrium.}
+	We ran the warm up period for 2 minutes. We remove the recorded performance metrics during this time frame. As explained in comment R2.27, we removed the recorded data during our ramp-up and cool down period in order to ensure equilibrium.}
 
 \comment{2}{What is the implication of this study?
 	}
@@ -481,7 +481,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 \vspace{2em}
 
 
-\response{All above typos are fixed, except for comment 2.39, which is not a typo but the page number. We also proofread it again to eliminate language issues.}
+\response{All above typos are fixed, except for comment R2.39, which is not a typo but the page number. We also proofread it again to eliminate language issues.}
 
 \comment{2}{Overall, interesting research and paper was a joyful read.}
 
@@ -500,7 +500,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 	
 %\response{Thank you for your feedback in helping us making it a stronger manuscript. We have now provided a detailed description of environment configuration. \textcolor{red}{about the network traffic, it was simulated what can I say about this by not being hampered by the concordia network?}. One of our focus when carrying out the experiments was to keep the environment setup as close to real world as possible. There are online posts as why disk pass through is not used any more in the real world environment \cite{diskpassthrough}. Due to lack of flexibility and lack of support we decided to use a virtual disk.}
 
-\response{Thank you for your feedback in helping us making it a stronger manuscript. We have now
+\response{Thank you for your feedback in helping us make it a stronger manuscript. We have now
 	provided a detailed description of environment configuration in the new draft.
 	The network traffic was generated on another machine. As we were well below the capacity the network overhead did not make a difference. In addition, as the network setup was same for both of our environments the effect would cancel out during the analysis.
 	One of the concern was about using disk passthrough. We opted to not use disk passthrough mainly due to the fact that disk passthrough was not enabled in our experiences of collaborating with our industrial partners, which primarily motivates this work. The main reason is the portability issues, since practitioners want to quickly deploy an existing vm image that's designed for performance testing and start performance tests right away, there are other discussions online about why disk passthrough may not be a good idea\cite{diskpassthrough}. Based on such information and mainly practices in our industrial collaboration, we opted not to enable it.
@@ -522,11 +522,11 @@ Counter narrative: Many companies also try to virtualize their load generation i
 	
 	In particular, we did not adopt an approach that monitor the network traffic to control load. Our experiments are trying to replicate the practice of our industrial practitioners, where VMs hosting performance tests are pre setup and the load drivers, with the same configurations, are setup in the VM. Practitioners will start the performance tests by initiating the load driver without really controlling the network traffic. We agree that leveraging a more controlled experiment is beneficial to further understand the discrepancy.
 	
-	We clarify our experiments in the new draft and discuss the limitation of our approach. We also discuss the practice of conducting performance testing using virtual machines in order to better motivate the study and motivate our experimental choices. Please refer to comment 1.1 and 1.3. We put conducting a controlled experiment in our future plan as part of the conclusion of the paper.}
+	We clarify our experiments in the new draft and discuss the limitation of our approach. We also discuss the practice of conducting performance testing using virtual machines in order to better motivate the study and motivate our experimental choices. Please refer to comment R1.1 and R1.3. We put conducting a controlled experiment in our future plan as part of the conclusion of the paper.}
 
 \comment{3}{Lack of actionable findings.  The paper repeats in several places that there is a discrepancy between the performance of virtual and physical environments.  That is interesting, but it is not actionable.  As a programmer or tester, I am not sure how to use this information.  The paper does not give an explanation of how large the difference is, except by presenting the charts and figures.  For example, in the last paragraph on page 9, "By looking closely at such metrics, we find..."  Earlier it states that the "lines on the Q-Q plot are not close."  I can see what the authors mean by looking at the figures, but is that a big difference?  As a tester, I am already aware that the virtual environment is not a perfect reflection of a physical one.  What I am wondering is, is the difference big enough that I need to worry about it?  The paper does not quite answer that question.  Perhaps the paper could go into an example to show how the results might affect decision-making, to give some context for understanding the results.}
 
-\response{Thanks for pointing this out. We agree that between any two performance tests, not just between virtual and physical environments, there exists differences. This exactly why we set the experiments in the contexts of 3 types of analyses of performance testing results. Our results measure the magnitude of the differences in a statistical manner, e.g., whether the difference is statistically significant, or how large is the relative differences. In addition, in our new revision, for every research question, we add a paragraph to discuss the impact of our results on practitioners interpretation of performance testing results using each type of analysis. Moreover, we also highlight the actionable implications at the end of each research question of in in our new revision.}
+\response{Thanks for pointing this out. We agree that between any two performance tests, not just between virtual and physical environments, there exist differences. This is exactly why we set the experiments in the contexts of 3 types of analyses of performance testing results. Our results measure the magnitude of the differences in a statistical manner, e.g., whether the difference is statistically significant, or how large is the relative differences. In addition, in our new revision, for every research question, we add a paragraph to discuss the impact of our results on practitioners interpretation of performance testing results using each type of analysis. Moreover, we also highlight the actionable implications at the end of each research question of in in our new revision.}
 	
 %\vspace{1em}
 %\noindent {\Large {\bf Reviewer 1 Comment}}
