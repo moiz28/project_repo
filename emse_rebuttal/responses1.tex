@@ -193,30 +193,11 @@ We clarify this and add more discussion about this in the introduction of our ne
 	\end{enumerate}}
 
 
-
-
-%\response{We answer the questions accordingly:
-%	\begin{enumerate}
-%		\item We use the same type of performance tests as used in the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}\cite{foo2010mining}. \textcolor{red}{Should I mention the exact type which was "exploratory performance testing(ref: Jack's TSE paper)"?}
-%		\item In total, there are 3 performance tests used in this study, as mentioned in section 6.1: \textit{"In total, we had results from three performance tests"}
-%		\item It was very necessary for this study that the systems are stable and the sample sizes are statistically significant. A longer run of the tests would ensure we have covered more data points, than the related studies \cite{jiang2009automated}\cite{malik2013automatic}\cite{nguyen2012automated}. In the future, we can extend our study to run for even a longer period of time.
-%		\item We ran it 3 times in total. We do not guarantee that running it thrice would completely eliminate the randomness.
-%		\\\\
-%		We have clarify all of the aforementioned points in the updated version of our manuscript.
-%	\end{enumerate}}
-
-
 \comment{1}{Different performance tests may performance different functionalities (e.g., SQL query VS server restart). The functionalities should be evaluated separately. 
 }
 
-\response{We decided to test the subject system as a whole. Although testing a smaller unit of  functionalities may benefit in locating the performance issues. However the goal of the paper is to examining the discrepancy of the system as a whole, which is closer to the performance impact on real users. In our future work, we will separate different components of the system and conduct lower level, isolated performance tests, in order to investigate on impact on performance bugs.
-We add discussion in the new revision of our paper.}
-
-
-
-%I think this reviewer did not understand how our two software work and I can guess it by the questions. There is no need to evaluate different functionalities because atomically both the drivers are role-playing as a user. Log in - browse - buy - pay - logout. If the nature of all the transactions remains same based on the SQL query, I believe there is no need of evaluating it as different functionalities. 
-
-%We use a combination of things. Whatever the test driver is based on. Test on single feature maybe system behaves in a different way but ours is based on compound exercising the system.
+\response{We decided to test the subject system as a whole. Although testing a smaller unit of functionality may benefit in locating performance issues. However, the goal of the paper is to examine the discrepancy of the system as a whole, which is closer to the performance impact on real users. In our future work, we will separate different components of the system and conduct lower level, isolated performance tests, in order to investigate the impact on performance bugs.
+We add the discussion in the new revision of our paper.}
 
 
 \comment{1}{Section 3.1: what is the size of each application?
@@ -228,11 +209,7 @@ We add discussion in the new revision of our paper.}
 \comment{1}{On page 7, the design choice of combining metrics of two datasets is not justified. 
 }
 
-%To disregard the presence of multicollinearity or %counter-intuitive results such as simpsons paradox
-%https://en.wikipedia.org/wiki/Simpson%27s_paradox 
-
-%We considered it as one system. For a user its just a box. 
-\response{Similar to comment \#9, we treat the system as a whole. The discussion of this choice is added into the new revision.}
+\response{Similar to comment R1.9, we treat the system as a whole. The discussion of this choice is added into the new revision.}
 
 \comment{1}{On page 7, realistically, interference on the real-world systems cannot be restricted like the one mentioned in the setup. The concern is that, by leaving out the system load, the statistical model might miss the opportunity to adjust to the real-world situation. Also, different assumptions about the system workload could affect the choice of the statistical model and thus perturb the prediction results.
 }
