@@ -54,52 +54,33 @@ Montreal, QC, Canada H3G 2W1 \\
  
 \noindent Thank you for your insightful feedback and comments, both positive and constructive, and for allowing us the opportunity to improve our manuscript. We have taken each of your comments into consideration and made the appropriate changes and extensions to our manuscript. 
 
+
+\vspace{2em}
 \noindent {\Large {\bf Editor Comments}}
 
-\emph{	Overall the reviewers believe that the presented work is of great interest to the EMSE readers. All three reviewers are supportive of the publication of the work provided that the authors perform a major revision of the manuscript.	}
+\emph{Overall the reviewers believe that the presented work is of great interest to the EMSE readers. All three reviewers are supportive of the publication of the work provided that the authors perform a major revision of the manuscript.	}
 
 {\bf Comment E.1.}	
-\emph{		Reviewer 1 wants to see supporting evidence that VMs are widely used for performance testing. The reviewer points out there has been much work on performance testing -- the reviewer points out related work -- Nistor ICSE 13, Jin PLDI 12 that does not rely on VMs. Reviewer 3 tells you about the worrysome tendency that he sees in your paper to explain what it is that you are not doing, before explaining what you are doing. Please correct it in the revised version of the paper.}
+\emph{Reviewer 1 wants to see supporting evidence that VMs are widely used for performance testing. The reviewer points out there has been much work on performance testing -- the reviewer points out related work -- Nistor ICSE 13, Jin PLDI 12 that does not rely on VMs. Reviewer 3 tells you about the worrysome tendency that he sees in your paper to explain what it is that you are not doing, before explaining what you are doing. Please correct it in the revised version of the paper.}
 
 	\response{We have now added motivation to our paper by giving examples of online discussions and references of commercial software systems. Please see our response to comment R1.1. We have also added discussions to the related work section on performance detection and bugs. Furthermore, we have rephrased and have used a direct approach in our explanations.}
 
 	{\bf Comment E.2.}
-\emph{	The authors should clarify points in the paper. Reviewer 1 states that the the paper is not clear about how the three aspects of testing results can help to find performance problems. Also, the reviewer needs clarifications for the second analysis - the correlation between metrics - why is it useful? Reviewer 2 points out that your claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold. Reviewer 3 also complains that the test environments are not quite clear and that the paper needs clear and precise research questions.}
+\emph{The authors should clarify points in the paper. Reviewer 1 states that the the paper is not clear about how the three aspects of testing results can help to find performance problems. Also, the reviewer needs clarifications for the second analysis - the correlation between metrics - why is it useful? Reviewer 2 points out that your claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold. Reviewer 3 also complains that the test environments are not quite clear and that the paper needs clear and precise research questions.}
 
 	\response{We have clarified that our paper was set in the context of how performance testing results are analyzed in practice (the three aspects). We explained in detail how each aspect is useful to find performance problems and how our findings impact the use of each type of analysis. Please see the details to our responses to comment R1.3 and R2.29. Additionally, we have clarified an ambiguity present between our work and the related work. A description of testing environments has now been added.}
-%=======
-%EDITOR comments:
-%	Overall the reviewers believe that the presented work is of great interest to the EMSE readers. All three reviewers are supportive of the publication of the work provided that the authors perform a major revision of the manuscript.	
-%	\\\\
-%	Reviewer 1 wants to see supporting evidence that VMs are widely used for performance testing. The reviewer points out there has been much work on performance testing -- the reviewer points out related work -- Nistor ICSE 13, Jin PLDI 12 that does not rely on VMs. Reviewer 3 tells you about the worrysome tendency that he sees in your paper to explain what it is that you are not doing, before explaining what you are doing. Please correct it in the revised version of the paper.
-%	\\\\
-%	We have now added motivation to our paper by giving examples and references of software like SugarCRM and BlackBerry's BES server. We have also added the related work on performance detection and bugs in our related work section. Furthermore, we have rephrased and have used a direct approach in our explanations.
-%	\\\\
-%	The authors should clarify points in the paper. Reviewer 1 states that the the paper is not clear about how the three aspects of testing results can help to find performance problems. Also, the reviewer needs clarifications for the second analysis - the correlation between metrics - why is it useful? Reviewer 2 points out that your claim "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied.", is arbitrary and does not hold. Reviewer 3 also complains that the test environments are not quite clear and that the paper needs clear and precise research questions.
-%	\\\\
-%	We have addressed that how our approach using three aspects of performance testing can help in identifying a performance discrepancy from a statistical point of view. Additionally, we have discussed the differences between our work and the related work. We now add that our work is first to examine the discrepancy between performance testing results in virtual and physical environment. A description of testing environments has now been added.
-%	\\\\
-%	Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.
-%	\\\\
-%	We also have rephrased the implications and actionable findings of the paper. We not only emphasize that developers should not add overhead from virtual environments as is, but we also say that in order to normalize the performance metrics between the two environments prior approaches may not work. We propose an approach to minimize the deviance hence developers should leverage such an approach before analyzing performance testing results.
-	
 
 	
 {\bf Comment E.3.}		
-\emph{		Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.}
+\emph{Reviewer 3 Unclear research methodology, since it is not clear exactly what methodology is being followed. Moreover, the reviewer complains that the paper lacks actionable findings. The paper repeats in several places that there is performance of virtual and physical environments. That is interesting, but it is not actionable. The authors should work more on the paper to determine how their solution can contribute to the practice by offering actionable items based on your findings.}
 
 	\response{ We improved our description to research methodology. We also have rephrased the implications and actionable findings of the paper. We not only emphasize that developers should not add overhead from virtual environments as is, but we also say that in order to normalize the performance metrics between the two environments prior approaches may not work. We propose an approach to minimize the deviance hence developers should leverage such an approach before processing performance testing results. We also discuss the impact of our findings on each type of analysis on performance testing results. Please see our responses to comments R2.29 and R3.43.}
 	
 	
 	
 	
-
-%We added a better motivation for our work. We also highlight how our work is different from the related literature provided as examples. We have provided how the three aspects of testing results impact the results from a practitioners point of view. Details for the testing environment especially the disk specs have been added.
-
 Below, we include a description of the changes that we made to our manuscript with respect to each of the reviewer's comments. We denote the reviewers comments in italic typeface, and our responses follow below each reviewer comment.
 
-
-%We thank the reviewers for their valuable feedback. This document includes a list of changes and rebuttal to the comments that were raised by the reviewers. Below, we include a description of the changes made to our manuscript with respect to each of the reviewers’ comments. We denote the reviewers comments in italic typeface. Our responses follow below each reviewer comment.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,7 +88,7 @@ Below, we include a description of the changes that we made to our manuscript wi
 
 
 \vspace{1em}
-\noindent {\Large {\bf Reviewer 1 Comment}}
+\noindent {\Large {\bf Reviewer 1 Comments}}
 
 \comment{1}{Is there any evidence supporting that VMs are widely used for performance testing? There has been much work on performance testing (e.g., Nistor ICSE 13, Jin PLDI 12) that does not rely on VMs. The paper should provide more details on the background and motivation for this study, such as why and in what circumstances VMs are used in performance testing. 
 }
@@ -150,7 +131,7 @@ We add more discussion according to this comment in our conclusion.}
 
 
 
-\comment{1}{In the related work section, instead of just describing the three types of analysis, the authors should relate the existing work to the proposed study. Does the discussed existing work rely on VMs? If it does, are there any problems caused by the discrepancy between VMs and physical environments?
+\comment{1}{In the related work section, instead of just describing the three types of analyses, the authors should relate the existing work to the proposed study. Does the discussed existing work rely on VMs? If it does, are there any problems caused by the discrepancy between VMs and physical environments?
 }
 
 
@@ -223,20 +204,14 @@ We discuss the above points in our new manuscript threats section.}
 }
 
 
-%Explain.
-%Dr. shang r function.
-
-%We did it based on R. we removed the one which is more correlated to other metrics.
 \response{We used such an approach to remove multicollinearity that is present between performance metrics. In fact, the approach is based on a popular statistical analysis \cite{cor_R}. In essence, whenever two metrics are found to be highly correlated, one of them needs to be removed. To determine which one to remove, the approach chooses the one that is more highly correlated with the rest of the metrics. We elaborate the description of our approach in the new revision of the paper.
 	}
 
 \comment{1}{On page 16, what regression model is used? On page 17, linear regression model is mentioned briefly. Why is a linear model chosen? Not until on page 19, the assumption of a linear relationship is mentioned. A brief writing of the design decision would be more appropriate. 
 }
-%Lrm. because prior work and easy to explain.
 
-%Say you can use other models. You use linear model since it?s easier to explain, and also used in prior work, cite my paper icpe and the vperfguard
 
-\response{We chose linear regression model as it is used in prior work \cite{xiong2013vperfguard}\cite{Shang:2015}. More importantly, the linear model is more straightforward to explain compared to that other model. Hence, it is easier to interpret the discrepancy that are illustrated by the model. We discuss the decision in our revised manuscript.}
+\response{We chose linear regression model as it is used in prior work \cite{xiong2013vperfguard}\cite{Shang:2015}. More importantly, the linear model is more straightforward and simple to explain compared to the other models. Hence, it is easier to interpret the discrepancy that is illustrated by the model. We discuss the decision in our revised manuscript.}
 
 \comment{1}{R-squared is used without explanation. If 10-fold cross validation has an explanation, R2 may deserve one too.
 }
@@ -251,10 +226,8 @@ We discuss the above points in our new manuscript threats section.}
 \comment{1}{There is much work on performance testing and bug detection, which should be discussed in related work. 
 }
 
-%Yes
-%Look for performance bug detection. 4 or 5 papers. Look at the reviewers example.
 
-\response{We include the new discussion in more related work about performance testing and bug detection. The list of newly added related work include:
+\response{We include the new discussion in the related work about performance testing and bug detection. The list of newly added related work include:
 	\begin{itemize}
 		\item Nistor et al.: Toddler: Detecting Performance Problems via Similar Memory-access Patterns  in ICSE '13 \cite{Nistor}.
 		\item Jin et al.: Understanding and Detecting Real-world Performance Bugs in PLDI '12 \cite{Jin}.
@@ -286,48 +259,32 @@ Therefore, the claim "To the best of our knowledge, the discrepancy between perf
 	
 Some work exists in that have implicitly compared the difference between the metrics harvested from the VMs and Physical machines, however, performance testing was not their main focus. A few explicit research efforts exist to gauge the difference between metrics collected from physical and virtual environment. I am pointing to one such work conducted by Netto from PUCRS and Sadd from Dell "Evaluating load generation in virtualized environments for software performance testing". They conducted several load tests on both virtual machines and physical machines.}
 
-%\underline{Context}: Prior studies show that virtual environments are widely exploited in practice... "To the best of our knowledge, the discrepancy between performance testing results in virtual and physical environments has never been studied" when compared to related literature.
-
-%say you compare it using typical anlaysis of perf tests. and cite it.\\\\
-%\response{After reading the work mentioned we identified the authors approach is based on comparing the raw values collected via load testing. However, we analyse the results from a software performance test?s perspective \cite{jack_tse}\cite{nguyen2012automated}. We have added this work in our related work.}
-
 \response{Thank you for your feedback. 
 	
-	We agree that there exist prior studies such as the one mentioned above that examine performance counters from both environments. However, the comparison is rather simple. For example, in the above mentioned study, the authors directly compare the metric values. In fact, difference exists between any two tests, even from the same environments, yet statistically, they may not. Therefore, we examine the performance testing results in the context that when performance engineers use different statistical analyses on these results and see whether the difference between VM and physical would impact the statistical analyses results. 
+	We agree that there exist prior studies such as the one mentioned above that examine performance counters from both environments. However, the comparison is rather simple. For example, in the above mentioned study, the authors directly compare the metric values. In fact, difference exists between any two tests, even from the same environments, yet statistically, they may not be similar. Therefore, we examine the performance testing results in the context that when the performance engineers use different statistical analyses on these results, they can conclude whether the difference between VM and physical would impact the results. 
 	
-	We discuss the above difference between our work and prior studies in related work section. In addition, we have revised our manuscript to say our work is one of the first works that examine the discrepancy between performance testing results in virtual and physical environments. 
+	We discuss the above difference between our work and prior studies in the related work section. In addition, we have revised our manuscript to say our work is one of the first works that examine the discrepancy between performance testing results in virtual and physical environments. 
 	}
 
 
 \comment{2}{However, the use of VMs may introduce extra overhead (e.g., a higher than expected memory utilization) to the testing environment and lead to unrealistic performance testing results...Why testing over virtualized lead to unrealistic PT results?
 	}
-\\\\
-%The overhead is very complex not just see the overhead and evaluate the dicrepancy. b/c the overhead is not straight forward. You better read the vm overhead paper and cite them and say the overhead is rather complex. So you can;t just add up the overhead direct on top of the results.
-\\\\
+
 \response{Prior studies on systems and hardwares have investigated the overhead of virtual machines. For example, Huber et al. try to build a performance model to predict performance of applications that are migrated from a native system to a virtual environment or from a virtual environment to a new one \cite{huber2011}. There are similar studies which indicate that the overhead in virtual environment may hamper the results of performance tests \cite{brosig2013}\cite{menon2005}. However, it is found that such overhead cannot be simply added up to the existing system load, while it instead brings confounding effect on the system performance overall. Having known the existence of such overhead, interpreting performance testing results is not straightforward.}
-%\response{The overhead in a virtual environment can not be simply added on with the results and analyzed. It is rather complex to calculate and evaluate the discrepancy. That is why \textit{Huber et al.} try to build a performance model to predict performance of applications that are migrated from a native system to a virtual environment or from a virtual environment to a new one \cite{huber2011}. There are similar studies which indicate that the overhead in virtual environment may hamper the results of performance tests \cite{brosig2013}\cite{menon2005}.  }
+
 
 \comment{2}{ Our findings show that practitioners cannot assume that their performance tests that are observed on one environment will necessarily apply to another environment... Is there any evidence to back up the current practice(s) in which practitioner generalize the result of one environment to another (phy to Vir), especially of the large scale software, you mentioned in the paper?
 	}
-%	Vm and on premise. 
-	
-%	In the light of this:
-%	http://www.bluelinkerp.com/hosted-onpremises-solutions/
-%	You can also mention about BES, which is also both on cloud and on premise.
-%	if you can find some thing to say, some apps can be hold both on cloud and on premise, then they may not have the effor to testing for each environment
+
 \response{
 	Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our responses to comment R1.1 and R1.5.
-	In short, we find that the use of virtual environment in performance testing is not an exceptional cases but rather common in practice. In addition, there exist scenarios that both physical and virtual environments are used for systems (e.g., services provided both on cloud and on-premise).}
+	In short, we find that the use of virtual environment in performance testing is not an exceptional case but rather common in practice. In addition, there exist scenarios where both physical and virtual environments are used for systems (e.g., services provided both on cloud and on-premise).}
 
 \comment{2}{Exploring, identifying and minimizing such discrepancy will help practitioners and researchers understand and leverage performance testing results from virtual and physical environments...Why would they *LEVERAGE* performance testing results from virtual and physical and to achieve *WHAT* purpose. Bench-marking folks won't like this idea
 \\\\
 Counter narrative: Many companies also try to virtualize their load generation infrastructure which seems like a good idea for maintenance and elasticity reasons. However, they defiantly do tests on physical environment for the show-off purpose of their performance. This is a fact that you can squeeze the most performance out of physical environment. Nevertheless, especially for SaaS infrastructure, or to cater the need of stakeholders and large clients, virtualized environment are used and performance results obtained are attributed to specific virtual environment. That's why the benchmark teams exists in large enterprise that catalog the performance under different virtualized environment. Application of findings from one environment to another is not a usual practice}.
 
-\response{Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our responses to comment R1.5. We also discuss the impact of our findings on the analyses of performance testing results.}
-
-
-%\response{\textcolor{blue}{better look for some examples online, like web posts.}}
-
+\response{Thanks for the question. Such a question is also raised by reviewer 1. Please refer to our response to comment R1.5. We also discuss the impact of our findings on the analyses of performance testing results.}
 
 \comment{2}{Since the authors have framed the paper as an empirical study, it is very important to provide the necessary information in the paper for replication purpose. Replication, allows other researcher to validate authors claim(s) and in cases, compare it with their own techniques/cases and findings. What are workload parameters are used in this paper for DS2 and for Cloud Store using JMeter? }
 
@@ -342,7 +299,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 	
 	}
 \response{
-	We use perfmon to monitor on the two machines that run web(app) server and the database server. We do not monitor performance of the machine but instead the performance of the web application process and the database process directly, in order to minimize the influence of the perfmon. We clarify this in the new revision. }
+	We use perfmon to monitor on the two machines that run web(app) server and the database server. We do not monitor performance of the machine but instead the performance of the web application process and the database process directly, in order to minimize the influence of perfmon. We clarify this in the new revision. }
 
 \comment{2}{How did you ensured that environment remained constant for each performance test? For example after few tests, the disk may get full hence IOPS can get impacted. 
 	}
@@ -352,7 +309,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 \comment{2}{ For both the Q-Q plots for D2 and Cloud store, the metrics do not have the same trend. Did you used the samples of the performance tests results when the test was in equilibrium? If yes how did you ensured that?
 	}
 	
-\response{Yes, we waited till the point of stability before processing. We achieve this by not including data from the beginning and ending of a test (10 minutes each end). This was a consistent practices across all our tests.}
+\response{Yes, we waited till the point of stability before processing. We achieve this by not including data from the beginning and ending of a test (10 minutes each end). This was a consistent practice across all our tests.}
 
 
 \comment{2}{Also, before calculating the correlation among the performance metrics from virtual and physical environments, did you removed ramp-up and ramp-down observations of the performance metrics for a test? The system is usually not stable during warm-up and cool-down period. Ramp-up and down periods, for a test repeated multiple time under a given workload, and constant environment, many not necessary be correlated to each other.
@@ -364,15 +321,14 @@ Counter narrative: Many companies also try to virtualize their load generation i
 \comment{2}{What is the implication of this study?
 	}
 	
-%Future resarch should investigate how to reduce the discrepancy and to be careful when working in two environments. 
 
 \response{There exist three actionable implication from this study:
 	\begin{itemize}
-	\item Developers cannot assume an straightforward overhead from the virtual environment, (such as a simple increase of CPU).
+	\item Developers cannot assume a straightforward overhead from the virtual environment, (such as a simple increase of CPU usage).
 	\item Prior approach that are proposed to normalize performance testing results with different loads may not work between physical and virtual environments.
 	\item We propose an approach that may minimize the discrepancy between performance testing results from virtual and physical environments. Developers should leverage such an approach before processing performance testing results from virtual and physical environments.
 \end{itemize}
-	We highlight the actionable implications at the end of each research question of in in our new revision. In addition, in our new revision, for every research question, we add a paragraph to discuss the impact of our results on practitioners interpretation of performance testing results using each type of analysis.}
+	We highlight the actionable implications at the end of each research question in our new revision. In addition, in our new revision, for every research question, we add a paragraph to discuss the impact of our results on practitioners interpretation of performance testing results using each type of analysis.}
 
 
 
@@ -404,7 +360,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 \vspace{2em}
 
 
-\response{All above typos are fixed, except for comment R2.39, which is not a typo but the page number. We also proofread it again to eliminate language issues.}
+\response{All above typos are fixed, except for comment R2.39, which is not a typo but the page number. We also proofread it again to refine it further.}
 
 \comment{2}{Overall, interesting research and paper was a joyful read.}
 
@@ -420,13 +376,11 @@ Counter narrative: Many companies also try to virtualize their load generation i
 \comment{3}{The test environments are not quite clear.  This concern is minor because it could be fixed with complete descriptions of the hardware and virtual environment configuration.  For example, is the physical server disk setup a RAID?  SSD?  SATA/NVMe?  Is the network traffic generated locally or is it simulated from another machine (which would be influenced by the network hardware)?
 	Perhaps more importantly, what is the disk setup on the virtual machine?  One of the findings in the paper is that the I/O metrics differ more than the CPU/memory metrics when compared to the physical machine.  That is definitely not surprising if the VM is configured to use VDI or another virtual disk, given the overhead in mimicking a drive within an existing filesystem.  It is possible to use disk passthrough in Virtual Box and other VM software.  In that case, a physical disk is passed by the host OS directly to the guest OS.  That setup tends to be much much closer to native speed.
 	}
-	
-%\response{Thank you for your feedback in helping us making it a stronger manuscript. We have now provided a detailed description of environment configuration. \textcolor{red}{about the network traffic, it was simulated what can I say about this by not being hampered by the concordia network?}. One of our focus when carrying out the experiments was to keep the environment setup as close to real world as possible. There are online posts as why disk pass through is not used any more in the real world environment \cite{diskpassthrough}. Due to lack of flexibility and lack of support we decided to use a virtual disk.}
 
-\response{Thank you for your feedback in helping us make it a stronger manuscript. We have now
+\response{Thank you for your feedback in helping us making it a stronger manuscript. We have now
 	provided a detailed description of environment configuration in the new draft.
 	The network traffic was generated on another machine. As we were well below the capacity the network overhead did not make a difference. In addition, as the network setup was same for both of our environments the effect would cancel out during the analysis.
-	One of the concern was about using disk passthrough. We opted to not use disk passthrough mainly due to the fact that disk passthrough was not enabled in our experiences of collaborating with our industrial partners, which primarily motivates this work. The main reason is the portability issues, since practitioners want to quickly deploy an existing vm image that's designed for performance testing and start performance tests right away, there are other discussions online about why disk passthrough may not be a good idea\cite{diskpassthrough}. Based on such information and mainly practices in our industrial collaboration, we opted not to enable it.
+	One of the concern was about using disk passthrough. We opted to not use disk passthrough mainly due to the fact that disk passthrough was not enabled in our experiences of collaborating with our industrial partners, which primarily motivates this work. The reason behind it is the portability issue, since practitioners want to quickly deploy an existing vm image that's designed for performance testing and start performance tests right away, there are other discussions online about why disk passthrough may not be a good idea\cite{diskpassthrough}. Based on such information and mainly practices in our industrial collaboration, we opted not to enable it.
 	We elaborate our choice in the new revision.}
 
 
@@ -441,7 +395,7 @@ Counter narrative: Many companies also try to virtualize their load generation i
 	
 	}
 
-\response{Thanks for your suggestion, we improve our explanation of the empirical study in our new draft to avoid confusions by having 3 research questions. We also rephrase the texts to improve the ease of understanding our approaches.
+\response{Thanks for your suggestion, we improve our explanation of the empirical study in our new draft to avoid confusions by having 3 research questions. We also rephrase the texts to improve the ease of understanding of our approaches.
 	
 	In particular, we did not adopt an approach that monitor the network traffic to control load. Our experiments are trying to replicate the practice of our industrial practitioners, where VMs hosting performance tests are pre setup and the load drivers, with the same configurations, are setup in the VM. Practitioners will start the performance tests by initiating the load driver without really controlling the network traffic. We agree that leveraging a more controlled experiment is beneficial to further understand the discrepancy.
 	
@@ -449,150 +403,8 @@ Counter narrative: Many companies also try to virtualize their load generation i
 
 \comment{3}{Lack of actionable findings.  The paper repeats in several places that there is a discrepancy between the performance of virtual and physical environments.  That is interesting, but it is not actionable.  As a programmer or tester, I am not sure how to use this information.  The paper does not give an explanation of how large the difference is, except by presenting the charts and figures.  For example, in the last paragraph on page 9, "By looking closely at such metrics, we find..."  Earlier it states that the "lines on the Q-Q plot are not close."  I can see what the authors mean by looking at the figures, but is that a big difference?  As a tester, I am already aware that the virtual environment is not a perfect reflection of a physical one.  What I am wondering is, is the difference big enough that I need to worry about it?  The paper does not quite answer that question.  Perhaps the paper could go into an example to show how the results might affect decision-making, to give some context for understanding the results.}
 
-\response{Thanks for pointing this out. We agree that between any two performance tests, not just between virtual and physical environments, there exist differences. This is exactly why we set the experiments in the contexts of 3 types of analyses of performance testing results. Our results measure the magnitude of the differences in a statistical manner, e.g., whether the difference is statistically significant, or how large is the relative differences. In addition, in our new revision, for every research question, we add a paragraph to discuss the impact of our results on practitioners interpretation of performance testing results using each type of analysis. Moreover, we also highlight the actionable implications at the end of each research question of in in our new revision.}
+\response{Thanks for pointing this out. We agree that between any two performance tests, not just between virtual and physical environments, there exist differences. This is exactly why we set the experiments in the contexts of 3 types of analyses of performance testing results. Our results measure the magnitude of the differences in a statistical manner, e.g., whether the difference is statistically significant, or how large the relative differences are. In addition, in our new revision, for every research question, we add a paragraph to discuss the impact of our results on practitioners' interpretation of performance testing results using each type of analysis. Moreover, we also highlight the actionable implications at the end of each research question in our new revision.}
 	
-%\vspace{1em}
-%\noindent {\Large {\bf Reviewer 1 Comment}}
-
-%\comment{1}{This article studies the user reviews for top mobile Apps in the Google Play Store and compares its findings with those on IOS apps.  The study is quite impressive in the scale as they collected user reviews of 10,000+ top apps on a daily basis over a period of two months. Their findings are quite interesting to learn, which have some commonalities as well as differences from previous results.  It would be even more interesting if the analysis can have something on the topics and content summaries of the user reviews, e.g., ratings, popular words in the reviews, and so on.  Currently it is mostly on the statistics, e.g., number of reviews.
-%}
-
-%\response{Thanks for the suggestion! We studied the topics in the top 100 most reviewed apps and investigated the global and local topics in app reviews. The study results are briefly discussed  in the paper as an infobox due to the imposed word count limits on the actual article. We hope this infobox satisfies your request while still ensuring that we do not exceed the imposed word count limits.
-%}
-
-
-%\noindent {\Large {\bf Reviewer 2 Comment}}
-
-%\comment{2}{
-%In this paper, the author conducted data analysis over the reviews on Mobile Apps in Google playstore. They found some interesting facts, such as a very small number of Apps received much more reviews than the others. Though the authors argued strongly that their findings are different from Pagano and Maalej's and Hoon et al.'s observations, in fact, there is no New finding in this study. The real difference is that the previous study was conducted over Appstore and this one was conducted on Google Playstore. Thus, I do not think this paper should be published without a new finding.
-%}
-
-%\response{App stores (and in particular user and developer interactions through app reviews) are a whole new domain of study in computing today. Our study is important in that it raises a warning flag about the importance of looking across such stores and that the computing community cannot just assume that the observed patterns are universal. Instead according to our study, there are differences between stores. For example, while prior studies highlight that many iOS developers are overwhelmed with reviews, we note that this is not the case for most Android apps. Furthermore, we are the first to dig deeper into the relation between app reviews and other meta data (as pointed by reviewer 3). Table 2 details the key differences between our study and prior studies
-%}
-
-
-%\noindent {\Large {\bf Reviewer 3 Comments}}
-
-%\comment{3}{
-%On the other hand, the study remains mostly at the descriptive level, leaving out implications, interpretation, and discussions. I would really appreciate more context in a discussion section on why the study is important and which implications it has, e.g. for automated extraction of topics, triaging etc. as the beginning of the manuscript might ``promise''.
-%}
-
-%\response{The greatest implication and take-home message of this paper is that practitioners and researchers on mobile app should be mindful of the differences among different app stores. Assumptions of having the same observations/patterns across different apps stores may not hold. With the awareness of the differences, techniques that are designed to assist mobile app developers should be optimized for different app stores. Similarly, researchers should examine whether other empirical findings do hold across app stores.
-%We added the discussion of the implication of our paper to the %new revision of the paper.
-%}
-
-
-%\comment{3}{
-%Related work is complete, but could be set more into the %context of this manuscript.
-%}
-
-%\response{The related work is set into the context of this %paper in the follow 3 aspects
-%\begin{enumerate}
-%	\item The importance of mobile app user reviews motivates our study.
-%	\item The findings of this paper ascertains the context of prior techniques that analyze mobile app user reviews.
-%	\item Prior empirical studies on mobile app user reviews focus on iOS apps, while our findings on Google Play Store are different.
-%\end{enumerate}
-%These points are highlighted in bold in Section ``Mobile App Analytics'' in the new draft.
-%}
-
-%\comment{3}{
-%Due to the app selection and sampling process, the presented results are only valid for free, established, popular apps - a fact that should be carefully noted throughout the manuscript.
-%}
-
-%\response{We noted such limitation in the new revision of the paper.
-%}
-
-
-%\comment{3}{
-%Language and typos should be checked.
-%}
-
-%\response{Fixed.
-%}
-
-
-
-%\comment{3}{
-%Introduction
-%- Yet little is known about the reviewing dynamics of the %Google Play Store =\textgreater This seems a bit exaggerated.
-%}
-
-%\response{The sentence is rephrased in the new draft. 
-%}
-
-%\comment{3}{
-%The number of downloads and releases impact the number of received reviews =\textgreater Should be "correlates with" instead of "impacts". In the case of downloads and releases - other than categories - the authors do not know which influences which, so a causal relation is not given per se.
-%}
-
-%\response{The sentence is rephrased as suggested.
-%}
-
-%\comment{3}{
-%Mobile App Analytics
-%- ll. 47ff: The related work (apart from the two studies that are also shown in the table) could be presented in more detail. What were concrete outcomes? How do they concretely relate to the authors' work?}
-
-%\response{Please refer to our response to comment 3.2.
-
-%The related work are set to present three aspects as our response to comment 3.2. We added more information about the outcomes of the related work. Related work does not consider that the assumptions of having the same observations/patterns across different apps stores may not hold. Our work makes the implication and take-home message that practitioners and researchers on mobile app should be mindful of the differences among different app stores. With the awareness of the differences, techniques that are designed to assist mobile app developers should be optimized for different app stores. Similarly, researchers should examine whether other empirical findings do hold across app stores.
-
-%}
-
-%\comment{3}{
-%Studied Apps
-%- The fact that only 500 reviews per day were sampled at max is a pity. This does not really allow to describe the full spectrum of how reviews distribute. However, the median \_should\_ still be stable, given that the authors only found few apps with more than 500 reviews.
-%}
-
-%\response{Thanks for the suggestion. We find the median number of reviews per app per day to be 0. We elaborate such finding in table 2 in the new revision of the paper.
-%}
-
-%\comment{3}{
-%- Only top apps are studied =\textgreater this reduces the subjects and generalizability to popular apps
-%- Only ``stable'' (old) apps are studied =\textgreater this reduces the subjects and generalizability to popular, established apps
-%- Only free apps are studied =\textgreater this reduces the subjects and generalizability to popular, established, free apps.
-%}
-
-%\response{We agree that our findings are limited to top, stable and free apps in Google Play Store. We mention such limitations in the new revision of the paper.
-%}
-
-%\comment{3}{
-%- Why would spam reviews be a problem? I don't see the argument that there are usually few reviews as an argument for not having spam. Spammers might choose relevant apps. Also I don't think it is relevant that you must login before reviewing, as this is no limitation for spammers. And: In the end there is spam, according to [3] (the study is for iOS, but there you have to login as well).
-%}
-
-%\response{The paragraph is removed from the new revision.
-%}
-
-%\comment{3}{
-%Our Findings
-%- I don't really see much on the beanplots. Maybe a traditional boxplot with whiskers and outliers would give a better impression?
-%}
-
-%\response{We tried to use boxplots as well. For figure 1(a) and figure 1(b): All other apps, box plots and bean plot would show similar information since the distribution is highly skewed (more than half of the data is 0). On the other hand, the figure 1 (b): 100 most reviewed apps, the bean plot can show the density of apps in different amount of reviews. For example, we can observe that most of the top 100 reviewed apps have around 10,000 reviews during the studied period. Such information can't be shown by boxplots. However, if the reviewer feels that box plots are more appropriate, we can replace them in the next revision.
-
-%}
-
-%\comment{3}{
-%- ... ``4,275 reviews in a single day such large numbers would lead to increasing the overall reported average of the received reviews on a daily basis.'' =\textgreater Yes, but not necessarily the median!
-%}
-
-%\response{We do not mean that the the findings from prior study on Facebook represent the normal situation (like median) of other apps in iOS store. We try to explain that some apps, like Facebook, may have way over 500 reviews per day. Therefore, our limitation of seeing only 500 reviews may be the reason that we observe lower amount of reviews compared to prior studied. However, only 20 apps have more than 500 reviews per day. Therefore, we still calculate the average number of reviews in a single day in order to compare to prior study results.
-
-%To further address such limitation, we check the median number of reviews in a single day for each app. We find that the median number is 0. Although Hoon et al. in prior study reports that the median number of reviews per year is 50 and 30 for free and paid apps, respectively, we cannot directly compare such results (median 50 or 30 reviews per year) with our result (median 0 review per day). We report the median number of reviews for each app per day in table 2.
-%}
-
-%\comment{3}{
-%- Figure 1b should read ``All other apps''. It is wrong as it is now.
-%}
-
-%\response{Fixed.
-%}
-
-%\comment{3}{
-%- Most apps receive few feedback and thus would not benefit from automated analyses. =\textgreater 20 reviews per day is already an amount where you would need a person for reading, triaging, detecting duplicates etc. So I would not subscribe this actually.
-%}
-
-%\response{We calculate the number of tokens from all the reviews of everyday for every app. The median number of words for app to receive for one day is 46. Such results confirm that most apps do not receive large amounts of feedback. We include such results in the new revision of the paper.
-%}
-
 
 
 
@@ -605,8 +417,8 @@ updated manuscript.
  \vspace{2mm}
  
 \noindent{Sincerely,}\\
-\noindent{Muhammad Moiz Arif, Weiyi Shang, \& Emad Shihab}\\
-%\noindent{\tt{\{tsehsun, sthomas, hemmati, mei, ahmed\}@cs.queensu.ca}}
+\noindent{Muhammad Moiz Arif, Weiyi Shang, \& Emad Shihab.}\\
+
 \end{letter}
  
 %\bibliographystyle{natbib}      % basic style, author-year citations
