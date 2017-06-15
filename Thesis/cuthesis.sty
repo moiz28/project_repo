@@ -103,7 +103,7 @@
 \Masters % by default
 \newif\ifcosupervisor
 \let\cosupervisor\cosupervisortrue
-\cosupervisorfalse
+\cosupervisortrue
 
 \def\titlep{%
         \thispagestyle{empty}%
@@ -157,7 +157,7 @@ of Doctor of Philosophy.
         {\Large \sc Concordia University}\\
         {\large School of Graduate Studies}
     \end{center}
-    \vspace{.5in}
+    \vspace{.2in}
     This is to certify that the thesis prepared
     \begin{tabbing}
         \hspace*{1.2in} \= \kill
@@ -182,7 +182,7 @@ of Doctor of Philosophy.
     %\hspace*{1cm} \hrulefill \makebox[3cm][l]{ Examiner} \\
     \hspace*{1cm} Dr.   \hrulefill \makebox[3cm][l]{ Supervisor}\\
     \ifcosupervisor%
-    \hspace*{1cm} \hrulefill \makebox[3cm][l]{ Co-supervisor}\\
+    \hspace*{1cm} Dr. \hrulefill \makebox[3cm][l]{ Co-supervisor}\\
     \fi%
     \ \\
     Approved \hrulefill\\
@@ -272,6 +272,9 @@ of Doctor of Philosophy.
        {}
 \newenvironment{acknowledgments}
        {\prefacesection{Acknowledgments}}
+
+\newenvironment{dedication}
+{\prefacesection{Dedication}}
 
 \newenvironment{publications}
        {\prefacesection{Related Publications}}
