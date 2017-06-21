@@ -1,7 +1,7 @@
 In the previous chapter, we find that there is a discrepancy between performance testing results from the virtual and physical environments. However, such discrepancy can also be due to other factors such 1) the instability of the virtual environments, 2) the virtual machine that we used or 3) the different hardware resources on the virtual environments. Therefore, in this section, we examine the impact of such factors to better understand our results and discuss the threats to validity for our findings. 
 
 
-\subsection{Investigating the stability of virtual environments}
+\section{Investigating the stability of virtual environments}
 
 Thus far, we perform our case studies in one virtual environment and compare the performance metrics to the physical environment. However, the stability of the results obtained from the virtual environment need to be validated, in particular since VMs tend to be highly sensitive to the environment that they run in \cite{leitner}.
 
@@ -11,7 +11,7 @@ As the previously mentioned approach, we build a model based on one of the runs,
 
 Prediction error values (see section 4.3.5) closer to 0 indicate that our model was able to successfully explain the variation of the throughput of a different run. This also means that the external validation error closer to 1 or higher depicts instability of the environment. We find the external validation error to be 0.04 and 0.13 for CloudStore and DS2, respectively. The internal validation error is 0.03 and 0.09 for CloudStore and DS2, respectively. Such low error values show that the performance testing results from the virtual environments are rather stable. 
 
-\subsection{Investigating the Impact of Specific Virtual Machine Software}
+\section{Investigating the Impact of Specific Virtual Machine Software}
 
 In all of our experiments, we used the Virtual Box software to setup our virtual environment. However, there exists a plethora of VM software (i.e., it can be argued that our chosen subject systems behave differently in another environment). The question that arises then is whether the choice of VM software impacts our findings. In order to address the aforementioned hypothesis, we set up another virtual environment using VMWare (version 12) with the same allocated computing resources as when we set up Virtual Box.
 
@@ -37,7 +37,7 @@ Table~\ref{tab:vmware} shows that the performance testing results from the two d
 	\end{table}
 	
 	
-\subsection{Investigating the Impact of Allocated Resources}
+\section{Investigating the Impact of Allocated Resources}
 
 Another aspect that may impact our results is the resources allocated and the configuration of the virtual environment. We did not decrease the system resources as decreasing the resources may lead to crashes in the testing environment.
 
@@ -46,14 +46,14 @@ To investigate the impact of the allocated resources, we increase the computing 
 Similar to the results shown in Table~\ref{tab:errors}, the prediction error is high when we normalize by the load as per Equation~\ref{equ:mad} (1.57 for DS2 and 1.25 for CloudStore), while normalizing based on deviance can significantly reduce the error (0.09 for DS2 and 0.07 for CloudStore). We conclude that our findings still hold when the allocated resources are changed and this change has minimal impact on the results of our case studies.
 
 	
-	\subsection{Threats to Validity}
+	\section{Threats to Validity}
 	\label{sec:threats}
 	
 	
-	\subsubsection{External validity.}
+	\subsection{External validity.}
 	We chose two subject systems, CloudStore and DS2 for our study and two virtual machine software, VirtualBox and VMware. The two subject systems have years of history and prior performance engineering research has studied both systems~\cite{jackicsm2009,Nguyen:2012:ADP:2188286.2188344,tarekmsr16}. The virtual machine software that we used is widely used in practice. Nevertheless more case studies on other subject systems in other domains with other virtual machine software are needed to evaluate our findings. We also present our results based on our subject systems only and do not generalize for all the virtual machines.
 	
-	\subsubsection{Internal validity.}
+	\subsection{Internal validity.}
 	
 	Our empirical study is based on the performance testing results on subject systems. The quality and the way of conducting the performance tests may introduce threats to the validity of our findings. In particular, our approach is based on the recorded performance metrics. The quality of recorded performance metrics can have an impact the internal validity of our study. We followed the approaches in the prior research to control the workload and to introduce the workload variation on our subject systems. However, we acknowledge that there exist other ways of control and vary workload. Our performance tests all last for 9 hours, while the length of the performance tests may impact the findings of the case study. Replicating our study by using other performance monitoring tools, such as psutil~\cite{psutil}, using other approaches to control and to vary the workload of the system and running the performance tests for a longer period of time (for example, 72 hours), may address this threat.
 	
@@ -61,7 +61,7 @@ Similar to the results shown in Table~\ref{tab:errors}, the prediction error is 
 	
 	
 	
-	\subsubsection{Construct validity.}
+	\subsection{Construct validity.}
 	We monitor the performance by recording performance metrics every 10 seconds and combine the performance metrics for every minute together as an average value. There may exist unfinished system requests when we record the system performance, leading to noise in our data. We choose a time interval (10 seconds) that is much higher than the response time of the requests (less than 0.1 second), in order to minimize the noise. Repeating our study by choosing other time interval sizes would address this threat. We exploit two approaches to normalize performance data from different environments. We also see that our {$R^2$} value is high. Although a higher {$R^2$} determines our model is accurate but it may also be an indication of overfit. There may exist other advance approaches to normalize performance data from heterogeneous environment. We plan to extend our study on other possible normalization approaches. There may exist other ways of examining performance testing results. We plan to extend our study by evaluating the discrepancy of using other ways of examining performance testing results in virtual and physical environments.
 	
 	In our performance tests, we consider the subject systems as a whole from the users' point of view. We did not conduct isolated performance testing for each feature or component of the system. Isolated performance testing may unveil more discrepancies than our results. Future work may consider such isolated performance tests to address this threat.
