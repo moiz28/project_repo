@@ -14,7 +14,7 @@ Generally, performance assurance activities are carried out by analyzing the sys
 
 Performance testing is mainly focused to detect primarily performance related problems with the software system, e.g. response time, throughput and resource utilization~\cite{Barna:2011,6032540,Gorton}.
 
-The goal behind performance testing may be to test performance requirements~\cite{pozin2011models} or exploratory. For example, to answer questions such as how do various configurations impact the performance of the system~\cite{Menasce:2000,Menasce:1994,Menasce:2001,pozin2011models}.
+The goal behind performance testing may be to test performance requirements~\cite{pozin2011models} or exploratory (e.g. to answer questions such as how do various configurations impact the performance of the system~\cite{Menasce:2000,Menasce:1994,Menasce:2001,pozin2011models}).
 
 \subsubsection{What is a test execution?}
 
@@ -53,14 +53,14 @@ Following the setup, the system is tested by applying load. The results are conc
 
 \begin{itemize}
 	\item Continuous: Testing until it is topped manually by practitioners~\cite{4017687}.
-	\item Timer-Based: The test runs for a specific duration of time~\cite{4017687}.
+	\item Time-Based: The test runs for a specific duration of time~\cite{4017687}.
 	\item Counter-Based: The load is stopped after a certain number of requests sent or received~\cite{4017687}.
 	\item Statistic-Based: A comparatively newer technique where the metric of interest is captures till it is statistically stable. This serves a high confidence level when analyzing the metric~\cite{mansharamani2010performance,snellman2011towards}.
 \end{itemize}
 
 \subsubsection{Data and Metrics Collection}
 
-During the course of loading the system and running the tests, performance data is monitored and recored. The performance data collected is in the form of logs and performance metrics. These performance metrics may be recorded at a higher-level (e.g. throughput and response time) or at a lower-level (e.g. CPU and memory usage). It is necessary that the monitoring or recording tool does not induce a large overhead on the system. This may lead to biased results~\cite{mytkowicz2010evaluating}.
+During the course of loading the system and running the tests, performance data is monitored and recored. The performance data collected is in the form of logs and performance metrics. These performance metrics may be recorded at a high-level (e.g. throughput and response time) or at a low-level (e.g. CPU and memory usage). It is necessary that the monitoring or recording tool does not induce a large overhead on the system. This may lead to biased results~\cite{mytkowicz2010evaluating}.
 
 \subsubsection{Data Analysis}
 After the performance data is collected, various analysis techniques are used to understand the performance of the system. We discuss in detail the approaches to analyze data in Section \ref{sec:related}.
@@ -72,7 +72,7 @@ Although there are similarities between with the three types of testing techniqu
 
 \subsubsection{Load Testing}
 
-The rate at which which the requests are submitted to a system is called the load~\cite{Beizer:1984}. This system is more commonly known as system under test or~\textit{SUT}. Load testing is carried out later than conventional testing in a software's life. This may be done on a prototype or a working system than a design or a model. Load testing is used to detect workload related problems. For example, deadlocks, buffer overflows, high response times and low throughput~\cite{464549,Barna:2011,6032540}. 
+The rate at which the requests are submitted to a system is called the load~\cite{Beizer:1984}. This system is more commonly known as system under test or~\textit{SUT}. Load testing is carried out later than conventional testing in a software's life. This may be done on a prototype or a working system than a design or a model. Load testing is used to detect workload related problems. For example, deadlocks, buffer overflows, high response times and low throughput~\cite{464549,Barna:2011,6032540}. 
 
 In some exceptional cases where the non-functional requirements are not present, one of ways to determine if the test has passed is by comparing it to the results of the previous version. This is also known as the ``no-worse-than-before" principle. As the name suggests, the version being tested should be, if not better, equal to the previous version.~\cite{Dumke:2001}
 
@@ -80,7 +80,7 @@ Although there may be some similarities present between performance and load tes
 
 \subsubsection{Stress Testing}
 
-Stress testing is testing the application under ``stress" or extreme load. This can be used to detect how resilient the system or to detect further load-related problems. For example, memory leaks and deadlocks. These ``stressful" conditions for the system can be either load related(normal ~\cite{zhang2002automated,kalita2011investigation,chakravarty2010stress} or heavy load ~\cite{Dillenseger2009,kalita2011investigation,huebner2001performance}) or limited resources allocated/failures (for example, disk or database failures) ~\cite{acharya2009mining}. We noted that in some cases it may also be used to detect the competency of the SUT \cite{garousi2010genetic,garousi2008empirical,garousi2006traffic,garousi2008traffic}.
+Stress testing is testing the application under ``stress" or extreme load. This can be used to detect how resilient the system or to detect further load-related problems. For example, memory leaks and deadlocks. These ``stressful" conditions for the system can be either load related (normal ~\cite{zhang2002automated,kalita2011investigation,chakravarty2010stress} or heavy load ~\cite{Dillenseger2009,kalita2011investigation,huebner2001performance}) or limited resources allocated/failures (for example, disk or database failures) ~\cite{acharya2009mining}. We noted that in some cases it may also be used to detect the competency of the SUT \cite{garousi2010genetic,garousi2008empirical,garousi2006traffic,garousi2008traffic}.
 
 
 Having stated all of the above, there are instances where the interest of a performance test may overlap with load testing pr stress testing and vice-versa. For example, to check robustness of the system when put in extreme conditions, or to check how an algorithm works when handling large files. We observe that the terms performance testing~\cite{Dillenseger2009,Menasce02loadtesting,Menasce:2002}, load testing ~\cite{536461,Bayan:2008,perf_load_stress,perf_web} and stress testing~\cite{Bayan:2008,Yang:1996,4020172} are also used interchangeably. 
@@ -94,6 +94,7 @@ In this section, we discuss the motivation and related work of this thesis in br
 
 
 \subsection{Analyzing performance testing results} 
+\label{sec:related_types_of_analysis}
 
 Prior research has proposed a slew of techniques to analyze performance testing results, i.e. performance metrics. Such techniques typically examine three different aspects of the metrics: 1) single performance metric, 2) the relationship between performance metrics, and 3) statistical modeling based on performance metrics.
 
@@ -152,3 +153,5 @@ Prior research focused on the overhead of virtual environments without consideri
 There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on a wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools. Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end users. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extraction from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
 
 However, none of the above mentioned performance bug detection approach has been applied in different environments. In most of the cases, the environment is not explicitly mentioned. Hence, generalizing the findings across environments remains an open topic.
+
+In chapter~\ref{chapter3}, we carry out performance tests in virtual and physical environments and analyze the discrepancy based on the types of analysis we discuss in section~\ref{sec:related_types_of_analysis}. 

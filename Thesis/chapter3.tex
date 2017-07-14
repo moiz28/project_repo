@@ -1,7 +1,6 @@
 % -*- root: cuthesis_masters.tex -*-
 
-\section{Approach}
-\label{chap3:sec:approach}
+
 
 \begin{landscape}
 
@@ -9,13 +8,15 @@
 	%\centering
 	%\vfil
 	\vspace*{15ex}\includegraphics[width=1.5\textwidth]{figures/overview_ls}
-	\caption{An overview of our case study setup.}
+	\caption{Overview of our case study setup.}
 	%\captionsetup{justification=centering}
 	\label{fig:Approach}
 \end{figure}
 
 \end{landscape}
 
+\section{Approach}
+\label{chap3:sec:approach}
 
 The goal of our case study is to evaluate the discrepancy between performance testing results from virtual and physical environments. We deploy our subject systems in two identical environments (physical and virtual) with the same hardware. A load driver is used to exercise our subject systems. After the collection and processing of the performance metrics we analyze and draw conclusions based on: 1) single performance metric 2) relationship between performance metrics and 3) statistical models based on the performance metrics. An overview of our case study setup is shown in Figure~\ref{fig:Approach}.
 
@@ -57,15 +58,14 @@ The goal of our study is to evaluate the discrepancy between performance testing
 \subsection{Are the trend and distribution of a single performance metric similar across environments?}
 \label{sec:individual}
 
-
 \noindent \textbf{Motivation.}
-The most intuitive approach of examining performance testing results is to examine every single performance metric. As shown in Section~\ref{sec:relatedindividual}, prior studies propose different approaches that typically compare the distribution or trend of each performance metric from different tests. Due to influences from testing environments, performance testing results are not expected to be identical in raw values. However, the shape of distribution and the trend of the metrics should be similar. For example, if in one environment, we observe the Memory has increasing trend while the increasing trend is not seen in another environment, we observe a discrepancy. In addition, the distribution differences between two test results should not be statistically significant. Therefore, we use quantile-quantile (Q-Q) plot and normalized Kolmogorov-Smirnov (KS) tests to examine the differences in trends and shape of the distributions. 
+The most intuitive approach of examining performance testing results is to examine every single performance metric. As shown in Section~\ref{sec:relatedindividual}, prior studies propose different approaches that typically compare the distribution or trend of each performance metric from different tests. Due to influences from testing environments, performance testing results are not expected to be identical in raw values. However, the shape of the distribution and the trend of the metrics should be similar. For example, if in one environment, we observe that Memory has an increasing trend while the increasing trend is not seen in another environment, we observe a discrepancy. In addition, the distribution differences between two test results should not be statistically significant. Therefore, we use quantile-quantile (Q-Q) plot and normalized Kolmogorov-Smirnov (KS) tests to examine the differences in trends and shape of the distributions. 
 \\
 
 \noindent \textbf{Approach.} 
 After running and collecting the performance metrics, we compare every single performance metric between the virtual and physical environments. Since the performance tests are conducted in different environments, intuitively the scales of performance metrics are not the same. For example, the virtual environment may have higher CPU usage than the physical environment. Therefore, instead of comparing the values of each performance metric in both environments, we study whether the performance metric follows the same shape of the distribution and the same trend in virtual and physical environments. 
 
-First, we plot a quantile-quantile (Q-Q) plot~\cite{qqplots} for every performance metric in two environments. A Q-Q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. We also plot a 45-degree reference line on the Q-Q plots. If the performance metrics in both environments follow the same shape of distribution, the points on the Q-Q plots should fall approximately along this reference (i.e., 45-degree) line. A large departure from the reference line indicates that the performance metrics in the virtual and physical environments come from populations with different shapes of distributions, which can lead to a different set of conclusions. For example, the virtual environment has a CPU's utilization spike at a certain time, but the spike is absent in the physical environment. 
+First, we plot a quantile-quantile (Q-Q) plot~\cite{qqplots} for every performance metric in two environments. A Q-Q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. We also plot a 45-degree reference line on the Q-Q plots. If the performance metrics in both environments follow the same shape of the distribution, the points on the Q-Q plots should fall approximately along this reference (i.e., 45-degree) line. A large departure from the reference line indicates that the performance metrics in the virtual and physical environments come from populations with different shapes of distributions, which can lead to a different set of conclusions. For example, the virtual environment has a CPU's utilization spike at a certain time, but the spike is absent in the physical environment. 
 
 Second, to quantitatively measure the discrepancy, we perform a Kolmogorov-Smirnov test~\cite{kstest} between every performance metric in the virtual and physical environments. Since the scales of each performance metric in both environments are not the same, we first normalize the metrics based on their median values and their median absolute deviation: 
 \begin{equation}
@@ -79,11 +79,32 @@ Finally, we calculate Spearman's rank correlation between every performance metr
 \\
 
 \noindent \textbf{Results.}
-\noindent \textbf{Most performance metrics do not follow the same shape of distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. We only present Q-Q plot for CPU user time, IO data operations/sec and memory working set for both application sever and database server. For complete results please refer Chapter \ref{appendix}.
-%\footnote{The complete results, data and scripts are shared online at http://das.encs.concordia.ca/members/moiz-arif/}. 
-The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the application (web) server's CPU user time for DS2 in the virtual environment shows higher values than in the physical environment at the median to high range of the distribution; while the Q-Q plot of CloudStore shows application (web) server's CPU user time with higher values at the low range of the distribution. In addition, the lines of the Q-Q plots for database memory working set show completely different shapes in DS2 and in CloudStore. The results imply that the discrepancies between virtual and physical environments are present between the subject systems. The impact of the subject systems warrants its own study.
+\noindent \textbf{Most performance metrics do not follow the same shape of the distribution in virtual and physical environments.} Figure~\ref{fig:qqds2} and \ref{fig:qqcs} show the Q-Q plots by comparing the quantiles of performance metrics from virtual and physical environments. We only present Q-Q plots for CPU user time, IO data operations/sec and memory working set for both application sever and database server. For complete results please refer Chapter \ref{appendix}.
 
-The majority of the performance metrics had statistically significantly different distributions (p-values lower than 0.05 in Kolmogorov-Smirnov tests). Only 13 and 12 metrics (out of 44 for each environment) have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-significant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly relate to the execution of the subject system (e.g., application server CPU privileged time in DS2), or highly relate to the workload. Since the workload between the two environments are similar, it is expected that the metrics related to the workload follow the same shape of distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-significant differences between the distributions in the virtual and physical environments (e.g., application server I/O write operations per second in DS2). %\emad{should we list the metrics}
+
+
+\begin{figure}[tp]]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{figures/DS2_qq.pdf}
+	\caption{Q-Q plots for DS2.}
+	\label{fig:qqds2}
+\end{figure}
+
+
+
+\begin{figure}[tp]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{figures/CS_qq.pdf}
+	\caption{Q-Q plots for CloudStore.}
+	\label{fig:qqcs}
+\end{figure}
+
+
+
+%\footnote{The complete results, data and scripts are shared online at http://das.encs.concordia.ca/members/moiz-arif/}. 
+The results show that the lines on the Q-Q plot are not close to the 45-degree reference line. By looking closely on the Q-Q plots we find that the patterns of each performance metric from different subject systems are different. For example, the application (web) server's CPU user time for DS2 in the virtual environment shows higher values than in the physical environment at the median to high range of the distribution; while the Q-Q plot of CloudStore shows the application (web) server's CPU user time with higher values at the low range of the distribution. In addition, the lines of the Q-Q plots for database memory working set show completely different shapes in DS2 and in CloudStore. The results imply that the discrepancies between virtual and physical environments are present between the subject systems. The impact of the subject systems warrants its own study.
+
+The majority of the performance metrics had statistically significantly different distributions (p-values lower than 0.05 in Kolmogorov-Smirnov tests). Only 13 and 12 metrics (out of 44 for each environment) have p-values higher than 0.05, for DS2 and CloudStore, respectively, showing statistically in-significant difference between the distribution in virtual and physical environments. By looking closely at such metrics, we find that these metrics either do not highly relate to the execution of the subject system (e.g., application server CPU privileged time in DS2), or highly relate to the workload. Since the workload between the two environments are similar, it is expected that the metrics related to the workload follow the same shape of the distribution. For example, the I/O operations are highly related with the workload. The metrics related to I/O operations may show statistically in-significant differences between the distributions in the virtual and physical environments (e.g., application server I/O write operations per second in DS2). %\emad{should we list the metrics}
 
 
 \noindent \textbf{Most performance metrics do not have the same trend in virtual and physical environments.} Table~\ref{tab:correlationrq1} shows the Spearman's rank correlation coefficient and corresponding p-value between the selected performance metrics for which we shared the Q-Q plots. We find that for the application server memory working set in CloudStore and the database server memory working set in DS2, there exists strong (0.69) to moderate (0.46) correlation between the virtual and physical environments, respectively. By examining the metrics, we find that both metrics have an increasing trend that may be caused by a memory leak. Such increasing trend may be the cause of the moderate to strong correlation. Instead of showing the selected metrics as the Q-Q plots, Table~\ref{tab:correlationall} shows a summary of the Spearman's rank correlation of all the performance metrics. Most of the correlations have an absolute value of 0 to 0.3 (low correlation), or the correlation is not statistically significant (p-val\textgreater0.05).
@@ -97,22 +118,6 @@ The majority of the performance metrics had statistically significantly differen
 	}%
 }
 
-
-\begin{figure}[thb]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{figures/DS2_qq.pdf}
-	\caption{Q-Q plots for DS2.}
-	\label{fig:qqds2}
-\end{figure}
-
-
-
-\begin{figure}[thb]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{figures/CS_qq.pdf}
-	\caption{Q-Q plots for CloudStore.}
-	\label{fig:qqcs}
-\end{figure}
 
 
 
@@ -180,6 +185,24 @@ First, we compare the changes in correlation between the performance metrics and
 
 \noindent \textbf{There exist differences in correlation among the performance metrics from virtual and physical environments.} Figures~\ref{fig:heatmap} and~\ref{fig:heatmap_cs} present the heatmap showing the changes in correlation coefficient among the performance metrics from virtual and physical environments. By looking at the heatmap, we find hotspots (with lighter color), which have larger correlation differences. For the sake of brevity, we do not show all the metric names in our heatmaps. Instead, we enlarge the heatmap by showing one of the hotspots for each subject system in Figures~\ref{fig:heatmap} and~\ref{fig:heatmap_cs}. We find that the hotspots correspond to the changes in correlation among I/O related metrics. Prior research on virtual machines has similar findings about I/O overhead in virtual machines~\cite{menon2005diagnosing,kraft2011io}. In such a situation, when practitioners observe that the relationship between I/O metrics and other metrics change, the change may not indicate a performance regression, but rather the change may be due to the use of a virtual environment.
 
+\begin{figure}[tp]
+	\centering
+	{\includegraphics[width=1.0\textwidth]{figures/heatmap_DS2}}
+	\caption{Heatmap of correlation changes for DS2.}
+	%\captionsetup{justification=centering}
+	\label{fig:heatmap}
+\end{figure}
+
+
+\begin{figure}[tp]
+	\centering
+	{\includegraphics[width=1.0\textwidth]{figures/heatmap_CS}}
+	\caption{Heatmap of correlation changes for CloudStore.}
+	%\captionsetup{justification=centering}
+	\label{fig:heatmap_cs}
+\end{figure}
+
+
 
 
 \noindent \textbf{Impact on the interpretation of examining correlations between performance metric.} When a system is reported to have performance issues, correlations between metrics are often used in practice, as describe in the motivation of this RQ. However, since such correlation can be inconsistent in virtual and physical environment, existing knowledge of assumptions of correlation may not exist or new correlation may emerge, due to the use of virtual environment. For example, practitioners of a database-centric system may have the knowledge that I/O traffic is correlated with CPU and system throughput. Examining these three metrics together can help diagnose performance issues, while if no such correlation exists in the virtual environment, these three metrics together may not be as useful in performance issue diagnosis.
@@ -192,23 +215,6 @@ First, we compare the changes in correlation between the performance metrics and
 	}%
 }
 
-
-\begin{figure}[tbh]
-	\centering
-	{\includegraphics[width=1.0\textwidth]{figures/heatmap_DS2}}
-	\caption{Heatmap of correlation changes for DS2.}
-	%\captionsetup{justification=centering}
-	\label{fig:heatmap}
-\end{figure}
-
-
-\begin{figure}[tbh]
-	\centering
-	{\includegraphics[width=1.0\textwidth]{figures/heatmap_CS}}
-	\caption{Heatmap of correlation changes for CloudStore.}
-	%\captionsetup{justification=centering}
-	\label{fig:heatmap_cs}
-\end{figure}
 
 
 
@@ -450,3 +456,5 @@ In order to identify the discrepancy between the models built using data from th
 		\textbf{Actionable implications: }Normalizing the performance metrics by deviance may minimize such discrepancy and should be considered by practitioners before examining performance testing results. 
 	}%
 }
+
+In Chapter~\ref{chapter4}, we further validate our findings of Chapter~\ref{chapter3} by looking at external factors that may have affected the nature of our performance tests and the subsequent analysis.
