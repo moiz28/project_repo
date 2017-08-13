@@ -38,13 +38,23 @@ The major contribution of this work includes:
 	\item \textbf{Normalization via deviance} We find that normalizing performance metrics based on deviance may reduce the discrepancy. Practitioners may exploit such normalization techniques when analyzing performance testing results from virtual environments.
 \end{itemize}
 
+\section{Actionable Contributions}
+
+\begin{itemize} \itemsep -0.4pt 
+	\item Practitioners should investigate the nature of overhead from virtual environment and only then applying the scaling technique.
+	
+	\item I/O intensive application may have a large discrepancy. Practitioners should verify such inconsistencies in the two environments. 
+	
+	\item Practitioners should be careful when using historic data for performance modeling in heterogeneous environments. If there exists a discrepancy, we highlight that normalization via deviance may be one of the ways to address it.
+	  
+\end{itemize}
 
 \section{Future Work}
 
 Our results highlight the need to be aware of the discrepancy between performance testing results in virtual and physical environments, for both practitioners and researchers. Future research effort may focus on minimizing such discrepancy in order to improve the use of virtual environments in performance engineering and reliability assurance activities.
 
 \textbf{Reproducing known performance regressions in heterogeneous environments:}
-We conducted a set of experiments in a curated environment where there was no presence of performance regression our subject systems. We believe that it will be interesting to see if these results still verify if performance regression is injected in our subject systems.
+We conducted a set of experiments in a curated environment where there was no presence of performance regression in our subject systems. We believe that it will be interesting to see if these results still verify if performance regression is injected in our subject systems.
 
 \textbf{Replicating our experiments in cloud environments:}
 Despite the fact that we carried out our experiments in different types of virtual environments, we also plan to examine the behavior of our subject systems in cloud environments. Issues like noise from other systems and how to isolate and monitor our system with and without regression, which may lead to numerous possibilities.

@@ -52,7 +52,7 @@ The term~\textit{setup} is further divided into two sub-terms. The setup for the
 Following the setup, the system is tested by applying load. The results are concurrently recorded. Practitioners may terminate the load based on the following techniques:
 
 \begin{itemize}
-	\item Continuous: Testing until it is topped manually by practitioners~\cite{4017687}.
+	\item Continuous: Testing until it is stopped manually by practitioners~\cite{4017687}.
 	\item Time-Based: The test runs for a specific duration of time~\cite{4017687}.
 	\item Counter-Based: The load is stopped after a certain number of requests sent or received~\cite{4017687}.
 	\item Statistic-Based: A comparatively newer technique where the metric of interest is captures till it is statistically stable. This serves a high confidence level when analyzing the metric~\cite{mansharamani2010performance,snellman2011towards}.
@@ -68,7 +68,7 @@ After the performance data is collected, various analysis techniques are used to
 
 \subsection{What are the differences between load testing, stress testing and performance testing?}
 
-Although there are similarities between with the three types of testing techniques i.e. load, stress and performance testing, for example all of the three are carried out after functional testing, we now differentiate between the application of the aforementioned tests.
+Although there are similarities between the three types of testing techniques i.e. load, stress and performance testing, (for e.g. all of the three are carried out after functional testing) we now differentiate between the application of the aforementioned tests.
 
 \subsubsection{Load Testing}
 
@@ -80,7 +80,7 @@ Although there may be some similarities present between performance and load tes
 
 \subsubsection{Stress Testing}
 
-Stress testing is testing the application under ``stress" or extreme load. This can be used to detect how resilient the system or to detect further load-related problems. For example, memory leaks and deadlocks. These ``stressful" conditions for the system can be either load related (normal ~\cite{zhang2002automated,kalita2011investigation,chakravarty2010stress} or heavy load ~\cite{Dillenseger2009,kalita2011investigation,huebner2001performance}) or limited resources allocated/failures (for example, disk or database failures) ~\cite{acharya2009mining}. We noted that in some cases it may also be used to detect the competency of the SUT \cite{garousi2010genetic,garousi2008empirical,garousi2006traffic,garousi2008traffic}.
+Stress testing is testing the application under ``stress" or extreme load. This can be used to detect how resilient the system is or to detect further load-related problems. For example, memory leaks and deadlocks. These ``stressful" conditions for the system can be either load related (normal ~\cite{zhang2002automated,kalita2011investigation,chakravarty2010stress} or heavy load ~\cite{Dillenseger2009,kalita2011investigation,huebner2001performance}) or limited resources allocated/failures (for example, disk or database failures) ~\cite{acharya2009mining}. We noted that in some cases it may also be used to detect the competency of the SUT \cite{garousi2010genetic,garousi2008empirical,garousi2006traffic,garousi2008traffic}.
 
 
 Having stated all of the above, there are instances where the interest of a performance test may overlap with load testing or stress testing and vice-versa. For example, to check robustness of the system when put in extreme conditions, or to check how an algorithm works when handling large files. We observe that the terms performance testing~\cite{Dillenseger2009,Menasce02loadtesting,Menasce:2002}, load testing ~\cite{536461,Bayan:2008,perf_load_stress,perf_web} and stress testing~\cite{Bayan:2008,Yang:1996,4020172} are also used interchangeably. 
@@ -101,7 +101,7 @@ Prior research has proposed a slew of techniques to analyze performance testing 
 
 \subsubsection{Single performance metric}
 \label{sec:relatedindividual}
-Nguyen \textit{et al$.$}~\cite{Nguyen:2012:ADP:2188286.2188344} introduce the concept of using control charts~\cite{shewhart1931economic} in order to detect performance regressions. Control charts use a predefined threshold to detect performance anomalies. However control charts assume that the output follows a uni-model distribution, which may be an inappropriate assumption for performance. Nguyen \textit{ et al$.$} propose an approach to normalize performance metrics between heterogeneous environments and workloads in order to build robust control charts. %However, the experiments are only carried out on the virtual machines in contrast to our approach.
+Nguyen \textit{et al$.$}~\cite{Nguyen:2012:ADP:2188286.2188344} introduce the concept of using control charts~\cite{shewhart1931economic} in order to detect performance regressions. Control charts use a predefined threshold to detect performance anomalies. However, control charts assume that the output follows a uni-model distribution, which may be an inappropriate assumption for performance tests. Nguyen \textit{ et al$.$} propose an approach to normalize performance metrics between heterogeneous environments and workloads in order to build robust control charts. %However, the experiments are only carried out on the virtual machines in contrast to our approach.
 
 Malik \emph{et al$.$}~\cite{Malik:2010:ACL:1955601.1955936, haroon} propose approaches that cluster performance metrics using Principal Component Analysis (PCA). Each component generated by PCA is mapped to performance metrics by a weight value. The weight value measures how much a metric contributes to the component. For every performance metric, a comparison is performed on the weight value of each component to detect performance regressions.
 
@@ -115,7 +115,7 @@ Malik \emph{et al$.$}~\cite{5635038} leverage Spearman's rank correlation to cap
 
 Foo \emph{ et al$.$}~\cite{foo2010mining} propose an approach that leverages association rules in order to address the limitations of manually detecting performance regressions in large scale software systems. Association rules capture the historical relationship among performance metrics and generate rules based on the results of prior performance tests. Deviations in the association rules are considered signs of performance regressions.
 
-Jiang \emph{et al$.$}~\cite{5270324} use normalized mutual information as a similarity measure to cluster correlated performance metrics. Since metrics in one cluster are highly correlated, the uncertainty among metrics in the cluster should be low. Jiang \emph{et al$.$} leverage entropy from information theory to monitor the uncertainty of each cluster. A significant change in the entropy is considered as a sign of a performance fault. 
+Jiang \emph{et al$.$}~\cite{5270324} use normalized mutual information as a similarity measure to cluster correlated performance metrics. Since metrics in one cluster are highly correlated, the uncertainty among metrics in the cluster should be low. Jiang \emph{et al$.$} leverage entropy from information theory to monitor the uncertainty of each cluster. A significant change in the entropy is considered a sign of a performance fault. 
 
 
 \subsubsection{Statistical modeling based on performance metrics}
@@ -137,7 +137,7 @@ Kraft \textit{et al$.$}~\cite{kraft2011io} discuss the issues related to disk I/
 
 Aravind \textit{et al$.$}~\cite{menon2005diagnosing} audit the performance overhead in Xen virtual machines. They uncover the origins of overhead that might exist in the network I/O causing a peculiar system behavior. However, there study is limited to Xen virtual machine only while mainly focusing on network related performance overhead.
 
-Brosig \textit{et al$.$}~\cite{brosig2013evaluating} predict the performance overhead of virtualized environments using Petri-nets in Xen server. The authors focused on the visualization overhead with respect to que	uing networks only. The authors were able to accurately predict server utilization but had significant errors for multiple VMs.
+Brosig \textit{et al$.$}~\cite{brosig2013evaluating} predict the performance overhead of virtualized environments using Petri-nets in Xen server. The authors focused on the visualization overhead with respect to queuing networks only. The authors were able to accurately predict server utilization but had significant errors for multiple VMs.
 
 
 Huber \textit{et al$.$}~\cite{huber2011evaluating} present a study on cloud-like environments. The authors compare the performance of virtual environments and study the degradation between the two environments. Huber \textit{et al$.$} further categorize factors that influence the overhead and use regression based models to evaluate the overhead. However, the modeling only considers CPU and memory.
@@ -150,7 +150,7 @@ Prior research focused on the overhead of virtual environments without consideri
 
 \subsection{Performance testing and bug detection}
 
-There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on a wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools. Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end users. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extraction from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
+There exists much research on performance testing and bug detection. Nistor \textit{et al$.$}~\cite{Nistor} detect the presence of functional and loop-related performance bugs with the help of their developed tool. Jin \textit{et al$.$} \cite{Jin} present a study on a wide range of performance bugs. The authors examined real-world performance bugs and developed rule-based performance bug detection tools. Nistor \textit{et al$.$}~\cite{nistor_2} in another study highlight that automated tool based performance bug detection is limited. The authors also comment that performance bugs are mostly detected by code reasoning rather than seeing the effects of the system by the end users. Tsakiltsidis \textit{et al$.$}~\cite{Tsakiltsidis} use prediction models to detect and predict performance bugs based on extractions from source code repositories. Malik \textit{et al$.$}~\cite{h_malik_p_bugs} present a study to uncover functional bugs via load testing. The authors propose an approach to reduce the large amount of performance metrics at the end of a load test by principal component analysis. Zaman \textit{et al$.$}~\cite{zaman_p_bugs} study the tracking and fixing of performance bugs.
 
 However, none of the above mentioned performance bug detection approach has been applied in different environments. In most of the cases, the environment is not explicitly mentioned. Hence, generalizing the findings across environments remains an open topic.
 
